@@ -1,0 +1,60 @@
+Release and anchor gas: real USDC (FiatTokenV2_2 at 0x8335...2913, Base state at block 52977000) against the
+mock token (logs/anchor-units, 7c571a8). forge test --isolate, transaction gas incl. 21,000; fit gas = fixed + per * m.
+diff = (USDC - mock) / mock. pullsale_* rows are single sales (mean of two).
+
+series               mock fix  mock per |   USDC fix  USDC per |    d fix    d per |  cap m  cap U | mkfork fix mkfork per
+--------------------------------------------------------------------------------------------------------------------------
+check                   73697    9888.3 |      73697    9888.3 |   +0.00%   +0.00% |   1689   1689 |      73697    9888.3
+check_proven            74133    7031.3 |      74133    7031.3 |   +0.00%   +0.00% |   2375   2375 |      74133    7031.3
+check_fail             105193   41074.6 |     105193   41074.6 |   +0.00%   +0.00% |    405    405 |     105193   41074.6
+payunit                 57491   12964.7 |      70153   12964.7 |  +22.02%   +0.00% |   1289   1288 |      57491   12964.7
+passpay                 64844   13013.7 |      77506   13013.7 |  +19.53%   +0.00% |   1284   1283 |      64844   13013.7
+inline                  75331   16920.2 |      87993   16920.2 |  +16.81%   +0.00% |    987    986 |      75331   16920.2
+inline_proven           76299   16044.1 |      88961   16044.1 |  +16.60%   +0.00% |   1040   1040 |      76299   16044.1
+pass                    69391       0.0 |      69391       0.0 |   +0.00%        0 |      -      - |      69391       0.0
+unit_plain             279842   16783.8 |     279844   16784.8 |   +0.00%   +0.01% |    982    982 |     279842   16783.8
+unit_marked            286824   19633.5 |     286868   19634.4 |   +0.02%   +0.00% |    839    839 |     286824   19633.5
+unit_accepted          260025   28125.8 |     260004   28126.6 |   -0.01%   +0.00% |    587    587 |     260025   28125.8
+complete_plain         288468    5135.0 |     288481    5134.9 |   +0.00%   -0.00% |   3211   3211 |     288468    5135.0
+complete_marked        296283   15710.7 |     304790   19872.6 |   +2.87%  +26.49% |   1049    828 |     296283   15710.7
+complete_accepted      308017   11556.8 |     320654   11556.7 |   +4.10%   -0.00% |   1425   1423 |     308017   11556.8
+chunk_plain             41128    5134.9 |      41128    5134.9 |   +0.00%   +0.00% |   3259   3259 |      41128    5134.9
+chunk_marked            50624   15711.4 |      59124   19873.4 |  +16.79%  +26.49% |   1064    841 |      50624   15711.4
+chunk_accepted          58975   11557.4 |      71637   11557.4 |  +21.47%   +0.00% |   1446   1445 |      58975   11557.4
+pullsale_marked         64346         - |      77008         - |  +19.68%        - |      -      - |      64346         -
+pullsale_accepted       69344         - |      82006         - |  +18.26%        - |      -      - |      69344         -
+
+cap m / cap U: largest m under 2^24 by the mock / USDC fit
+mock token on the fork equals the local mock-token rows point for point: True
+
+constants of the P9 cost calculation (p9.py lines 67-82), mock -> USDC:
+  REL1_F (inline fixed)                   75331 ->      87993  +16.81%
+  REL1_M (inline per sale)                16920 ->      16920   +0.00%
+  REL_CUR (pass)                          69391 ->      69391   +0.00%
+  REL1_PROVEN fixed                       76299 ->      88961  +16.60%
+  REL1_PROVEN per sale                    16044 ->      16044   +0.00%
+  RELU_CHK fixed                          73697 ->      73697   +0.00%
+  RELU_CHK per sale                        9888 ->       9888   +0.00%
+  RELU_PAY fixed                          57491 ->      70153  +22.02%
+  RELU_PAY per sale                       12965 ->      12965   +0.00%
+  ANC_UNIT plain fixed                   279842 ->     279844   +0.00%
+  ANC_UNIT plain per leaf                 16784 ->      16785   +0.01%
+  ANC_UNIT accepted fixed                260025 ->     260004   -0.01%
+  ANC_UNIT accepted per leaf              28126 ->      28127   +0.00%
+  ANC_COMPLETE plain fixed               288468 ->     288481   +0.00%
+  ANC_COMPLETE plain per record            5135 ->       5135   -0.00%
+  ANC_COMPLETE marked fixed              296283 ->     304790   +2.87%
+  ANC_COMPLETE marked per record          15711 ->      19873  +26.49%
+  ANC_COMPLETE accepted fixed            308017 ->     320654   +4.10%
+  ANC_COMPLETE accepted per record        11557 ->      11557   -0.00%
+  ANC_CHUNK plain fixed                   41128 ->      41128   +0.00%
+  ANC_CHUNK plain per record               5135 ->       5135   +0.00%
+  ANC_CHUNK marked fixed                  50624 ->      59124  +16.79%
+  ANC_CHUNK marked per record             15711 ->      19873  +26.49%
+  ANC_CHUNK accepted fixed                58975 ->      71637  +21.47%
+  ANC_CHUNK accepted per record           11557 ->      11557   +0.00%
+  ANC_PULLSALE marked                     64346 ->      77008  +19.68%
+  ANC_PULLSALE accepted                   69344 ->      82006  +18.26%
+  REL FU (check + payunit fixed)         131188 ->     143850   +9.65%
+  REL MU (check + payunit per sale)     22853.1 ->    22853.1   +0.00%
+  ANC FC signed (P9's derived term)      299810 ->     299823   +0.00%

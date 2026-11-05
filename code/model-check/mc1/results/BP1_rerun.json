@@ -1,0 +1,180 @@
+[
+ {
+  "name": "BP1-C-rdl3-t2-byte",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": 3,
+   "prof": "C",
+   "stage": "byte",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 14995876,
+  "edges": 19479474,
+  "finals": 3336951,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 545345,
+   "(('OBL', 'UREFUND'),)": 732,
+   "(('OBL', 'REFUND'),)": 2213879,
+   "(('OBL', 'PAID'),)": 576995
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 1813,
+   "honest_revert:C:ND_P:record": 477,
+   "honest_revert:W1:ND_P:terminal": 118293,
+   "honest_revert:C:KEY_P:terminal": 259596,
+   "honest_revert:W2:ND_P:terminal": 78862,
+   "honest_revert:W1:ND_P:record": 4305,
+   "honest_revert:W2:ND_P:record": 2870
+  },
+  "complete": true,
+  "violations": [],
+  "traces": {},
+  "seconds": 960.0
+ },
+ {
+  "name": "BP1-C-rdl3-t4-byte",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 4,
+   "H": 17,
+   "rdl": 3,
+   "prof": "C",
+   "stage": "byte",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 27209760,
+  "edges": 35764345,
+  "finals": 6072869,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 805747,
+   "(('OBL', 'UREFUND'),)": 996,
+   "(('OBL', 'REFUND'),)": 4273278,
+   "(('OBL', 'PAID'),)": 992848
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 2361,
+   "honest_revert:C:ND_P:record": 317,
+   "honest_revert:W1:ND_P:terminal": 205491,
+   "honest_revert:C:KEY_P:terminal": 466336,
+   "honest_revert:W2:ND_P:terminal": 136994,
+   "honest_revert:W1:ND_P:record": 3747,
+   "honest_revert:W2:ND_P:record": 2498
+  },
+  "complete": true,
+  "violations": [],
+  "traces": {},
+  "seconds": 1504.3
+ }
+]

@@ -1,0 +1,74 @@
+id: H1
+name: 'Honest high-rate seller: suspended fraction and delay'
+property_under_test:
+- P3
+preconditions:
+- An honest seller on the admissible profile, cap off (the rate cap would need a bond scale the deploy step does not set yet); the profile freezes at the confirmed failure (freezeOnInitialFail = false, ADR 0020), and the comparison timing (freezeOnInitialFail = true) is run on the override build
+- Honest verifiers (weight h) return a wrongful FAIL with probability alpha, the others with c
+injected_fault:
+  process:
+  - seller
+  - verifier
+  kind: honest_high_rate
+  action: 'seller sells correct responses at Lambda_honest; verifiers vote wrongful FAIL at alpha (honest weight) or c (the rest); the seller appeals every FAIL'
+  timing: continuously for the run
+parameters:
+  Lambda_honest:
+    default: rate:top_seller_14d_mean
+    sweep:
+    - rate:top_seller_14d_mean
+    - rate:peak_hour_max
+    unit: settlements per block (557 and 4,201 per hour)
+  alpha:
+    default: alpha
+    unit: probability
+  c:
+    default: c
+    unit: probability
+  h_honest_bond_fraction:
+    default: h
+    unit: fraction
+  cap_enabled:
+    default: false
+  run_blocks:
+    default: 43200
+    unit: blocks of selling (one day)
+n_seeds: 10
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - suspension_count
+  - fail_overturn_blocks
+  - wrongful_final_fail_count
+  - honest_seller_pool_loss
+  - achieved_settlement_rate
+expected_outcome: 'A sampled honest sale gets a wrongful initial FAIL with probability u1 = h alpha + (1 - h) c = 0.0397, so wrongful initial FAILs arrive at pi u1 Lambda per block while the seller is active: one per about 815 blocks at 557 per hour and one per about 108 blocks at 4,201 per hour. Comparison timing (freezeOnInitialFail = true): each suspends the seller until its appeal overturns it after T blocks (fail_overturn_blocks, at most about 1,804), and sales made before the suspension keep producing cases during it, so honest_seller_suspended_fraction is at least T / (1 / (pi u1 Lambda) + T): 0.69 at 557 per hour and 0.94 at 4,201 per hour when T = 1,804; sales_lost_while_suspended is about that fraction times Lambda v times the run. Production timing (freezeOnInitialFail = false): a wrongful initial FAIL suspends nothing, fail_overturn_blocks is the same but honest_seller_suspended_fraction comes only from wrongful confirmed failures, which need the party reviewer to err as well and the tiebreak to confirm (u = 2 u1 squared, ADR 0019), so it is about u / u1 = 0.08 times the comparison fraction. Under either timing about u of the sampled sales become wrongful confirmed failures, each of which costs the pool and one share of the penalty (ADR 0018).'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Comparison timing: honest_seller_suspended_fraction is at least T / (1 / (pi u1 Lambda) + T) with T the mean fail_overturn_blocks of the same runs, minus 0.05; a lower fraction refutes the cost model. Production timing: suspension_count equals wrongful_final_fail_count, and an initial FAIL that is overturned never appears in suspension_count. honest_seller_delay_blocks, sales_lost_while_suspended and honest_seller_pool_loss are reported per rate and per timing.'
+notes: This is the cost of freezing at the initial FAIL for the sellers that carry most of the volume, the cost that ADR 0020 removes from production profiles; the comparison timing shows what a production profile avoids. Alpha and c are assumptions from the operating point until measured.

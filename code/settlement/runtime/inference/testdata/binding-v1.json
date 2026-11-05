@@ -1,0 +1,20 @@
+{
+  "description": "Open-weights binding from a seeded synthetic checkpoint (seed 11). Hashes are keccak256 of the exact UTF-8 strings.",
+  "config": "{\"accelerator\":\"cpu\",\"batchSize\":1,\"decoding\":{\"maxNewTokens\":4,\"strategy\":\"greedy\"},\"format\":\"fairbind/experimental/open-weights-config/v1\",\"kernel\":{\"attention\":\"eager\",\"deterministicAlgorithms\":true,\"kvCache\":false,\"threads\":1},\"precision\":\"float32\",\"promptTemplate\":\"none\",\"quantization\":\"none\",\"runtime\":{\"toploc\":\"7ab7bcd6a4459ba4400fd41e4636bbeed7438997\",\"torch\":\"2.8.0\",\"transformers\":\"4.56.2\"},\"tokenizer\":\"token-ids\",\"toploc\":{\"activationDtype\":\"bfloat16\",\"decodeBatchingSize\":8,\"layer\":\"final-hidden-state\",\"skipPrefill\":false,\"tolerance\":{\"maxExpMismatches\":0,\"maxMantissaMean\":\"0\",\"maxMantissaMedian\":\"0\"},\"topk\":16},\"version\":1}",
+  "trace": "{\"decodeBatchingSize\":8,\"format\":\"fairbind/experimental/toploc-trace/v1\",\"proofs\":[\"0xffd995512c732e2da28201fafd9391b7e5b944a9ff8297f5dc69ddac4dfaa3283ffa\",\"0xffd9764335182653bc98f659bd83d9bafb13853c00a7c8b2d42b0ebd39d9f8c21eb3\"],\"skipPrefill\":false,\"topk\":16,\"version\":1}",
+  "weightManifest": {
+    "format": "fairbind/experimental/weight-manifest/v1",
+    "version": 1,
+    "files": {
+      "config.json": "9d2cab965c162af56db7ea113bba20f9e1dc6540bc17e4d1b8b9d0be158b5609",
+      "generation_config.json": "434db9a34b8bccc8887d2b9f7e37bab12b4413df2831a549da9c6334cbfb1bae",
+      "model.safetensors": "49eedde47c8ab36a05aab73c8d20070b84a65d682b72d56fabe0b755f06e694a"
+    }
+  },
+  "preimage": {
+    "toplocCommitment": "0x589408624e19b7f942870b66e01045cf546273d3b75684109f8c852b2d1be933",
+    "modelHash": "0xe2eb21020eb86922e08fdd7d0de72f4ee73ac6b66b441249f205e4f67adf0a6b",
+    "configHash": "0x9f6a0cec34051df28a4937ba22f57440f62f19a95af5a1b10ec79ea2cfb853ff"
+  },
+  "predicateCommitment": "0x86f08c50ad2cd44c59aec36f15c59482403aa9c75a7701364fbe4f7a418c034b"
+}

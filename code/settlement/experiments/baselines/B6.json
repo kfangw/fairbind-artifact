@@ -1,0 +1,150 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B6",
+  "name": "tiered-daily-cap-exposure-ceiling",
+  "represents": "Per-charge and per-day maximums assigned by risk tier, a per-seller open-exposure ceiling that refuses new captures once it is breached, a rolling reserve plus settlement delay as the held-money source, and a fixed challenge window whose length is a tier constant.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "samplePpm = 0 violates 0 < samplePpm <= PPM",
+    "effectivePpm = 0 violates 0 < effectivePpm <= samplePpm",
+    "no verifier registry violates minVerifiers >= 3 * maxAssignments + 5",
+    "the rolling reserve is a fraction of each settlement held for a period; the machine profile holds whole purchases for deferBlocks and has no fractional reserve field",
+    "the refusal rule is an inequality over an aggregate per-seller exposure register, which the profile has no field for",
+    "the refund waterfall has four ordered sources; the profile assumes a single source"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": 0,
+    "recheckPpm": 0,
+    "effectivePpm": 0,
+    "deferBlocks": 43200,
+    "deferPolicy": "rolling_reserve_plus_settlement_delay",
+    "reserveFractionPpm": 300000,
+    "reserveHoldBlocks": 2592000,
+    "settlementDelayBlocks": 43200,
+    "retentionBlocks": 129600,
+    "exposureCeiling": {
+      "enabled": true,
+      "perSeller": true,
+      "refusalRule": "refuse new captures while openExposure - reserve - delayed > E_max",
+      "E_max_atomic": "500000000",
+      "E_max_source": "operator-chosen parameter; not derived from the rate or the adjudication delay",
+      "aggregateCeiling": "total open liability <= lambda_share * pool, with lambda_share < 1; no new offers issued while breached",
+      "lambda_share": 0.5,
+      "E_max_sweep_atomic": [
+        "op:g_over_p",
+        "op:10*g_over_p",
+        "500000000"
+      ]
+    },
+    "sellerBond": {
+      "enabled": false,
+      "sizing": "none",
+      "amount_atomic": "0",
+      "note": "There is no posted bond. Protection comes from held proceeds plus the refusal rule, which is why this arm sits on the held-time axis rather than the bond axis."
+    },
+    "sellerPenalty_atomic": "0",
+    "rateCap": {
+      "enabled": true,
+      "kind": "tiered_per_charge_and_per_day_maximum",
+      "tiers": [
+        {
+          "tier": "low_risk",
+          "perChargeMax_atomic": "100000000",
+          "perDayMax_atomic": "5000000000",
+          "challengeWindowHours": 24
+        },
+        {
+          "tier": "medium_risk",
+          "perChargeMax_atomic": "20000000",
+          "perDayMax_atomic": "1000000000",
+          "challengeWindowHours": 72
+        },
+        {
+          "tier": "high_risk",
+          "perChargeMax_atomic": "5000000",
+          "perDayMax_atomic": "100000000",
+          "challengeWindowHours": 72
+        }
+      ],
+      "burstCapacity": null,
+      "derivedFrom": "risk tier assigned by the operator; not derived from the adjudication delay or from any bond condition"
+    },
+    "verifier": {
+      "enabled": false,
+      "oracle": "operator_decision",
+      "bond_atomic": "0",
+      "latePenalty": false,
+      "wrongPenalty": false
+    },
+    "appeal": {
+      "enabled": true,
+      "kind": "fixed_challenge_window",
+      "windowHoursByEvidenceRung": {
+        "none": 0,
+        "short": 24,
+        "medium": 72,
+        "until_ruling": null
+      },
+      "rounds": 1,
+      "depositRequired": false,
+      "challengerBonded": false
+    },
+    "refundWaterfall": [
+      "seller_payout_vault",
+      "seller_rolling_reserve",
+      "seller_settlement_delayed_proceeds",
+      "operator_refund_pool"
+    ],
+    "guaranteeTarget": "operator_maximum_loss",
+    "guaranteeTarget_note": "The bound that this arm can state is a ceiling on the operator's loss, not a sufficiency of recovery for the buyer. These are different claims and the metric pipeline must keep them apart.",
+    "receiptAnchor": {
+      "enabled": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "capture_then_execute_then_respond_then_release",
+    "refundWindowBlocks": 1296000,
+    "refundWindow_source": "the longer of the engine cancellation horizon and 30 days; 30 days is used",
+    "reserveHold_source": "rolling reserve held 60 days (2,592,000 blocks)",
+    "windowReadings": {
+      "challenge_window": "a complaint is accepted only inside the tier challenge window (24 h or 72 h)",
+      "refund_window": "a complaint is accepted until the refund window closes (30 days); the reserve is held 60 days"
+    },
+    "complaintPolicy": "buyer_complains_when_verdict_known"
+  },
+  "cannot_express": [
+    "sampling: nothing selects a transaction for checking, so detection depends entirely on someone complaining inside the window",
+    "a bonded checker: there is no one to pay for checking and no one to penalize for a wrong or late verdict",
+    "a window length derived from the adjudication delay: the window is a tier constant, so when the real delay exceeds it the case closes before the fault is known",
+    "a bond condition: there is no posted collateral to size, so the held-money axis is the only axis this arm has",
+    "recovery sufficiency for the buyer: the stated bound is on the operator's aggregate loss",
+    "per-purchase binding of request, response and receipt"
+  ],
+  "harness_special_cases": [
+    "this arm has a genuine held-money axis. It must be plotted on the same exchange curve as the treatment arm, at the point given by reserveFraction times reserveHold plus settlementDelay, and not treated as a D = 0 arm",
+    "the refusal rule needs a per-seller exposure register in the adapter, updated atomically with capture and release; if the update is not atomic the arm's own stated bound does not hold and the run is void",
+    "the sweep that discriminates this arm is over L relative to the fixed window, not over D. Add a variant sweep with L in {0.5, 1, 2, 4} times the tier window and hold everything else fixed",
+    "faults are detected only if the controller raises a complaint inside the window; the complaint policy must be part of the scenario file, and a run where no complaint is raised must be reported as 'undetected by construction' rather than as a clean run",
+    "report the operator-loss ceiling and the buyer-recovery rate as two separate metrics; the arm satisfies the first while failing the second, and collapsing them would flatter the arm",
+    "run both window readings; the fixed-window failure is predicted only under the challenge_window reading"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Fixed interior point. Unlike B0, B1 and B7 this arm is not at D = 0: held proceeds are real and the exposure ceiling caps the instantaneous open amount. It should land between B1 and B2 on the exchange curve.",
+    "cheater_scenarios": {
+      "steady_cheat": "Bounded, not zero. The refusal rule caps open exposure at E_max, so the leak per detection episode is at most E_max plus whatever released before the fault was known. Because E_max is a chosen constant rather than a derived one, the leak is whatever the operator set it to.",
+      "window_shorter_than_delay": "The characteristic failure. When the true adjudication delay exceeds the fixed 24 or 72 hour window, the case closes, the reserve releases, and the fault is discovered against an empty pot. Expect recovery to fall off a cliff as L crosses the window, with the cliff located exactly at the constant.",
+      "S5_burst": "Partially absorbed. The per-day maximum bounds the day's volume, but there is no burst term inside the day, so a seller can consume the whole daily maximum at once and then be refused. Expect the leak to saturate at the day maximum rather than growing without bound.",
+      "S6_patient_defector": "The tier assignment is the vulnerability: a seller who behaves for a long period is assigned a low-risk tier with a higher per-day maximum and a shorter window, so patience raises both the amount at risk and the chance the window closes first."
+    },
+    "honest_seller_cost": "A fraction of every settlement held for a long period, on the order of tens of days. Measure the time integral of held value; it can exceed the treatment arm's even though this arm holds only a fraction, because it holds it far longer."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": [
+    "refundWindowBlocks (30 days) added next to the 60-day reserve, and both window readings kept as windowReadings",
+    "E_max kept at 500 USDC as the source default and swept over g/p, 10 g/p and 500 USDC",
+    "complaintPolicy fixed to the value shared with B7a and B7b"
+  ]
+}

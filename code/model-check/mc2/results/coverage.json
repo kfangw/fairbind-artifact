@@ -1,0 +1,52 @@
+[
+ {
+  "cfg": {
+   "epochs": 2,
+   "smax": 2,
+   "stot": 2,
+   "disputes": true
+  },
+  "states": 744144,
+  "reached": [
+   "cursor passed every seller epoch",
+   "cursor pays a later-episode sale after re-entry",
+   "disputed sale frozen",
+   "failure missed anchor",
+   "failure sample case",
+   "kind O sale sampled",
+   "re-entry",
+   "status frozen",
+   "status held",
+   "status paid_accept",
+   "status paid_cursor",
+   "status paid_dispute",
+   "status refund_dispute",
+   "status refund_mark",
+   "two failures in one run"
+  ]
+ },
+ {
+  "cfg": {
+   "epochs": 2,
+   "k": 2,
+   "smax": 2,
+   "stot": 2,
+   "profiles": 2
+  },
+  "states": 67638,
+  "reached": [
+   "cursor passed every seller epoch",
+   "cursor pays a later-episode sale after re-entry",
+   "failure missed anchor",
+   "failure sample case",
+   "kind O sale sampled",
+   "re-entry",
+   "status frozen",
+   "status held",
+   "status paid_accept",
+   "status paid_cursor",
+   "status refund_mark",
+   "two failures in one run"
+  ]
+ }
+]

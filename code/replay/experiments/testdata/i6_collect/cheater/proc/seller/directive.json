@@ -1,0 +1,12 @@
+{
+ "kind": "hold_period_grid",
+ "parameters": {},
+ "seed": 20260928,
+ "seller_policy": {
+  "appeal_initial_fail": true,
+  "reentry": "top_up_to_scale_then_reinstate",
+  "role": "cheater",
+  "scale_factor": 1,
+  "top_up": "before_reentry_to_scale"
+ }
+}

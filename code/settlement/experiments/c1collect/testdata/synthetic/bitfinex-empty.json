@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "bitfinex:trades:tBTCUSD",
+  "method": "GET",
+  "url": "https://api-pub.bitfinex.com/v2/trades/tBTCUSD/hist?start=1789999990000&end=1790000010000&sort=-1&limit=100",
+  "request_raw": "R0VUIC92Mi90cmFkZXMvdEJUQ1VTRC9oaXN0P3N0YXJ0PTE3ODk5OTk5OTAwMDAmZW5kPTE3OTAwMDAwMTAwMDAmc29ydD0tMSZsaW1pdD0xMDAgSFRUUC8xLjENCkhvc3Q6IGFwaS1wdWIuYml0ZmluZXguY29tDQpVc2VyLUFnZW50OiBmYWlyYmluZC1jMWNvbGxlY3QvMQ0KQWNjZXB0OiBhcHBsaWNhdGlvbi9qc29uDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+  "started_at_unix_ms": 1790000029800,
+  "finished_at_unix_ms": 1790000030150,
+  "response_raw": "SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBNb24sIDIxIFNlcCAyMDI2IDE0OjEzOjUwIEdNVA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04DQpDb250ZW50LUxlbmd0aDogMg0KQ29ubmVjdGlvbjogY2xvc2UNCg0KW10=",
+  "response_sha256": "945fffa7c4eb64c83fe49d55a9f8a5dabc667a574ea75799262b81efdde32899",
+  "response_head": "HTTP/1.1 200 OK\r\nDate: Mon, 21 Sep 2026 14:13:50 GMT\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 2\r\nConnection: close\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "hand-built",
+    "synthetic": true,
+    "note": "synthetic fixture: hand-built to the documented response shape; not captured from the live API"
+  }
+}

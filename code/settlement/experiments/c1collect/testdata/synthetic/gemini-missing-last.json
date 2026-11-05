@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "gemini:pubticker:btcusd",
+  "method": "GET",
+  "url": "https://api.gemini.com/v1/pubticker/btcusd",
+  "request_raw": "R0VUIC92MS9wdWJ0aWNrZXIvYnRjdXNkIEhUVFAvMS4xDQpIb3N0OiBhcGkuZ2VtaW5pLmNvbQ0KVXNlci1BZ2VudDogZmFpcmJpbmQtYzFjb2xsZWN0LzENCkFjY2VwdDogYXBwbGljYXRpb24vanNvbg0KQWNjZXB0LUVuY29kaW5nOiBpZGVudGl0eQ0KQ29ubmVjdGlvbjogY2xvc2UNCg0K",
+  "started_at_unix_ms": 1789999999800,
+  "finished_at_unix_ms": 1790000000150,
+  "response_raw": "SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBNb24sIDIxIFNlcCAyMDI2IDE0OjEzOjIwIEdNVA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uDQpDb250ZW50LUxlbmd0aDogNDUNCkNvbm5lY3Rpb246IGNsb3NlDQoNCnsiYmlkIjoiODUwMDAuMSIsImFzayI6Ijg1MDAwLjIiLCJ2b2x1bWUiOnt9fQ==",
+  "response_sha256": "0b58aaa1698a966e36931b8a327e5ca7d2d7ea9139e985ffc691287fb9f25fe1",
+  "response_head": "HTTP/1.1 200 OK\r\nDate: Mon, 21 Sep 2026 14:13:20 GMT\r\nContent-Type: application/json\r\nContent-Length: 45\r\nConnection: close\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "hand-built",
+    "synthetic": true,
+    "note": "synthetic fixture: hand-built to the documented response shape; not captured from the live API"
+  }
+}

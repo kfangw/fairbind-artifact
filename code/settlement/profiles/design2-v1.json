@@ -1,0 +1,276 @@
+{
+  "formatVersion": 1,
+  "status": "evaluation-only",
+  "note": "Design 2 profile documents. The contract stores the flattened ServiceProfileInput and, through setProfileTerms, designTwoTerms with its termsHash.",
+  "deployment": {
+    "chainId": "31337",
+    "contractAddress": "0x1111111111111111111111111111111111111111",
+    "tokenAddress": "0x2222222222222222222222222222222222222222",
+    "tokenDecimals": 6,
+    "securityClaims": false
+  },
+  "profiles": [
+    {
+      "name": "data-api-design2-v1",
+      "profileId": 5,
+      "parameterHash": "0x90f171d38494010a1dc58bc468a4f7538f73114933a2da159dcbe14c6d37f75a",
+      "parameters": {
+        "classId": 1,
+        "predicateId": "0xb1659e2eda6c17f24434be64972e5ce19d44b5b4154752bbe83418276831812f",
+        "canonId": "0x5935caa956c625c8ff2a65a874e14a464e435cc193a0742b6ace012ce81a7a3d",
+        "canonicalHeaders": [
+          "accept",
+          "content-type",
+          "x-model"
+        ],
+        "epochOrigin": 1000,
+        "epochBlocks": 300,
+        "samplePpm": 1000000,
+        "effectivePpm": 400000,
+        "recheckPpm": 200000,
+        "bucketCapacity": 137,
+        "refillPpmPerBlock": 50000,
+        "maxRatePpmPerBlock": 60000,
+        "enforcementBlocks": 31073,
+        "deferBlocks": 31073,
+        "retentionBlocks": 31073,
+        "maxRequestBytes": 65536,
+        "maxResponseBytes": 65536,
+        "maxEvidenceBytes": 131072,
+        "maxPublicationCost": "5000000",
+        "maxReviewCost": "1000000",
+        "maxPurchaseValue": "1000000",
+        "maxBadGain": "1000000",
+        "sellerPenalty": "322222248",
+        "minVerifierBond": "1000000",
+        "verifierBondCap": "100000000",
+        "verifierLatePenalty": "500000",
+        "verifierWrongPenalty": "1000000",
+        "disputeDeposit": "5000000",
+        "appealDeposit": "5000000",
+        "verifierExposurePpm": 500000,
+        "maxAssignments": 3,
+        "minVerifiers": 14,
+        "strikeLimit": 3,
+        "marginBlocks": 500,
+        "beaconDelayBlocks": 768,
+        "beaconSlackL1Blocks": 0,
+        "claimWindowBlocks": 31073,
+        "failureLimit": 87,
+        "failureWindowBlocks": 31073,
+        "maxInconclusivePpm": 200000,
+        "inconclusiveWindowBlocks": 31073,
+        "forfeitVerifierPpm": 500000,
+        "freezeOnInitialFail": false,
+        "minJudgedCount": 30,
+        "bucketCapacityPercentilePpm": 990000,
+        "deadlineConfig": {
+          "anchorBlocks": 100,
+          "sealBlocks": 200,
+          "openBlocks": 200,
+          "responseBlocks": 60,
+          "claimBlocks": 1800,
+          "serveBlocks": 300,
+          "judgeBlocks": 600,
+          "evidenceBlocks": 300,
+          "appealBlocks": 1800
+        },
+        "designTwoTerms": {
+          "detectFloorPpm": 400000,
+          "valueCaps": [
+            "100000",
+            "200000",
+            "1000000"
+          ],
+          "tiers": [
+            {
+              "salesLimit": 10,
+              "bucketCapacity": 1,
+              "refillPpmPerBlock": 144,
+              "failureLimit": 5,
+              "sanctionLimit": 5
+            },
+            {
+              "salesLimit": 30,
+              "bucketCapacity": 1,
+              "refillPpmPerBlock": 466,
+              "failureLimit": 7,
+              "sanctionLimit": 7
+            },
+            {
+              "salesLimit": 100,
+              "bucketCapacity": 4,
+              "refillPpmPerBlock": 1544,
+              "failureLimit": 11,
+              "sanctionLimit": 11
+            },
+            {
+              "salesLimit": 300,
+              "bucketCapacity": 13,
+              "refillPpmPerBlock": 4618,
+              "failureLimit": 19,
+              "sanctionLimit": 19
+            },
+            {
+              "salesLimit": 1000,
+              "bucketCapacity": 42,
+              "refillPpmPerBlock": 15415,
+              "failureLimit": 38,
+              "sanctionLimit": 38
+            },
+            {
+              "salesLimit": 3245,
+              "bucketCapacity": 137,
+              "refillPpmPerBlock": 50000,
+              "failureLimit": 87,
+              "sanctionLimit": 87
+            }
+          ],
+          "termsHash": "0xea1312d0d44e952a3d56b0476e3dc95e1ab5f91e7f0cddf7647e0730369faeb8"
+        }
+      },
+      "analysis": {
+        "judgmentDelayBlocks": 30573,
+        "caseHorizonBlocks": 31073,
+        "tierSpanBlocks": 62146,
+        "deductions": {
+          "100000": "370371",
+          "200000": "740741",
+          "1000000": "3703704"
+        },
+        "notes": "Design 2 rules, third edition (D2-1, D2-2, D2-5, D2-7, D2-8, D2-9, D2-13). Caps 0.1 / 0.2 / 1 USDC, p0 = 0.40, b = ceil(40 * cap * 1e6 / (27 * p0)). Tiers S = 10, 30, 100, 300, 1,000, 3,245 with k = 5, 7, 11, 19, 38, 87 (w = 0.015, target 5e-7, rule D2-5 (e)); q_S = max(1, round(S * 137 / 3,245)), r_S = floor((S - q_S) * 1e6 / span) for the five small tiers and (137, 50,000) for the base tier (rule D2-7 (b)), span = failureWindowBlocks + marginBlocks + judgmentDelayBlocks = 62,146. sellerPenalty = 87 * b(1). Every window equals the hold period T_hold = 31,073 = L_F + 500. termsHash is the commitment setProfileTerms checks (ADR 0025); parameterHash commits it with the other parameters."
+      }
+    },
+    {
+      "name": "inference-design2-v1",
+      "profileId": 6,
+      "parameterHash": "0x2e7db7f469b00949f8670725f491d8e0e090f23d1af1f75cbe55a4ccdf9fb097",
+      "parameters": {
+        "classId": 2,
+        "predicateId": "0xdc77e562812ea60a876f258021aea1da480f6035092b70aa11ca0f5ae1dae9ad",
+        "canonId": "0x5935caa956c625c8ff2a65a874e14a464e435cc193a0742b6ace012ce81a7a3d",
+        "canonicalHeaders": [
+          "accept",
+          "content-type",
+          "x-model"
+        ],
+        "epochOrigin": 1000,
+        "epochBlocks": 1800,
+        "samplePpm": 1000000,
+        "effectivePpm": 400000,
+        "recheckPpm": 200000,
+        "bucketCapacity": 137,
+        "refillPpmPerBlock": 16785,
+        "maxRatePpmPerBlock": 60000,
+        "enforcementBlocks": 92581,
+        "deferBlocks": 92581,
+        "retentionBlocks": 92581,
+        "maxRequestBytes": 65536,
+        "maxResponseBytes": 65536,
+        "maxEvidenceBytes": 131072,
+        "maxPublicationCost": "20000000",
+        "maxReviewCost": "10000000",
+        "maxPurchaseValue": "1000000",
+        "maxBadGain": "1000000",
+        "sellerPenalty": "322222248",
+        "minVerifierBond": "50000000",
+        "verifierBondCap": "1000000000",
+        "verifierLatePenalty": "5000000",
+        "verifierWrongPenalty": "10000000",
+        "disputeDeposit": "20000000",
+        "appealDeposit": "20000000",
+        "verifierExposurePpm": 500000,
+        "maxAssignments": 3,
+        "minVerifiers": 14,
+        "strikeLimit": 3,
+        "marginBlocks": 500,
+        "beaconDelayBlocks": 768,
+        "beaconSlackL1Blocks": 0,
+        "claimWindowBlocks": 92581,
+        "failureLimit": 87,
+        "failureWindowBlocks": 92581,
+        "maxInconclusivePpm": 200000,
+        "inconclusiveWindowBlocks": 92581,
+        "forfeitVerifierPpm": 500000,
+        "freezeOnInitialFail": false,
+        "minJudgedCount": 30,
+        "bucketCapacityPercentilePpm": 990000,
+        "deadlineConfig": {
+          "anchorBlocks": 100,
+          "sealBlocks": 200,
+          "openBlocks": 200,
+          "responseBlocks": 1800,
+          "claimBlocks": 3600,
+          "serveBlocks": 300,
+          "judgeBlocks": 3600,
+          "evidenceBlocks": 1800,
+          "appealBlocks": 1800
+        },
+        "designTwoTerms": {
+          "detectFloorPpm": 400000,
+          "valueCaps": [
+            "100000",
+            "200000",
+            "1000000"
+          ],
+          "tiers": [
+            {
+              "salesLimit": 10,
+              "bucketCapacity": 1,
+              "refillPpmPerBlock": 48,
+              "failureLimit": 5,
+              "sanctionLimit": 5
+            },
+            {
+              "salesLimit": 30,
+              "bucketCapacity": 1,
+              "refillPpmPerBlock": 156,
+              "failureLimit": 7,
+              "sanctionLimit": 7
+            },
+            {
+              "salesLimit": 100,
+              "bucketCapacity": 4,
+              "refillPpmPerBlock": 518,
+              "failureLimit": 11,
+              "sanctionLimit": 11
+            },
+            {
+              "salesLimit": 300,
+              "bucketCapacity": 13,
+              "refillPpmPerBlock": 1549,
+              "failureLimit": 19,
+              "sanctionLimit": 19
+            },
+            {
+              "salesLimit": 1000,
+              "bucketCapacity": 42,
+              "refillPpmPerBlock": 5173,
+              "failureLimit": 38,
+              "sanctionLimit": 38
+            },
+            {
+              "salesLimit": 3245,
+              "bucketCapacity": 137,
+              "refillPpmPerBlock": 16785,
+              "failureLimit": 87,
+              "sanctionLimit": 87
+            }
+          ],
+          "termsHash": "0x600c5a36c2341868bbaa26f551cf4ce8a3465d53ea3c824dfbf7e4e961cca2d0"
+        }
+      },
+      "analysis": {
+        "judgmentDelayBlocks": 92081,
+        "caseHorizonBlocks": 92581,
+        "tierSpanBlocks": 185162,
+        "deductions": {
+          "100000": "370371",
+          "200000": "740741",
+          "1000000": "3703704"
+        },
+        "notes": "Same rules on the open-weights deadlines (epochBlocks 1,800). The third edition gives no inference tier table; this document keeps the data API sales limits S and their k (k depends on S and w only) and derives every tier, the base tier included, from r_S = floor((S - q_S) * 1e6 / span) with span = 92,581 + 500 + 92,081 = 185,162, so the base tier sustains about 30 settlements per hour instead of 90. T_hold = 92,581 = L_F + 500 (marginBlocks 500, the rules' reference case; the design 1 evaluation profile uses 1,000). These tier values are a proposal of this document, not a rule."
+      }
+    }
+  ]
+}

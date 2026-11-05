@@ -1,0 +1,3 @@
+#!/bin/sh
+# stand-in for "forge build": artifacts are prebuilt with solc-js 0.8.24 (toforge.py)
+exit 0

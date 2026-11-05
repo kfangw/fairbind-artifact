@@ -1,0 +1,17 @@
+{
+ "bad_sales_m": 1,
+ "bad_sales_rule": "first_m",
+ "cell": "F-exit",
+ "events": [],
+ "parameters": {
+  "bad_sale_gain_atomic": 10000,
+  "finite_attack_after": "request_exit",
+  "finite_attack_cheat_sales": 1,
+  "judgment_path": "normal",
+  "keeper_delay_budget_blocks": 0,
+  "scale_factor": 1,
+  "seller_role": "finite"
+ },
+ "run_id": "I6-exit-r0",
+ "scenario": "I6"
+}

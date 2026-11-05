@@ -1,0 +1,23 @@
+{
+ "applied": true,
+ "attempt": 0,
+ "gate": "READY",
+ "honest": false,
+ "honestyDraw": 0.989435142295775,
+ "nonce": "0x8732f4d8722f476d2d52bab7c8587998fc4bcd38d23f90195be073ef6f107ea9",
+ "outcomeDraw": 0.2625570049519188,
+ "outcomeRule": "none",
+ "params": {
+  "alpha": 0.01,
+  "beta": 0.05,
+  "c": 0.1,
+  "h": 0.67,
+  "honestErrorOff": false
+ },
+ "predicateVerdict": "FAIL",
+ "seed": 20260928,
+ "stage": 1,
+ "verdict": "PASS",
+ "verifierId": 2,
+ "version": 1
+}

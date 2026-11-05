@@ -1,0 +1,3 @@
+results_*.log
+__pycache__/
+run_all.log

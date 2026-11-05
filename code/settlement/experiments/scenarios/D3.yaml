@@ -1,0 +1,79 @@
+id: D3
+name: 'Deferral at or above L with the cap off: slow cheater, bond levels and g below v'
+property_under_test:
+- T5
+- EXPOSURE
+preconditions:
+- 'Cap off; the seller sells only bad responses at Lambda_cheater and nothing else'
+- The bond account holds one sellerPenalty, realized as bond_fraction_of_g_over_p times g/p
+- The run continues until every entry the seller settled is released, refunded or forfeited
+injected_fault:
+  process: seller
+  kind: calculating_cheater
+  action: seller settles bad sales at rate Lambda_cheater (evenly spaced, with the order inside a block set by the seed) until a settlement is refused
+  timing: continuously after registration
+parameters:
+  D_holding_blocks:
+    default: L
+    sweep:
+    - L
+    - caseHorizon
+    unit: blocks (expression)
+  Lambda_cheater:
+    default: 1/(10*p*D)
+    sweep:
+    - 1/(10*p*D)
+    - rate:peak_hour_max
+    unit: 'settlements per block; 1/(10*p*D) is the slow point, D the effective hold'
+  bad_sale_gain_atomic:
+    default: v
+    sweep:
+    - v
+    - v/2
+    unit: token (the seller gain g per bad sale)
+  bond_fraction_of_g_over_p:
+    default: 1.0
+    sweep:
+    - 0.0
+    - 0.5
+    - 1.0
+    unit: multiple of g/p
+  cap_enabled:
+    default: false
+n_seeds: 100
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - effective_hold_period_blocks
+  - freeze_delay_blocks
+  - seller_penalty_charged
+expected_outcome: 'Slow point (Lambda = 1/(10 p D), about 2.5 bad sales per hold period, first detection after about 10 D): bad sales settled more than D before the freeze are released, so the g/p term is exercised. With k the index of the first detected bad sale (mean 1/p) and Delta the freeze delay, the seller settles k + Lambda Delta bad sales, loses the 2.5 frozen ones and keeps the rest. Predicted means, data API: released exposure g (22.5 + Lambda Delta), 22.9 g to 23.8 g at D = L and 22.5 g to 22.7 g at D = caseHorizon, below the bound g/p = 25 g; cheater_net_gain = g (25 + Lambda Delta) - 2.5 v, about 23 v for g = v and about 10 v for g = v/2, positive at every bond level because one final failure charges only sellerPenalty / failureLimit, below the episode gain at these bond levels. Fast point (Lambda = 2.334 per block): every bad sale is still held at the freeze, released exposure 0, cheater_net_gain = (g - v) times the bad sales: exactly 0 for g = v and about -1,400 v to -4,600 v for g = v/2, independent of the bond.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Each criterion can fail. (1) Exposure bound: at the slow point the mean released exposure over seeds, with its 95 percent interval, is not above g/p; an interval wholly above g/p refutes the bound. (2) Single-episode sign: the slow-point mean cheater_net_gain is positive at bond fraction 0, 0.5 and 1; an interval wholly at or below 0 means the frozen pool alone covers the g/p term and refutes the prediction. (3) Bond dependence within an episode is exactly one share of the penalty: the slow-point means at the three bond levels differ by sellerPenalty / failureLimit per final failure and by nothing else; a larger difference means more than the share was charged before failureLimit. (4) Fast point: released exposure is 0 in every run and cheater_net_gain equals (g - v) times the bad sales in every run; any other value is an accounting or release error. Whether a bond of g/p deters over repeated episodes is tested by C1.'
+notes: 'The bond levels 0 and g/(2p) are below the penalty floor that every build enforces, so the controller realizes them by declaring a smaller maxBadGain (used only in that floor) while the seller keeps its true gain bad_sale_gain_atomic; a bond of 0 becomes the smallest admissible penalty. The plan records bond_level_realized_atomic and declared_maxBadGain. g = v/2 separates the frozen pool (which returns v per frozen sale) from the gain (g per bad sale). The slow point needs a run of several times 10 D blocks; see the README, Randomness, for the seed count.'

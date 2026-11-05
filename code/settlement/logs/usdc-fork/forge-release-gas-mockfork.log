@@ -1,0 +1,55 @@
+No files changed, compilation skipped
+
+Ran 4 tests for contracts/test/sdk/usdcfork/MockOnFork.t.sol:MockReleaseGasForkTest
+[PASS] test_gas_check_and_inline() (gas: 216594383)
+Logs:
+  row series=inline m=1 gas=93208
+  row series=check m=1 gas=84011
+  row series=passpay m=1 gas=77964
+  row series=inline m=8 gas=211377
+  row series=check m=8 gas=153108
+  row series=passpay m=8 gas=169030
+  row series=inline m=32 gas=616643
+  row series=check m=32 gas=390064
+  row series=passpay m=32 gas=481267
+  row series=inline m=64 gas=1157282
+  row series=check m=64 gas=706131
+  row series=passpay m=64 gas=897615
+  row series=inline m=128 gas=2239531
+  row series=check m=128 gas=1338698
+  row series=passpay m=128 gas=1730419
+  row series=inline m=256 gas=4407918
+  row series=check m=256 gas=2605559
+  row series=passpay m=256 gas=3396459
+
+[PASS] test_gas_failing() (gas: 165263211)
+Logs:
+  row series=check_fail m=1 gas=146697
+  row series=check_fail m=32 gas=1419516
+  row series=check_fail m=128 gas=5362006
+  row series=check_fail m=256 gas=10620675
+
+[PASS] test_gas_payment_units() (gas: 364112100)
+Logs:
+  row series=pass m=1 gas=69391
+  row series=payunit m=256 gas=3381383
+  row series=payunit m=1 gas=71116
+  row series=pass m=64 gas=69391
+  row series=payunit m=64 gas=886357
+  row series=pass m=256 gas=69391
+  row series=payunit m=256 gas=3371761
+
+[PASS] test_gas_proven() (gas: 159984701)
+Logs:
+  row series=inline_proven m=1 gas=92368
+  row series=check_proven m=1 gas=81171
+  row series=inline_proven m=8 gas=204649
+  row series=check_proven m=8 gas=130383
+  row series=inline_proven m=32 gas=589665
+  row series=check_proven m=32 gas=299125
+  row series=inline_proven m=64 gas=1103145
+  row series=check_proven m=64 gas=524144
+
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 952.66ms (2.33s CPU time)
+
+Ran 1 test suite in 959.12ms (952.66ms CPU time): 4 tests passed, 0 failed, 0 skipped (4 total tests)

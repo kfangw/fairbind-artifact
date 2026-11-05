@@ -1,0 +1,32 @@
+window start 2026-09-09T00:00:00Z, boundaries 13824, step 300 s
+
+[CL-BTCUSD] provider Chainlink, G = 1260 s, events 9157, head ts 2026-10-27T00:30:59Z
+  resolved n = 13824, failures x = 0, pending 0, unresolved 0, integrity holes 0
+  p_hat = 0.000000, exact upper = 0.000217, 3/n = 0.000217, CP lower = 0.000000
+  failure runs = 0, longest run = 0 boundaries; gap median/p99/max = 902/1232/1236 s; age at boundary median/max = 323/1231 s
+  descriptive: share of boundaries whose gap price change exceeds 0.25% = 0.0052; all-seconds fraction in gaps over G = 0.000000
+  verdict: J1: upper bound at or below 0.002; this feed supports the band lower end
+
+[CL-ETHUSD] provider Chainlink, G = 1260 s, events 8090, head ts 2026-10-27T00:30:59Z
+  resolved n = 13824, failures x = 0, pending 0, unresolved 0, integrity holes 0
+  p_hat = 0.000000, exact upper = 0.000217, 3/n = 0.000217, CP lower = 0.000000
+  failure runs = 0, longest run = 0 boundaries; gap median/p99/max = 1020/1232/1234 s; age at boundary median/max = 359/1231 s
+  descriptive: share of boundaries whose gap price change exceeds 0.25% = 0.0262; all-seconds fraction in gaps over G = 0.000000
+  verdict: J1: upper bound at or below 0.002; this feed supports the band lower end
+
+[A3-BTCUSD] provider API3, G = 90000 s, events 538, head ts 2026-10-28T01:09:59Z
+  resolved n = 13824, failures x = 0, pending 0, unresolved 0, integrity holes 0
+  p_hat = 0.000000, exact upper = 0.000217, 3/n = 0.000217, CP lower = 0.000000
+  failure runs = 0, longest run = 0 boundaries; gap median/p99/max = 18916/86084/86084 s; age at boundary median/max = 7533/86055 s
+  descriptive: share of boundaries whose gap price change exceeds 0.25% = 0.9585; all-seconds fraction in gaps over G = 0.000000
+  verdict: J1: upper bound at or below 0.002; this feed supports the band lower end
+
+[A3-ETHUSD] provider API3, G = 90000 s, events 902, head ts 2026-10-28T01:09:59Z
+  resolved n = 13824, failures x = 0, pending 0, unresolved 0, integrity holes 0
+  p_hat = 0.000000, exact upper = 0.000217, 3/n = 0.000217, CP lower = 0.000000
+  failure runs = 0, longest run = 0 boundaries; gap median/p99/max = 10306/86082/86082 s; age at boundary median/max = 4308/86021 s
+  descriptive: share of boundaries whose gap price change exceeds 0.25% = 0.9791; all-seconds fraction in gaps over G = 0.000000
+  verdict: J1: upper bound at or below 0.002; this feed supports the band lower end
+
+overall: providers with every included feed at J1: Chainlink, API3; providers with any feed not J1: none
+exit 0

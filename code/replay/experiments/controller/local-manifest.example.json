@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "rpcUrl": "http://127.0.0.1:8545",
+  "readyTimeoutSeconds": 60,
+  "runTimeoutSeconds": 3600,
+  "stopTimeoutSeconds": 10,
+  "processes": {
+    "anvil": {"command": ["anvil", "--port", "8545", "--block-time", "1", "--silent"], "ready": "rpc"},
+    "keeper": {"command": ["go", "run", "./services/keeper/cmd/fairbind-keeper", "-config", "{proc_dir}/../deploy/services/keeper/keeper.json"]},
+    "verifier": {"command": ["go", "run", "./services/verifier/cmd/fairbind-verifier", "-config", "{proc_dir}/../deploy/services/verifier/1/verifier.json"]},
+    "facilitator": {"command": ["go", "run", "./services/facilitator/cmd/fairbind-facilitator", "-config", "{proc_dir}/../deploy/services/facilitator/facilitator.json"]},
+    "seller": {"command": ["go", "run", "./services/seller/cmd/fairbind-seller", "-config", "{proc_dir}/../deploy/services/seller/seller.json"], "ready": {"seconds": 5}},
+    "buyer": {"command": ["go", "run", "./services/buyer", "-directive", "{directive}", "-seller", "{seller_url}", "-observations", "{observations}"]}
+  },
+  "deploy": {"command": ["scripts/deploy-local.sh", "{profile}", "{proc_dir}"], "env": {"FAIRBIND_BASE_PORT": "18400"}},
+  "collector": {"command": ["python3", "experiments/collect_run.py", "{rpc_url}", "{observations}"]},
+  "proxy": {"listen": "127.0.0.1:18080", "upstream": "http://127.0.0.1:18401"}
+}

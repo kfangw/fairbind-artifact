@@ -1,0 +1,1227 @@
+{
+ "verdicts": {
+  "JK13a": {
+   "value": 0.013979134403300302,
+   "cap": 0.6,
+   "holds": true,
+   "raw_ratio": 0.37247416632823427,
+   "delta": -208599
+  },
+  "JK13a-r": {
+   "value": -0.013621073815430993,
+   "cap": 0.5,
+   "holds": true,
+   "raw_ratio": 0.3549087736714649,
+   "delta": -214438
+  },
+  "JK13b": {
+   "value": {
+    "busy": 0.1101798094581607,
+    "median": 0.16253909238236292,
+    "quiet": 0.20629688274687524
+   },
+   "cap": 0.2,
+   "holds": false
+  },
+  "JK13b-r": {
+   "value": {
+    "busy": 0.11051009902311927,
+    "median": 0.1636880932230035,
+    "quiet": 0.21090909631034893
+   },
+   "cap": 0.2,
+   "holds": false
+  },
+  "JK13c": {
+   "value": {
+    "busy": 3,
+    "median": 1,
+    "quiet": 2
+   },
+   "base": {
+    "busy": 1,
+    "median": 1,
+    "quiet": 2
+   },
+   "holds": true
+  },
+  "JK13c-r": {
+   "value": {
+    "busy": 3,
+    "median": 1,
+    "quiet": 2
+   },
+   "base": {
+    "busy": 1,
+    "median": 1,
+    "quiet": 2
+   },
+   "holds": true
+  },
+  "JK13d": {
+   "value": {
+    "prove": 5953,
+    "release_one": 2965,
+    "dispute_open": 4403,
+    "double_sign": 3519,
+    "swap_proof": 2849
+   },
+   "cap": 5000,
+   "holds": false,
+   "note": ""
+  },
+  "JK13d-r": {
+   "value": {
+    "prove": 9278,
+    "release_one": 5944,
+    "dispute_open": 7728,
+    "double_sign": 8185,
+    "swap_proof": 8076
+   },
+   "cap": 5000,
+   "holds": false,
+   "note": ""
+  }
+ },
+ "cells": {
+  "K13-base": {
+   "1,lo": {
+    "busy": {
+     "med": 0.2417665709083822,
+     "agg": 0.04844489971309662,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03670868363951458,
+      "OneSource": 0.22665312634655765,
+      "CoinMarketCap": 0.2568800154702067,
+      "StableApify": 0.1965969234113153,
+      "Exa(0.001 or less)": 8.061449729663817,
+      "CoinStats(0.01 or less)": 3.012120981926349,
+      "BlockRun": 0.4204636723294085
+     }
+    },
+    "median": {
+     "med": 0.4744505018891816,
+     "agg": 0.059696680361753185,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.040049710428368045,
+      "OneSource": 0.2957458808137293,
+      "CoinMarketCap": 0.43613643242936734,
+      "StableApify": 0.5127645713489958,
+      "Exa(0.001 or less)": 7.880701400047542,
+      "CoinStats(0.01 or less)": 4.880662954745812,
+      "BlockRun": 0.33599739761769826
+     }
+    },
+    "quiet": {
+     "med": 0.7339998618335283,
+     "agg": 0.058401535114759984,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.045070398822035763,
+      "OneSource": 0.20149679168747908,
+      "CoinMarketCap": 0.7340008038828372,
+      "StableApify": 0.7339989197842194,
+      "Exa(0.001 or less)": 9.296183460385492,
+      "CoinStats(0.01 or less)": 3.802195639314042,
+      "BlockRun": 0.026999434240936496
+     }
+    }
+   },
+   "1,up": {
+    "busy": {
+     "med": 0.3779562564620291,
+     "agg": 0.06839042248036742,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.04892711595406929,
+      "OneSource": 0.29267672771395004,
+      "CoinMarketCap": 0.4632357852101083,
+      "StableApify": 0.28416211338915937,
+      "Exa(0.001 or less)": 14.12382510626306,
+      "CoinStats(0.01 or less)": 4.475858497993719,
+      "BlockRun": 0.4210053890455521
+     }
+    },
+    "median": {
+     "med": 0.7091881774456597,
+     "agg": 0.08514351372446771,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.056682462881592906,
+      "OneSource": 0.4178714203549704,
+      "CoinMarketCap": 0.6472444986789073,
+      "StableApify": 0.7711318562124121,
+      "Exa(0.001 or less)": 14.025043850488034,
+      "CoinStats(0.01 or less)": 7.280435412239824,
+      "BlockRun": 0.3364188191758867
+     }
+    },
+    "quiet": {
+     "med": 1.1134080777458504,
+     "agg": 0.08101558819219218,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.06036157916549569,
+      "OneSource": 0.29424096701970537,
+      "CoinMarketCap": 1.1145389867907525,
+      "StableApify": 1.1122771687009485,
+      "Exa(0.001 or less)": 16.89298751685218,
+      "CoinStats(0.01 or less)": 5.633820998649043,
+      "BlockRun": 0.03098652379020472
+     }
+    }
+   },
+   "4,lo": {
+    "busy": {
+     "med": 0.19610807546695247,
+     "agg": 0.04195028804466291,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.032936347683862624,
+      "OneSource": 0.20223748959413038,
+      "CoinMarketCap": 0.18997866133977456,
+      "StableApify": 0.14551113624251769,
+      "Exa(0.001 or less)": 5.52741590391285,
+      "CoinStats(0.01 or less)": 2.1691351275431603,
+      "BlockRun": 0.420398112054397
+     }
+    },
+    "median": {
+     "med": 0.33747409242892223,
+     "agg": 0.05151062185596433,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.034890903658025406,
+      "OneSource": 0.25727086383929837,
+      "CoinMarketCap": 0.31240369275993296,
+      "StableApify": 0.36254449209791145,
+      "Exa(0.001 or less)": 5.402101527790074,
+      "CoinStats(0.01 or less)": 3.514574271080197,
+      "BlockRun": 0.3359431875407655
+     }
+    },
+    "quiet": {
+     "med": 0.5136935504318558,
+     "agg": 0.05097796717209714,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.040283391855274624,
+      "OneSource": 0.17174413844977457,
+      "CoinMarketCap": 0.5107204716626583,
+      "StableApify": 0.5166666292010533,
+      "Exa(0.001 or less)": 6.329185222991915,
+      "CoinStats(0.01 or less)": 2.853836553132955,
+      "BlockRun": 0.025808834151150935
+     }
+    }
+   },
+   "4,up": {
+    "busy": {
+     "med": 0.2485895326079257,
+     "agg": 0.04977471028258929,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03786578343560792,
+      "OneSource": 0.2275999511611077,
+      "CoinMarketCap": 0.2695791140547437,
+      "StableApify": 0.1682885127210467,
+      "Exa(0.001 or less)": 7.579039842221042,
+      "CoinStats(0.01 or less)": 2.5637844814592996,
+      "BlockRun": 0.4207955958874381
+     }
+    },
+    "median": {
+     "med": 0.3984960916350624,
+     "agg": 0.061561166667344444,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.041542608371254834,
+      "OneSource": 0.3062957113733155,
+      "CoinMarketCap": 0.3665919168041465,
+      "StableApify": 0.4304002664659783,
+      "Exa(0.001 or less)": 7.5261405920423945,
+      "CoinStats(0.01 or less)": 4.181851180088062,
+      "BlockRun": 0.3362402302613402
+     }
+    },
+    "quiet": {
+     "med": 0.613705773704343,
+     "agg": 0.05986661394676442,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.04639474289344473,
+      "OneSource": 0.20906014027722766,
+      "CoinMarketCap": 0.6080909610955173,
+      "StableApify": 0.6193205863131686,
+      "Exa(0.001 or less)": 9.00568219864769,
+      "CoinStats(0.01 or less)": 3.48273773004782,
+      "BlockRun": 0.027508148313679457
+     }
+    }
+   },
+   "16,lo": {
+    "busy": {
+     "med": 0.1843732258848747,
+     "agg": 0.04028197309578305,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03196737691154039,
+      "OneSource": 0.19597249371295428,
+      "CoinMarketCap": 0.17277395805679513,
+      "StableApify": 0.1324528637018041,
+      "Exa(0.001 or less)": 4.877706924479364,
+      "CoinStats(0.01 or less)": 1.95365564402009,
+      "BlockRun": 0.4203817219856441
+     }
+    },
+    "median": {
+     "med": 0.3024609236884601,
+     "agg": 0.049406090767367475,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03356410989313629,
+      "OneSource": 0.2473759225603337,
+      "CoinMarketCap": 0.2807757992428198,
+      "StableApify": 0.32414604813410036,
+      "Exa(0.001 or less)": 4.766364609972897,
+      "CoinStats(0.01 or less)": 3.1653820723352215,
+      "BlockRun": 0.33592963502153234
+     }
+    },
+    "quiet": {
+     "med": 0.457380042973964,
+     "agg": 0.04907047540626164,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03905287191987404,
+      "OneSource": 0.164095124228246,
+      "CoinMarketCap": 0.45364676109266616,
+      "StableApify": 0.46111332485526185,
+      "Exa(0.001 or less)": 5.567911956443522,
+      "CoinStats(0.01 or less)": 2.6114221341695005,
+      "BlockRun": 0.025503164300082926
+     }
+    }
+   },
+   "16,up": {
+    "busy": {
+     "med": 0.2159276259226795,
+     "agg": 0.04507470214627024,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.035073069824494825,
+      "OneSource": 0.21116967032982786,
+      "CoinMarketCap": 0.2206855815155311,
+      "StableApify": 0.13903328680550436,
+      "Exa(0.001 or less)": 5.926643003214794,
+      "CoinStats(0.01 or less)": 2.081032957398421,
+      "BlockRun": 0.4207476813895764
+     }
+    },
+    "median": {
+     "med": 0.32005400380701576,
+     "agg": 0.055607205740982026,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.037720168562061354,
+      "OneSource": 0.27812559709254486,
+      "CoinMarketCap": 0.2957340627357017,
+      "StableApify": 0.34437394487832984,
+      "Exa(0.001 or less)": 5.885327827678174,
+      "CoinStats(0.01 or less)": 3.39953509422155,
+      "BlockRun": 0.33619927022051
+     }
+    },
+    "quiet": {
+     "med": 0.4875432680864923,
+     "agg": 0.0545263011099129,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.04286769163762458,
+      "OneSource": 0.1875540826795058,
+      "CoinMarketCap": 0.48022532715676114,
+      "StableApify": 0.4948612090162235,
+      "Exa(0.001 or less)": 7.014332161896574,
+      "CoinStats(0.01 or less)": 2.9396422654793324,
+      "BlockRun": 0.026629944306916137
+     }
+    }
+   },
+   "64,lo": {
+    "busy": {
+     "med": 0.1815376457387498,
+     "agg": 0.039887405172851866,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03174452987695771,
+      "OneSource": 0.19458761385152776,
+      "CoinMarketCap": 0.16848767762597186,
+      "StableApify": 0.12920212544728196,
+      "Exa(0.001 or less)": 4.715279679620992,
+      "CoinStats(0.01 or less)": 1.8997857731393224,
+      "BlockRun": 0.4203776244684559
+     }
+    },
+    "median": {
+     "med": 0.29370763150334456,
+     "agg": 0.048914666508892764,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.033253045579229694,
+      "OneSource": 0.2451345998055485,
+      "CoinMarketCap": 0.2728688258635415,
+      "StableApify": 0.3145464371431476,
+      "Exa(0.001 or less)": 4.607430380518604,
+      "CoinStats(0.01 or less)": 3.078084022648978,
+      "BlockRun": 0.33592624689172407
+     }
+    },
+    "quiet": {
+     "med": 0.44330166610949107,
+     "agg": 0.048629600027937044,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03877566166647751,
+      "OneSource": 0.16230042659638258,
+      "CoinMarketCap": 0.4393783334501682,
+      "StableApify": 0.44722499876881394,
+      "Exa(0.001 or less)": 5.377593639806424,
+      "CoinStats(0.01 or less)": 2.5508985876987254,
+      "BlockRun": 0.025434616065482078
+     }
+    }
+   },
+   "64,up": {
+    "busy": {
+     "med": 0.20785218731241784,
+     "agg": 0.04391904924239731,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.0343912996840374,
+      "OneSource": 0.20722728085418612,
+      "CoinMarketCap": 0.20847709377064957,
+      "StableApify": 0.13173331020727502,
+      "Exa(0.001 or less)": 5.513543793463231,
+      "CoinStats(0.01 or less)": 1.9603450763832018,
+      "BlockRun": 0.420735702765111
+     }
+    },
+    "median": {
+     "med": 0.30044348185000413,
+     "agg": 0.054146538299375664,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03678096753471814,
+      "OneSource": 0.27127121261067666,
+      "CoinMarketCap": 0.2780195992185905,
+      "StableApify": 0.32286736448141773,
+      "Exa(0.001 or less)": 5.475124636587119,
+      "CoinStats(0.01 or less)": 3.203956072754921,
+      "BlockRun": 0.3361893654091939
+     }
+    },
+    "quiet": {
+     "med": 0.45600264168202964,
+     "agg": 0.05322156621125463,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.04201162657183182,
+      "OneSource": 0.18227584542337766,
+      "CoinMarketCap": 0.4482589186720721,
+      "StableApify": 0.46374636469198716,
+      "Exa(0.001 or less)": 6.5164946527087935,
+      "CoinStats(0.01 or less)": 2.8039484576072984,
+      "BlockRun": 0.02641708191537071
+     }
+    }
+   }
+  },
+  "K13-c1": {
+   "1,lo": {
+    "busy": {
+     "med": 0.169796482397564,
+     "agg": 0.03760440073373329,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.029898647427330054,
+      "OneSource": 0.18581393837583413,
+      "CoinMarketCap": 0.15377902641929392,
+      "StableApify": 0.13408846741825484,
+      "Exa(0.001 or less)": 5.024854353978509,
+      "CoinStats(0.01 or less)": 2.050979287440458,
+      "BlockRun": 0.41995671330336903
+     }
+    },
+    "median": {
+     "med": 0.32173913560517514,
+     "agg": 0.045338903362245796,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.030684200795255967,
+      "OneSource": 0.22573767128202618,
+      "CoinMarketCap": 0.2951974365247146,
+      "StableApify": 0.3482808346856357,
+      "Exa(0.001 or less)": 4.8640619467482695,
+      "CoinStats(0.01 or less)": 3.3429584715832967,
+      "BlockRun": 0.33587912221528254
+     }
+    },
+    "quiet": {
+     "med": 0.4969950784709124,
+     "agg": 0.04549512147211719,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03623428115198102,
+      "OneSource": 0.1481321373140463,
+      "CoinMarketCap": 0.4948543235094055,
+      "StableApify": 0.49913583343241924,
+      "Exa(0.001 or less)": 5.675672328308693,
+      "CoinStats(0.01 or less)": 2.6765972845463333,
+      "BlockRun": 0.02493868886192735
+     }
+    }
+   },
+   "1,up": {
+    "busy": {
+     "med": 0.305986167951211,
+     "agg": 0.057549923501004116,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.042117079741884764,
+      "OneSource": 0.2518375397432265,
+      "CoinMarketCap": 0.36013479615919547,
+      "StableApify": 0.2216536573960989,
+      "Exa(0.001 or less)": 11.08722973057775,
+      "CoinStats(0.01 or less)": 3.514716803507829,
+      "BlockRun": 0.42049843001951265
+     }
+    },
+    "median": {
+     "med": 0.5564768111616534,
+     "agg": 0.07078573672496033,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.047316953248480835,
+      "OneSource": 0.3478632108232673,
+      "CoinMarketCap": 0.5063055027742547,
+      "StableApify": 0.6066481195490521,
+      "Exa(0.001 or less)": 11.008404397188762,
+      "CoinStats(0.01 or less)": 5.742730929077309,
+      "BlockRun": 0.33630054377347096
+     }
+    },
+    "quiet": {
+     "med": 0.8764032943832349,
+     "agg": 0.06810917454954941,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.051525461495440954,
+      "OneSource": 0.24087631264627257,
+      "CoinMarketCap": 0.875392506417321,
+      "StableApify": 0.8774140823491489,
+      "Exa(0.001 or less)": 13.272476384775375,
+      "CoinStats(0.01 or less)": 4.508222643881334,
+      "BlockRun": 0.02892577841119558
+     }
+    }
+   },
+   "4,lo": {
+    "busy": {
+     "med": 0.12413798695613433,
+     "agg": 0.03110978906529959,
+     "n10": 3,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.0261263114716781,
+      "OneSource": 0.1613983016234069,
+      "CoinMarketCap": 0.08687767228886176,
+      "StableApify": 0.08300268024945723,
+      "Exa(0.001 or less)": 2.4908205282275384,
+      "CoinStats(0.01 or less)": 1.2079934330572688,
+      "BlockRun": 0.4198911530283575
+     }
+    },
+    "median": {
+     "med": 0.19266170487107337,
+     "agg": 0.03715284485645694,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.02552539402491333,
+      "OneSource": 0.18726265430759528,
+      "CoinMarketCap": 0.17146469685528024,
+      "StableApify": 0.19806075543455146,
+      "Exa(0.001 or less)": 2.3854620744908015,
+      "CoinStats(0.01 or less)": 1.9768697879176829,
+      "BlockRun": 0.33582491213834986
+     }
+    },
+    "quiet": {
+     "med": 0.27668876706923995,
+     "agg": 0.03807155352945434,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03144727418521987,
+      "OneSource": 0.11837948407634177,
+      "CoinMarketCap": 0.27157399128922666,
+      "StableApify": 0.2818035428492533,
+      "Exa(0.001 or less)": 2.708674090915115,
+      "CoinStats(0.01 or less)": 1.7282381983652457,
+      "BlockRun": 0.023748088772141792
+     }
+    }
+   },
+   "4,up": {
+    "busy": {
+     "med": 0.17661944409710753,
+     "agg": 0.03893421130322597,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.031055747223423386,
+      "OneSource": 0.1867607631903842,
+      "CoinMarketCap": 0.16647812500383086,
+      "StableApify": 0.10578005672798625,
+      "Exa(0.001 or less)": 4.542444466535732,
+      "CoinStats(0.01 or less)": 1.6026427869734081,
+      "BlockRun": 0.42028863686139856
+     }
+    },
+    "median": {
+     "med": 0.25110201582211533,
+     "agg": 0.04720338966783706,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03217709873814276,
+      "OneSource": 0.23628750184161235,
+      "CoinMarketCap": 0.22565292089949374,
+      "StableApify": 0.2659165298026183,
+      "Exa(0.001 or less)": 4.509501138743122,
+      "CoinStats(0.01 or less)": 2.6441466969255476,
+      "BlockRun": 0.3361219548589245
+     }
+    },
+    "quiet": {
+     "med": 0.3767009903417271,
+     "agg": 0.046960200304121624,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03755862522338998,
+      "OneSource": 0.1556954859037949,
+      "CoinMarketCap": 0.36894448072208574,
+      "StableApify": 0.3844574999613685,
+      "Exa(0.001 or less)": 5.385171066570894,
+      "CoinStats(0.01 or less)": 2.35713937528011,
+      "BlockRun": 0.02544740293467031
+     }
+    }
+   },
+   "16,lo": {
+    "busy": {
+     "med": 0.1125388567254872,
+     "agg": 0.02944147411641973,
+     "n10": 3,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.02515734069935586,
+      "OneSource": 0.15513330574223078,
+      "CoinMarketCap": 0.06967296900588232,
+      "StableApify": 0.06994440770874363,
+      "Exa(0.001 or less)": 1.8411115487940517,
+      "CoinStats(0.01 or less)": 0.992513949534199,
+      "BlockRun": 0.41987476295960463
+     }
+    },
+    "median": {
+     "med": 0.16851501224968546,
+     "agg": 0.03504831376786008,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.024198600260024204,
+      "OneSource": 0.17736771302863052,
+      "CoinMarketCap": 0.13983680333816706,
+      "StableApify": 0.15966231147074036,
+      "Exa(0.001 or less)": 1.749725156673626,
+      "CoinStats(0.01 or less)": 1.6276775891727078,
+      "BlockRun": 0.3358113596191167
+     }
+    },
+    "quiet": {
+     "med": 0.22037525961134818,
+     "agg": 0.03616406176361883,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.030216754249819285,
+      "OneSource": 0.11073046985481318,
+      "CoinMarketCap": 0.21450028071923455,
+      "StableApify": 0.22625023850346182,
+      "Exa(0.001 or less)": 1.9474008243667216,
+      "CoinStats(0.01 or less)": 1.4858237794017919,
+      "BlockRun": 0.023442418921073783
+     }
+    }
+   },
+   "16,up": {
+    "busy": {
+     "med": 0.14395753741186135,
+     "agg": 0.0342342031669069,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.028263033612310286,
+      "OneSource": 0.17033048235910436,
+      "CoinMarketCap": 0.11758459246461835,
+      "StableApify": 0.07652483081244389,
+      "Exa(0.001 or less)": 2.890047627529482,
+      "CoinStats(0.01 or less)": 1.11989126291253,
+      "BlockRun": 0.42024072236353693
+     }
+    },
+    "median": {
+     "med": 0.19400379788790578,
+     "agg": 0.04124942874147463,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.02835465892894928,
+      "OneSource": 0.20811738756084164,
+      "CoinMarketCap": 0.1547950668310489,
+      "StableApify": 0.1798902082149699,
+      "Exa(0.001 or less)": 2.868688374378902,
+      "CoinStats(0.01 or less)": 1.8618306110590352,
+      "BlockRun": 0.3360809948180943
+     }
+    },
+    "quiet": {
+     "med": 0.2505384847238764,
+     "agg": 0.04161988746727012,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03403157396756983,
+      "OneSource": 0.134189428306073,
+      "CoinMarketCap": 0.24107884678332947,
+      "StableApify": 0.2599981226644234,
+      "Exa(0.001 or less)": 3.3938210298197724,
+      "CoinStats(0.01 or less)": 1.8140439107116226,
+      "BlockRun": 0.024569198927906998
+     }
+    }
+   },
+   "64,lo": {
+    "busy": {
+     "med": 0.1101798094581607,
+     "agg": 0.029035415486999273,
+     "n10": 3,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.024924317998217614,
+      "OneSource": 0.15367977934275615,
+      "CoinMarketCap": 0.06537179318513747,
+      "StableApify": 0.06667983957356524,
+      "Exa(0.001 or less)": 1.6786843039356798,
+      "CoinStats(0.01 or less)": 0.9386440786534316,
+      "BlockRun": 0.4198706654424164
+     }
+    },
+    "median": {
+     "med": 0.16253909238236292,
+     "agg": 0.03453621321514218,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.023873272160757613,
+      "OneSource": 0.17501548428493827,
+      "CoinMarketCap": 0.13192982995888877,
+      "StableApify": 0.1500627004797876,
+      "Exa(0.001 or less)": 1.5907909272193315,
+      "CoinStats(0.01 or less)": 1.5403795394864637,
+      "BlockRun": 0.33580797148930835
+     }
+    },
+    "quiet": {
+     "med": 0.20629688274687524,
+     "agg": 0.035704683763296656,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.029925117190436914,
+      "OneSource": 0.108857892222597,
+      "CoinMarketCap": 0.20023185307673652,
+      "StableApify": 0.212361912417014,
+      "Exa(0.001 or less)": 1.7570825077296233,
+      "CoinStats(0.01 or less)": 1.4252201746609288,
+      "BlockRun": 0.023370507271085538
+     }
+    }
+   },
+   "64,up": {
+    "busy": {
+     "med": 0.13584032783761485,
+     "agg": 0.0330670595565447,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.0275710878052973,
+      "OneSource": 0.1663194463454145,
+      "CoinMarketCap": 0.1053612093298152,
+      "StableApify": 0.06921102433355832,
+      "Exa(0.001 or less)": 2.476948417777919,
+      "CoinStats(0.01 or less)": 0.9992033818973107,
+      "BlockRun": 0.42022874373907154
+     }
+    },
+    "median": {
+     "med": 0.17976786245406207,
+     "agg": 0.039768085005625085,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.027401194116246058,
+      "OneSource": 0.20115209709006637,
+      "CoinMarketCap": 0.1370806033139377,
+      "StableApify": 0.15838362781805776,
+      "Exa(0.001 or less)": 2.4584851832878463,
+      "CoinStats(0.01 or less)": 1.6662515895924068,
+      "BlockRun": 0.33607109000677826
+     }
+    },
+    "quiet": {
+     "med": 0.21899785831941376,
+     "agg": 0.04029664994661424,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03316108209579123,
+      "OneSource": 0.1288333110495921,
+      "CoinMarketCap": 0.2091124382986404,
+      "StableApify": 0.22888327834018715,
+      "Exa(0.001 or less)": 2.895983520631992,
+      "CoinStats(0.01 or less)": 1.678270044569501,
+      "BlockRun": 0.024352973120974165
+     }
+    }
+   }
+  },
+  "K13-c1r": {
+   "1,lo": {
+    "busy": {
+     "med": 0.17047952330725358,
+     "agg": 0.037645717447865136,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.029884540638873643,
+      "OneSource": 0.1853436808129299,
+      "CoinMarketCap": 0.15561536580157728,
+      "StableApify": 0.13521930411107622,
+      "Exa(0.001 or less)": 5.084296265824467,
+      "CoinStats(0.01 or less)": 2.0684018983750034,
+      "BlockRun": 0.4200316913822
+     }
+    },
+    "median": {
+     "med": 0.3246370016060959,
+     "agg": 0.0452541418250739,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.030635163088986773,
+      "OneSource": 0.2248703683232096,
+      "CoinMarketCap": 0.29782284027023603,
+      "StableApify": 0.3514511629419557,
+      "Exa(0.001 or less)": 4.923087702763102,
+      "CoinStats(0.01 or less)": 3.3711428863775823,
+      "BlockRun": 0.33593311316573277
+     }
+    },
+    "quiet": {
+     "med": 0.501607292034386,
+     "agg": 0.04543868112803858,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.036193004315150774,
+      "OneSource": 0.14748720702498966,
+      "CoinMarketCap": 0.4995277216563529,
+      "StableApify": 0.5036868624124192,
+      "Exa(0.001 or less)": 5.747291073788693,
+      "CoinStats(0.01 or less)": 2.6961877408626966,
+      "BlockRun": 0.02498042589115898
+     }
+    }
+   },
+   "1,up": {
+    "busy": {
+     "med": 0.30666920886090054,
+     "agg": 0.05759124021513594,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.04210297295342835,
+      "OneSource": 0.2513672821803223,
+      "CoinMarketCap": 0.36197113554147886,
+      "StableApify": 0.2227844940889203,
+      "Exa(0.001 or less)": 11.146671642423707,
+      "CoinStats(0.01 or less)": 3.5321394144423746,
+      "BlockRun": 0.4205734080983436
+     }
+    },
+    "median": {
+     "med": 0.559374677162574,
+     "agg": 0.07070097518778844,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.047267915542211644,
+      "OneSource": 0.34699590786445067,
+      "CoinMarketCap": 0.5089309065197761,
+      "StableApify": 0.609818447805372,
+      "Exa(0.001 or less)": 11.067430153203594,
+      "CoinStats(0.01 or less)": 5.770915343871595,
+      "BlockRun": 0.3363545347239212
+     }
+    },
+    "quiet": {
+     "med": 0.8810155079467086,
+     "agg": 0.06805273420547078,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.0514841846586107,
+      "OneSource": 0.24023138235721592,
+      "CoinMarketCap": 0.8800659045642684,
+      "StableApify": 0.8819651113291489,
+      "Exa(0.001 or less)": 13.344095130255376,
+      "CoinStats(0.01 or less)": 4.527813100197697,
+      "BlockRun": 0.02896751544042721
+     }
+    }
+   },
+   "4,lo": {
+    "busy": {
+     "med": 0.12482102786582389,
+     "agg": 0.031151105779431417,
+     "n10": 3,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.02611220468322169,
+      "OneSource": 0.16092804406050265,
+      "CoinMarketCap": 0.08871401167114511,
+      "StableApify": 0.08413351694227858,
+      "Exa(0.001 or less)": 2.550262440073496,
+      "CoinStats(0.01 or less)": 1.2254160439918143,
+      "BlockRun": 0.41996613110718845
+     }
+    },
+    "median": {
+     "med": 0.19381321751982508,
+     "agg": 0.03706808331928505,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.025476356318644137,
+      "OneSource": 0.1863953513487787,
+      "CoinMarketCap": 0.1740901006008017,
+      "StableApify": 0.20123108369087148,
+      "Exa(0.001 or less)": 2.4444878305056332,
+      "CoinStats(0.01 or less)": 2.0050542027119684,
+      "BlockRun": 0.3358789030888001
+     }
+    },
+    "quiet": {
+     "med": 0.2813009806327137,
+     "agg": 0.038015113185375725,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03140599734838963,
+      "OneSource": 0.11773455378728512,
+      "CoinMarketCap": 0.27624738943617405,
+      "StableApify": 0.28635457182925333,
+      "Exa(0.001 or less)": 2.780292836395115,
+      "CoinStats(0.01 or less)": 1.7478286546816093,
+      "BlockRun": 0.023789825801373423
+     }
+    }
+   },
+   "4,up": {
+    "busy": {
+     "med": 0.1773024850067971,
+     "agg": 0.038975528017357805,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.031041640434966978,
+      "OneSource": 0.18629050562747998,
+      "CoinMarketCap": 0.16831446438611422,
+      "StableApify": 0.1069108934208076,
+      "Exa(0.001 or less)": 4.601886378381691,
+      "CoinStats(0.01 or less)": 1.6200653979079536,
+      "BlockRun": 0.4203636149402295
+     }
+    },
+    "median": {
+     "med": 0.252253528470867,
+     "agg": 0.04711862813066518,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03212806103187358,
+      "OneSource": 0.23542019888279575,
+      "CoinMarketCap": 0.22827832464501518,
+      "StableApify": 0.26908685805893834,
+      "Exa(0.001 or less)": 4.568526894757953,
+      "CoinStats(0.01 or less)": 2.672331111719833,
+      "BlockRun": 0.3361759458093747
+     }
+    },
+    "quiet": {
+     "med": 0.38131320390520085,
+     "agg": 0.04690375996004299,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.037517348386559735,
+      "OneSource": 0.15505055561473824,
+      "CoinMarketCap": 0.3736178788690331,
+      "StableApify": 0.38900852894136856,
+      "Exa(0.001 or less)": 5.456789812050895,
+      "CoinStats(0.01 or less)": 2.376729831596474,
+      "BlockRun": 0.025489139963901942
+     }
+    }
+   },
+   "16,lo": {
+    "busy": {
+     "med": 0.1130861782837461,
+     "agg": 0.029482790830551563,
+     "n10": 3,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.025143233910899454,
+      "OneSource": 0.15466304817932652,
+      "CoinMarketCap": 0.07150930838816569,
+      "StableApify": 0.07107524440156501,
+      "Exa(0.001 or less)": 1.9005534606400092,
+      "CoinStats(0.01 or less)": 1.0099365604687445,
+      "BlockRun": 0.4199497410384356
+     }
+    },
+    "median": {
+     "med": 0.1696665248984372,
+     "agg": 0.034963552230688186,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.02414956255375501,
+      "OneSource": 0.17650041006981398,
+      "CoinMarketCap": 0.14246220708368854,
+      "StableApify": 0.16283263972706039,
+      "Exa(0.001 or less)": 1.8087509126884573,
+      "CoinStats(0.01 or less)": 1.6558620039669933,
+      "BlockRun": 0.3358653505695669
+     }
+    },
+    "quiet": {
+     "med": 0.22498747317482187,
+     "agg": 0.03610762141954022,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03017547741298904,
+      "OneSource": 0.11008553956575651,
+      "CoinMarketCap": 0.21917367886618194,
+      "StableApify": 0.2308012674834618,
+      "Exa(0.001 or less)": 2.0190195698467215,
+      "CoinStats(0.01 or less)": 1.5054142357181555,
+      "BlockRun": 0.02348415595030541
+     }
+    }
+   },
+   "16,up": {
+    "busy": {
+     "med": 0.14464057832155092,
+     "agg": 0.034275519881038725,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.028248926823853878,
+      "OneSource": 0.1698602247962001,
+      "CoinMarketCap": 0.11942093184690171,
+      "StableApify": 0.07765566750526527,
+      "Exa(0.001 or less)": 2.9494895393754397,
+      "CoinStats(0.01 or less)": 1.1373138738470758,
+      "BlockRun": 0.4203157004423679
+     }
+    },
+    "median": {
+     "med": 0.1951553105366575,
+     "agg": 0.04116466720430274,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.028305621222680086,
+      "OneSource": 0.20725008460202513,
+      "CoinMarketCap": 0.15742047057657038,
+      "StableApify": 0.18306053647128986,
+      "Exa(0.001 or less)": 2.9277141303937335,
+      "CoinStats(0.01 or less)": 1.8900150258533208,
+      "BlockRun": 0.3361349857685445
+     }
+    },
+    "quiet": {
+     "med": 0.2551506982873501,
+     "agg": 0.0415634471231915,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03399029713073959,
+      "OneSource": 0.13354449801701634,
+      "CoinMarketCap": 0.2457522449302768,
+      "StableApify": 0.2645491516444234,
+      "Exa(0.001 or less)": 3.4654397752997723,
+      "CoinStats(0.01 or less)": 1.8336343670279862,
+      "BlockRun": 0.02461093595713863
+     }
+    }
+   },
+   "64,lo": {
+    "busy": {
+     "med": 0.11051009902311927,
+     "agg": 0.029076322367829352,
+     "n10": 3,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.024909779514816422,
+      "OneSource": 0.15320952177985192,
+      "CoinMarketCap": 0.06720813256742084,
+      "StableApify": 0.06781067626638662,
+      "Exa(0.001 or less)": 1.7381262157816373,
+      "CoinStats(0.01 or less)": 0.956066689587977,
+      "BlockRun": 0.4199456435212473
+     }
+    },
+    "median": {
+     "med": 0.1636880932230035,
+     "agg": 0.03445080189312155,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.023823896304404457,
+      "OneSource": 0.17414315770989944,
+      "CoinMarketCap": 0.13455523370441025,
+      "StableApify": 0.15323302873610758,
+      "Exa(0.001 or less)": 1.6498166832341632,
+      "CoinStats(0.01 or less)": 1.5685639542807497,
+      "BlockRun": 0.3358619624397586
+     }
+    },
+    "quiet": {
+     "med": 0.21090909631034893,
+     "agg": 0.03564810140886696,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.02988384035360667,
+      "OneSource": 0.1082107642615727,
+      "CoinMarketCap": 0.2049052512236839,
+      "StableApify": 0.216912941397014,
+      "Exa(0.001 or less)": 1.8287012532096232,
+      "CoinStats(0.01 or less)": 1.4448106309772923,
+      "BlockRun": 0.02341224430031717
+     }
+    }
+   },
+   "64,up": {
+    "busy": {
+     "med": 0.13652336874730442,
+     "agg": 0.033107966437374785,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.027556549321896107,
+      "OneSource": 0.1658491887825103,
+      "CoinMarketCap": 0.10719754871209856,
+      "StableApify": 0.0703418610263797,
+      "Exa(0.001 or less)": 2.5363903296238766,
+      "CoinStats(0.01 or less)": 1.0166259928318562,
+      "BlockRun": 0.4203037218179025
+     }
+    },
+    "median": {
+     "med": 0.18091686329470263,
+     "agg": 0.039682673683604446,
+     "n10": 1,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.027351818259892906,
+      "OneSource": 0.20027977051502754,
+      "CoinMarketCap": 0.13970600705945918,
+      "StableApify": 0.16155395607437775,
+      "Exa(0.001 or less)": 2.517510939302678,
+      "CoinStats(0.01 or less)": 1.6944360043866928,
+      "BlockRun": 0.3361250809572285
+     }
+    },
+    "quiet": {
+     "med": 0.22361007188288745,
+     "agg": 0.040240067592184556,
+     "n10": 2,
+     "tot": {
+      "StableEnrich(Out candidates excluded)": 0.03311980525896099,
+      "OneSource": 0.1281861830885678,
+      "CoinMarketCap": 0.21378583644558774,
+      "StableApify": 0.23343430732018716,
+      "Exa(0.001 or less)": 2.967602266111992,
+      "CoinStats(0.01 or less)": 1.6978605008858645,
+      "BlockRun": 0.024394710150205796
+     }
+    }
+   }
+  }
+ },
+ "sets": {
+  "base": {
+   "F": {
+    "0": 305657.0,
+    "1": 304963.3333333334
+   },
+   "M": {
+    "0": 20257.375,
+    "1": 26788.833333333332
+   },
+   "FLF": {
+    "0": 33960.0,
+    "1": 33980.0
+   },
+   "FLM": {
+    "0": 11031.25,
+    "1": 13976.25
+   },
+   "WRAP": null,
+   "MX": null,
+   "MY": null,
+   "d_prf": 0.0,
+   "d_cur": 0.0,
+   "one": 332415,
+   "lin1": 331752.1666666667
+  },
+  "c1": {
+   "F": {
+    "0": 97111.66666666666,
+    "1": 96304.0
+   },
+   "M": {
+    "0": 20238.291666666668,
+    "1": 26748.375
+   },
+   "FLF": {
+    "0": 43710.0,
+    "1": 43610.0
+   },
+   "FLM": {
+    "0": 11027.5,
+    "1": 13976.25
+   },
+   "WRAP": null,
+   "MX": null,
+   "MY": null,
+   "d_prf": 5953,
+   "d_cur": 2965,
+   "one": 123816,
+   "lin1": 123052.375
+  },
+  "c1r": {
+   "F": {
+    "0": 91283.0,
+    "1": 90508.66666666666
+   },
+   "M": {
+    "0": 20240.125,
+    "1": 26749.791666666668
+   },
+   "FLF": {
+    "0": 43710.0,
+    "1": 43610.0
+   },
+   "FLM": {
+    "0": 11027.5,
+    "1": 13976.25
+   },
+   "WRAP": null,
+   "MX": null,
+   "MY": null,
+   "d_prf": 9278,
+   "d_cur": 5944,
+   "one": 117977,
+   "lin1": 117258.45833333333
+  }
+ }
+}

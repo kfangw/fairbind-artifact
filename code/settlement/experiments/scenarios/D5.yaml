@@ -1,0 +1,75 @@
+id: D5
+name: Fixed challenge window baseline, judgment delay sweep
+property_under_test:
+- T6
+preconditions:
+- Baseline arm B6 (tiered daily limits, exposure ceiling, rolling reserve 30 percent for 60 days, settlement delay 24 hours) with a complaint accepted only inside the window of window_reading
+- 'The harness sets the judgment delay L directly: the controller files the buyer complaint L hours after each bad settlement (complaint_policy)'
+- A calculating cheater settles as fast as the arm admits
+injected_fault:
+  process: seller
+  kind: calculating_cheater
+  action: 'seller acts as a calculating cheater against baseline arm B6; each bad sale becomes known to its buyer L hours after settlement'
+  timing: continuously after registration, in particular while L exceeds W
+parameters:
+  window_reading:
+    default: challenge_24h
+    sweep:
+    - challenge_24h
+    - challenge_72h
+    - refund_30d
+    unit: which window gates a complaint (B6 windowReadings)
+  L_judgment_delay_hours:
+    default: L_hours_data_api
+    sweep:
+    - L_hours_data_api
+    - L_hours_open_weights
+    - 48
+    - 144
+    - 1000
+    unit: 'hours; the first two are the fairbind values 5.21 h and 23.0 h'
+  Lambda_cheater:
+    default: rate:peak_hour_max
+    unit: settlements per block
+  complaint_policy:
+    default: buyer_complains_when_verdict_known
+    unit: shared with B7a and B7b
+  arm:
+    default: B6
+    unit: baseline arm id
+n_seeds: 10
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - leak_amount
+  - refusal_rule_trigger_rate
+expected_outcome: 'A complaint filed inside the window is refunded from the waterfall; one filed after it is refused. At the fairbind judgment delays (5.21 h, 23.0 h) every window is longer than L and leak_amount is about 0 under all three readings. At 48 h only the 24 h window leaks, at 144 h both challenge windows leak, and at 1,000 h every reading leaks, including the 30-day refund window; the 60-day reserve does not help once the complaint is refused. Where it leaks, leak_amount equals the bad-sale value the arm admitted, bounded by the tier per-day maximum and the exposure ceiling, not by L.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Report the fairbind-delay points first. leak_amount is about 0 wherever L is below the window of the reading and positive wherever L exceeds it; a leak with L below the window, or no leak with L above it, refutes the prediction. This is a worked example of the window semantics, not a measurement.'
+notes: Detection in B6 depends on the complaint policy, which is the same for B6, B7a and B7b. A run with no complaint is reported as undetected by construction.

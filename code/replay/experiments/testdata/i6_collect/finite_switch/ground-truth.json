@@ -1,0 +1,17 @@
+{
+ "bad_sales_m": 2,
+ "bad_sales_rule": "first_m",
+ "cell": "F-switch",
+ "events": [],
+ "parameters": {
+  "bad_sale_gain_atomic": 10000,
+  "finite_attack_after": "serve_honestly",
+  "finite_attack_cheat_sales": 2,
+  "judgment_path": "normal",
+  "keeper_delay_budget_blocks": 0,
+  "scale_factor": 1,
+  "seller_role": "finite"
+ },
+ "run_id": "I6-switch-r0",
+ "scenario": "I6"
+}

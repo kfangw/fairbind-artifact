@@ -1,0 +1,14 @@
+{
+ "judgment_injection": {
+  "alpha": 0.0,
+  "applies_to": "every assignment",
+  "beta": 0.05,
+  "c": 0.0,
+  "draw": "sha256(fairbind/seed/verifier || seed || nonce || stage || attempt || purpose)",
+  "h": 0.67,
+  "honest_error_off": true
+ },
+ "kind": null,
+ "parameters": {},
+ "seed": 20260928
+}

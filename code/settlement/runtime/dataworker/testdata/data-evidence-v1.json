@@ -1,0 +1,16 @@
+{
+  "description": "Regression vector for the experimental data pipeline evidence (fairbind/experimental/data-evidence/v1). Built by TestEvidenceVector from the synthetic replay objects in testdata/refsource/replay, the policy in pipeline_test.go and the response below. Hashes are keccak256 of the canonical JSON bytes; evidenceSha256 is SHA-256 of the full canonical evidence. Not a normative protocol vector.",
+  "response": "{\"price\":\"64230.10\"}",
+  "policyId": "0x1a320b649fe0216a2d3ed2e6692f214cc0784cd6ec04bf3ef6cd230418f3ddd7",
+  "verdict": "PASS",
+  "median": "64230.685",
+  "replayObjectIds": [
+    "36736a6531411031812a3a99a4e00767d6e86a6f68a1881064cfb2dfcb20c8f9",
+    "35e90df0c30458d9d6913539a2afd78baf0689cde5d3f8a26af7b93ad2434565"
+  ],
+  "referenceSetHash": "0x849bfff37ea043204ac3205c22526694e984d3fdb04299a72a4dfa090e47a870",
+  "comparisonCanonical": "{\"excluded\":[],\"format\":\"fairbind/experimental/data-comparison/v1\",\"medians\":{\"price\":\"64230.685\"},\"observations\":[{\"observed_at\":1790000000,\"source\":\"coinbase-exchange:ticker:BTC-USD\",\"units\":{\"ask\":\"USD\",\"bid\":\"USD\",\"price\":\"USD\"},\"values\":{\"ask\":\"64231.57\",\"bid\":\"64231.56\",\"price\":\"64231.57\"}},{\"observed_at\":1790000001,\"source\":\"kraken:ticker:XBTUSD\",\"units\":{\"ask\":\"USD\",\"bid\":\"USD\",\"price\":\"USD\"},\"values\":{\"ask\":\"64229.8\",\"bid\":\"64229.7\",\"price\":\"64229.8\"}}],\"policyId\":\"0x1a320b649fe0216a2d3ed2e6692f214cc0784cd6ec04bf3ef6cd230418f3ddd7\",\"reason\":\"all selected fields within tolerance\",\"referenceSetHash\":\"0x849bfff37ea043204ac3205c22526694e984d3fdb04299a72a4dfa090e47a870\",\"sources\":[\"coinbase-exchange:ticker:BTC-USD\",\"kraken:ticker:XBTUSD\"],\"tolerancePolicyHash\":\"0xc6c8f52e4c137ea69f2138142ce192ca1cb259cb4d8ffaaa4265e25bd61c0416\",\"verdict\":\"PASS\"}",
+  "comparisonHash": "0x4b463583777d9e0aa72d011074de918742e0307a2f756c8931a45ba0c90de588",
+  "evidenceHash": "0x56479bb355cb3563cfa825f2a3267be81f9bc8325d6a0c58fd040b69e7571c95",
+  "evidenceSha256": "d30fd05a396cc529aeeddbe82cc1477d15342eca91c51abb735dc396f318ac78"
+}

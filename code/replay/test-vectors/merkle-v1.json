@@ -1,0 +1,91 @@
+{
+  "formatVersion": 1,
+  "leafDomain": "0xd7abcf7708302ab03cb5d993997a3e8512469a831348cacd2396ec028fb4b1b6",
+  "nodeDomain": "0x08f7382d9090e2fefcc1c0dec28c1f6eec77a0d89e5cf3326bab44aa1e2c9e37",
+  "count": 3,
+  "publication": {
+    "manifest": {
+      "version": 1,
+      "sellerId": 7,
+      "profileId": 3,
+      "epoch": 14,
+      "root": "0xb0e5ce6b84df6db5f7e3847d05560064b749bdc676f4ad8ff9338ca0a71bf28a",
+      "count": 3,
+      "entriesUri": "ipfs://bafybeifairbindfixture",
+      "entriesHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "createdAt": "1788480100"
+    },
+    "publicationHash": "0x1db532172af459433b7aad804689d26cc2b211e444c0a1cf150e881c73133a4b"
+  },
+  "entries": [
+    {
+      "index": 0,
+      "nonce": "0x0000000000000000000000000000000000000000000000000000000000000010",
+      "receiptLeaf": "0xd0d879d3e6036e918857021e097d5a13b213974d6fcba3756efbd512d0ce1a27",
+      "entryHash": "0x64ce93f4153134d24dbf6c330cfa72e9c632bbabdcbcaec00fd49fb5fe14d6a1",
+      "siblings": [
+        "0x57cd485a9a6a2dbf19ca9944d94ece71df109e18e4d34cd669ebace87f704642",
+        "0x41633787219e7ebc73e866c9453e8e5d15dcc07828db7040acc4d8a3c7917df0"
+      ]
+    },
+    {
+      "index": 1,
+      "nonce": "0x0000000000000000000000000000000000000000000000000000000000000030",
+      "receiptLeaf": "0x9e19446555a83d5e12578fee5fdc10a13e1d57272f8fd65730f16cd65fb03caf",
+      "entryHash": "0x57cd485a9a6a2dbf19ca9944d94ece71df109e18e4d34cd669ebace87f704642",
+      "siblings": [
+        "0x64ce93f4153134d24dbf6c330cfa72e9c632bbabdcbcaec00fd49fb5fe14d6a1",
+        "0x41633787219e7ebc73e866c9453e8e5d15dcc07828db7040acc4d8a3c7917df0"
+      ]
+    },
+    {
+      "index": 2,
+      "nonce": "0x0000000000000000000000000000000000000000000000000000000000000050",
+      "receiptLeaf": "0xa92aa3c109a64b75827620efd7ec7aef1dbd7e02f6e8bd15df81a39b6e031a3b",
+      "entryHash": "0x7d96d2bd83bb28299cbbafe57f43339adc9687072290ffac7c68ce3bec1e5cb6",
+      "siblings": [
+        "0x7d96d2bd83bb28299cbbafe57f43339adc9687072290ffac7c68ce3bec1e5cb6",
+        "0x3c9b0480ee965d50e0c1bd59ece89694de7baac62cae8bd5b02b97ec15e0c1b2"
+      ]
+    }
+  ],
+  "levels": [
+    [
+      "0x64ce93f4153134d24dbf6c330cfa72e9c632bbabdcbcaec00fd49fb5fe14d6a1",
+      "0x57cd485a9a6a2dbf19ca9944d94ece71df109e18e4d34cd669ebace87f704642",
+      "0x7d96d2bd83bb28299cbbafe57f43339adc9687072290ffac7c68ce3bec1e5cb6"
+    ],
+    [
+      "0x3c9b0480ee965d50e0c1bd59ece89694de7baac62cae8bd5b02b97ec15e0c1b2",
+      "0x41633787219e7ebc73e866c9453e8e5d15dcc07828db7040acc4d8a3c7917df0"
+    ],
+    [
+      "0xb0e5ce6b84df6db5f7e3847d05560064b749bdc676f4ad8ff9338ca0a71bf28a"
+    ]
+  ],
+  "root": "0xb0e5ce6b84df6db5f7e3847d05560064b749bdc676f4ad8ff9338ca0a71bf28a",
+  "omissionExample": {
+    "omittedNonce": "0x0000000000000000000000000000000000000000000000000000000000000040",
+    "leftIndex": 1,
+    "rightIndex": 2,
+    "condition": "left.nonce < omitted.nonce < right.nonce"
+  },
+  "negative": [
+    {
+      "name": "duplicate-nonce",
+      "error": "duplicate_nonce"
+    },
+    {
+      "name": "swapped-parent-order",
+      "error": "invalid_root"
+    },
+    {
+      "name": "missing-odd-self-sibling",
+      "error": "invalid_proof_length"
+    },
+    {
+      "name": "nonadjacent-omission-boundaries",
+      "error": "boundaries_not_adjacent"
+    }
+  ]
+}

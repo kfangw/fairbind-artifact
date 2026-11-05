@@ -1,0 +1,35 @@
+No files changed, compilation skipped
+
+Ran 1 test for contracts/test/sdk/usdcfork/UsdcReleaseLoadFork.t.sol:UsdcReleaseLoadForkTest
+[PASS] test_load_2000_sales() (gas: 760118950)
+Logs:
+  load anchorUnit 0 gas=4588328
+  load anchorUnit 1 gas=4504574
+  load anchorUnit 2 gas=4504681
+  load anchorUnit 3 gas=4504873
+  load anchorUnit 4 gas=4504717
+  load anchorUnit 5 gas=4504874
+  load anchorUnit 6 gas=4504489
+  load anchorUnit 7 gas=5010764
+  load releaseUnit 0 gas=2605542
+  load releaseUnit 1 gas=2588442
+  load releaseUnit 2 gas=2588442
+  load releaseUnit 3 gas=2588442
+  load releaseUnit 4 gas=2588442
+  load releaseUnit 5 gas=2588442
+  load releaseUnit 6 gas=2588442
+  load releaseUnit 7 gas=2113116
+  load release 0 gas=69391
+  load releasePay 0 gas=3394045
+  load releasePay 1 gas=3394045
+  load releasePay 2 gas=3394045
+  load releasePay 3 gas=3394045
+  load releasePay 4 gas=3394045
+  load releasePay 5 gas=3394045
+  load releasePay 6 gas=3394045
+  load releasePay 7 gas=2762951
+  load transactions=17 max gas=3394045
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 86.81s (86.78s CPU time)
+
+Ran 1 test suite in 86.82s (86.81s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)

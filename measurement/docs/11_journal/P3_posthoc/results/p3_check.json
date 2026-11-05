@@ -1,0 +1,88 @@
+{
+ "FI": [
+  {
+   "seller": "StableEnrich",
+   "hand": 0.0629049221232395,
+   "k_hand": 32,
+   "p3": 0.06290492212323949,
+   "k_p3": 32,
+   "fb": 0.04004971042836805,
+   "cheaper": "FB",
+   "same": true
+  },
+  {
+   "seller": "OneSource",
+   "hand": 4.186689847387271,
+   "k_hand": 32,
+   "p3": 4.186689847387272,
+   "k_p3": 32,
+   "fb": 0.29574588081372943,
+   "cheaper": "FB",
+   "same": true
+  },
+  {
+   "seller": "BlockRun",
+   "hand": 0.027762324823250025,
+   "k_hand": 4,
+   "p3": 0.027762324823250025,
+   "k_p3": 4,
+   "fb": 0.33599739761769826,
+   "cheaper": "FI",
+   "same": true
+  }
+ ],
+ "na": [
+  {
+   "window": "busy",
+   "seller": "StableEnrich",
+   "k": 32,
+   "Ur_2930": 0,
+   "Ur_16800": 9,
+   "hand_delta": 0.008776949442510272,
+   "p3_delta": 0.008776949442510264,
+   "same": true
+  },
+  {
+   "window": "quiet",
+   "seller": "OneSource",
+   "k": 32,
+   "Ur_2930": 0,
+   "Ur_16800": 8,
+   "hand_delta": 0.05561487367953103,
+   "p3_delta": 0.055614873679531024,
+   "same": true
+  }
+ ],
+ "sens": [
+  {
+   "gas_share": 0.04239416699315679,
+   "l1_share": 0.00014910975526100795,
+   "rest": 0.006678510226159999,
+   "predicted": 0.13996606900790115,
+   "p3": 0.13996606900790115,
+   "k": 32,
+   "same": true
+  }
+ ],
+ "gstar": [
+  {
+   "window": "busy",
+   "gstar": 48267.80081756907,
+   "fimin_cheaper": true,
+   "agree": true
+  },
+  {
+   "window": "median",
+   "gstar": 50950.14544072078,
+   "fimin_cheaper": true,
+   "agree": true
+  },
+  {
+   "window": "quiet",
+   "gstar": 40190.08072009559,
+   "fimin_cheaper": true,
+   "agree": true
+  }
+ ],
+ "all_ok": true
+}

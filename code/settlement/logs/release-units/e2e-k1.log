@@ -1,0 +1,736 @@
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+   ╭▸ contracts/test/sdk/vrf/SettlementVrfConsumer.sol:56:42
+   │
+56 │         keyOf[id] = keccak256(abi.encode(bytes32("profile"), ++epochs));
+   │                                          ━━━━━━━━━━━━━━━━━━
+   │
+   ├ note: consider disabling this lint if you're certain the cast is safe
+   │       
+   │       // casting to 'bytes32' is safe because [explain why]
+   │       // forge-lint: disable-next-line(unsafe-typecast)
+   │       
+   │       
+   ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/Erc1271ForkGas.t.sol:137:23
+    │
+137 │         require(ok && bytes4(ret) == bytes4(0x1626ba7e), "valid");
+    │                       ━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'bytes4' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/Erc1271ForkGas.t.sol:146:24
+    │
+146 │         require(!ok || bytes4(ret) != bytes4(0x1626ba7e), "invalid");
+    │                        ━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'bytes4' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/Erc1271ForkGas.t.sol:196:19
+    │
+196 │         u.epoch = uint32(epoch);
+    │                   ━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/Erc1271ForkGas.t.sol:225:23
+    │
+225 │             o.epoch = uint32(epoch);
+    │                       ━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/dev/SubscriptionAPI.sol:308:39
+    │
+308 │     s_subscriptions[subId].balance += uint96(amount);
+    │                                       ━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint96' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/dev/SubscriptionAPI.sol:309:23
+    │
+309 │     s_totalBalance += uint96(amount);
+    │                       ━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint96' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol:141:42
+    │
+141 │       rawPayment = (1e18 * rawPayment) / uint256(i_wei_per_unit_link);
+    │                                          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol:143:22
+    │
+143 │     uint96 payment = uint96(rawPayment);
+    │                      ━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint96' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[incorrect-shift]: the order of args in a shift operation is incorrect
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1697:21
+     │
+1697 │             busy |= 1 << i;
+     │                     ━━━━━━
+     │
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#incorrect-shift
+
+warning[incorrect-shift]: the order of args in a shift operation is incorrect
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1716:33
+     │
+1716 │                     if (busy & (1 << i) == 0) continue;
+     │                                 ━━━━━━
+     │
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#incorrect-shift
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/KIndependent.t.sol:482:21
+    │
+482 │         uint16 kk = uint16(2 + seed % 3);
+    │                     ━━━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint16' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/KIndependent.t.sol:537:21
+    │
+537 │             require(bytes4(err) == SettlementBase.BadProfile.selector, "reverts with BadProfile");
+    │                     ━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'bytes4' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol:181:40
+    │
+181 │     s_subscriptions[_subId].balance += uint96(_amount);
+    │                                        ━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint96' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol:182:23
+    │
+182 │     s_totalBalance += uint96(_amount);
+    │                       ━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint96' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/SampledSettlement.sol:588:36
+    │
+588 │         _freezes[acct].push(Freeze(uint64(sf), a.settlements, uint64(block.number)));
+    │                                    ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint64' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/vrf/chainlink/v0.8/vrf/mocks/VRFCoordinatorV2_5Mock.sol:195:9
+    │
+195 │     if (bytes4(extraArgs) != VRFV2PlusClient.EXTRA_ARGS_V1_TAG) revert InvalidExtraArgsTag();
+    │         ━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'bytes4' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/SampledSettlement.sol:637:30
+    │
+637 │                 d.deadline = uint64(block.number + T_X);
+    │                              ━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint64' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/SampledSettlement.sol:643:26
+    │
+643 │             d.deadline = uint64(block.number + T_X);
+    │                          ━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint64' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/SampledSettlement.sol:913:20
+    │
+913 │         sl.epoch = uint32(epoch);
+    │                    ━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1136:44
+     │
+1136 │             if (!ok || ret.length != 32 || bytes4(ret) != bytes4(0x1626ba7e)) revert Unauthorized();
+     │                                            ━━━━━━━━━━━
+     │
+     ├ note: consider disabling this lint if you're certain the cast is safe
+     │       
+     │       // casting to 'bytes4' is safe because [explain why]
+     │       // forge-lint: disable-next-line(unsafe-typecast)
+     │       
+     │       
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1184:22
+     │
+1184 │         d.deadline = uint64(block.number + T_D);
+     │                      ━━━━━━━━━━━━━━━━━━━━━━━━━━
+     │
+     ├ note: consider disabling this lint if you're certain the cast is safe
+     │       
+     │       // casting to 'uint64' is safe because [explain why]
+     │       // forge-lint: disable-next-line(unsafe-typecast)
+     │       
+     │       
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1258:40
+     │
+1258 │         _vrfRequests[id] = VrfReq(pid, uint32(epoch), uint64(_valueDeadline(epoch)));
+     │                                        ━━━━━━━━━━━━━
+     │
+     ├ note: consider disabling this lint if you're certain the cast is safe
+     │       
+     │       // casting to 'uint32' is safe because [explain why]
+     │       // forge-lint: disable-next-line(unsafe-typecast)
+     │       
+     │       
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1456:19
+     │
+1456 │         a.bond += uint128(amount);
+     │                   ━━━━━━━━━━━━━━━
+     │
+     ├ note: consider disabling this lint if you're certain the cast is safe
+     │       
+     │       // casting to 'uint128' is safe because [explain why]
+     │       // forge-lint: disable-next-line(unsafe-typecast)
+     │       
+     │       
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/SdkBase.sol:264:19
+    │
+264 │         u.epoch = uint32(epoch);
+    │                   ━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+     ╭▸ contracts/test/sdk/SampledSettlement.sol:1469:23
+     │
+1469 │             a.bond += uint128(topUp);
+     │                       ━━━━━━━━━━━━━━
+     │
+     ├ note: consider disabling this lint if you're certain the cast is safe
+     │       
+     │       // casting to 'uint128' is safe because [explain why]
+     │       // forge-lint: disable-next-line(unsafe-typecast)
+     │       
+     │       
+     ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/SdkBase.sol:302:19
+    │
+302 │         o.epoch = uint32(epoch);
+    │                   ━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/RuleCases.t.sol:281:43
+    │
+281 │         on = _register(address(lazer), 0, uint32(b - s), 902, 1);
+    │                                           ━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/RuleCases.t.sol:282:45
+    │
+282 │         late = _register(address(lazer), 0, uint32(b - s - 1), 903, 1);
+    │                                             ━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/KGas.t.sol:141:41
+    │
+141 │             b = abi.encodePacked(bytes1(uint8(48 + v % 10)), b);
+    │                                         ━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint8' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[block-timestamp]: usage of `block.timestamp` in a comparison may be manipulated by validators
+   ╭▸ contracts/test/sdk/MockAuthToken.sol:58:17
+   │
+58 │         require(block.timestamp > validAfter && block.timestamp < validBefore, "time");
+   │                 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#block-timestamp
+
+warning[block-timestamp]: usage of `block.timestamp` in a comparison may be manipulated by validators
+   ╭▸ contracts/test/sdk/MockAuthToken.sol:58:49
+   │
+58 │         require(block.timestamp > validAfter && block.timestamp < validBefore, "time");
+   │                                                 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#block-timestamp
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+   ╭▸ contracts/test/sdk/MockAuthToken.sol:69:47
+   │
+69 │             require(ok && ret.length == 32 && bytes4(ret) == bytes4(0x1626ba7e), "erc1271");
+   │                                               ━━━━━━━━━━━
+   │
+   ├ note: consider disabling this lint if you're certain the cast is safe
+   │       
+   │       // casting to 'bytes4' is safe because [explain why]
+   │       // forge-lint: disable-next-line(unsafe-typecast)
+   │       
+   │       
+   ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/script/DeployEvalSetting.s.sol:219:25
+    │
+219 │         p.epochOrigin = uint64(origin);
+    │                         ━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint64' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/script/DeployEvalSetting.s.sol:340:41
+    │
+340 │             b = abi.encodePacked(bytes1(uint8(48 + v % 10)), b);
+    │                                         ━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint8' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:106:22
+    │
+106 │             while (a[uint256(i)].rs.nonce < p) i++;
+    │                      ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:107:22
+    │
+107 │             while (a[uint256(j)].rs.nonce > p) j--;
+    │                      ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:109:20
+    │
+109 │                 (a[uint256(i)], a[uint256(j)]) = (a[uint256(j)], a[uint256(i)]);
+    │                    ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:109:35
+    │
+109 │                 (a[uint256(i)], a[uint256(j)]) = (a[uint256(j)], a[uint256(i)]);
+    │                                   ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:109:53
+    │
+109 │                 (a[uint256(i)], a[uint256(j)]) = (a[uint256(j)], a[uint256(i)]);
+    │                                                     ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:109:68
+    │
+109 │                 (a[uint256(i)], a[uint256(j)]) = (a[uint256(j)], a[uint256(i)]);
+    │                                                                    ━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint256' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:191:19
+    │
+191 │         x.epoch = uint32(e);
+    │                   ━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:193:20
+    │
+193 │         x.unitNo = uint32(unitNo);
+    │                    ━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:229:19
+    │
+229 │         o.epoch = uint32(e);
+    │                   ━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint32' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ contracts/test/sdk/ReleaseBase.sol:277:41
+    │
+277 │             b = abi.encodePacked(bytes1(uint8(48 + v % 10)), b);
+    │                                         ━━━━━━━━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'uint8' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+[buy]
+  E1 signed
+  E1b signed
+  E2 unsigned [no receipt (status 503)]
+  E2b unsigned [no receipt (status 503)]
+  E3 signed
+  E4 unsigned [no receipt (status 503)]
+  E5a refused: payTo is not the profile's receiving address
+  E5b unsigned [receipt profile id differs from the payment's profile]
+  E6 signed
+  Fa signed
+  Fb signed
+  L signed
+  M signed
+  D signed
+[after buy] head 52977344
+[anchor] {"/h":{"ok":true,"gas":"349601","leaves":1},"/hc":{"ok":true,"gas":"332562","leaves":1},"/w":{"ok":true,"gas":"326131","leaves":1},"/wb":{"ok":true,"gas":"326106","leaves":1},"/k":{"ok":true,"gas":"332501","leaves":1},"/t":{"ok":true,"gas":"326118","leaves":1},"/r":{"ok":true,"gas":"326118","leaves":1},"/c":{"ok":true,"gas":"332538","leaves":1},"/f":{"ok":true,"gas":"332512","leaves":1},"/fh":{"ok":true,"gas":"332574","leaves":1},"/l":{"ok":true,"gas":"332537","leaves":1},"/d":{"ok":true,"gas":"332512","leaves":1}}
+  stranger proveDoubleSign  sent gas 139259
+  stranger openDispute      sent gas 291501
+[after anchor: automatic disputes] head 52977650
+  buyer-2  openDispute      sent gas 291167
+  buyer-3  openDispute      sent gas 291155
+  buyer-6  openDispute      sent gas 291167
+  buyer-13 claimFrozen      sent gas 75368
+  tower-a  openDispute      sent gas 299057
+  tower-b  openDispute      reverted gas 51262
+[after answers: decryption challenges] head 52977664
+  buyer-3  challengeDecrypt sent gas 50686
+  tower-a  challengeDecrypt sent gas 50710
+  stranger closeDispute     sent gas 76195
+[after T_d, T_x: closing] head 52977769
+  buyer-2  closeDispute     sent gas 92721
+  buyer-3  closeDispute     sent gas 92767
+  buyer-6  closeDispute     sent gas 92721
+  buyer-11 declareAnchorMissed sent gas 121173
+  buyer-11 claimFrozen      sent gas 75380
+  buyer-7  openDispute      sent gas 161312
+  buyer-7  challengeDecrypt sent gas 50710
+  tower-a  closeDispute     sent gas 97579
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 114697
+  vrf /h epoch 1 request 1 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /hc epoch 1 request 2 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /w epoch 1 request 3 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244825
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /wb epoch 1 request 4 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /k epoch 1 request 5 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /t epoch 1 request 6 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /r epoch 1 request 7 mock word: 0/1 sampled
+  seller   requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /c epoch 1 request 8 mock word: 0/1 sampled
+  seller-fraud requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 100956
+  vrf /f epoch 1 request 9 chosen word after 19: 1/1 sampled
+  seller-fraud requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 100956
+  vrf /fh epoch 1 request 10 chosen word after 503: 1/1 sampled
+  seller-late requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 100956
+  vrf /l epoch 1 request 11 chosen word after 37: 1/1 sampled
+  seller-miss requestSample    reverted gas 31287
+  seller-dbl requestSample    sent gas 244825
+  vrf      fulfill (mock)   sent gas 101017
+  vrf /d epoch 1 request 12 mock word: 0/1 sampled
+[prove] {"/h":{"proven":0,"reverted":0,"gas":[]},"/hc":{"proven":0,"reverted":0,"gas":[]},"/w":{"proven":0,"reverted":0,"gas":[]},"/wb":{"proven":0,"reverted":0,"gas":[]},"/k":{"proven":0,"reverted":0,"gas":[]},"/t":{"proven":0,"reverted":0,"gas":[]},"/x":{"proven":0,"reverted":0,"gas":[]},"/r":{"proven":0,"reverted":0,"gas":[]},"/c":{"proven":0,"reverted":0,"gas":[]},"/f":{"proven":0,"reverted":1,"gas":["68745"]},"/fh":{"proven":1,"reverted":0,"gas":["90459"]},"/d":{"proven":0,"reverted":0,"gas":[]}}
+[after proofs] head 52977835
+[M_e + T_p + 1: failure processing and claims] head 52978134
+  buyer-8  declareSampleFailure sent gas 107937
+  buyer-8  claimFrozen      sent gas 75436
+  buyer-9  claimFrozen      sent gas 75380
+  buyer-7  closeDispute     sent gas 92779
+[A_e + T_c - d_inc: key disputes] head 52978291
+  buyer-4  openDispute      sent gas 291460
+[after key answers: decryption challenges] head 52978294
+  buyer-4  challengeDecrypt sent gas 50686
+[after T_x: closing] head 52978397
+  buyer-4  closeDispute     sent gas 92767
+[release] {"seller":{"ok":true,"steps":[{"epoch":1,"ok":true,"gas":"392152"}]},"seller-fraud":{"ok":true,"steps":[{"epoch":1,"ok":true,"gas":"92066"}]},"seller-late":{"ok":true,"steps":[{"epoch":1,"ok":true,"gas":"133260"}]},"seller-miss":{"ok":true,"steps":[{"epoch":1,"ok":true,"gas":"62421"}]},"seller-dbl":{"ok":true,"steps":[{"epoch":1,"ok":true,"gas":"70511"}]}}
+[after release] head 52978403
+[buyer-10 back: claims] head 52978403
+  buyer-10 claimFrozen      sent gas 75436
+[re-entry epoch: after anchor] head 52978533
+  seller-fraud requestSample    sent gas 244837
+  vrf      fulfill (mock)   sent gas 100956
+  vrf /fh epoch 4 request 13 chosen word after 1: 1/1 sampled
+[re-entry epoch: after release] head 52979225
+PASS E1 honest sale (plaintext) and E1b (ciphertext, key on signature)
+  {"e1State":"done","e1bState":"done","e1Status":2,"e1bStatus":2,"e1bKey":"ok","disputesOpenedByBuyer1":0,"buyerDelta":"-20000","reservedAtBuy":{"eth":"1137444000000000","token":"100000"},"reservedAtEnd":{"eth":"0","token":"0"},"proofs":[{"proven":0,"reverted":0,"gas":[]},{"proven":0,"reverted":0,"gas":[]}],"expected":{"e1State":"done","e1bState":"done","e1Status":2,"e1bStatus":2,"e1bKey":"ok","disputesOpenedByBuyer1":0,"buyerDelta":"-20000","reservedAtEnd":{"eth":"0","token":"0"}}}
+PASS E2 non-delivery dispute, no answer, refund
+  {"state":"done","signed":false,"status":1,"opened":1,"closed":1,"buyerDelta":"0","checks":["no receipt (status 503)"],"expected":{"signed":false,"status":1,"opened":1,"closed":1,"buyerDelta":"0"}}
+PASS E2b non-delivery dispute, ct not decrypting to h_r, decryption challenge, refund
+  {"state":"done","status":1,"opened":1,"challenged":1,"bad":true,"buyerDelta":"0","expected":{"status":1,"opened":1,"challenged":1,"bad":true,"buyerDelta":"0"}}
+PASS E3 key dispute (key withheld, then a key under which ct does not decrypt to h_r)
+  {"state":"done","signed":true,"keyStatusBeforeDispute":"bad","status":1,"opened":1,"challenged":1,"bad":true,"buyerDelta":"0","expected":{"signed":true,"status":1,"opened":1,"challenged":1,"bad":true,"buyerDelta":"0"}}
+PASS E4 two watchtowers dispute for an offline buyer
+  {"buyerActions":0,"openA":1,"openBreverted":1,"openBsent":0,"opener":"0x892dEdA3B46ee92Bf61B503eCb1Fe38158EEe1b9","authorized":true,"challenges":1,"status":1,"buyerDelta":"0","towerAdelta":"0","towerBdelta":"0","expected":{"buyerActions":0,"openA":1,"openBreverted":1,"openBsent":0,"opener":"0x892dEdA3B46ee92Bf61B503eCb1Fe38158EEe1b9","authorized":true,"status":1,"buyerDelta":"0","towerAdelta":"0","towerBdelta":"0"}}
+PASS E5a 402 names a profile whose receiving address is not payTo: no payment
+  {"state":"refused","reason":"payTo is not the profile's receiving address","settled":"none","expected":{"state":"refused","settled":"none"}}
+PASS E5b receipt carries another profile id: no signature, non-delivery dispute, refund
+  {"state":"done","signed":false,"checks":["receipt profile id differs from the payment's profile"],"status":1,"opened":1,"expected":{"signed":false,"status":1,"opened":1}}
+PASS E6 third-party key dispute ends on the seller's side; the payer-side slot opens on its own and the stored key answers it
+  {"signed":true,"thirdPartyClosedBad":false,"thirdPartyClosedState":3,"payerSlotOpener":"0x5bafF9EcE704edded1DCB5C21C5e8bEE309CB73C","payerSide":true,"buyerOpened":1,"buyerChallenged":1,"sellerAnswers":1,"status":1,"buyerDelta":"0","strangerDelta":"-50000","expected":{"signed":true,"thirdPartyClosedBad":false,"thirdPartyClosedState":3,"payerSlotOpener":"0x5bafF9EcE704edded1DCB5C21C5e8bEE309CB73C","payerSide":true,"buyerOpened":1,"buyerChallenged":1,"sellerAnswers":1,"status":1,"buyerDelta":"0","strangerDelta":"-50000"}}
+PASS seller account
+  {"sellerDelta":"70000","failures":0,"suspended":false,"releases":{"ok":true,"steps":[{"epoch":1,"ok":true,"gas":"392152"}]},"expected":{"sellerDelta":"70000","failures":0,"suspended":false}}
+PASS (a) fraud seller: sampled sale without a pass by T_p, confirmed failure, freeze, deduction, suspension
+  {"signed":true,"sellerProofsReverted":1,"declaredBy":1,"failuresAfter":1,"bondAfter":"0","lockedAfter":"1000000","suspendedAfter":true,"saleStatus":1,"claimedBy":1,"buyerDelta":"0","noSettlementWhileSuspended":"0x0000000000000000000000000000000000000000","expected":{"signed":true,"sellerProofsReverted":1,"declaredBy":1,"failuresAfter":1,"bondAfter":"0","lockedAfter":"1000000","suspendedAfter":true,"saleStatus":1,"claimedBy":1,"buyerDelta":"0","noSettlementWhileSuspended":"0x0000000000000000000000000000000000000000"}}
+PASS (b) frozen sale of the same seller (settled after s_f, its own proof passed): the buyer's claim
+  {"signed":true,"passed":true,"towerAcks":1,"claims":1,"saleStatus":1,"buyerDelta":"0","expected":{"signed":true,"passed":true,"towerAcks":1,"claims":1,"saleStatus":1,"buyerDelta":"0"}}
+PASS (c) honest seller whose proof comes after T_p: failure in the cursor, its cost
+  {"signed":true,"lateProofReverted":1,"failuresBeforeCursor":0,"failuresAfterCursor":1,"deducted":"1000000","bondLeft":"0","suspended":true,"statusAfterCursor":4,"claimedBy":1,"buyerDelta":"0","sellerDelta":"0","sellerGas":1,"expected":{"signed":true,"lateProofReverted":1,"failuresBeforeCursor":0,"failuresAfterCursor":1,"deducted":"1000000","bondLeft":"0","suspended":true,"statusAfterCursor":4,"claimedBy":1,"buyerDelta":"0","sellerDelta":"0"}}
+PASS (d) re-entry: bond restored, new episode, a new sale paid by the cursor
+  {"refusedWhileSuspended":"unsigned","reentryOk":true,"bond":"1000000","episode":2,"suspended":false,"newSaleEpisode":2,"newSaleSigned":true,"anchored":true,"proven":1,"newSaleStatus":2,"sellerDelta":"-990000","buyerDelta":"-10000","expected":{"refusedWhileSuspended":"unsigned","reentryOk":true,"bond":"1000000","episode":2,"suspended":false,"newSaleEpisode":2,"newSaleSigned":true,"anchored":true,"proven":1,"newSaleStatus":2,"sellerDelta":"-990000","buyerDelta":"-10000"}}
+PASS (e) missed anchor: declared after A_e, freeze from the epoch's first sale, deduction, claim
+  {"signed":true,"declaredBy":1,"missed":true,"failures":1,"locked":"1000000","suspended":true,"saleStatus":1,"claimedBy":1,"buyerDelta":"0","sellerDelta":"0","expected":{"signed":true,"declaredBy":1,"missed":true,"failures":1,"locked":"1000000","suspended":true,"saleStatus":1,"claimedBy":1,"buyerDelta":"0","sellerDelta":"0"}}
+PASS double-signed anchor: evidence by anyone, failure, the buyer's claim
+  {"evidence":1,"failures":1,"locked":"1000000","claimedBy":1,"saleStatus":1,"buyerDelta":"0","expected":{"evidence":1,"failures":1,"locked":"1000000","claimedBy":1,"saleStatus":1,"buyerDelta":"0"}}
+
+scenarios: 15/15 as expected; parity true

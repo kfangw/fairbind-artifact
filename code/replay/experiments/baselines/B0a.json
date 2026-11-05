@@ -1,0 +1,78 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B0a",
+  "name": "rail-authorization-no-recourse",
+  "represents": "The rail's default flow: verify authorization, execute the service, settle, then respond. Nothing is added on top of settlement.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "samplePpm = 0 violates 0 < samplePpm <= PPM",
+    "effectivePpm = 0 violates 0 < effectivePpm <= samplePpm",
+    "sellerPenalty = 0 violates sellerPenalty > 0",
+    "deferBlocks = 0 violates deferBlocks >= retentionBlocks",
+    "no verifier registry violates minVerifiers >= 3 * maxAssignments + 5",
+    "appealBlocks = 0 violates appealBlocks > 0",
+    "maxBadGain, maxReviewCost, verifierWrongPenalty have no defined value"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": 0,
+    "recheckPpm": 0,
+    "effectivePpm": 0,
+    "deferBlocks": 0,
+    "deferPolicy": "none",
+    "retentionBlocks": 0,
+    "sellerBond": {
+      "enabled": false,
+      "sizing": "none",
+      "amount_atomic": "0"
+    },
+    "sellerPenalty_atomic": "0",
+    "rateCap": {
+      "enabled": false
+    },
+    "verifier": {
+      "enabled": false,
+      "bond_atomic": "0",
+      "latePenalty": false,
+      "wrongPenalty": false
+    },
+    "appeal": {
+      "enabled": false,
+      "rounds": 0,
+      "depositRequired": false
+    },
+    "receiptAnchor": {
+      "enabled": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "execute_then_settle_then_respond"
+  },
+  "cannot_express": [
+    "no adjudication object exists, so there is no case to open and no verdict state to observe",
+    "no receipt and no anchor, so a settlement cannot be tied to a specific request or response",
+    "no refund source of any kind; a settled payment is final on arrival",
+    "no non-delivery procedure, so the two-generals situation is simply unresolved",
+    "no notion of seller identity carrying liability across purchases"
+  ],
+  "harness_special_cases": [
+    "ground truth for correct/incorrect delivery is held only by the controller, outside the runtime, and never enters any on-chain or protocol state",
+    "the metrics 'detection rate', 'adjudication latency', 'verifier accountability' are undefined, not zero; the envelope must record them as null with reason 'no adjudication object'",
+    "unrecovered-value equals settled-value for every cheating transaction by construction; the run is a calibration of the metric pipeline, not a measurement of a mechanism",
+    "the D-sweep does not apply; emit one point at D = 0 and mark the other sweep points as not-applicable",
+    "scenarios F4, S1, S2, S3, A1 have no defined procedure; score them 'undefined' rather than 'fail', and record which property has no carrier"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Flat. D is structurally absent, so the arm is a single point at D = 0 and does not move when the treatment arm's D moves.",
+    "cheater_scenarios": {
+      "steady_cheat": "Cheater net gain equals g times every settlement in the run. No term bounds it; exposure is not g*(1/p + lambda*L) but g*lambda*T_run, growing in run length.",
+      "S5_burst": "Burst is invisible: there is no cap, no bucket, no rejection. The burst simply multiplies the leak.",
+      "S6_patient_defector": "Indistinguishable from an honest seller before and after the defection. Nothing is recovered."
+    },
+    "honest_seller_cost": "Zero locked capital, zero delayed proceeds, zero anchor gas. This arm is the lower bound of the cost axis and the upper bound of the leak axis; it exists to anchor both."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": []
+}

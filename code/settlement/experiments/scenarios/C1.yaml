@@ -1,0 +1,70 @@
+id: C1
+name: Cheater re-enters after suspension and repeats
+property_under_test:
+- P5
+- T5
+preconditions:
+- 'Admissible profile; after each suspension the seller tops up the deducted share, calls reinstateSeller while the claim window is still open (ADR 0021) and cheats again, for failureLimit + 1 episodes or until SANCTIONED'
+injected_fault:
+  process: seller
+  kind: reentering_cheater
+  action: seller cheats at Lambda_cheater until frozen, tops up and reinstates during the open claim window, and repeats
+  timing: repeated episodes
+parameters:
+  Lambda_cheater:
+    default: 1/(10*p*D)
+    sweep:
+    - 1/(10*p*D)
+    - rate:peak_hour_p99
+    - rate:peak_hour_max
+    unit: 'settlements per block; 1/(10*p*D) is the slow point of D3'
+  bad_sale_gain_atomic:
+    default: v
+    unit: token
+  bond_fraction_of_g_over_p:
+    default: 1.0
+    sweep:
+    - 1.0
+    - failureLimit
+    unit: multiple of g/p
+  cap_enabled:
+    default: false
+n_seeds: 30
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - episode_net_gain
+  - final_failure_count
+  - seller_penalty_charged
+  - suspension_count
+  - reinstatement_count
+expected_outcome: 'Since ADR 0021 the seller may top up and reinstate while the claim window of its last failure is still open, so episodes can follow each other within one failure window (60,000 blocks) and their final failures count together toward failureLimit; what a new episode sells is frozen by its next confirmed failure. Slow point: the first detected bad sale comes about 10 D after the reinstatement, so consecutive failures fall in different failure windows and the count restarts; one final failure per episode; each confirmed failure deducts sellerPenalty / failureLimit from the bond (ADR 0018) and the seller tops it back up before reinstating, so each episode gains about 22.6 v (D3) minus that share, and cheater_net_gain grows linearly with the episodes at both bond levels while the share stays below the episode gain. peak_hour_max: one episode holds about 0.04 times several thousand bad sales, far more than failureLimit final failures, so the seller is SANCTIONED in the first episode and loses its pool. peak_hour_p99: 1 to about 10 final failures per episode; SANCTIONED in the first episode in some runs only.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Slow point: seller_penalty_charged equals one share (sellerPenalty / failureLimit) per episode, never the remainder, and every element of episode_net_gain > 0 in most runs; a remainder charged at the slow point means failures about 10 D apart were counted in one window, which the window length predicts cannot happen. peak_hour_p99: failures of consecutive episodes that fall in one failure window are counted together (the count does not restart at a reinstatement). peak_hour_max: SANCTIONED within the first episode in every run. Report cheater_net_gain after all episodes for each bond level.'
+notes: 'Tests deterrence over repeated episodes, which a single episode (D3) cannot show. Reinstatement during the open claim window is the current rule (ADR 0021), and one share of the penalty is charged per confirmed failure (ADR 0018); the slow-point prediction subtracts that share per episode. The slow point needs several times 10 D blocks per episode.'

@@ -1,0 +1,19 @@
+Compiling 6 files with Solc 0.8.24
+Solc 0.8.24 finished in 536.41s
+Compiler run successful!
+
+Ran 1 test for contracts/test/sdk/usdcfork/UsdcBuyerGasFork.t.sol:UsdcBuyerGasForkTest
+[PASS] test_gas_settle_and_binding() (gas: 1426208)
+Logs:
+  row series=settle_bound m=1 gas=241945
+  row series=settle_unbound m=1 gas=185787
+  row series=completeBinding m=1 gas=60872
+  row series=usdc_twa m=1 gas=86192
+  row series=settle_bound m=1 gas=207765
+  row series=settle_unbound m=1 gas=185767
+  row series=completeBinding m=1 gas=60872
+  row series=usdc_twa m=1 gas=86180
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 6.33s (1.76s CPU time)
+
+Ran 1 test suite in 6.33s (6.33s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)

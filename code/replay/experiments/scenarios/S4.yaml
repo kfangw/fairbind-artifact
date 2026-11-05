@@ -1,0 +1,65 @@
+id: S4
+name: Response held until the epoch boundary
+property_under_test:
+- P5
+- EXPOSURE
+preconditions:
+- The seller delays its response past its own anchor, trying to see epoch randomness before choosing content
+injected_fault:
+  process: seller
+  kind: delay_response
+  action: seller delays sending resp until after its own anchor submission for the epoch
+  timing: response delayed to near or past anchorDeadline(e)
+parameters:
+  epochBlocks:
+    default: 300
+    sweep:
+    - 300
+    - 1800
+    unit: blocks
+  response_delay_blocks:
+    default: 0
+    sweep:
+    - 0
+    - 100
+    - 300
+    - 350
+    unit: blocks after settlement
+  legitimate_delay_bound:
+    default: 250
+    unit: blocks
+n_seeds: 3
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - late_response_dispute_rate
+expected_outcome: When response_delay_blocks exceeds legitimate_delay_bound the buyer can open NON_DELIVERY after responseDue. The seller either misses the fixed anchorDeadline (as in S2) or faces the dispute. In neither case can it change receipt content after seeing the randomness, since only receipts signed before the anchor are included.
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Every point with response_delay_blocks > legitimate_delay_bound ends in a NON_DELIVERY dispute or EPOCH_FAILED; no attempt to change receipt content after the randomness is known succeeds.'
+notes: Checks that delaying the response to learn the randomness leads to a non-delivery dispute.

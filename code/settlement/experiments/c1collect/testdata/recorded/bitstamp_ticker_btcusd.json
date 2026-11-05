@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "bitstamp:ticker:btcusd",
+  "method": "GET",
+  "url": "https://www.bitstamp.net/api/v2/ticker/btcusd/",
+  "request_raw": "R0VUIC9hcGkvdjIvdGlja2VyL2J0Y3VzZC8gSFRUUC8xLjENCkhvc3Q6IHd3dy5iaXRzdGFtcC5uZXQNClVzZXItQWdlbnQ6IGZhaXJiaW5kLWMxY29sbGVjdC8xDQpBY2NlcHQ6IGFwcGxpY2F0aW9uL2pzb24NCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+  "started_at_unix_ms": 1790773191010,
+  "finished_at_unix_ms": 1790773191421,
+  "response_raw": "SFRUUC8xLjEgMjAwIE9LDQpFdGFnOiAiNmFiZDA3YzYtZmYiDQpMYXN0LU1vZGlmaWVkOiBXZWQsIDMwIFNlcCAyMDI2IDEyOjU5OjUwIEdNVA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uDQpDb250ZW50LUxlbmd0aDogMjU1DQpDYWNoZS1Db250cm9sOiBtYXgtYWdlPTEsIHB1YmxpYw0KRXhwaXJlczogV2VkLCAzMCBTZXAgMjAyNiAxMjo1OTo1MiBHTVQNCkRhdGU6IFdlZCwgMzAgU2VwIDIwMjYgMTI6NTk6NTEgR01UDQpTZXQtQ29va2llOiB2aXNpZF9pbmNhcF85OTAyNT16bWt4bnRoWVEvaUd5cyt1enhRZEg4Y0h2V29BQUFBQVFVSVBBQUFBQUFDZ3lwamlka2F0WnF4aHNUZkpRWmdVOyBleHBpcmVzPVRodSwgMzAgU2VwIDIwMjcgMDc6MDI6MTIgR01UOyBIdHRwT25seTsgcGF0aD0vOyBEb21haW49LmJpdHN0YW1wLm5ldA0KU2V0LUNvb2tpZTogaW5jYXBfc2VzXzEwMTdfOTkwMjU9Vi91U0w2VkU2RVBOeHFlbEx4d2REc2NIdldvQUFBQUFhYll6Q2NRV1Jrc1UwdnFvZXFKeXdRPT07IHBhdGg9LzsgRG9tYWluPS5iaXRzdGFtcC5uZXQNClgtQ0ROOiBJbXBlcnZhDQpYLUlpbmZvOiA0My0xNTcwMTA0MzYtMCAwQ05OIFJUKDE3OTA3NzMxOTEzNTcgODYpIHEoMCAtMSAtMSAtMSkgcigwIC0xKQ0KDQp7InRpbWVzdGFtcCI6IjE3OTA3NzMxOTAiLCJvcGVuIjoiODM2MzYuNzciLCJoaWdoIjoiODU0NjguNTEiLCJsb3ciOiI4Mjg2OS45NiIsImxhc3QiOiI4NTI4NC40NSIsInZvbHVtZSI6IjE0MjEuODE3NjY5NTQiLCJ2d2FwIjoiODM2NzEuNzMiLCJiaWQiOiI4NTI2NS4wOCIsImFzayI6Ijg1MjY1LjA5Iiwic2lkZSI6IjAiLCJvcGVuXzI0IjoiODQzMTMuMDkiLCJwZXJjZW50X2NoYW5nZV8yNCI6IjEuMTUiLCJtYXJrZXRfdHlwZSI6IlNQT1QifQo=",
+  "response_sha256": "b7902578e62253e0c443786066005d6c7b6269349dd89bf545229f6956b0ee27",
+  "response_head": "HTTP/1.1 200 OK\r\nEtag: \"6abd07c6-ff\"\r\nLast-Modified: Wed, 30 Sep 2026 12:59:50 GMT\r\nContent-Type: application/json\r\nContent-Length: 255\r\nCache-Control: max-age=1, public\r\nExpires: Wed, 30 Sep 2026 12:59:52 GMT\r\nDate: Wed, 30 Sep 2026 12:59:51 GMT\r\nSet-Cookie: visid_incap_99025=zmkxnthYQ/iGys+uzxQdH8cHvWoAAAAAQUIPAAAAAACgypjidkatZqxhsTfJQZgU; expires=Thu, 30 Sep 2027 07:02:12 GMT; HttpOnly; path=/; Domain=.bitstamp.net\r\nSet-Cookie: incap_ses_1017_99025=V/uSL6VE6EPNxqelLxwdDscHvWoAAAAAabYzCcQWRksU0vqoeqJywQ==; path=/; Domain=.bitstamp.net\r\nX-CDN: Imperva\r\nX-Iinfo: 43-157010436-0 0CNN RT(1790773191357 86) q(0 -1 -1 -1) r(0 -1)\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "refsource.Capturer/1",
+    "synthetic": true,
+    "note": "response bytes recorded live on 2026-09-30 through a TLS-terminating egress proxy; the proxy certificate chain was removed"
+  }
+}

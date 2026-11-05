@@ -1,0 +1,52 @@
+No files changed, compilation skipped
+
+Ran 3 tests for contracts/test/sdk/usdcfork/MockOnFork.t.sol:MockAnchorLoadForkTest
+[PASS] test_gas_accepted() (gas: 841852899)
+Logs:
+  row series=unit_accepted m=1 gas=322518
+  row series=complete_accepted m=2 gas=331522
+  row series=unit_accepted m=32 gas=1155231
+  row series=complete_accepted m=33 gas=689358
+  row series=unit_accepted m=128 gas=3799859
+  row series=complete_accepted m=129 gas=1798129
+  row series=unit_accepted m=255 gas=7462833
+  row series=complete_accepted m=256 gas=3266932
+  row series=chunk_accepted m=1 gas=70926
+  row series=chunk_accepted m=64 gas=798127
+  row series=chunk_accepted m=256 gas=3017802
+  row series=pullsale_accepted m=1 gas=71744
+  row series=pullsale_accepted m=1 gas=66944
+
+[PASS] test_gas_marked() (gas: 631414821)
+Logs:
+  row series=unit_marked m=1 gas=315137
+  row series=complete_marked m=2 gas=328122
+  row series=unit_marked m=32 gas=914333
+  row series=complete_marked m=33 gas=814682
+  row series=unit_marked m=128 gas=2783887
+  row series=complete_marked m=129 gas=2322225
+  row series=unit_marked m=255 gas=5301460
+  row series=complete_marked m=256 gas=4318598
+  row series=chunk_marked m=1 gas=66729
+  row series=chunk_marked m=64 gas=1055632
+  row series=chunk_marked m=256 gas=4072875
+  row series=pullsale_marked m=1 gas=66746
+  row series=pullsale_marked m=1 gas=61946
+
+[PASS] test_gas_plain() (gas: 523101226)
+Logs:
+  row series=unit_plain m=1 gas=311995
+  row series=complete_plain m=2 gas=298819
+  row series=unit_plain m=32 gas=815141
+  row series=complete_plain m=33 gas=457932
+  row series=unit_plain m=128 gas=2400562
+  row series=complete_plain m=129 gas=950698
+  row series=unit_plain m=255 gas=4573735
+  row series=complete_plain m=256 gas=1603109
+  row series=chunk_plain m=1 gas=46361
+  row series=chunk_plain m=64 gas=369631
+  row series=chunk_plain m=256 gas=1355696
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 1.29s (3.16s CPU time)
+
+Ran 1 test suite in 1.30s (1.29s CPU time): 3 tests passed, 0 failed, 0 skipped (3 total tests)

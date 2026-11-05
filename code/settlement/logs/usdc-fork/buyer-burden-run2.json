@@ -1,0 +1,104 @@
+{
+  "runs": 5000,
+  "warmup": 200,
+  "machine": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logical_cpus": 4,
+    "mem_gb": 15.7,
+    "os": "Linux 6.18.44-fc-v185 x64",
+    "node": "v22.23.4",
+    "viem": "2.48.11",
+    "x402": "2.28.0",
+    "note": "cloud container (shared VM), single-threaded loop, nothing else running"
+  },
+  "timing": {
+    "binding": {
+      "n": 5000,
+      "median_ms": 0.1831,
+      "p95_ms": 0.3445,
+      "mean_ms": 0.2175,
+      "max_ms": 3.9999
+    },
+    "receiptCheck": {
+      "n": 5000,
+      "median_ms": 2.7123,
+      "p95_ms": 5.3619,
+      "mean_ms": 3.3553,
+      "max_ms": 11.2598
+    },
+    "sigmaB": {
+      "n": 5000,
+      "median_ms": 0.8332,
+      "p95_ms": 1.5289,
+      "mean_ms": 1.0376,
+      "max_ms": 13.1583
+    },
+    "perPurchase": {
+      "n": 5000,
+      "median_ms": 0.9496,
+      "p95_ms": 1.8239,
+      "mean_ms": 1.12,
+      "max_ms": 15.3875
+    },
+    "perPurchaseWithCheck": {
+      "n": 5000,
+      "median_ms": 3.8028,
+      "p95_ms": 7.6922,
+      "mean_ms": 4.7677,
+      "max_ms": 18.1116
+    },
+    "mandateSign": {
+      "n": 5000,
+      "median_ms": 0.73,
+      "p95_ms": 1.3035,
+      "mean_ms": 0.867,
+      "max_ms": 7.2056
+    },
+    "towerAckCheck": {
+      "n": 5000,
+      "median_ms": 3.1324,
+      "p95_ms": 5.1736,
+      "mean_ms": 3.4318,
+      "max_ms": 9.9478
+    },
+    "eip3009 (plain x402, reference)": {
+      "n": 5000,
+      "median_ms": 0.7411,
+      "p95_ms": 1.3069,
+      "mean_ms": 0.9069,
+      "max_ms": 97.64
+    }
+  },
+  "bytes": {
+    "paymentSignatureHeader": {
+      "plain_json": 797,
+      "fairbind_json": 1806,
+      "added_json": 1009,
+      "plain_base64": 1064,
+      "fairbind_base64": 2408,
+      "added_base64": 1344,
+      "echoed_offer_keys": [
+        "contract",
+        "profileId",
+        "profile",
+        "ackUrl"
+      ],
+      "binding_only_extension_json": 277,
+      "note": "x402Client merges the 402 offer's extensions into the payload, so the payment message carries the echoed offer (contract, profileId, profile, ackUrl) and the binding triple; the bound nonce replaces the random nonce at the same length"
+    },
+    "paymentRequiredHeader": {
+      "plain_base64": 512,
+      "fairbind_base64": 1508,
+      "added_base64": 996,
+      "offer_extension_json": 733
+    },
+    "sigmaBDelivery": {
+      "post_body_json": 225,
+      "note": "POST to ackUrl, a separate buyer-to-seller message after the response"
+    },
+    "receiptHeader": {
+      "base64": 1676,
+      "note": "x-settlement-receipt, seller to buyer, tier 1a material inline"
+    }
+  }
+}

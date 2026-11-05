@@ -1,0 +1,61 @@
+id: F4
+name: Settled but no response
+property_under_test:
+- P2
+preconditions:
+- settle is confirmed
+- responseDue has passed
+- The seller sends no response
+injected_fault:
+  process: seller
+  kind: withhold_response
+  action: 'seller never sends resp/receipt after settlement; it may still answer dispute-driven redelivery'
+  timing: from settle confirmation onward
+parameters:
+  responseBlocks:
+    default: 50
+    unit: blocks
+  claimBlocks:
+    default: 200
+    unit: blocks
+  serveBlocks:
+    default: 50
+    unit: blocks
+  seller_responds_to_redelivery:
+    default: false
+    sweep:
+    - true
+    - false
+n_seeds: 3
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+expected_outcome: 'A buyer dispute(NON_DELIVERY) after responseDue and before claimUntil moves the case to SERVE_WAIT. With redelivery the case ends DELIVERED; without it timeoutServe ends it UNSERVED and the deferred amount is refunded.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'With seller_responds_to_redelivery false every case ends UNSERVED and the buyer is refunded (post_settlement_unrecovered_rate == 0); with true every case ends DELIVERED.'
+notes: Exercises the full redelivery ladder SERVE_WAIT, SERVE_CONFIRM, PUBLISHING, then UNSERVED or DELIVERED.

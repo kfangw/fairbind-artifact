@@ -1,0 +1,734 @@
+id: I6
+name: 'Hold-period grid: exposure, net gain and honest sanctions across T_hold, bond, rate, scale and keeper delay'
+property_under_test:
+- T5
+- T6
+- EXPOSURE
+- P3
+preconditions:
+- 'Planned, not run: this grid is used later; controller validation must accept it'
+- 'The plan is the union of the named cells below (partial grids), not the product of every axis; each cell has its own repetition count'
+- 'Cheater cells: the seller sells only bad responses at Lambda_cheater on a bond account of scale_factor * sellerPenalty; sellerPenalty is bond_fraction_of_g_over_p times g/p (realized as in D3); it appeals every initial FAIL and, after a confirmed failure, tops the bond account up to scale_factor * sellerPenalty (n * B, not only the B that reinstatement needs, so the second episode runs at the same scale) and re-enters as soon as the contract admits it'
+- 'Honest cells (H): an honest seller at the bucket rate; after every per-failure deduction its owner tops the bond up to exactly scale_factor * sellerPenalty in the next block and never otherwise (honest_top_up_policy); buyers appeal every initial PASS'
+- 'Keeper delay is a per-case budget kappa = keeper_delay_budget_blocks: on the path of each case the keepers spend the whole budget on the last keeper call before the confirmed failure and make every other call as soon as it is due, so the keeper delay sum of every effective-detection case is kappa_Sigma = kappa (0 is the prompt keeper of the other scenarios); the dry run checks kappa_Sigma = kappa for every effective-detection case of the cells with kappa > 0 (P2, P5, P6, M4-worst)'
+- 'judgment_path worst: the directives apply to the case of every sampled bad sale (the sample stays the s-random draw, so every sampled bad sale is detected and the detection probability per bad sale is s), and every actor on it moves at its deadline: in the initial stage the first two assignments deliver FAIL at the judge deadline, evidence is requested at the appeal deadline and the assignment is voided by timeoutEvidence in the block after the evidence deadline, the last one delivers FAIL, evidence is requested at the appeal deadline and disclosed at the evidence deadline and the seller appeals at the renewed appeal deadline; in the review stages all but the last assignment time out; every assignment redelivers at the deadlines; the party review overturns and the tiebreak confirms; every review seal reopens once; the buyer opens no dispute on the sampled sale and claims only after the case is final. No actor spends marginBlocks, so the case ends at the latest caseHorizon - marginBlocks + kappa_Sigma after the bad settlement'
+- 'L_actual: over the effective-detection cases of the worst path in the D2 dry run, the largest (L_actual) and smallest (L_actual_min) of (confirmed-failure block - settlement block - kappa_Sigma), recorded in the operating point (L_actual_blocks value and min) before the main run; the positive controls are defined relative to L_actual_min and the M4 worst-path cell relative to L_actual, and they stay blocked until it is recorded'
+- 'The maximum-scale rule (decision 16, ADR 0022) is implemented in the contract; the honest arm runs one top-up policy only, and the scale-history branches it does not reach are covered by the unit and stateful contract tests'
+- 'exact_hold: the hold period is D at every point, including T_case, where the profile would otherwise keep its larger deployed hold'
+injected_fault:
+  process:
+  - seller
+  - keeper
+  kind: hold_period_grid
+  action: 'seller settles bad sales at Lambda_cheater (bucket_max: scale_factor * refillPpmPerBlock / PPM, bucket_max_x10 ten times that) until a settlement is refused; keepers spend the per-case budget keeper_delay_budget_blocks on the last keeper call before each confirmed failure, every other call prompt; with judgment_path worst every process follows its worst-path directive'
+  timing: continuously after registration
+parameters:
+  D_holding_blocks:
+    default: T_hold
+    unit: 'blocks (expression); T_min = L_min, T_stop = delta_F, T_catch = L, T_case = caseHorizon, T_hold = the deployed hold period'
+  exact_hold:
+    default: true
+  bad_sale_gain_atomic:
+    default: v
+    unit: token (the seller gain g per bad sale)
+  bond_fraction_of_g_over_p:
+    default: failureLimit
+    unit: 'multiple of g/p; failureLimit is k * g * ceil(1/p), one full failure window of penalties'
+  Lambda_cheater:
+    default: bucket_max
+    unit: 'settlements per block; 1/(10*p*D) the slow point of D3, rate:mean_14d_p99_top400 the p99 14-day average, bucket_max the sustained bucket rate scale_factor * r_fill, bucket_max_x10 ten times that (cap off only)'
+  scale_factor:
+    default: 1
+    unit: bond account scale factor n (bond = n * sellerPenalty; failure threshold n * failureLimit, ADR 0021 and 0022)
+  keeper_delay_budget_blocks:
+    default: 0
+    unit: 'blocks per case (kappa, the keeper delay sum kappa_Sigma of each case, spent on the last keeper call before its confirmed failure); keeper_margin = T_hold - T_case of the deployed profile (1,006 and 1,474); T_hold - L_actual is the slack the worst path actually leaves'
+  cap_enabled:
+    default: true
+  judgment_path:
+    default: normal
+    unit: 'normal or worst (worst-path directives to verifier, seller, keeper and buyer)'
+  freeze_on_initial_fail:
+    default: profile_default
+    unit: 'profile_default follows the controller rule (true below T_case); false keeps the production timing on the override build (positive control)'
+  seller_role:
+    default: cheater
+    unit: cheater or honest
+  honest_top_up_policy:
+    default: after_each_deduction_to_scale
+    unit: 'honest seller: top up to exactly scale_factor * sellerPenalty in the block after each deduction, never otherwise'
+cells:
+  M1-low-admissible:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    set:
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      D_holding_blocks:
+      - T_case
+      - T_hold
+  M1-low-comparison:
+    rate_class: low
+    repetitions: 30
+    set:
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      D_holding_blocks:
+      - T_min/2
+      - T_min
+      - T_stop
+      - (T_stop+T_catch)/2
+      - T_catch
+  M1-high-admissible:
+    rate_class: high
+    repetitions: 30
+    sweep:
+      D_holding_blocks:
+      - T_case
+      - T_hold
+      Lambda_cheater:
+      - rate:mean_14d_p99_top400
+      - bucket_max
+  M1-high-comparison:
+    rate_class: high
+    repetitions: 30
+    sweep:
+      D_holding_blocks:
+      - T_min/2
+      - T_min
+      - T_stop
+      - (T_stop+T_catch)/2
+      - T_catch
+      Lambda_cheater:
+      - rate:mean_14d_p99_top400
+      - bucket_max
+  M2-low:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    set:
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      D_holding_blocks:
+      - T_case
+      - T_hold
+      bond_fraction_of_g_over_p:
+      - 0.0
+      - 0.5
+      - 1.0
+  M2-high:
+    rate_class: high
+    repetitions: 30
+    sweep:
+      D_holding_blocks:
+      - T_case
+      - T_hold
+      bond_fraction_of_g_over_p:
+      - 0.0
+      - 0.5
+      - 1.0
+      Lambda_cheater:
+      - rate:mean_14d_p99_top400
+      - bucket_max
+  M3-low:
+    rate_class: low
+    repetitions: 30
+    note: 'Theorem 2 cell: no buyer disputes; the bond is the smallest the build admits'
+    set:
+      D_holding_blocks: T_min/2
+      cap_enabled: false
+      bond_fraction_of_g_over_p: 0.0
+      Lambda_cheater: 1/(10*p*D)
+  M3-high:
+    rate_class: high
+    repetitions: 30
+    note: 'Theorem 2 cell: no buyer disputes; the bond is the smallest the build admits'
+    set:
+      D_holding_blocks: T_min/2
+      cap_enabled: false
+      bond_fraction_of_g_over_p: 0.0
+    sweep:
+      Lambda_cheater:
+      - rate:mean_14d_p99_top400
+      - bucket_max
+  M4:
+    rate_class: high
+    repetitions: 30
+    note: 'Admissible profile with the rate cap off on the normal path: a check of the cap-off code path (exposure near zero is predicted); the introduction condition is judged in M4-worst'
+    set:
+      cap_enabled: false
+      bond_fraction_of_g_over_p: 1.0
+    sweep:
+      Lambda_cheater:
+      - bucket_max
+      - bucket_max_x10
+  M4-worst:
+    rate_class: high
+    repetitions: 100
+    note: 'Admissible profile with the rate cap off on the worst path, keeper delay T_hold - L_actual (the longest measured path) so the case ends at T_hold: the falsification condition of the introduction (exposure above what the bond covers with the cap off); every sampled bad sale is detected, so the predicted exposure is g*(1/s - 1) = 9g'
+    set:
+      cap_enabled: false
+      bond_fraction_of_g_over_p: 1.0
+      judgment_path: worst
+      keeper_delay_budget_blocks: T_hold-L_actual
+    sweep:
+      Lambda_cheater:
+      - bucket_max
+      - bucket_max_x10
+  P1-low:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    set:
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      scale_factor:
+      - 3
+      - 7
+  P1-high:
+    rate_class: high
+    repetitions: 30
+    sweep:
+      scale_factor:
+      - 3
+      - 7
+  P2-within-low:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    set:
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      keeper_delay_budget_blocks:
+      - keeper_margin/2
+      - keeper_margin
+  P2-within-high:
+    rate_class: high
+    repetitions: 30
+    sweep:
+      keeper_delay_budget_blocks:
+      - keeper_margin/2
+      - keeper_margin
+  P2-over-case-low:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    note: 'margin overrun at T_case (margin 0): outside the premise; reports releases_after_reentry'
+    set:
+      D_holding_blocks: T_case
+      keeper_delay_budget_blocks: 100
+      Lambda_cheater: 1/(10*p*D)
+  P2-over-case-high:
+    rate_class: high
+    repetitions: 30
+    note: 'margin overrun at T_case (margin 0): outside the premise; reports releases_after_reentry'
+    set:
+      D_holding_blocks: T_case
+      keeper_delay_budget_blocks: 100
+  P2-over-hold-low:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    note: 'margin overrun: outside the premise; reports releases_after_reentry'
+    set:
+      keeper_delay_budget_blocks: keeper_margin+100
+      Lambda_cheater: 1/(10*p*D)
+  P2-over-hold-high:
+    rate_class: high
+    repetitions: 30
+    note: 'margin overrun: outside the premise; reports releases_after_reentry'
+    set:
+      keeper_delay_budget_blocks: keeper_margin+100
+  P3:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    set:
+      bad_sale_gain_atomic: v/2
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      bond_fraction_of_g_over_p:
+      - 1.0
+      - failureLimit
+  P4-low:
+    rate_class: low
+    repetitions: 100
+    min_repetitions: 60
+    profile: open-weights-standard-v1
+    set:
+      Lambda_cheater: 1/(10*p*D)
+    sweep:
+      bond_fraction_of_g_over_p:
+      - 1.0
+      - failureLimit
+  P4-high:
+    rate_class: high
+    repetitions: 30
+    profile: open-weights-standard-v1
+    sweep:
+      bond_fraction_of_g_over_p:
+      - 1.0
+      - failureLimit
+  P5-margin:
+    rate_class: high
+    repetitions: 100
+    note: 'worst path with the keeper delay at the margin: no post-detection leak is predicted; the case ends G = T_hold - L_actual - kappa blocks before T_hold, so the predicted exposure is g*(1 - s)^(r*G + 1)/s (the worst path detects every sampled bad sale), at most 0.65g with G >= 500'
+    set:
+      judgment_path: worst
+      keeper_delay_budget_blocks: keeper_margin
+  P5-over:
+    rate_class: high
+    role: positive_control
+    repetitions: 30
+    note: 'positive control: worst path with the keeper delay 100 blocks past the slack the shortest measured path leaves (T_hold - L_actual_min + 100); a post-detection leak is predicted; the control fails if the leak is zero in every run'
+    set:
+      judgment_path: worst
+      keeper_delay_budget_blocks: T_hold-L_actual_min+100
+  P5-short-hold:
+    rate_class: high
+    role: positive_control
+    repetitions: 30
+    note: 'positive control: worst path, prompt keeper, hold period 100 blocks below the shortest measured path length (L_actual_min - 100) on the override build with the production freeze timing; the confirmed failure comes after the release of bad sales settled after the detected one; the control fails if the leak is zero in every run'
+    set:
+      judgment_path: worst
+      D_holding_blocks: L_actual_min-100
+      freeze_on_initial_fail: false
+  P6:
+    rate_class: high
+    repetitions: 100
+    note: 'corner: scale 7, keeper delay at the margin, worst path, bucket rate; predicted exposure g*(1 - s)^(r*G + 1)/s with G = T_hold - L_actual - kappa, near zero'
+    set:
+      judgment_path: worst
+      scale_factor: 7
+      keeper_delay_budget_blocks: keeper_margin
+  H:
+    rate_class: high
+    role: honest
+    repetitions: 10
+    note: 'honest arm; at least five complete failure windows per run; n = 7 may drop to five runs on the compute budget'
+    set:
+      seller_role: honest
+    sweep:
+      scale_factor:
+      - 1
+      - 3
+      - 7
+analysis:
+  honest_top_up_policy: 'after each per-failure deduction the owner tops up to exactly scale_factor * sellerPenalty in the next block; no other top-up, and the scale is never raised during a window, so under the maximum-scale rule of ADR 0022 the threshold is the one the window opened with'
+  conditions:
+    I6-F1:
+      statistic: 'mean released_exposure per episode (first and second episode judged apart)'
+      threshold: 'g/p, one-sided bootstrap, Holm per family'
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F2:
+      statistic: 'mean released_exposure per episode'
+      threshold: 'g/p_star_L with p_star_L the exact 95 percent lower bound of the cell realized detection rate (auxiliary)'
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F3:
+      statistic: 'mean released_exposure'
+      threshold: 'g*(1/p + n*(q + r_fill*(T_catch + kappa_hat - T_hold)+)) with kappa_hat the largest observed kappa_Sigma; point prediction g*(1/p + r_max*(T_catch + kappa_Sigma - T_hold)+)'
+      cells:
+      - M1-low-comparison
+      - M1-high-comparison
+    I6-F4:
+      statistic: 'mean episode_net_gain per episode'
+      threshold: '0, cells with B >= k*g*ceil(1/p)'
+      cells:
+      - M1-low-admissible
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F5:
+      statistic: 'mean episode_net_gain per episode'
+      threshold: 'g/p - B/k with k the profile failureLimit'
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F6:
+      statistic: 'upper 95 percent bound of mean released_exposure, runs without buyer disputes'
+      threshold: 'below g*(rbar*(T_min - T_hold) - 1) at any rate level'
+      cells:
+      - M3-low
+      - M3-high
+    I6-F8:
+      statistic: 'honest_sanctions_per_window'
+      threshold: 'any sanction at any scale (no correction)'
+      cells:
+      - H
+    I6-F9:
+      statistic: 'wrongful confirmed failures per sampled honest case'
+      threshold: '3*w1^2, one-sided exact binomial, Holm over the three scales'
+      cells:
+      - H
+    I6-F10:
+      statistic: 'realized_detection_rate pooled over the repetitions of a cell (numerator final FAIL and UNSERVED); the auxiliary estimator episodes / sum of first_detection_index (censored episodes included) is reported beside it'
+      threshold: 'below the analytical lower bound p_L = s*(h*(1 - beta))^2 of the injected s, h, beta; one-sided exact binomial, Holm over the admissible normal-path cells; the worst-path cells are descriptive (descriptive_cells): their directives detect every sampled bad sale, so their detection probability is s and they do not inject A6 and A7'' at equality'
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - P1-high
+      - P2-within-high
+      - P4-high
+      descriptive_cells:
+      - M4-worst
+      - P5-margin
+      - P6
+    I6-F11a:
+      statistic: 'case_path_minus_keeper (case_path_blocks minus kappa_Sigma) of every effective-detection case (final FAIL or UNSERVED)'
+      threshold: 'a single observation falsifies the window count of the case-horizon lemma: any effective-detection case with case_path_minus_keeper > T_case - marginBlocks; the fix is to the lemma and its window count; no Holm correction'
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F11b:
+      statistic: 'case_path_minus_keeper of every effective-detection case; post_detection_leak with keeper_delay_sum_max_blocks'
+      threshold: 'a single observation falsifies the admissibility condition: any effective-detection case with case_path_minus_keeper > T_case, or post_detection_leak > 0 in a run whose kappa_Sigma is at most the keeper margin; a leak in such a run without any case over T_case - marginBlocks is attributed to the freeze at the confirmed failure (contract or harness), not to the lemma; no Holm correction'
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-PC:
+      statistic: 'post_detection_leak per run of a positive-control cell'
+      threshold: 'a positive control fails if L = 0 (post_detection_leak zero) in every run of the cell; then the harness did not reach the boundary and the I6 results are not used. It passes otherwise; with L > 0 in fewer than 27 of 30 runs it is marked passed, cause under investigation, with the path length and kappa_Sigma of the runs with L = 0'
+      cells:
+      - P5-over
+      - P5-short-hold
+  holm_families:
+    I6-F1-episode1-low:
+      condition: I6-F1
+      episode: 1
+      rate_class: low
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+    I6-F1-episode1-high:
+      condition: I6-F1
+      episode: 1
+      rate_class: high
+      cells:
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F1-episode2-low:
+      condition: I6-F1
+      episode: 2
+      rate_class: low
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+    I6-F1-episode2-high:
+      condition: I6-F1
+      episode: 2
+      rate_class: high
+      cells:
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F4-episode1-low:
+      condition: I6-F4
+      episode: 1
+      rate_class: low
+      cells:
+      - M1-low-admissible
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+    I6-F4-episode1-high:
+      condition: I6-F4
+      episode: 1
+      rate_class: high
+      cells:
+      - M1-high-admissible
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F4-episode2-low:
+      condition: I6-F4
+      episode: 2
+      rate_class: low
+      cells:
+      - M1-low-admissible
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+    I6-F4-episode2-high:
+      condition: I6-F4
+      episode: 2
+      rate_class: high
+      cells:
+      - M1-high-admissible
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F5-episode1-low:
+      condition: I6-F5
+      episode: 1
+      rate_class: low
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+    I6-F5-episode1-high:
+      condition: I6-F5
+      episode: 1
+      rate_class: high
+      cells:
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F5-episode2-low:
+      condition: I6-F5
+      episode: 2
+      rate_class: low
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+    I6-F5-episode2-high:
+      condition: I6-F5
+      episode: 2
+      rate_class: high
+      cells:
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F2-all:
+      condition: I6-F2
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - M4-worst
+      - P1-high
+      - P2-within-high
+      - P4-high
+      - P5-margin
+      - P6
+    I6-F3-comparison:
+      condition: I6-F3
+      cells:
+      - M1-low-comparison
+      - M1-high-comparison
+    I6-F6-rates:
+      condition: I6-F6
+      cells:
+      - M3-low
+      - M3-high
+    I6-F9-scales:
+      condition: I6-F9
+      cells:
+      - H
+    I6-F10-admissible:
+      condition: I6-F10
+      cells:
+      - M1-low-admissible
+      - M2-low
+      - P1-low
+      - P2-within-low
+      - P3
+      - P4-low
+      - M1-high-admissible
+      - M2-high
+      - M4
+      - P1-high
+      - P2-within-high
+      - P4-high
+  pruning:
+    order:
+    - P2-within-low
+    - P2-over-case-low
+    - P2-over-hold-low
+    - P3
+    - P4-low
+    - M2-low
+    - P1-low
+    - M1-low-admissible
+    reduced_repetitions: 60
+    min_repetitions: 60
+    min_second_episode_runs: 30
+n_seeds: 30
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - effective_hold_period_blocks
+  - configured_settlement_rate
+  - achieved_settlement_rate
+  - freeze_on_initial_fail
+  - keeper_delay_sum_blocks
+  - honest_sanctions_per_window
+  - seller_penalty_charged
+  - final_failure_count
+  - second_episode_exposure
+  - second_episode_net_gain
+  - post_detection_leak
+  - releases_after_reentry
+  - keeper_delay_sum_max_blocks
+  - honest_top_up_count
+  - honest_max_window_scale
+  - worst_path_case_blocks
+  - case_path_blocks
+  - case_path_minus_keeper
+  - first_detection_index
+  - episode_net_gain
+expected_outcome: 'Admissible cells with the keeper delay within the margin (M4-worst: within the slack T_hold - L_actual the measured path leaves): released exposure per episode at most g/p at every rate, scale and bond (the low-rate cells show the g/p term; the high-rate cells are near zero), including M4 and M4-worst with the cap off (M4-worst about 9g) and the worst-path cells P5-margin and P6; no effective-detection case with case_path_minus_keeper above T_case - marginBlocks; net gain per episode negative at B >= k*g*ceil(1/p) and at most g/p - B/k everywhere; realized detection rate at least s*(h*(1 - beta))^2 on the normal path (s on the worst path). Comparison cells: exposure at most g*(1/p + n*(q + r_fill*(T_catch + kappa - T_hold)+)). Positive controls P5-over and P5-short-hold (defined relative to L_actual_min): a post-detection leak; a control fails only if the leak is zero in every run, and is marked for investigation with a leak in fewer than 27 of 30 runs. Honest arm: no sanction at scale 1, 3 or 7 and wrongful confirmed failures per sampled case at most 3*w1^2.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Result table, one row per point of a cell, with the first and second episode apart: released_exposure, second_episode_exposure, post_detection_leak, episode_net_gain and second_episode_net_gain as mean and 95 percent interval (bootstrap over runs, 10,000 resamples) with the repetition count; configured and achieved settlement rate; realized_detection_rate pooled with its exact interval beside s*(h*(1 - beta))^2, p and p*; keeper_delay_sum_max_blocks and the number of runs past the margin; case_path_blocks and case_path_minus_keeper per effective-detection case beside T_case - marginBlocks, T_case and L_actual (the dry run records its largest and smallest value); releases_after_reentry in the margin-overrun cells; the honest-arm window counts, honest_top_up_count and honest_max_window_scale. The conditions, families and pruning rule are in analysis; only fault_observed failures and assignment gaps explained by harness logs take a run outside the premise, and a low realized detection rate is never an exclusion.'
+notes: 'Planned only; do not run until the services read directives (D2). The worst-path directives are planned by the controller (experiments/controller/worstpath.py) and are part of the D2 completion condition, which includes recording L_actual from the dry run of the worst path; the L_actual-relative values of P5-over, P5-short-hold and M4-worst are resolved from it and recorded before the main run. Cells below T_case use the override build with freezeOnInitialFail = true except P5-short-hold, which keeps the production timing to show the leak; P4 cells run only when the controller is started with --profile-name open-weights-standard-v1. Low-rate cells are pruned in the analysis.pruning order to 60 repetitions (never below) if the compute budget requires, and second-episode judgments need at least 30 runs with a finished second episode.'

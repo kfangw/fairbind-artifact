@@ -1,0 +1,16 @@
+{
+ "bad_sales_m": null,
+ "bad_sales_rule": "all_cheater_episode_sales",
+ "cell": "P2-high",
+ "events": [],
+ "parameters": {
+  "bad_sale_gain_atomic": 10000,
+  "finite_attack_after": "none",
+  "judgment_path": "normal",
+  "keeper_delay_budget_blocks": 100,
+  "scale_factor": 1,
+  "seller_role": "cheater"
+ },
+ "run_id": "I6-cheater-r0",
+ "scenario": "I6"
+}

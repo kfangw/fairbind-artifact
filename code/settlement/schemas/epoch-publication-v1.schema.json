@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fairbind:epoch-publication:v1",
+  "title": "FairBind Epoch Publication Manifest Version 1",
+  "type": "object",
+  "required": [
+    "version",
+    "sellerId",
+    "profileId",
+    "epoch",
+    "root",
+    "count",
+    "entriesUri",
+    "entriesHash",
+    "createdAt"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "sellerId": { "$ref": "#/$defs/uint32" },
+    "profileId": { "$ref": "#/$defs/uint32" },
+    "epoch": { "type": "integer", "minimum": 0, "maximum": 16777215 },
+    "root": { "$ref": "#/$defs/bytes32" },
+    "count": { "$ref": "#/$defs/uint32" },
+    "entriesUri": {
+      "type": "string",
+      "pattern": "^(https://|ipfs://)[^\\s]+$",
+      "maxLength": 2048
+    },
+    "entriesHash": { "$ref": "#/$defs/bytes32" },
+    "createdAt": { "type": "string", "pattern": "^(0|[1-9][0-9]*)$" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "bytes32": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+    "uint32": { "type": "integer", "minimum": 0, "maximum": 4294967295 }
+  }
+}

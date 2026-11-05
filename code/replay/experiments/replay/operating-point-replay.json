@@ -1,0 +1,332 @@
+{
+  "formatVersion": 1,
+  "kind": "fairbind-operating-point",
+  "description": "Operating point of the settlement replay: the shared operating point (experiments/operating-point.json) with profile_file set to the replay profile and failureLimit set to its value there. Built by experiments/replay/replay_profile.py; used only by experiments/replay.",
+  "profile_file": "experiments/replay/replay-profile-v1.json",
+  "shared_profile": "data-api-fast-v1",
+  "shared_profile_note": "Every arm, fairbind and baseline, is compared at the data-api-fast-v1 values. The open-weights column is used only by a run started with --profile-name open-weights-standard-v1.",
+  "chain": {
+    "block_seconds": 2,
+    "token_decimals": 6,
+    "ppm": 1000000
+  },
+  "profiles": {
+    "data-api-fast-v1": {
+      "g_atomic": {
+        "value": 10000,
+        "status": "design",
+        "source": "profile maxBadGain (0.01 USDC)"
+      },
+      "v_atomic": {
+        "value": 10000,
+        "status": "design",
+        "source": "profile maxPurchaseValue; equals the measured median price (prices.median_price_atomic)"
+      },
+      "pi": {
+        "value": 0.1,
+        "status": "design",
+        "source": "profile samplePpm / PPM"
+      },
+      "h": {
+        "value": 0.67,
+        "status": "assumption",
+        "source": "honest verifier bond share assumed by the profile; not measured"
+      },
+      "beta": {
+        "value": 0.05,
+        "status": "assumption",
+        "source": "predicate false-pass rate; placeholder until measured"
+      },
+      "alpha": {
+        "value": 0.01,
+        "status": "assumption",
+        "source": "predicate false-fail rate; placeholder until measured"
+      },
+      "c": {
+        "value": 0.1,
+        "status": "assumption",
+        "source": "rate at which a dishonest verifier issues a wrongful FAIL"
+      },
+      "p_ceiling": {
+        "value": 0.04,
+        "status": "design",
+        "source": "profile effectivePpm / PPM; set at or below the bound pi * (h * (1 - beta))^2",
+        "bound": 0.0405
+      },
+      "L_blocks": {
+        "value": 9380,
+        "status": "derived",
+        "source": "judgmentDelayBlocks = openHorizon + judgmentHorizon + appealHorizon + 1 (profile-v1 section 3); appealHorizon budgets the party review and its tiebreak (ADR 0019)"
+      },
+      "delta_F_blocks": {
+        "value": 3971,
+        "status": "derived",
+        "source": "worst-case delay from a bad settlement to the freeze at its initial FAIL under freezeOnInitialFail = true (the override build used by the deferral sweep) = openHorizon + maxAssignments * (judgeBlocks + 1) + evidenceBlocks; a production profile (freezeOnInitialFail = false) freezes at the confirmed failure, at most L"
+      },
+      "L_min_blocks": {
+        "value": 1168,
+        "status": "derived",
+        "source": "lower bound on that delay whatever the seller does = epochBlocks + anchorBlocks + beaconDelayBlocks"
+      },
+      "caseHorizon_blocks": {
+        "value": 58994,
+        "status": "derived",
+        "source": "caseHorizon (profile-v1 section 3); each of the two review seals may reopen once (ADR 0021)"
+      },
+      "L_actual_blocks": {
+        "value": 29680,
+        "min": 29680,
+        "status": "measured",
+        "source": "blocks from the settlement of a sampled bad sale (first block of its epoch) to its confirmed failure (FINAL(FAIL), bond frozen, claim window open), keeper delay excluded, on the worst judgment path of experiments/controller/worstpath.py with every actor at the last admitted block: sampled, opened at the end of the open window, every assignment of every stage redelivers through serve, challenge and publication at their deadlines; in the initial stage the first two assignments deliver FAIL at the judge deadline, evidence is requested at the appeal deadline and the assignment is voided by timeoutEvidence in the block after the evidence deadline, the last one delivers FAIL, evidence is requested at the appeal deadline and disclosed at the evidence deadline and the seller appeals at the renewed appeal deadline; in the review stages all but the last assignment time out at the judge deadline; each review seal lapses once. value is the largest and min the smallest over the measured effective-detection cases (the positive controls use min, M4-worst uses value); the contract path is deterministic, so they are equal. Measured on the contract by contracts/test/WorstPathLength.t.sol:test_worstPath_dataApi; caseHorizon - marginBlocks - L_actual = 28814. Shorter sampled variant measured by the same file: non-last initial assignments time out at the judge deadline (25480). A case opened by a buyer WRONG_DELIVERY dispute at the end of the claim window of an unsampled sale is not a sampled path and is recorded apart (29672). Reproduced by the service harness dry run (services/internal/integration/worstpath_test.go, TestWorstPathDirectiveDataAPI): every service carries out the worst-path directive on Anvil; the one effective-detection case gives case_path_minus_keeper 29680 with keeper_delay_budget_blocks 0 (L 29680) and 100 (L 29780, keeper_delay_sum_blocks 100), so the dry-run min and max equal the contract value."
+      },
+      "L_enumerated_longest_blocks": {
+        "value": 29680,
+        "status": "documented variant",
+        "source": "longest path from a settlement to a confirmed failure over every case path the contract admits, enumerated by experiments/case_paths.py with every actor at the last admitted block and prompt public calls; attained by test_worstPath_dataApi (sampled, 29680); the dispute-opened variant test_disputeOpenedVariant_dataApi is 29672; measured by contracts/test/WorstPathLength.t.sol. A documented variant only: no scenario symbol reads it and it does not replace L_actual_blocks. caseHorizon - marginBlocks - value = 28814."
+      },
+      "keeper_margin_blocks": {
+        "value": 1006,
+        "status": "derived",
+        "source": "hold_period - caseHorizon: the blocks by which keepers may be late at every step of a case before a release could precede the confirmed failure (ADR 0021 keeps it at least 410)"
+      },
+      "hold_period_blocks": {
+        "value": 60000,
+        "status": "design",
+        "source": "profile deferBlocks = retentionBlocks = claimWindowBlocks = failureWindowBlocks = inconclusiveWindowBlocks: the next multiple of 1000 that keeps the keeper margin hold_period - caseHorizon at least 410 blocks (1006); the admissible hold period"
+      },
+      "failureLimit": {
+        "value": 27,
+        "status": "design",
+        "source": "replay profile failureLimit: the R20 pre-certification default k (R20 design V6, 9.1 (failure limit 27 / 45) and 9.3 (data-API enforcementBlocks 13,700)); the shared profile derives 16 from failureLimitBasis"
+      },
+      "lambda_max_per_block": {
+        "value": 0.06,
+        "status": "design",
+        "source": "profile maxRatePpmPerBlock / PPM, per unit of sellerPenalty in the bond account"
+      },
+      "refill_per_block": {
+        "value": 0.05,
+        "status": "design",
+        "source": "profile refillPpmPerBlock / PPM, per unit of sellerPenalty"
+      },
+      "bucket_capacity": {
+        "value": 20,
+        "status": "design",
+        "source": "profile bucketCapacity, per unit of sellerPenalty"
+      },
+      "g_over_p_atomic": {
+        "value": 250000,
+        "status": "derived",
+        "source": "g * ceil(1 / p_ceiling) = expectedPenaltyFloor at D >= L"
+      }
+    },
+    "open-weights-standard-v1": {
+      "g_atomic": {
+        "value": 100000,
+        "status": "design",
+        "source": "profile maxBadGain (0.1 USDC)"
+      },
+      "v_atomic": {
+        "value": 100000,
+        "status": "design",
+        "source": "profile maxPurchaseValue"
+      },
+      "pi": {
+        "value": 0.1,
+        "status": "design",
+        "source": "profile samplePpm / PPM"
+      },
+      "h": {
+        "value": 0.67,
+        "status": "assumption",
+        "source": "honest verifier bond share assumed by the profile; not measured"
+      },
+      "beta": {
+        "value": 0.05,
+        "status": "assumption",
+        "source": "predicate false-pass rate; placeholder until measured"
+      },
+      "alpha": {
+        "value": 0.01,
+        "status": "assumption",
+        "source": "predicate false-fail rate; placeholder until measured"
+      },
+      "c": {
+        "value": 0.1,
+        "status": "assumption",
+        "source": "rate at which a dishonest verifier issues a wrongful FAIL"
+      },
+      "p_ceiling": {
+        "value": 0.02,
+        "status": "design",
+        "source": "profile effectivePpm / PPM; set below the bound pi * (h * (1 - beta))^2",
+        "bound": 0.0405
+      },
+      "L_blocks": {
+        "value": 41412,
+        "status": "derived",
+        "source": "judgmentDelayBlocks (profile-v1 section 3); appealHorizon budgets the party review and its tiebreak (ADR 0019)"
+      },
+      "delta_F_blocks": {
+        "value": 18003,
+        "status": "derived",
+        "source": "openHorizon + maxAssignments * (judgeBlocks + 1) + evidenceBlocks"
+      },
+      "L_min_blocks": {
+        "value": 2668,
+        "status": "derived",
+        "source": "epochBlocks + anchorBlocks + beaconDelayBlocks"
+      },
+      "caseHorizon_blocks": {
+        "value": 130526,
+        "status": "derived",
+        "source": "caseHorizon (profile-v1 section 3); each of the two review seals may reopen once (ADR 0021)"
+      },
+      "L_actual_blocks": {
+        "value": 91180,
+        "min": 91180,
+        "status": "measured",
+        "source": "blocks from the settlement of a sampled bad sale (first block of its epoch) to its confirmed failure (FINAL(FAIL), bond frozen, claim window open), keeper delay excluded, on the worst judgment path of experiments/controller/worstpath.py with every actor at the last admitted block: sampled, opened at the end of the open window, every assignment of every stage redelivers through serve, challenge and publication at their deadlines; in the initial stage the first two assignments deliver FAIL at the judge deadline, evidence is requested at the appeal deadline and the assignment is voided by timeoutEvidence in the block after the evidence deadline, the last one delivers FAIL, evidence is requested at the appeal deadline and disclosed at the evidence deadline and the seller appeals at the renewed appeal deadline; in the review stages all but the last assignment time out at the judge deadline; each review seal lapses once. value is the largest and min the smallest over the measured effective-detection cases (the positive controls use min, M4-worst uses value); the contract path is deterministic, so they are equal. Measured on the contract by contracts/test/WorstPathLength.t.sol:test_worstPath_openWeights; caseHorizon - marginBlocks - L_actual = 38346. Shorter sampled variant measured by the same file: non-last initial assignments time out at the judge deadline (83980). A case opened by a buyer WRONG_DELIVERY dispute at the end of the claim window of an unsampled sale is not a sampled path and is recorded apart (91712). Reproduced by the service harness dry run (services/internal/integration/worstpath_test.go, TestWorstPathDirectiveOpenWeightsTiming) on the epoch, deadlines and maxAssignments of this profile judged by the data predicate: case_path_minus_keeper 91180 with keeper_delay_budget_blocks 0, so the dry-run min and max equal the contract value."
+      },
+      "L_enumerated_longest_blocks": {
+        "value": 91712,
+        "status": "documented variant",
+        "source": "longest path from a settlement to a confirmed failure over every case path the contract admits, enumerated by experiments/case_paths.py with every actor at the last admitted block and prompt public calls; attained by test_disputeOpenedVariant_openWeights (a buyer WRONG_DELIVERY dispute opened at claimUntil = responseBlocks + claimBlocks = 5400, later than the sampled opening at 4868); the longest sampled path is L_actual (91180); measured by contracts/test/WorstPathLength.t.sol. A documented variant only: no scenario symbol reads it and it does not replace L_actual_blocks. caseHorizon - marginBlocks - value = 37814."
+      },
+      "keeper_margin_blocks": {
+        "value": 1474,
+        "status": "derived",
+        "source": "hold_period - caseHorizon (ADR 0021 keeps it at least 878)"
+      },
+      "hold_period_blocks": {
+        "value": 132000,
+        "status": "design",
+        "source": "profile deferBlocks = retentionBlocks = claimWindowBlocks = failureWindowBlocks = inconclusiveWindowBlocks: the next multiple of 1000 that keeps the keeper margin at least 878 blocks (1474)"
+      },
+      "failureLimit": {
+        "value": 45,
+        "status": "design",
+        "source": "replay profile failureLimit: the R20 pre-certification default k (R20 design V6, 9.1 (failure limit 27 / 45) and 9.3 (data-API enforcementBlocks 13,700)); the shared profile derives 27 from failureLimitBasis"
+      },
+      "lambda_max_per_block": {
+        "value": 0.06,
+        "status": "design",
+        "source": "profile maxRatePpmPerBlock / PPM, per unit of sellerPenalty"
+      },
+      "refill_per_block": {
+        "value": 0.05,
+        "status": "design",
+        "source": "profile refillPpmPerBlock / PPM, per unit of sellerPenalty"
+      },
+      "bucket_capacity": {
+        "value": 20,
+        "status": "design",
+        "source": "profile bucketCapacity, per unit of sellerPenalty"
+      },
+      "g_over_p_atomic": {
+        "value": 5000000,
+        "status": "derived",
+        "source": "g * ceil(1 / p_ceiling)"
+      }
+    }
+  },
+  "rates": {
+    "dataset": "Dune, Base USDC transferWithAuthorization calls through 20 facilitator addresses, 2026-09-08 to 2026-09-22 (14 days), 683,553 settlements, 4,400 receiving addresses (queries 8803478 and 8803526)",
+    "unit": "settlements per hour; the controller converts to settlements per block with chain.block_seconds",
+    "named": {
+      "top_seller_14d_mean": {
+        "per_hour": 556.8,
+        "status": "measured",
+        "source": "14-day mean rate of the receiving address with the most settlements (all hours of the 14 days in the denominator)"
+      },
+      "top_seller_active_hour": {
+        "per_hour": 544,
+        "status": "measured, unreconciled",
+        "source": "mean rate of the top address over the hours in which it settled at least once, as reported with the same dataset; its own peak hour is 1,458 per hour (ratio about 2.7). It is below that address's 14-day mean, so the two were computed over different hour sets; recompute from the hourly series before relying on it"
+      },
+      "top_seller_peak_hour": {
+        "per_hour": 1458,
+        "status": "measured",
+        "source": "highest one-hour count of the address with the most settlements"
+      },
+      "mean_14d_p99_top400": {
+        "per_hour": 84.8,
+        "status": "measured",
+        "source": "99th percentile of the 14-day mean rate within the 400 addresses with the most settlements (percentiles_within_top_400.mean_14d_per_hour.p99); the middle rate level of the I6 grid"
+      },
+      "peak_hour_p99": {
+        "per_hour": 98,
+        "status": "measured",
+        "source": "99th percentile over all 4,400 addresses of each address's highest one-hour count; the default percentile for bucket capacity"
+      },
+      "peak_hour_max": {
+        "per_hour": 4201,
+        "status": "measured",
+        "source": "highest one-hour count of any address"
+      }
+    },
+    "percentiles_within_top_400": {
+      "note": "Percentiles inside the 400 addresses with the most settlements, not over all 4,400 addresses; the p99 here is near rank 4 of 4,400.",
+      "mean_14d_per_hour": {
+        "p50": 0.205,
+        "p90": 2.56,
+        "p99": 84.8,
+        "max": 556.8
+      },
+      "peak_hour_per_hour": {
+        "p50": 14.0,
+        "p90": 117.9,
+        "p99": 1466.6,
+        "max": 4201
+      }
+    },
+    "concentration": {
+      "top_1pct_share_of_settlements": 0.925,
+      "source": "same dataset"
+    }
+  },
+  "prices": {
+    "median_price_atomic": {
+      "value": 10000,
+      "status": "measured",
+      "source": "median settlement amount in the same dataset (0.01 USDC)"
+    }
+  },
+  "replaced_values": {
+    "note": "Values carried by the earlier shared baseline constants that conflicted with this file and are no longer used anywhere.",
+    "n_sellers": {
+      "old": 348,
+      "reason": "one day of a third-party payment graph; replaced by the 14-day ledger count of 4,400 receiving addresses"
+    },
+    "lambda_mean_per_hour_top_seller": {
+      "old": 107.5,
+      "reason": "one-day mean from the same graph; replaced by rates.named.top_seller_14d_mean"
+    },
+    "effective_p": {
+      "old": 0.0731,
+      "reason": "earlier h = 0.9 placeholder; replaced by p_ceiling"
+    },
+    "L_blocks": {
+      "old": 5400,
+      "reason": "three-hour placeholder; replaced by L_blocks derived from the profile"
+    },
+    "g_atomic_and_v_atomic": {
+      "old": 1000000,
+      "reason": "1 USDC placeholder; replaced by the profile maxBadGain and maxPurchaseValue"
+    },
+    "d_sweep_points_blocks": {
+      "old": [
+        0,
+        2700,
+        5400,
+        10800
+      ],
+      "reason": "replaced by the deferral grid in experiments/scenarios/README.md"
+    }
+  },
+  "derivedFrom": {
+    "file": "experiments/operating-point.json",
+    "sha256": "27d5784220b7cbfb0ccf81f8efa832f68dd8472e05a406bdae54e60d04d30622",
+    "source": "R20 design V6, 9.1 (failure limit 27 / 45) and 9.3 (data-API enforcementBlocks 13,700)"
+  }
+}

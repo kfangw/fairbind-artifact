@@ -1,0 +1,44 @@
+Release units in the reference settlement contract: how each file here was made.
+Code: branch release-units, commit 30c79b9 (contracts and client), on vrf 7a96ae5.
+Tools: forge 1.7.1, solc 0.8.24 (sdk profile: via-IR, optimizer runs 1, Osaka), node 22.23.4, anvil 1.7.1.
+
+sizes.txt
+  FOUNDRY_PROFILE=sdk forge build --sizes   (the two contracts' rows; vrf 7a96ae5 for comparison)
+
+forge-sdk-all.log      all sdk-profile tests, local (fork tests skip without a fork)
+  FOUNDRY_PROFILE=sdk forge test
+
+forge-sdk-fork.log     the fork tests on a Base fork (block 52977000), throwaway VRF proving key (not kept)
+  VRF_KEY=<throwaway key file> FOUNDRY_PROFILE=sdk forge test \
+    --match-path "contracts/test/sdk/{vrf/VrfFork,Erc1271ForkGas}.t.sol" \
+    --fork-url https://mainnet.base.org --fork-block-number 52977000 --ffi -vv
+
+forge-g7-provecall.log the g7-profile test that builds on the reference contract
+  FOUNDRY_PROFILE=g7 forge test --match-path contracts/test/g7/ProveCall.t.sol -vv
+
+forge-release-gas-load.log   release gas by sales per call, and the 2,000-sale load, each call its own transaction
+  FOUNDRY_PROFILE=sdk forge test --isolate --gas-limit 9223372036854775807 \
+    --match-path "contracts/test/sdk/Release{Gas,Load}.t.sol" -vv
+  (the raised gas limit is the test's own budget for building 2,000 sales; every
+  measured call asserts its transaction gas < 2^24)
+
+release-gas-fit.txt   least-squares fits of the rows above, against the cost model and the earlier contract
+  python3 scripts/fit_release_gas.py logs/release-units/forge-release-gas-load.log \
+    logs/release-units/old-contract/forge-old-release.log
+
+old-contract/          the earlier contract's single cursor call (vrf 7a96ae5), measured with
+  OldLoad.t.sol.txt and OldBase.sol.txt placed under contracts/test/sdk/oldload/ of a vrf
+  checkout (not committed there) and
+  FOUNDRY_PROFILE=sdk forge test --isolate --gas-limit 9223372036854775807 \
+    --match-path contracts/test/sdk/oldload/OldLoad.t.sol -vv
+
+e2e-k1.log, e2e-k1-result.json   end-to-end run, k = 1 (Base fork, VRFCoordinatorV2_5Mock)
+  cd adapters/signing-client && E2E_K=1 ./run_e2e.sh      (result: e2e-out/result.json, copied)
+e2e-k2.log, e2e-k2-result.json   the same with E2E_K=2
+e2e-k1-try1-timeout.log, e2e-k1-try1-timeout-result.json   the first k = 1 run at the same commit:
+  13/15, the two misses (E5b, (c)) because a seller's handler timed out waiting for a
+  transaction on the fork ("Timed out while waiting for transaction ... to be confirmed",
+  sellerLog), so the buyer got no receipt; the rerun (e2e-k1.log) is 15/15 and k = 2 is 15/15.
+
+The forge logs were made from the working tree that was then committed unchanged as 30c79b9;
+the end-to-end runs record revision 30c79b9 and dirty = false.

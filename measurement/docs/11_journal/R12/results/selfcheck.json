@@ -1,0 +1,17 @@
+{
+ "registration_sha256": "f01f8f753b97faf7bb80d626b50582a1a3c3719831414f8c408bd5609dfbe3f7",
+ "synthetic_windows": [
+  "median",
+  "busy"
+ ],
+ "verdict_paths_present": true,
+ "outputs_present": true,
+ "g3_records_equal": true,
+ "flags_as_registered": true,
+ "changed_for_synthetic": [
+  "input hashes, prior row counts and dates, S1r counts not checked",
+  "bridge expectation taken from the synthetic bridge run (G2b vacuous)",
+  "every address in S1 (no stored edition-7 output)",
+  "address count of the synthetic list"
+ ]
+}

@@ -1,0 +1,516 @@
+[
+ {
+  "name": "E5dkey-0-rdlNone",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "HON",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 0,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": true,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 145030,
+  "edges": 212176,
+  "finals": 18546,
+  "outcomes": {
+   "(('OBL', 'PAID'),)": 18546
+  },
+  "honest_reverts": {
+   "honest_revert:W1:ND_P:record": 390,
+   "honest_revert:W2:ND_P:record": 260
+  },
+  "complete": true,
+  "violations": [
+   "S2"
+  ],
+  "traces": {
+   "S2": [
+    "init B1:OBL ctgood=1 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: net: sigma_B reaches W2",
+    "b4: net: ack of W2 reaches B1",
+    "b4: net: sigma_B reaches W1",
+    "b4: net: ack of W1 reaches B1",
+    "b4: S anchor beta=[0] u=[0]",
+    "b6: X open KEY_T (B1)",
+    "b6: S proof publish=True",
+    "b8: net: k reaches B1",
+    "b8: S answer K",
+    "end: B1(OBL) term=('PAID', 12, 'cursor') signed=1 anc=(4, 0, False, False) rs=1 rs_ok=True koff=good ctgood=True pub=None rec=None a_ctk=None a_k=8 a_sig=None dch=() slots={'KEY_T': (6, 'X', 0, 6, 10, 'answered', False)} deps={'KEY_T': 'seller'} gas=1 tp_in=0 sb_seller=4 acks=(4, 4) wt_has=(4, 4) notes=()"
+   ]
+  },
+  "seconds": 6.5
+ },
+ {
+  "name": "E5dkey-0-rdl3",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": 3,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "HON",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 0,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": true,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 326725,
+  "edges": 454660,
+  "finals": 44996,
+  "outcomes": {
+   "(('OBL', 'PAID'),)": 36764,
+   "(('OBL', 'REFUND'),)": 8232
+  },
+  "honest_reverts": {},
+  "complete": true,
+  "violations": [
+   "S2"
+  ],
+  "traces": {
+   "S2": [
+    "init B1:OBL ctgood=1 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: net: sigma_B reaches W2",
+    "b4: net: ack of W2 reaches B1",
+    "b4: net: sigma_B reaches W1",
+    "b4: net: ack of W1 reaches B1",
+    "b4: S anchor beta=[0] u=[0]",
+    "b6: X open KEY_T (B1)",
+    "b6: S proof publish=True",
+    "b8: net: k reaches B1",
+    "b8: S answer K",
+    "end: B1(OBL) term=('PAID', 12, 'cursor') signed=1 anc=(4, 0, False, False) rs=1 rs_ok=True koff=good ctgood=True pub=None rec=None a_ctk=None a_k=8 a_sig=None dch=() slots={'KEY_T': (6, 'X', 0, 6, 10, 'answered', False)} deps={'KEY_T': 'seller'} gas=1 tp_in=0 sb_seller=4 acks=(4, 4) wt_has=(4, 4) notes=()"
+   ]
+  },
+  "seconds": 12.8
+ },
+ {
+  "name": "E5dkey-1-rdlNone",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "HON",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": true,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 145030,
+  "edges": 212176,
+  "finals": 18546,
+  "outcomes": {
+   "(('OBL', 'PAID'),)": 18546
+  },
+  "honest_reverts": {
+   "honest_revert:W1:ND_P:record": 390,
+   "honest_revert:W2:ND_P:record": 260
+  },
+  "complete": true,
+  "violations": [],
+  "traces": {},
+  "seconds": 5.6
+ },
+ {
+  "name": "E5dkey-1-rdl3",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": 3,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "HON",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": true,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 326725,
+  "edges": 454660,
+  "finals": 44996,
+  "outcomes": {
+   "(('OBL', 'PAID'),)": 36764,
+   "(('OBL', 'REFUND'),)": 8232
+  },
+  "honest_reverts": {},
+  "complete": true,
+  "violations": [],
+  "traces": {},
+  "seconds": 16.3
+ },
+ {
+  "name": "E5dkey-2-rdlNone",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "HON",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 2,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": true,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 145030,
+  "edges": 212176,
+  "finals": 18546,
+  "outcomes": {
+   "(('OBL', 'PAID'),)": 18546
+  },
+  "honest_reverts": {
+   "honest_revert:W1:ND_P:record": 390,
+   "honest_revert:W2:ND_P:record": 260
+  },
+  "complete": true,
+  "violations": [],
+  "traces": {},
+  "seconds": 7.3
+ },
+ {
+  "name": "E5dkey-2-rdl3",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": 3,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "HON",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 2,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": true,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 326725,
+  "edges": 454660,
+  "finals": 44996,
+  "outcomes": {
+   "(('OBL', 'PAID'),)": 36764,
+   "(('OBL', 'REFUND'),)": 8232
+  },
+  "honest_reverts": {},
+  "complete": true,
+  "violations": [],
+  "traces": {},
+  "seconds": 14.6
+ }
+]

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fairbind:x402:settlement:v1",
+  "title": "FairBind x402 Settlement Information Version 1",
+  "type": "object",
+  "required": [
+    "version",
+    "purchase",
+    "keyId",
+    "sellerId",
+    "profileId",
+    "epoch",
+    "financialState"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "purchase": {
+      "$ref": "#/$defs/bytes32"
+    },
+    "keyId": {
+      "$ref": "#/$defs/bytes32"
+    },
+    "sellerId": {
+      "$ref": "#/$defs/uint32"
+    },
+    "profileId": {
+      "$ref": "#/$defs/uint32"
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 16777215
+    },
+    "financialState": {
+      "const": "DEFERRED"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "bytes32": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "uint32": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    }
+  }
+}

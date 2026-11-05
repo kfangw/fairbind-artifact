@@ -1,0 +1,58 @@
+id: A1
+name: Buyer false non-delivery claim
+property_under_test:
+- P3
+preconditions:
+- The seller delivers the response normally and issues a receipt
+- The buyer opens a NON_DELIVERY dispute although it received the response
+injected_fault:
+  process: buyer
+  kind: false_non_delivery_claim
+  action: buyer opens dispute(NON_DELIVERY) despite having received the response, paying the dispute deposit
+  timing: before claimUntil, after actual receipt
+parameters:
+  dispute_deposit:
+    default: profile_default
+    unit: token
+  false_claim_rate:
+    default: 1.0
+    sweep:
+    - 0.0
+    - 0.5
+    - 1.0
+    unit: fraction of purchases
+n_seeds: 3
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - false_claim_deposit_forfeiture_rate
+expected_outcome: The seller answers requestServe with served(). If the buyer does not escalate, or escalates and the published response matches the receipt hash, the case ends DELIVERED and the dispute deposit goes to the seller. The seller loses nothing.
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: At every false_claim_rate point the honest seller has zero net loss (false_positive_recovery_amount == 0) and the buyer dispute deposit is transferred to the seller.
+notes: 'Checks honest-seller protection against a buyer-side attack; relies on redelivery and on the deposit following the terminal result.'

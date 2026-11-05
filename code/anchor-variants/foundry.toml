@@ -1,0 +1,118 @@
+[profile.default]
+src = "contracts/src"
+test = "contracts/test"
+script = "contracts/script"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.24"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+extra_output = ["storageLayout"]
+
+# Gas measurements of the rule 10 candidate (G10). Small standalone
+# contracts under contracts/test/g10 only, so that a run does not compile the
+# whole FairBind system. Same compiler settings as the default profile.
+[profile.g10]
+src = "contracts/test/g10"
+test = "contracts/test/g10"
+out = "out/g10"
+cache_path = "cache/g10"
+libs = []
+extra_output = []
+
+# G10b: the G10 measurements again on a Base mainnet fork under the fork's
+# rules (Osaka execution, so the EIP-7623 calldata floor applies), plus the
+# rule 10 settle sketch against the real USDC. Same compiler settings as g10;
+# solc 0.8.24 has no Osaka target, so Foundry compiles for Cancun (the same
+# bytecode as g10) and executes under Osaka.
+[profile.g10b]
+src = "contracts/test/g10"
+test = "contracts/test/g10"
+out = "out/g10b"
+cache_path = "cache/g10b"
+libs = []
+extra_output = []
+evm_version = "osaka"
+fs_permissions = [{ access = "read-write", path = "./g10b-out" }]
+
+# G10b: the earlier build's settle alone (one test file and its imports).
+[profile.g10b-old]
+src = "contracts/test/g10b-old"
+test = "contracts/test/g10b-old"
+out = "out/g10b-old"
+cache_path = "cache/g10b-old"
+libs = []
+extra_output = []
+evm_version = "osaka"
+
+# G10c: the fuller settle path (receiving vault, real USDC, hold ledger or
+# pool, checks, record, accumulator), the sample request, ECVRF value
+# acceptance, the cursor release with a token transfer, and large anchors.
+# Same compiler settings as g10b; executed under Osaka on the Base fork.
+[profile.g10c]
+src = "contracts/test/g10/g10c"
+test = "contracts/test/g10/g10c"
+out = "out/g10c"
+cache_path = "cache/g10c"
+# the test contract builds large anchor arguments in memory (G10c-3)
+gas_limit = "max"
+libs = []
+extra_output = []
+evm_version = "osaka"
+fs_permissions = [{ access = "read-write", path = "./g10b-out" }]
+
+# G10d: a Chainlink VRF v2.5 request and fulfillment against the deployed
+# Base coordinator on a local fork (minimal consumer only).
+[profile.g10d]
+src = "contracts/test/g10/g10d"
+test = "contracts/test/g10/g10d"
+out = "out/g10d"
+cache_path = "cache/g10d"
+libs = []
+extra_output = []
+evm_version = "osaka"
+
+[fmt]
+line_length = 100
+tab_width = 4
+bracket_spacing = true
+
+# P5: per-event gas of the rule's anchor units (direct and bundled), shared
+# sample values, proof calls, releases (direct and bundled) and disputes, on
+# the Base fork. Same compiler settings as g10c.
+[profile.p5]
+src = "contracts/test/g10/p5"
+test = "contracts/test/g10/p5"
+out = "out/p5"
+cache_path = "cache/p5"
+gas_limit = "max"
+libs = []
+extra_output = []
+evm_version = "osaka"
+fs_permissions = [{ access = "read-write", path = "./g10b-out" }]
+
+# Reference settlement contract for the signing client and watchtower, its
+# contract tests (local, mock token) and the verification contract tests.
+[profile.sdk]
+src = "contracts/test/sdk"
+test = "contracts/test/sdk"
+out = "out/sdk"
+cache_path = "cache/sdk"
+# the reference contract is not gas-measured; size-oriented optimizer
+# settings keep it under the 24,576-byte code size limit
+optimizer_runs = 1
+libs = []
+extra_output = []
+evm_version = "osaka"
+
+# Symbolic checks (halmos) and concrete cases of the tier 1a and tier 0
+# verification contracts and of the reference contract's proof call.
+[profile.g7]
+src = "contracts/test/g7"
+test = "contracts/test/g7"
+out = "out/g7"
+cache_path = "cache/g7"
+libs = []
+extra_output = ["storageLayout", "metadata"]
+evm_version = "osaka"

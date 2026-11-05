@@ -1,0 +1,90 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B2",
+  "name": "escrow-single-evaluator-full-judgment",
+  "represents": "Payment held in escrow, every transaction judged by one designated evaluator, funds released on the verdict or on window expiry.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "maxAssignments = 1 with minVerifiers = 1 violates minVerifiers >= 3 * maxAssignments + 5; a single designated evaluator cannot be drawn from an admissible pool",
+    "appealBlocks = 0 and no appeal deposit violate appealBlocks > 0 and appealDeposit >= maxReviewCost",
+    "recheckPpm = 0 removes the carrier of evaluator accountability",
+    "release-on-expiry has no encoding: the machine profile has a fixed deferBlocks and the protocol never releases an open case to the seller on a timeout",
+    "sellerPenalty may be 0 on this arm, violating sellerPenalty > 0"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": 1000000,
+    "samplePpm_note": "PPM means every settled transaction is judged; there is no sampling economics on this arm.",
+    "recheckPpm": 0,
+    "effectivePpm": 1000000,
+    "deferBlocks": "op:L",
+    "deferPolicy": "until_verdict_or_expiry",
+    "deferExpiryBlocks": "op:L",
+    "deferExpiryBeneficiary": "seller",
+    "retentionBlocks": "op:L",
+    "sellerBond": {
+      "enabled": false,
+      "sizing": "none",
+      "amount_atomic": "0"
+    },
+    "sellerPenalty_atomic": "0",
+    "sellerPenalty_note": "With D covering the adjudication delay the bond condition collapses to B >= g/p with p = 1, and the held payment itself supplies that amount. A separate bond is not required.",
+    "rateCap": {
+      "enabled": false
+    },
+    "rateCap_note": "No cap is needed for the exposure condition on this arm, because nothing is released while a case is open.",
+    "verifier": {
+      "enabled": true,
+      "designated": true,
+      "bond_atomic": "0",
+      "latePenalty": false,
+      "wrongPenalty": false,
+      "maxAssignments": 1,
+      "minVerifiers": 1,
+      "reassignOnTimeout": false
+    },
+    "appeal": {
+      "enabled": false,
+      "rounds": 0,
+      "depositRequired": false
+    },
+    "receiptAnchor": {
+      "enabled": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "escrow_then_execute_then_respond_then_release",
+    "deferExpiry_note": "Expiry is one judgment delay L of the shared operating point; an expiry shorter than L would release unjudged purchases because of the parameter, not because of the release rule."
+  },
+  "cannot_express": [
+    "sampling economics: every transaction costs one judgment, so the per-transaction adjudication cost does not amortize and cannot be traded against bond size",
+    "evaluator accountability: there is no bond on the evaluator, no recheck, no appeal, and therefore no path by which a wrong verdict is attributed to anyone",
+    "protection of the honest seller against a false reject: with alpha > 0 and no appeal, a false FAIL is final",
+    "a recovery path when the evaluator simply stops: the money releases to the seller on expiry, which is the opposite of what the protocol does with an open case",
+    "receipt binding and non-delivery recovery"
+  ],
+  "harness_special_cases": [
+    "release-on-expiry must be implemented in the adapter, not in the contract; the contract has no such transition and must not be changed to acquire one",
+    "the evaluator liveness fault is the arm's characteristic failure: the controller must be able to stall the evaluator past the expiry and record that the funds went to the seller with no verdict",
+    "V1 (evaluator negligence) resolves to 'funds released to seller', which the metric pipeline must not count as a PASS verdict; it is a distinct outcome class 'released_unjudged'",
+    "V2 and V3 have no procedure; score 'undefined' and record that no property carries them",
+    "honest-seller cost must be measured as the time integral of held value across every transaction, not only failed ones; this arm is the upper bound of that metric",
+    "the D-sweep places this arm at D = L by construction; it does not move with the sweep, but it is the right-hand anchor of the curve"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Fixed point at D equal to the adjudication delay. This is the escrow end of the exchange axis: bond zero, held time maximal. The treatment arm's D = L point should reproduce this arm's safety while paying less in adjudication cost, and the D = 0 point should reproduce B1's cost while paying more in bond.",
+    "cheater_scenarios": {
+      "steady_cheat": "No leak. Every transaction is judged before release, so the accumulation term is zero by construction. Cheating is unprofitable and the cheater's net gain should be at or below zero.",
+      "S5_burst": "No leak from the burst either, and the burst is not even rejected: the arm absorbs rate by holding more money. The cost shows up entirely on the honest-seller axis as held capital proportional to the burst.",
+      "S6_patient_defector": "No leak. The patient defector gains nothing because there is no optimistic window to exploit."
+    },
+    "honest_seller_cost": "The worst of any arm. Every honest payment waits the full judgment latency, and one judgment is paid for per transaction. Report the time integral of held value and the per-transaction judgment cost side by side; these two numbers are what the treatment arm buys down.",
+    "evaluator_risk": "The single evaluator is a trust concentration with no measurement attached. Expect zero attributed faults in the envelope purely because there is no attribution mechanism, and say so explicitly rather than letting the zero read as a good result."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": [
+    "deferBlocks, deferExpiryBlocks, retentionBlocks 5400 -> op:L"
+  ]
+}

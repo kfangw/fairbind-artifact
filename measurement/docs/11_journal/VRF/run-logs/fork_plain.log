@@ -1,0 +1,32 @@
+No files changed, compilation skipped
+Ran 2 tests for contracts/test/sdk/Erc1271ForkGas.t.sol:Erc1271ForkGasTest
+[PASS] test_contractPayerSettleAndMandateGas() (gas: 1245885)
+Logs:
+  settle, contract payer (exec) 193355
+  settle, EOA payer (exec) 124349
+  openDispute by delegate, contract payer (exec) 253571
+  openDispute by delegate, EOA payer (exec) 232063
+[PASS] test_isValidSignatureGas() (gas: 59149)
+Logs:
+  isValidSignature (Coinbase Smart Wallet, cold, staticcall incl.) 12614
+  isValidSignature (same, warm) 8470
+  isValidSignature, wrong signature (warm) 11435
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 6.58s (1.32s CPU time)
+Ran 3 tests for contracts/test/sdk/vrf/VrfFork.t.sol:VrfForkTest
+[PASS] test_F1_requestOnTheBaseCoordinator() (gas: 891212)
+Logs:
+  requestSample tx gas (real coordinator): 119413
+[PASS] test_F2_fulfillmentThroughTheBaseCoordinator() (gas: 1072654)
+Logs:
+  fulfillment gas price (wei): 6000000
+  requestSample tx gas (real coordinator): 123913
+  fulfillRandomWords tx gas (real coordinator, callback included): 111668
+  billed gas of the fulfillment: 141844
+  hash-to-curve tries: 1
+  payment (wei): 1368626194668
+  L1 fee in the payment (wei): 4321371668
+[PASS] test_F3_callbackByImpersonation() (gas: 915472)
+Logs:
+  rawFulfillRandomWords call gas (coordinator impersonated): 29272
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 6.84s (2.00s CPU time)
+Ran 2 test suites in 6.99s (13.42s CPU time): 5 tests passed, 0 failed, 0 skipped (5 total tests)

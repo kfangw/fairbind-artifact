@@ -1,0 +1,767 @@
+[
+ {
+  "name": "F1-forge",
+  "error": "RuntimeError('state limit')"
+ },
+ {
+  "name": "F2-single-slot",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": true,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 2011192,
+  "edges": 3001962,
+  "finals": 618138,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 106994,
+   "(('OBL', 'UREFUND'),)": 192,
+   "(('OBL', 'REFUND'),)": 442092,
+   "(('OBL', 'PAID'),)": 68860
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 640,
+   "honest_revert:C:ND_P:slot_shared": 8792,
+   "honest_revert:W1:ND_P:terminal": 25812,
+   "honest_revert:W1:ND_P:slot_shared": 63819,
+   "honest_revert:C:KEY_P:terminal": 21408,
+   "honest_revert:C:KEY_P:slot_shared": 114822,
+   "honest_revert:C:KEY_P:window": 2980,
+   "honest_revert:W2:ND_P:terminal": 17208,
+   "honest_revert:W2:ND_P:slot_shared": 42546
+  },
+  "violations": [
+   "C1",
+   "I1"
+  ],
+  "traces": {
+   "I1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b6: X open KEY_T (B1)",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer K (B1)",
+    "b6: S answer CTK (B1)",
+    "b6: C open ND_P [reverts: slot_shared]"
+   ],
+   "C1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: net: sigma_B reaches W2",
+    "b4: net: ack of W2 reaches B1",
+    "b4: net: sigma_B reaches W1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b8: X open ND_T (B1)",
+    "b9: S sample proof (B1)",
+    "b10: net: ack of W1 reaches B1",
+    "b11: S answer SIG (B1)",
+    "b13: S->B1 k good",
+    "b13: C open KEY_P [reverts: window]",
+    "end: B1(OBL) term=('PAID', 13, 'cursor') signed=1 anc=(4, 0, False, False) rs=1 rs_ok=True koff=good ctgood=False pub=None rec=None a_ctk=None a_k=None a_sig=11 dch=() slots={'ND_P': (8, 'X', 4, 8, 11, 'sig', False)} deps={'ND_P': 'seller'} gas=1 tp_in=0 sb_seller=10 acks=(10, 4) wt_has=(4, 4) notes=('honest_revert:C:KEY_P:window',)"
+   ]
+  },
+  "seconds": 240.8
+ },
+ {
+  "name": "F3-ack-one",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "one",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 7832686,
+  "edges": 10816967,
+  "finals": 1711636,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 259566,
+   "(('OBL', 'UREFUND'),)": 320,
+   "(('OBL', 'REFUND'),)": 1165910,
+   "(('OBL', 'PAID'),)": 285840
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 570,
+   "honest_revert:C:ND_P:record": 2444,
+   "honest_revert:W1:ND_P:terminal": 34344,
+   "honest_revert:W1:ND_P:record": 27424,
+   "honest_revert:C:KEY_P:terminal": 161677,
+   "honest_revert:C:KEY_P:window": 3792,
+   "honest_revert:W2:ND_P:terminal": 26876,
+   "honest_revert:W2:ND_P:record": 20416,
+   "honest_revert:W1:ND_P:beta1": 4567,
+   "honest_revert:W2:ND_P:beta1": 4567
+  },
+  "violations": [
+   "C1",
+   "C2"
+  ],
+  "traces": {
+   "C2": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: net: sigma_B reaches W2",
+    "b4: S anchor beta=[0] u=[0] swap=[1]",
+    "b5: net: ack of W2 reaches B1",
+    "b6: X open KEY_T (B1)",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer SIG (B1)",
+    "b6: S answer K (B1)",
+    "b6: W1 open ND_P"
+   ],
+   "C1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: net: sigma_B reaches W2",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b6: X open KEY_T (B1)",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer K (B1)",
+    "b6: W1 open ND_P",
+    "b8: net: ack of W2 reaches B1",
+    "b9: S answer SIG (B1)",
+    "b11: S->B1 k good",
+    "b11: C open KEY_P +DCH [reverts: window]",
+    "end: B1(OBL) term=('PAID', 12, 'cursor') signed=1 anc=(4, 0, False, False) rs=1 rs_ok=True koff=good ctgood=False pub=None rec=None a_ctk=None a_k=6 a_sig=9 dch=() slots={'KEY_T': (6, 'X', 1, 6, 8, 'answered', False), 'ND_T': (6, 'X', 4, 6, 9, 'sig', False), 'ND_P': (6, 'W1', 4, 6, 9, 'sig', False)} deps={'KEY_T': 'seller', 'ND_T': 'seller', 'ND_P': 'seller'} gas=2 tp_in=5 sb_seller=8 acks=(None, 8) wt_has=(None, 4) notes=('honest_dep_to_seller:ND_P:W1', 'honest_revert:C:KEY_P:window')"
+   ]
+  },
+  "seconds": 903.3
+ },
+ {
+  "name": "F4-ack-none",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "none",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 1604196,
+  "edges": 2153854,
+  "finals": 368305,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 51872,
+   "(('OBL', 'UREFUND'),)": 48,
+   "(('OBL', 'REFUND'),)": 240277,
+   "(('OBL', 'PAID'),)": 76108
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 570,
+   "honest_revert:C:ND_P:record": 2444,
+   "honest_revert:W1:ND_P:terminal": 11940,
+   "honest_revert:W1:ND_P:beta1": 4567,
+   "honest_revert:C:KEY_P:terminal": 23014,
+   "honest_revert:W1:ND_P:record": 7008,
+   "honest_revert:C:KEY_P:window": 1896
+  },
+  "violations": [
+   "C1",
+   "C2"
+  ],
+  "traces": {
+   "C2": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: S anchor beta=[0] u=[0] swap=[1]",
+    "b6: X open KEY_T (B1)",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer SIG (B1)",
+    "b6: S answer K (B1)",
+    "b6: W1 open ND_P"
+   ],
+   "C1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b6: X open KEY_T (B1)",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer K (B1)",
+    "b6: W1 open ND_P",
+    "b9: S answer SIG (B1)",
+    "b11: S->B1 k good",
+    "b11: C open KEY_P +DCH [reverts: window]",
+    "end: B1(OBL) term=('PAID', 12, 'cursor') signed=1 anc=(4, 0, False, False) rs=1 rs_ok=True koff=good ctgood=False pub=None rec=None a_ctk=None a_k=6 a_sig=9 dch=() slots={'KEY_T': (6, 'X', 1, 6, 8, 'answered', False), 'ND_T': (6, 'X', 4, 6, 9, 'sig', False), 'ND_P': (6, 'W1', 4, 6, 9, 'sig', False)} deps={'KEY_T': 'seller', 'ND_T': 'seller', 'ND_P': 'seller'} gas=2 tp_in=5 sb_seller=1 acks=(None, None) wt_has=(None, None) notes=('honest_dep_to_seller:ND_P:W1', 'honest_revert:C:KEY_P:window')"
+   ]
+  },
+  "seconds": 198.2
+ },
+ {
+  "name": "F5-Tx1",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 1,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 3093871,
+  "edges": 4549208,
+  "finals": 751702,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 145116,
+   "(('OBL', 'UREFUND'),)": 192,
+   "(('OBL', 'REFUND'),)": 432074,
+   "(('OBL', 'PAID'),)": 174320
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 538,
+   "honest_revert:C:ND_P:record": 2852,
+   "honest_revert:W1:ND_P:terminal": 24828,
+   "honest_revert:W1:ND_P:record": 21384,
+   "honest_revert:C:KEY_P:terminal": 90663,
+   "honest_revert:W2:ND_P:terminal": 16552,
+   "honest_revert:W2:ND_P:record": 14256
+  },
+  "violations": [
+   "C1"
+  ],
+  "traces": {
+   "C1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b6: X open KEY_T (B1)",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer K (B1)",
+    "b6: S answer CTK (B1)",
+    "b6: C open ND_P [reverts: record]",
+    "b8: S->B1 R_S+response ok",
+    "b8: C DCH on ND_T [reverts: late]",
+    "end: B1(OBL) term=('PAID', 12, 'cursor') signed=None anc=(4, 0, False, False) rs=8 rs_ok=True koff=None ctgood=False pub=None rec=6 a_ctk=6 a_k=6 a_sig=None dch=() slots={'KEY_T': (6, 'X', 1, 6, 7, 'answered', False), 'ND_T': (6, 'X', 4, 6, 7, 'answered', False)} deps={'KEY_T': 'seller', 'ND_T': 'seller'} gas=4 tp_in=5 sb_seller=None acks=(None, None) wt_has=(None, None) notes=('honest_revert:C:ND_P:record',)"
+   ]
+  },
+  "seconds": 290.3
+ },
+ {
+  "name": "F6-rdl-record",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": 1,
+   "prof": "P",
+   "stage": "byte",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": true,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 189998,
+  "edges": 221439,
+  "finals": 46083,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 11126,
+   "(('OBL', 'UREFUND'),)": 204,
+   "(('OBL', 'REFUND'),)": 30822,
+   "(('OBL', 'PAID'),)": 3931
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:record": 1823,
+   "honest_revert:C:ND_P:terminal": 159,
+   "honest_revert:W1:ND_P:record": 2442,
+   "honest_revert:W1:ND_P:terminal": 1764,
+   "honest_revert:W2:ND_P:record": 1628,
+   "honest_revert:W2:ND_P:terminal": 1176
+  },
+  "violations": [
+   "C1-dl",
+   "I1"
+  ],
+  "traces": {
+   "I1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b6: X open ND_T (B1)",
+    "b6: S sample proof (B1)",
+    "b6: S answer CTK (B1)",
+    "b6: C open ND_P [reverts: record]"
+   ],
+   "C1-dl": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b6: S sample proof (B1)",
+    "b6: C open ND_P [reverts: record]",
+    "end: B1(OBL) term=('PAID', 12, 'cursor') signed=None anc=(4, 0, False, False) rs=None rs_ok=None koff=None ctgood=False pub=('proof', 6) rec=6 a_ctk=None a_k=None a_sig=None dch=() slots={} deps={} gas=0 tp_in=0 sb_seller=None acks=(None, None) wt_has=(None, None) notes=('honest_revert:C:ND_P:record',)"
+   ]
+  },
+  "seconds": 8.7
+ },
+ {
+  "name": "F7-no-post-terminal-dch",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": true,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 3472798,
+  "edges": 5061764,
+  "finals": 692490,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 123872,
+   "(('OBL', 'UREFUND'),)": 192,
+   "(('OBL', 'REFUND'),)": 462082,
+   "(('OBL', 'PAID'),)": 106344
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 536,
+   "honest_revert:C:ND_P:record": 2374,
+   "honest_revert:W1:ND_P:terminal": 19914,
+   "honest_revert:W1:ND_P:record": 17760,
+   "honest_revert:C:KEY_P:terminal": 78507,
+   "honest_revert:W2:ND_P:terminal": 13276,
+   "honest_revert:W2:ND_P:record": 11840
+  },
+  "violations": [],
+  "traces": {},
+  "seconds": 280.0
+ },
+ {
+  "name": "F8-tsig9-breaks-check11",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 9,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": false,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 5759660,
+  "edges": 8163979,
+  "finals": 1225908,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 94920,
+   "(('OBL', 'UREFUND'),)": 192,
+   "(('OBL', 'REFUND'),)": 931936,
+   "(('OBL', 'PAID'),)": 198860
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:window": 15104,
+   "honest_revert:C:ND_P:terminal": 5504,
+   "honest_revert:C:ND_P:record": 8432,
+   "honest_revert:C:KEY_P:terminal": 172775,
+   "honest_revert:W1:ND_P:record": 55104,
+   "honest_revert:W1:ND_P:terminal": 61932,
+   "honest_revert:W1:ND_P:window": 83676,
+   "honest_revert:W2:ND_P:record": 36736,
+   "honest_revert:W2:ND_P:terminal": 41288,
+   "honest_revert:W2:ND_P:window": 55784
+  },
+  "violations": [
+   "C1"
+  ],
+  "traces": {
+   "C1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b9: X open KEY_T (B1)",
+    "b9: S sample proof (B1)",
+    "b11: S answer K (B1)",
+    "b11: C open ND_P [reverts: window]",
+    "end: B1(OBL) term=('PAID', 14, 'cursor') signed=None anc=(4, 0, False, False) rs=None rs_ok=None koff=None ctgood=False pub=None rec=None a_ctk=None a_k=11 a_sig=None dch=() slots={'KEY_T': (9, 'X', 1, 9, 13, 'answered', False)} deps={'KEY_T': 'seller'} gas=1 tp_in=1 sb_seller=None acks=(None, None) wt_has=(None, None) notes=('honest_revert:C:ND_P:window',)"
+   ]
+  },
+  "seconds": 505.3
+ }
+]

@@ -1,0 +1,74 @@
+id: A2
+name: Buyer and colluding verifier on a false WRONG_DELIVERY
+property_under_test:
+- P3
+- P4
+preconditions:
+- 'An honest seller sells at rate:peak_hour_p99 on the admissible profile'
+- The attacking buyer makes dispute_count purchases, receives correct responses, then opens a WRONG_DELIVERY dispute on each, paying disputeDeposit per dispute
+- 'A share colluding_weight of the verifier bond colludes with the buyer and votes FAIL; the seller appeals every FAIL'
+injected_fault:
+  process:
+  - buyer
+  - verifier
+  kind: false_wrong_delivery_collusion
+  action: 'buyer opens WRONG_DELIVERY on a correct response; colluding verifiers vote FAIL'
+  timing: after the attacker purchases, each dispute before its claimUntil
+parameters:
+  colluding_weight:
+    default: 0.1
+    sweep:
+    - 0.0
+    - 0.1
+    - 0.33
+    unit: share of verifier bond weight
+  dispute_count:
+    default: 10
+    sweep:
+    - 1
+    - 10
+    - 100
+    - 1000
+    unit: false disputes, one per attacker purchase
+  Lambda_honest:
+    default: rate:peak_hour_p99
+    unit: settlements per block
+n_seeds: 30
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - honest_seller_pool_loss
+  - attacker_refund_gain
+  - wrongful_final_fail_count
+  - appeal_reversal_rate
+  - buyer_deposit_loss
+expected_outcome: 'Per dispute a verifier votes FAIL with probability about w = colluding_weight + (1 - colluding_weight) * alpha. The seller appeals every FAIL; the party reviewer is a different verifier, and a party verdict that differs from the initial one goes to a third verifier (ADR 0019). A dispute ends in a standing FAIL on the two paths FAIL-FAIL and FAIL-PASS-FAIL, with probability w^2 + w^2 (1 - w) = w^2 (2 - w), about 2 w^2 for small w (ADR 0021 counts the second path, which ADR 0019 left out): about 0.0002, 0.022 and 0.19 for weights 0, 0.1 and 0.33 at alpha = 0.01. Over dispute_count = N disputes the expected number of standing FAILs is N times that. Every standing FAIL opens the claim window, so every buyer holding a receipt, the attacker included, is refunded for frozen entries it received correctly: honest_seller_pool_loss is about v times the entries held at the freeze (Lambda_honest times the hold period) per standing FAIL window, and attacker_refund_gain about v times the attacker purchases in that window. Every dispute whose final verdict confirms the correct PASS costs the attacker its disputeDeposit, so buyer_deposit_loss is about disputeDeposit * N * (1 - w^2 (2 - w)): 5 USDC per dispute at the data API profile, about 4,900 USDC at N = 1000 and weight 0.1, against a recovered amount of v = 0.01 USDC per attacker purchase in a standing window.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'At each weight the fraction of disputes with a standing FAIL is within its 95 percent interval of w^2 (2 - w); a higher fraction means one colluding vote suffices. Every run reports honest_seller_pool_loss, attacker_refund_gain and buyer_deposit_loss, including the zero ones; buyer_deposit_loss exceeds attacker_refund_gain at every weight and every N.'
+notes: 'A standing FAIL costs the honest seller its whole frozen pool, not the one disputed sale. The dispute-count sweep measures what repeated false disputes cost the attacker in deposits against what the standing FAILs let it recover; since ADR 0019 a party review that disagrees goes to a tiebreak, so one colluding reviewer is not enough.'

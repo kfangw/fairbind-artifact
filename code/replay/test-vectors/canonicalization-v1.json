@@ -1,0 +1,122 @@
+{
+  "formatVersion": 1,
+  "canonId": "0x5935caa956c625c8ff2a65a874e14a464e435cc193a0742b6ace012ce81a7a3d",
+  "positive": [
+    {
+      "name": "post-with-path-query-header-and-body-normalization",
+      "input": {
+        "method": "post",
+        "path": "/v1/%7eagent/../quote",
+        "query": "b=2&a=1&a=0&empty&plus=a+b&slash=%2f",
+        "canonicalHeaders": [
+          "accept",
+          "content-type",
+          "x-model"
+        ],
+        "headers": [
+          ["Accept", "  application/json\t"],
+          ["Content-Type", "application/json;\tcharset=utf-8"],
+          ["X-Model", "Model-A"],
+          ["x-model", "rev=1"]
+        ],
+        "bodyHex": "0x7b2270726f6d7074223a226869227d0a"
+      },
+      "normalized": {
+        "method": "POST",
+        "path": "/v1/quote",
+        "query": "a=0&a=1&b=2&empty=&plus=a+b&slash=%2F",
+        "headerBlockHex": "0x6163636570743a6170706c69636174696f6e2f6a736f6e0a636f6e74656e742d747970653a6170706c69636174696f6e2f6a736f6e3b20636861727365743d7574662d380a782d6d6f64656c3a4d6f64656c2d412c7265763d310a"
+      },
+      "hashes": {
+        "methodHash": "0x2fca5a5e7ccde9ff7491efb205181f9945d95feee2f835f237ff423414a824e3",
+        "pathHash": "0x2cfe509bc630dea93005ae066d8db135fee6c8a868c78c558f3a5325e2168a28",
+        "queryHash": "0x0ec2a7e4b7889e822ac1b41068d4022f88c686039748b92222984b49f13e51ef",
+        "headersHash": "0x7bc53bdd39859c7011e3a78c936054bd48cf2f28f9823639510eed9fb509ea48",
+        "bodyHash": "0x5ff76eed69a071127aab80c5e7640ac60c1eedf5942e707ecba482d757421ab0",
+        "requestHash": "0x6e6717945809f177d93714f3750a01da09d79ca8245518f15a475df062373246"
+      }
+    },
+    {
+      "name": "empty-query-headers-and-body",
+      "input": {
+        "method": "GET",
+        "path": "/health",
+        "query": "",
+        "canonicalHeaders": [],
+        "headers": [],
+        "bodyHex": "0x"
+      },
+      "normalized": {
+        "method": "GET",
+        "path": "/health",
+        "query": "",
+        "headerBlockHex": "0x"
+      },
+      "hashes": {
+        "methodHash": "0x5a61babeb76c554783ca90a1a250e84f1b703409fdff33c217ab64dd51f05199",
+        "pathHash": "0x856f6edbc7235316d766784507cedb887566eaca0b2dfb5bafe4e0f0ab32af47",
+        "queryHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "headersHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "bodyHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "requestHash": "0xad11996781b01ac06a3c0a5d5a744fb8b952048524bbf76cf6e6bbeffb47a77f"
+      }
+    },
+    {
+      "name": "duplicate-and-empty-query-fields",
+      "input": {
+        "method": "GET",
+        "path": "/a//b/%41",
+        "query": "z&%61=%7e&a=~&x=%2f&x=%2F&=empty&&plus=a+b",
+        "canonicalHeaders": ["accept"],
+        "headers": [["Accept", "*/*"]],
+        "bodyHex": "0x"
+      },
+      "normalized": {
+        "method": "GET",
+        "path": "/a//b/A",
+        "query": "=&=empty&a=~&a=~&plus=a+b&x=%2F&x=%2F&z=",
+        "headerBlockHex": "0x6163636570743a2a2f2a0a"
+      },
+      "hashes": {
+        "methodHash": "0x5a61babeb76c554783ca90a1a250e84f1b703409fdff33c217ab64dd51f05199",
+        "pathHash": "0x0474b8d8f206a5f5627df1c93d90e28bf5b7fe7702898b00b473282293588963",
+        "queryHash": "0x35e043c825edfb87e3d4358fda1c73da1106319a99ac6810cf295c63753854e7",
+        "headersHash": "0x0f8b082908c70d3b11515537b02d0d8e998a1dadaba3bd47214ec2149c11e5c1",
+        "bodyHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "requestHash": "0xac98af8a78784c339a379d178d041da3d6a6b57772b6cd2c8cf379939c5ab522"
+      }
+    }
+  ],
+  "negative": [
+    {
+      "name": "invalid-percent-triplet",
+      "inputField": "path",
+      "value": "/v1/%zz",
+      "error": "invalid_percent_encoding"
+    },
+    {
+      "name": "relative-path",
+      "inputField": "path",
+      "value": "v1/data",
+      "error": "path_not_absolute"
+    },
+    {
+      "name": "missing-profile-header",
+      "canonicalHeaders": ["accept", "x-model"],
+      "headers": [["Accept", "application/json"]],
+      "error": "canonical_header_missing"
+    },
+    {
+      "name": "header-line-folding",
+      "canonicalHeaders": ["x-model"],
+      "headers": [["X-Model", "model-a\r\n model-b"]],
+      "error": "canonical_header_invalid"
+    },
+    {
+      "name": "raw-non-ascii-path",
+      "inputField": "path",
+      "value": "/précis",
+      "error": "raw_non_ascii"
+    }
+  ]
+}

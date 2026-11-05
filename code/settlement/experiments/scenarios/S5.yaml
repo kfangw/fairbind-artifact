@@ -1,0 +1,77 @@
+id: S5
+name: Burst at up to 100 times the normal rate, admissible profile
+property_under_test:
+- P2
+- P5
+- EXPOSURE
+preconditions:
+- 'Admissible profile: D is the profile hold period (at least caseHorizon, above L)'
+- The bond account holds bond_scale_factor sellerPenalty units so that the refill rate covers Lambda_normal
+- Every sale in the burst is bad (the seller defects for the burst)
+injected_fault:
+  process: seller
+  kind: burst_rate
+  action: seller settles bad sales at burst_multiplier times Lambda_normal for one judgment window L, then stops
+  timing: for one judgment window L
+parameters:
+  Lambda_normal:
+    default: rate:peak_hour_p99
+    unit: settlements per block
+  burst_multiplier:
+    default: 100
+    sweep:
+    - 1
+    - 10
+    - 50
+    - 100
+    unit: x
+  bucket_capacity_q:
+    default: profile_default
+    unit: settlements
+  refill_rate_lambda_r:
+    default: profile_default
+    unit: settlements per block
+  cap_enabled:
+    default: true
+    sweep:
+    - true
+    - false
+  bond_scale_factor:
+    default: 2
+    unit: 'sellerPenalty units in the bond account; 2 is the smallest whose refill (0.05 per block per unit) covers peak_hour_p99 (0.054 per block); the deploy step must register the bond at this scale'
+n_seeds: 10
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - burst_exposure
+  - achieved_settlement_rate
+expected_outcome: 'Cap on: in every window of enforcementBlocks the confirmed settlements stay at or below n (q + refill * enforcementBlocks) with n = bond_scale_factor, and the rest are rejected. Cap off: the whole burst settles. Because D is above L, every burst sale is still held when the first detected one freezes the account, so released_exposure stays at about 0 and does not grow with burst_multiplier (the exposure bound is g/p, independent of the rate); what grows linearly with the multiplier is frozen_amount, the value buyers must recover by claim.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Cap on: no enforcementBlocks window holds more than n (q + refill * enforcementBlocks) confirmed settlements. Cap off: rejected_settlement_count == 0; mean released_exposure <= g/p at every multiplier (a mean above it with its 95 percent interval refutes the rate-independence at D >= L); frozen_amount grows with burst_multiplier. A cap-off run whose achieved_settlement_rate is below half of the target burst rate did not exercise the burst and is reported as invalid, not as a pass.'
+notes: 'The rate-dependent case (D below the freeze delay) is D1 and D2; this scenario is the admissible profile. Baseline arms for the same burst are listed in run-list.json.'

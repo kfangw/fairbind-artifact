@@ -1,0 +1,103 @@
+{
+  "formatVersion": 1,
+  "kind": "fairbind-settlement-replay-conditions",
+  "description": "Fixed inputs, address groups, conditions, injection settings and decision-rule thresholds of the settlement replay. Operating-point values (failure limit, scales, refill, hold periods, bucket capacity) are not here: they are read from the operating point and its profile file at run time.",
+  "inputs": {
+    "replay_period": {
+      "file_name": "settlements_2026-09-08_2026-09-22.csv",
+      "sha256": "3d43b7879449522d90b6a3533178dc81d526b3483815b4b6d8a221c8a3a7434f",
+      "rows": 683553,
+      "first_block": 51018128,
+      "last_block": 51637238,
+      "start_utc": "2026-09-08 00:00:00",
+      "end_utc_inclusive": "2026-09-22 07:57:03"
+    },
+    "prior_period": {
+      "file_name": "settlements_prior_14d_2026-08-25_2026-09-07.csv",
+      "sha256": "bd444199ba67c5c2b6714ef2f376bb0651f021229e52ccdec05d0a3de86c5fef",
+      "rows": 881763,
+      "first_block": 50413328,
+      "last_block": 51018122,
+      "start_utc": "2026-08-25 00:00:00",
+      "end_utc_exclusive": "2026-09-08 00:00:00",
+      "qx_window_utc": ["2026-09-01 00:00:00", "2026-09-08 00:00:00"],
+      "qx_window_rows": 472387
+    },
+    "columns": ["block_number", "block_time_utc", "tx_hash", "tx_index", "trace_address", "recipient", "payer", "value_atomic", "facilitator"],
+    "facilitators": {
+      "count": 20,
+      "sha256_sorted_joined_no_trailing_newline": "5e4f58ef3cbcb85e0d3bdd94bea54085d71d90a93ef3f0187e641f37d7720926"
+    },
+    "top400": {"file_name": "sellers_dune_top400.csv", "sha256": "735aad3a216a8f7d8087c7900c85c65856549f7fac7438e3944a2b68e4d21923"},
+    "all_addresses": {"file_name": "sellers_dune_all4400.csv", "sha256": "e292b2c4dd85b5ff675f1dc018dcd97a5a1e986a13da032222590c6d2a2c90d2", "rows": 4400},
+    "expected_total": 683553,
+    "check_tolerance": {"total_ppm": 1000, "address_ppm": 5000, "addresses": "top400"}
+  },
+  "window_blocks": 604800,
+  "window_hours": 336,
+  "rate_blocks": 619111,
+  "rate_blocks_note": "W344 (design 9.5): every rate (nF / nR scales, rbar_acc, H formula, formula value) divides by the list span of the replay period, last_block - first_block + 1 = 619,111 blocks. window_blocks (14 days) is kept only for the fold boundary.",
+  "expected_scales": {
+    "note": "Scales other than 1 under the reference aggregate and rate_blocks (design 9.5); a run stops when the computed scales differ.",
+    "profile": "data-api-fast-v1",
+    "nF": {"0xa9dd7cc9cbf0e05551332209289f04be36bc2315": 7, "0x7284d41b5b852f2bd4c99bdf95043d84452d299c": 6, "0x5aae638ccd22a4117c0441331e8e86ca979d482e": 2},
+    "nR": {"0xa9dd7cc9cbf0e05551332209289f04be36bc2315": 6, "0x7284d41b5b852f2bd4c99bdf95043d84452d299c": 5}
+  },
+  "groups": {
+    "all400": {"ranks": [1, 400], "sha256": "859889be70509349a22beb0f1c27154fab6387727eed89d3fe5d443ea933154b"},
+    "A": {"ranks": [1, 44], "sha256": "bb415cf3ecf206d7f9b8c1a4e99b645e5e4f50527561e2bd4f388dca152a5450"},
+    "B": {"rank_from": 48, "rank_step": 8, "rank_to": 400, "sha256": "6800536ffb34efa9d2a878bb666c75f7d613f28cdf283c78532c186ec1836085"},
+    "AB": {"sha256": "05591ca7598d52de8f0fbf526fa89f1c0dff249dfeb6c3ea66cf3c4c230e142c"},
+    "C": {"percentiles": [90, 75, 50], "per_percentile": 5, "rule": "nearest-rank percentile of the mean rate over all 4,400 addresses; five closest per percentile; ties by more settlements, then address string; list order p90, p75, p50 (design 9.7)", "sha256": "ca9f1b8e135094e459b56a511416fd071366eb17a95513cf96311df689ebc4c6"}
+  },
+  "q": {"qX": 137, "qX_path": "prior_period", "q20": "profile bucketCapacity"},
+  "k_default": {"data-api-fast-v1": 27, "open-weights-standard-v1": 45},
+  "replay_profile": {
+    "source": "R20 design V6, 9.1 (failure limit 27 / 45) and 9.3 (data-API enforcementBlocks 13,700)",
+    "base_profile_file": "profiles/local-evaluation-v1.json",
+    "base_operating_point": "experiments/operating-point.json",
+    "profile_file": "experiments/replay/replay-profile-v1.json",
+    "operating_point": "experiments/replay/operating-point-replay.json",
+    "overrides": {
+      "data-api-fast-v1": {"failureLimit": 27, "enforcementBlocks": 13700},
+      "open-weights-standard-v1": {"failureLimit": 45}
+    }
+  },
+  "run_conditions": [1, 2, 3, 4, 5],
+  "run_conditions_note": "Design 9.2: this run replays conditions 1-5 (data-API profile) only; 6-10 are reported as not run until the open-weights sellerPenalty is set from B >= k * g * ceil(1/p) and entered in the design.",
+  "base_seed": 20260928,
+  "seed_scope": "R20",
+  "conditions": [
+    {"id": 1, "profile": "data-api-fast-v1", "scale_rule": "nF", "q": "qX", "seeds": 3, "role": "main"},
+    {"id": 2, "profile": "data-api-fast-v1", "scale_rule": "n1", "q": "qX", "seeds": 1, "role": "control"},
+    {"id": 3, "profile": "data-api-fast-v1", "scale_rule": "nF", "q": "q20", "seeds": 1, "role": "placeholder q"},
+    {"id": 4, "profile": "data-api-fast-v1", "scale_rule": "nR", "q": "qX", "seeds": 1, "role": "secondary"},
+    {"id": 5, "profile": "data-api-fast-v1", "scale_rule": "n1", "q": "q20", "seeds": 1, "role": "control"},
+    {"id": 6, "profile": "open-weights-standard-v1", "scale_rule": "nF", "q": "qX", "seeds": 1, "role": "main"},
+    {"id": 7, "profile": "open-weights-standard-v1", "scale_rule": "n1", "q": "qX", "seeds": 1, "role": "control"},
+    {"id": 8, "profile": "open-weights-standard-v1", "scale_rule": "nF", "q": "q20", "seeds": 1, "role": "placeholder q"},
+    {"id": 9, "profile": "open-weights-standard-v1", "scale_rule": "nR", "q": "qX", "seeds": 1, "role": "secondary"},
+    {"id": 10, "profile": "open-weights-standard-v1", "scale_rule": "n1", "q": "q20", "seeds": 1, "role": "control"}
+  ],
+  "injection": {
+    "draws": 1000,
+    "reentry_delay_blocks": [0, 1800],
+    "claim_probability": [1, 0.5],
+    "settings": [
+      {"name": "main", "h": "operating point", "c": "operating point", "alpha": "operating point"},
+      {"name": "collusion_worst", "h": "operating point", "c": 1, "alpha": "operating point"},
+      {"name": "operator_is_verifier", "h": 1, "c": 0, "alpha": "operating point"}
+    ],
+    "optional_setting": {"name": "alpha_upper", "h": "operating point", "c": "operating point", "alpha": "--alpha-upper"},
+    "seed_domain": "fairbind/R20/inject"
+  },
+  "rules": {
+    "R20-F1": {"condition": 1, "group": "A", "ratio": 1.25, "share": 0.5},
+    "R20-F3": {"condition": 1, "group": "A", "rate": 0.01},
+    "R20-F4": {"condition": 1, "group": "replayed", "weighted_share": 0.1},
+    "R20-D1": {"condition": 1, "group": "A", "setting": "main", "reentry_delay_blocks": 0, "low": 0.5, "high": 2},
+    "R20-M1": {"condition": 1, "group": "A", "difference": 0.05, "share": 0.2},
+    "R20-C2": {"condition": 1, "sample_sd": 4},
+    "R20-C3": {}
+  }
+}

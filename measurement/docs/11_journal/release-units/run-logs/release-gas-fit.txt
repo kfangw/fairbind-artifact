@@ -1,0 +1,37 @@
+Release-call gas by sales m per call (forge test --isolate, transaction gas incl. 21,000 intrinsic)
+fit: gas = fixed + per_sale * m (least squares); max_m = largest m with gas < 2^24 by the fit
+
+check          points 1:84311, 8:153408, 32:390364, 64:706431, 128:1338998, 256:2605859
+               fixed 73997, per sale 9888.3, max residual 704, max_m under 2^24 1689
+
+check_proven   points 1:81471, 8:130683, 32:299425, 64:524444
+               fixed 74433, per sale 7031.3, max residual 11, max_m under 2^24 2375
+
+check_fail     points 1:146750, 32:1411912, 128:5330690, 256:10557743
+               fixed 105493, per sale 40827.6, max residual 740, max_m under 2^24 408
+
+payunit        points 1:71225, 64:873047, 256:3317555, 256:3327177
+               fixed 57813, per sale 12751.7, max residual 4919, max_m under 2^24 1311
+
+passpay        points 1:77935, 8:167293, 32:473674, 64:882214, 128:1699402, 256:3334210
+               fixed 65059, per sale 12769.7, max residual 176, max_m under 2^24 1308
+
+inline         points 1:93179, 8:209640, 32:609050, 64:1141881, 128:2208514, 256:4345669
+               fixed 75546, per sale 16676.2, max residual 1584, max_m under 2^24 1001
+
+inline_proven  points 1:92339, 8:202912, 32:582072, 64:1087744
+               fixed 76514, per sale 15800.1, max residual 45, max_m under 2^24 1056
+
+pass           points 1:69603, 64:69603, 256:69603
+               fixed 69603, per sale 0.0, max residual 0, max_m under 2^24 None
+
+per-sale release gas, check unit + payment unit: 9888.3 + 12751.7 = 22640.1
+one cursor call doing check, pass and payment: fixed 75546, per sale 16676.2
+per closed case (proven sampled sale) in a check unit, against an unsampled sale: -2857.0
+per failing sampled sale in a check unit, against an unsampled sale: +30939.3
+
+cost model (k11b.py): REL_F 114624 fixed per release transaction, REL_M 2930 per sale, REL_K 2083 per closed case; model capacity floor((2^24 - REL_F) / REL_M) = 5686 sales (q = 0)
+measured against the model: fixed 0.66x REL_F, per sale 5.69x REL_M
+
+earlier contract (vrf 7a96ae5), one cursor call: points 1:87454, 256:4385280, 1000:17042406, 2000:34330578
+fixed 9877, per sale 17134.2 (max residual 101708); above 2^24 from 979 sales

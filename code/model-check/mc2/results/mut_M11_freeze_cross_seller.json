@@ -1,0 +1,48 @@
+{
+ "states": 523,
+ "terminal": 0,
+ "violations": {
+  "P6": {
+   "msg": "s1 sale 0 (eta 0) frozen without a covering failure of its seller",
+   "trace": [
+    "t=0 s0:settle p0 fr0 dk0",
+    "t=0 s1:settle p0 fr0 dk0",
+    "t=0 tick",
+    "t=1 tick",
+    "t=2 tick",
+    "t=3 s0:missed p0 e0"
+   ]
+  }
+ },
+ "capped": false,
+ "seconds": 0.0,
+ "Hend": 8,
+ "dedup": "full",
+ "cfg": {
+  "sellers": 2,
+  "profiles": 1,
+  "epochs": 2,
+  "k": 1,
+  "smax": 2,
+  "stot": 1,
+  "L": 2,
+  "aA": 1,
+  "Mgap": 1,
+  "T_p": 1,
+  "T_c": 2,
+  "d_inc": 1,
+  "disputes": false,
+  "marks": true,
+  "fraud": false,
+  "honest": false,
+  "max_reentry": 1,
+  "claims": false,
+  "units": false,
+  "mutations": [
+   "M11_freeze_cross_seller"
+  ],
+  "max_states": 40000000
+ },
+ "group": "mut",
+ "name": "mut_M11_freeze_cross_seller"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fairbind:deployment-manifest:v1",
+  "title": "FairBind Deployment Manifest Version 1",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "network",
+    "chainId",
+    "contractAddress",
+    "deploymentToken",
+    "sourceRevision",
+    "compilerVersion",
+    "constructorArguments",
+    "governanceDelaySeconds",
+    "profiles",
+    "creationTransaction",
+    "roleGrantTransactions"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "formatVersion": { "const": 1 },
+    "network": { "type": "string", "pattern": "^eip155:[1-9][0-9]*$" },
+    "chainId": { "$ref": "#/$defs/uintString" },
+    "contractAddress": { "$ref": "#/$defs/address" },
+    "deploymentToken": { "$ref": "#/$defs/address" },
+    "sourceRevision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "compilerVersion": { "type": "string", "minLength": 1 },
+    "constructorArguments": {
+      "type": "object",
+      "required": [
+        "deploymentToken",
+        "governanceTimelock",
+        "emergencyGuardian",
+        "penaltyTreasury"
+      ],
+      "properties": {
+        "deploymentToken": { "$ref": "#/$defs/address" },
+        "governanceTimelock": { "$ref": "#/$defs/address" },
+        "emergencyGuardian": { "$ref": "#/$defs/address" },
+        "penaltyTreasury": { "$ref": "#/$defs/address" }
+      },
+      "additionalProperties": false
+    },
+    "governanceDelaySeconds": { "$ref": "#/$defs/uintString" },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["profileId", "parameterHash"],
+        "properties": {
+          "profileId": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+          "parameterHash": { "$ref": "#/$defs/bytes32" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "creationTransaction": { "$ref": "#/$defs/bytes32" },
+    "roleGrantTransactions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bytes32" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "address": { "type": "string", "pattern": "^0x[0-9a-fA-F]{40}$" },
+    "bytes32": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+    "uintString": { "type": "string", "pattern": "^(0|[1-9][0-9]*)$" }
+  }
+}

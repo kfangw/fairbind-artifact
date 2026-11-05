@@ -1,0 +1,5 @@
+Unmodified copies (MIT) for the coordinator mock used by the sdk tests:
+  v0.8/...                  @chainlink/contracts 1.5.0, src/v0.8/... (npm)
+  openzeppelin-4.9.6/...    @openzeppelin/contracts 4.9.6 (npm)
+The one change: the EnumerableSet import in v0.8/vrf/dev/SubscriptionAPI.sol
+points at the relative copy instead of "@openzeppelin/contracts@4.9.6/...".

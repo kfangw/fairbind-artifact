@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "rpcUrl": "http://127.0.0.1:{rpc_port}",
+  "readyTimeoutSeconds": 120,
+  "runTimeoutSeconds": 43200,
+  "stopTimeoutSeconds": 30,
+  "processes": {
+    "anvil": {"command": ["$FAIRBIND_ANVIL_151", "--port", "{rpc_port}", "--chain-id", "31337", "--silent", "--prune-history", "--slots-in-an-epoch", "0", "--timestamp", "1700000000"], "ready": "rpc"},
+    "keeper": {"command": ["go", "-C", "{repo}", "run", "./services/keeper/cmd/fairbind-keeper", "-config", "{run_dir}/proc/deploy/services/keeper/keeper.json", "-directive", "{directive}", "-events", "{events}", "-progress", "{proc_dir}/progress.json", "-lockstep", "-yield-to", "{run_dir}/proc/verifier/progress.json,{run_dir}/proc/seller/progress.json", "-batch", "-hold-file", "{run_dir}/proc/hold.json"]},
+    "verifier": {"command": ["go", "-C", "{repo}", "run", "./services/verifier/cmd/fairbind-verifier-pool", "-deployment", "{run_dir}/proc/deploy/deployment.json", "-directive", "{directive}", "-progress", "{proc_dir}/progress.json", "-batch", "-hold-file", "{run_dir}/proc/hold.json"]},
+    "facilitator": {"command": ["go", "-C", "{repo}", "run", "./services/facilitator/cmd/fairbind-facilitator", "-config", "{run_dir}/proc/deploy/services/facilitator/facilitator.json", "-batch", "-chain-time"]},
+    "seller": {"command": ["go", "-C", "{repo}", "run", "./services/seller/cmd/fairbind-seller", "-config", "{run_dir}/proc/deploy/services/seller/seller.json", "-directive", "{directive}", "-progress", "{proc_dir}/progress.json", "-batch", "-chain-time", "-hold-file", "{run_dir}/proc/hold.json"], "ready": {"seconds": 5}},
+    "buyer": {"command": ["go", "-C", "{repo}", "run", "./services/buyer/cmd/fairbind-workload", "-config", "{run_dir}/proc/deploy/services/buyer/buyer.json", "-directive", "{directive}", "-seller", "http://127.0.0.1:{seller_port}", "-run-dir", "{run_dir}", "-observations", "{observations}", "-batch", "-chain-time"]}
+  },
+  "deploy": {"command": ["{repo}/scripts/deploy-local.sh", "{profile}", "{proc_dir}"], "env": {"FAIRBIND_BASE_PORT": "{base_port}", "FAIRBIND_ANVIL": "$FAIRBIND_ANVIL_151", "FAIRBIND_BLOCK_TIME_STEP": "1"}},
+  "collector": {"command": ["python3", "{repo}/experiments/collect_run.py", "--rpc-url", "{rpc_url}", "--run-dir", "{run_dir}", "--ground-truth", "{ground_truth}", "--out", "{observations}"]}
+}

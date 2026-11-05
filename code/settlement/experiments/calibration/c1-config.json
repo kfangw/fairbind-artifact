@@ -1,0 +1,282 @@
+{
+  "format": "fairbind/experimental/c1-calibration-config/v1",
+  "status": "fixed before collection; the data-API collector (experiments/c1collect) reads the data_api and collection sections",
+  "inference": {
+    "tolerance_rule": "joint-calibration-v1",
+    "metrics": [
+      {
+        "name": "expMismatches",
+        "epsilon": 1,
+        "rounding": "floor to integer"
+      },
+      {
+        "name": "mantissaMean",
+        "epsilon": 0.01,
+        "rounding": "ceil to two decimals"
+      },
+      {
+        "name": "mantissaMedian",
+        "epsilon": 0.01,
+        "rounding": "ceil to two decimals"
+      }
+    ],
+    "scale_sample": {
+      "prompts": "first 100 in prompt order",
+      "scale": "m_j = max(max over the scale sample of x_j, epsilon_j)"
+    },
+    "joint_score": "u = max_j (x_j / m_j)",
+    "calibration_sample": {
+      "prompts": "next 300 in prompt order",
+      "statistic": "u_star = max of u over the calibration sample"
+    },
+    "tolerance": "t_j = u_star * m_j, rounded as the metric says (widening only)",
+    "false_rejection_bound": "1/301 under exchangeability: one calibration for the three metrics, not one per metric",
+    "excluded_from_estimates": [
+      "scale sample",
+      "calibration sample"
+    ],
+    "record_before_main_sample": [
+      "m_j",
+      "u_star",
+      "t_j",
+      "SHA-256 of this object with the values filled in"
+    ]
+  },
+  "data_api": {
+    "relative_tolerance": 0.0025,
+    "policy_frame": {
+      "fields": {
+        "price": {
+          "absolute": "0",
+          "reference_spread": "250",
+          "relative": "0.0025",
+          "unit": "USD"
+        }
+      },
+      "max_skew": 10,
+      "quorum": 2,
+      "source_ids": [
+        "coinbase-exchange:ticker:BTC-USD",
+        "kraken:ticker:XBTUSD"
+      ]
+    },
+    "policy_frame_sha256": "12213e3d7aadc69813dfe249f01776a4fc00579b20a30e7f5c76c88feb11b458",
+    "sources": {
+      "seller": [
+        {
+          "id": "bitstamp:ticker:btcusd",
+          "url": "https://www.bitstamp.net/api/v2/ticker/btcusd/",
+          "field": "last"
+        },
+        {
+          "id": "gemini:pubticker:btcusd",
+          "url": "https://api.gemini.com/v1/pubticker/btcusd",
+          "field": "last"
+        }
+      ],
+      "reference": [
+        {
+          "id": "coinbase-exchange:ticker:BTC-USD",
+          "field": "price"
+        },
+        {
+          "id": "kraken:ticker:XBTUSD",
+          "field": "c[0]"
+        }
+      ],
+      "truth": {
+        "id": "bitfinex:trades:tBTCUSD",
+        "url": "https://api-pub.bitfinex.com/v2/trades/tBTCUSD/hist",
+        "query": "start and end in Unix ms (reference_time -+ 10 s), sort=-1, limit=100; a full page moves end back and queries again",
+        "field": "PRICE of [ID, MTS, AMOUNT, PRICE]",
+        "value": "price of the trade nearest reference_time (median if several are equally near); latency recorded",
+        "used_in_judgment": false
+      }
+    },
+    "seller_response": "{\"price\": \"<last, normalized decimal>\"}",
+    "honest_per_source": 1500,
+    "wrong_answer_generators": [
+      {
+        "name": "D-perturb",
+        "rule": "honest price * (1 + sigma * m * tol), sigma = +-1 seeded",
+        "in_beta": true,
+        "strata": [
+          {
+            "type": "D-perturb/m=1.5",
+            "m": "1.5",
+            "count": 84
+          },
+          {
+            "type": "D-perturb/m=3",
+            "m": "3",
+            "count": 83
+          },
+          {
+            "type": "D-perturb/m=10",
+            "m": "10",
+            "count": 83
+          }
+        ]
+      },
+      {
+        "name": "D-near",
+        "rule": "honest price * (1 + sigma * m * tol), sigma = +-1 seeded",
+        "in_beta": true,
+        "truth_label": "wrong only if |x - P3| > tol * P3 with P3 from the truth source; others reported apart",
+        "strata": [
+          {
+            "type": "D-near/m=1.05",
+            "m": "1.05",
+            "count": 150
+          },
+          {
+            "type": "D-near/m=1.1",
+            "m": "1.1",
+            "count": 150
+          },
+          {
+            "type": "D-near/m=1.25",
+            "m": "1.25",
+            "count": 150
+          }
+        ]
+      },
+      {
+        "name": "D-stale",
+        "rule": "price of the same source's successful capture exactly cells_back grid cells earlier; below 1.5 * tol from the current capture it is reported apart; when no such capture exists the type is deferred to the next eligible wrong-answer capture",
+        "in_beta": true,
+        "strata": [
+          {
+            "type": "D-stale/1h",
+            "cells_back": 12,
+            "count": 75
+          },
+          {
+            "type": "D-stale/24h",
+            "cells_back": 288,
+            "count": 75
+          }
+        ]
+      },
+      {
+        "name": "D-unit",
+        "rule": "price * 100",
+        "in_beta": true,
+        "strata": [
+          {
+            "type": "D-unit",
+            "factor": "100",
+            "count": 60
+          }
+        ]
+      },
+      {
+        "name": "D-adaptive",
+        "rule": "m_hat * (1 + sigma * tol * (1 + delta)); m_hat is the median of the generator's own reference captures at capture time; delta starts at 0.2 once, halves after a FAIL of the base instance and doubles otherwise, within [0.005, 0.5]",
+        "in_beta": false,
+        "descriptive": true,
+        "strata": [
+          {
+            "type": "D-adaptive",
+            "count": 150
+          }
+        ]
+      },
+      {
+        "name": "D-format",
+        "rule": "format check only: missing field ({}), exponent notation",
+        "in_beta": false,
+        "strata": [
+          {
+            "type": "D-format/missing",
+            "count": 25
+          },
+          {
+            "type": "D-format/exponent",
+            "count": 25
+          }
+        ]
+      }
+    ],
+    "wrong_answer_total": 1110,
+    "beta_scope": "decision beta is the largest per-type U_beta over in-scope value types (D-perturb, D-near, D-stale, D-unit strata); D-adaptive is descriptive and D-format a code check",
+    "one_wrong_answer_per_capture": true
+  },
+  "intervals": {
+    "clopper_pearson": {
+      "level": 0.95,
+      "side": "one-sided upper (U) and lower (L)"
+    },
+    "cell_cluster_bootstrap": {
+      "applies_to": [
+        "data_api.alpha",
+        "data_api.p_inc",
+        "data_api.q_ij"
+      ],
+      "cluster": "the two seller-role responses of one cell",
+      "resamples": 10000,
+      "level": 0.95,
+      "side": "one-sided upper and lower; q_ij lower bound at 1 - 0.05/6"
+    },
+    "day_block": {
+      "level": 0.95,
+      "side": "one-sided upper and lower",
+      "block": "UTC date; a date with at least 72 complete cells opens a block, a date with fewer joins the previous block (the first block if none is open yet); fewer than two blocks: not computed"
+    },
+    "decision_upper_bound": "largest of the Clopper-Pearson, cell-cluster and day-block upper bounds",
+    "decision_lower_bound": "smallest of the three lower bounds",
+    "no_cluster_correction": [
+      "value generators (one wrong answer per capture)"
+    ],
+    "descriptive": [
+      "per-type beta cell-cluster upper bound"
+    ]
+  },
+  "collection": {
+    "seed": 20260928,
+    "grid_seconds": 300,
+    "max_skew_seconds": 10,
+    "max_cells": 2400,
+    "role_list": {
+      "honest": 1500,
+      "wrong": 555
+    },
+    "instances": 3,
+    "instance_launch_lead_seconds": 10,
+    "instance_schedule": {
+      "slot_offsets_seconds": [
+        -9,
+        -4,
+        1
+      ],
+      "jitter_ms": 3000,
+      "rule": "each instance starts at reference_time + its slot offset + a seeded jitter and captures the two references one after the other in its seeded order; the slot of each instance is a seeded permutation",
+      "origin": "implementation choice (the collection plan fixes only: within max_skew, at different times, seeded order)"
+    },
+    "request_timeout_seconds": 10,
+    "sleep_divergence_seconds": 1,
+    "adaptive": {
+      "delta_initial": "0.2",
+      "delta_min": "0.005",
+      "delta_max": "0.5"
+    },
+    "rate_limit": {
+      "status": 429,
+      "skip_next_cells": 1,
+      "stop_after_consecutive": 3,
+      "counting": "per source over every HTTP response in time order, across sessions; any other status resets the count"
+    },
+    "truth_lookup": {
+      "window_seconds": 10,
+      "max_attempts": 4,
+      "first_retry_after_seconds": 60,
+      "retry_interval_seconds": 600,
+      "reserve_seconds": 60,
+      "settle_seconds": 30,
+      "min_interval_seconds": 5,
+      "when": "after the cell's judgments are stored and not before reference_time + max_skew + settle_seconds (the window has closed); only for cells with a D-near or D-adaptive response; lookups at least min_interval_seconds apart"
+    },
+    "seed_derivation": "value = SHA-256('fairbind/c1-collect/v1|<seed>|<label>|<grid time>|<id>') as a big-endian integer; base instance = 1 + value('base-instance', seller) mod 3; sigma = +1 if value('sigma', seller) is even else -1; reference order of instance i sorts the references by value('reference-order/instance-i', reference); slots sort instances by value('slot', 'instance-i'); jitter = value('offset-jitter', 'instance-i') mod jitter_ms",
+    "list_shuffle": "Fisher-Yates from the last index down; j = uniform in [0, i] by rejection sampling on SHA-256('fairbind/c1-collect/v1|<seed>|list|<label>|<i>|<k>'); labels 'roles/<seller id>' and 'types'; list items in configuration order before shuffling"
+  }
+}

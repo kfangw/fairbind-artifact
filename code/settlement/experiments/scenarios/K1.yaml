@@ -1,0 +1,72 @@
+id: K1
+name: All keepers down
+property_under_test:
+- P2
+- P5
+preconditions:
+- 'A cheating seller sells bad responses at rate:peak_hour_p99; no other account calls public transitions while the keepers are down'
+- 'Variant review_seal_delayed: the keepers are live except for sealReviewRandomness, which they call review_seal_delay_blocks after each review random block, past both the seal window (sealBlocks = 200) and the 256-block blockhash window; the seller appeals every initial FAIL so that party reviews and tiebreaks occur'
+injected_fault:
+  process: keeper
+  kind: keeper_outage
+  action: 'variant all_keepers_down: every keeper stops calling public transitions (seal, openSample, timeouts, freeze) for outage_blocks; variant review_seal_delayed: keepers delay only the review seals, by review_seal_delay_blocks, during outage_blocks'
+  timing: starting at the first anchorDeadline of the run
+parameters:
+  variant:
+    default: all_keepers_down
+    sweep:
+    - all_keepers_down
+    - review_seal_delayed
+    unit: which keeper calls are withheld
+  review_seal_delay_blocks:
+    default: 257
+    unit: 'blocks after the review random block; above sealBlocks and the 256-block blockhash window'
+  outage_blocks:
+    default: 100
+    sweep:
+    - 100
+    - 1000
+    - L
+    unit: blocks
+  Lambda_cheater:
+    default: rate:peak_hour_p99
+    unit: settlements per block
+n_seeds: 3
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - epoch_failed_count
+  - sample_escape_rate
+  - unopened_sample_count
+  - review_reseal_count
+  - review_protocol_inconclusive_count
+expected_outcome: 'all_keepers_down: an outage shorter than the seal window (sealBlocks after the random block) delays sealing but loses nothing. A longer outage fails every epoch whose seal window falls inside it (SEAL_TIMEOUT): their purchases become refundable with no seller counter, so the bad sales in them escape detection. A sampled purchase whose case is not opened is never released and can still be opened after the keepers return. Timeouts and freezes wait for the keepers, so the freeze delay grows by up to outage_blocks. review_seal_delayed: the first late review seal of a stage finds no randomness and reopens the seal on the next block (ReviewResealed, ADR 0021); the keeper then seals the fresh block within its delay only if the outage has ended, so while the outage lasts the second late seal of the same stage ends the case as a protocol INCONCLUSIVE and returns the appeal deposit. The appealing cheater gains nothing from a single missed seal; review_protocol_inconclusive_count is 0 when outage_blocks is shorter than review_seal_delay_blocks.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'post_settlement_unrecovered_rate == 0 at every point; no sampled purchase is released without a case (a released one refutes the unopened-sample rule); unopened_sample_count is 0 at the drain block; for all_keepers_down epoch_failed_count and sample_escape_rate are 0 at 100 blocks and are reported at 1,000 and L; for review_seal_delayed every review stage has at most one ReviewResealed, and no case ends as a review protocol INCONCLUSIVE without one (a case ending at the first missed seal refutes the reopen rule).'
+notes: 'Detection depends on at least one live keeper; this scenario reports how much escapes when none is live. The review_seal_delayed variant exercises the reopened review seal of ADR 0021: before it, the first missed seal ended the case INCONCLUSIVE and returned the appeal deposit to an appealing cheater.'

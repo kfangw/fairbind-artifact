@@ -1,0 +1,6682 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "token",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "gov",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "guard",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "treasury",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "rewardPool",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "modules",
+        "type": "address[9]",
+        "internalType": "address[9]"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "ASSIGN_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "EIP712_DOMAIN_TYPEHASH",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "EPOCH_NODE_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "HTTP_CANON_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "KEY_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "PPM",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "PURCHASE_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "RECEIPT_TYPEHASH",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "RESPONSE_CHUNK_BYTES",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "RESPONSE_NODE_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "SAMPLE_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "VERIFIER_SET_DOMAIN",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "acceptBuyerServe",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "acceptGovernance",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "acceptGuardian",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "acceptServe",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "anchor",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "internalType": "uint24"
+      },
+      {
+        "name": "root",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "count",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "publicationHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "appeal",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "assignVerifier",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "beginBuyerPublication",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "idempotencyKey",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      },
+      {
+        "name": "request",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CanonicalRequest",
+        "components": [
+          {
+            "name": "method",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "path",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "query",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "headerBlock",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "body",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ]
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "totalBytes",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "chunkCount",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "beginPublication",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "idempotencyKey",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      },
+      {
+        "name": "request",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CanonicalRequest",
+        "components": [
+          {
+            "name": "method",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "path",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "query",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "headerBlock",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "body",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ]
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "totalBytes",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "chunkCount",
+        "type": "uint16",
+        "internalType": "uint16"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "bondModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "buyerServed",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "bundleHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "canonicalRequestHash",
+    "inputs": [
+      {
+        "name": "request",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CanonicalRequest",
+        "components": [
+          {
+            "name": "method",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "path",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "query",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "headerBlock",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "body",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ]
+      },
+      {
+        "name": "canonId",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "checkpointVerifierTree",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "version",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "claimEpochFailure",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "claimRefund",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "claimRefund",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "proof",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ReceiptProof",
+        "components": [
+          {
+            "name": "index",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "count",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "siblings",
+            "type": "bytes32[]",
+            "internalType": "bytes32[]"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createDeadlineConfig",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "config",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.DeadlineConfig",
+        "components": [
+          {
+            "name": "anchorBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "sealBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "openBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "responseBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "claimBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "serveBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "judgeBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "evidenceBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "appealBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createServiceProfile",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "input",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ServiceProfileInput",
+        "components": [
+          {
+            "name": "classId",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "predicateId",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "canonId",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epochOrigin",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "epochBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "samplePpm",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "effectivePpm",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "recheckPpm",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "bucketCapacity",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "refillPpmPerBlock",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxRatePpmPerBlock",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "enforcementBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "deferBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "retentionBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "marginBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxRequestBytes",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxResponseBytes",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxEvidenceBytes",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxPublicationCost",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "maxReviewCost",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "maxPurchaseValue",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "maxBadGain",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "sellerPenalty",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "minVerifierBond",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "verifierBondCap",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "verifierLatePenalty",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "verifierWrongPenalty",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "disputeDeposit",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "appealDeposit",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "verifierExposurePpm",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxAssignments",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "minVerifiers",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "strikeLimit",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "deadlineConfigId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "beaconDelayBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "beaconSlackL1Blocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "claimWindowBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "failureLimit",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "failureWindowBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "maxInconclusivePpm",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "inconclusiveWindowBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "forfeitVerifierPpm",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "freezeOnInitialFail",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "minJudgedCount",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "parameterHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "deliveryModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "deploymentToken",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "deriveKeyId",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "buyer",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "key",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "deriveNonce",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "claimsHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "buyer",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "key",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      },
+      {
+        "name": "requestHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "discloseEvidence",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "attempt",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "evidence",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "dispute",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "kind",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "epochPurchaseCount",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "escalate",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "escalateBuyerServe",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeBondExit",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeBuyerPublication",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeBuyerServed",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeCase",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizePublication",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeSellerExit",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeServed",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "finalizeVerifierExit",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "forfeitUnclaimed",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "freezeSellerDeferred",
+    "inputs": [
+      {
+        "name": "triggerNonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getAnchor",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.AnchorView",
+        "components": [
+          {
+            "name": "root",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "randomness",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "publicationHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "verifierSetHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "totalEffectiveWeight",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "anchoredBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "randomBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "sealDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "sortitionVersion",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "count",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "state",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAssignments",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct FairBindCore.AssignmentData[]",
+        "components": [
+          {
+            "name": "verifierId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "stage",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "attempt",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "verdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "released",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "serveUsed",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "evidenceRequested",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "evidenceDisclosed",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "evidenceHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "liability",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "penaltyReserve",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getBond",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.BondView",
+        "components": [
+          {
+            "name": "bondId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "owner",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "balance",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "bucketBalancePpm",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "bucketUpdatedBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "scaleFactor",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "registrations",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "failureCount",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "failureWindowStart",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "inconclusiveCount",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "judgedCount",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "inconclusiveWindowStart",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "exitEligibleBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "deferredBalance",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "encumbered",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "freezeNonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "freezeBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "claimUntilBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "forfeitedThrough",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "claimedTotal",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "forfeitedTotal",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "freezeState",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "status",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sanctioned",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getBuyerRecovery",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CaseView",
+        "components": [
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requester",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "bundleHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "randomness",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "evidenceHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "caseOpenedBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "serveDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "challengeUntil",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "publishDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "randomBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "judgeDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "evidenceDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "assignedVerifierId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "publishedChunks",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "trigger",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "state",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "resumeState",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "reviewPath",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "requesterRole",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "stage",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "attempt",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "initialVerdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "finalVerdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getCase",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CaseView",
+        "components": [
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requester",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "bundleHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "randomness",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "evidenceHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "caseOpenedBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "serveDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "challengeUntil",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "publishDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "randomBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "judgeDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "evidenceDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "assignedVerifierId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "publishedChunks",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "trigger",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "state",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "resumeState",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "reviewPath",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "requesterRole",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "stage",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "attempt",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "initialVerdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "finalVerdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getClaimReentry",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ClaimReentry",
+        "components": [
+          {
+            "name": "deferredBalance",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "encumbered",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "reopened",
+            "type": "bool",
+            "internalType": "bool"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getDeadlineConfig",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.DeadlineConfig",
+        "components": [
+          {
+            "name": "anchorBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "sealBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "openBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "responseBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "claimBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "serveBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "judgeBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "evidenceBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "appealBlocks",
+            "type": "uint32",
+            "internalType": "uint32"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getFailureWindowScale",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getFreezeTriggers",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.TriggerQueue",
+        "components": [
+          {
+            "name": "head",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "tail",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "count",
+            "type": "uint32",
+            "internalType": "uint32"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getFrozenPool",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "pool",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FrozenPoolView",
+        "components": [
+          {
+            "name": "bondId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "freezeState",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "triggerNonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "freezeBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "claimUntilBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "forfeitedThrough",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "poolBalance",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "encumbered",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "claimedTotal",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "forfeitedTotal",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getLockedForfeit",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPurchase",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.PurchaseView",
+        "components": [
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "keyId",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "buyer",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "value",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "settledBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "responseDue",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "claimUntil",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "releaseBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "retainUntil",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "financialState",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getRecentScaleHigh",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ScaleHigh",
+        "components": [
+          {
+            "name": "scale",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "dropBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getReview",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ReviewData",
+        "components": [
+          {
+            "name": "appealUntil",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "autoVerdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "appellant",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "deposit",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getReviewReseals",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getSeller",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.SellerView",
+        "components": [
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "owner",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "signingKey",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "bondId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "suspendedAtBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "exitEligibleBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "status",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getServiceProfile",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ServiceProfileView",
+        "components": [
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "active",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "deploymentToken",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "parameters",
+            "type": "tuple",
+            "internalType": "struct FairBindCore.ServiceProfileInput",
+            "components": [
+              {
+                "name": "classId",
+                "type": "uint16",
+                "internalType": "uint16"
+              },
+              {
+                "name": "predicateId",
+                "type": "bytes32",
+                "internalType": "bytes32"
+              },
+              {
+                "name": "canonId",
+                "type": "bytes32",
+                "internalType": "bytes32"
+              },
+              {
+                "name": "epochOrigin",
+                "type": "uint64",
+                "internalType": "uint64"
+              },
+              {
+                "name": "epochBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "samplePpm",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "effectivePpm",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "recheckPpm",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "bucketCapacity",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "refillPpmPerBlock",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxRatePpmPerBlock",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "enforcementBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "deferBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "retentionBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "marginBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxRequestBytes",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxResponseBytes",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxEvidenceBytes",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxPublicationCost",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "maxReviewCost",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "maxPurchaseValue",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "maxBadGain",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "sellerPenalty",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "minVerifierBond",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "verifierBondCap",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "verifierLatePenalty",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "verifierWrongPenalty",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "disputeDeposit",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "appealDeposit",
+                "type": "uint96",
+                "internalType": "uint96"
+              },
+              {
+                "name": "verifierExposurePpm",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxAssignments",
+                "type": "uint16",
+                "internalType": "uint16"
+              },
+              {
+                "name": "minVerifiers",
+                "type": "uint16",
+                "internalType": "uint16"
+              },
+              {
+                "name": "strikeLimit",
+                "type": "uint16",
+                "internalType": "uint16"
+              },
+              {
+                "name": "deadlineConfigId",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "beaconDelayBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "beaconSlackL1Blocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "claimWindowBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "failureLimit",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "failureWindowBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "maxInconclusivePpm",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "inconclusiveWindowBlocks",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "forfeitVerifierPpm",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "freezeOnInitialFail",
+                "type": "bool",
+                "internalType": "bool"
+              },
+              {
+                "name": "minJudgedCount",
+                "type": "uint32",
+                "internalType": "uint32"
+              },
+              {
+                "name": "parameterHash",
+                "type": "bytes32",
+                "internalType": "bytes32"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getVerifier",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.VerifierView",
+        "components": [
+          {
+            "name": "verifierId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "owner",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "signingKey",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "classBitmap",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "bond",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "lockedLiability",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "exitEligibleBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "strikes",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "status",
+            "type": "uint8",
+            "internalType": "uint8"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getVerifierCapital",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.VerifierCapital",
+        "components": [
+          {
+            "name": "reservedPenalties",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "conservativeCap",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "conservativeFraction",
+            "type": "uint32",
+            "internalType": "uint32"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getVerifierCheckpoint",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "version",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "checkpointBlock",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "verifierIds",
+        "type": "uint32[]",
+        "internalType": "uint32[]"
+      },
+      {
+        "name": "weights",
+        "type": "uint96[]",
+        "internalType": "uint96[]"
+      },
+      {
+        "name": "totalEffectiveWeight",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "setHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "governance",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "governanceAcceptAfter",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "governanceNominee",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "guardian",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "guardianNominee",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "isSampled",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "eligible",
+        "type": "bool",
+        "internalType": "bool"
+      },
+      {
+        "name": "known",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "judge",
+    "inputs": [
+      {
+        "name": "verdict",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.SignedVerdict",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "stage",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "attempt",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "verifierId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "verdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "evidenceHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          }
+        ]
+      },
+      {
+        "name": "verdictSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "proof",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ReceiptProof",
+        "components": [
+          {
+            "name": "index",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "count",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "siblings",
+            "type": "bytes32[]",
+            "internalType": "bytes32[]"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "judgmentDelayBlocks",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "delay",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "judgmentModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "newSettlementsPaused",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "nominateGovernance",
+    "inputs": [
+      {
+        "name": "nominee",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "acceptAfter",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "nominateGuardian",
+    "inputs": [
+      {
+        "name": "nominee",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "openAutoRecheck",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "openSample",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "pauseNewSettlements",
+    "inputs": [
+      {
+        "name": "paused",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "penaltyTreasury",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "proveEquivocation",
+    "inputs": [
+      {
+        "name": "first",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "firstSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "second",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "secondSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "proveOmission",
+    "inputs": [
+      {
+        "name": "omitted",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "omittedSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "left",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "leftSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "leftProof",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ReceiptProof",
+        "components": [
+          {
+            "name": "index",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "count",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "siblings",
+            "type": "bytes32[]",
+            "internalType": "bytes32[]"
+          }
+        ]
+      },
+      {
+        "name": "right",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "rightSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "rightProof",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.ReceiptProof",
+        "components": [
+          {
+            "name": "index",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "count",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "siblings",
+            "type": "bytes32[]",
+            "internalType": "bytes32[]"
+          }
+        ]
+      },
+      {
+        "name": "boundary",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "publicationModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "publish",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "idempotencyKey",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      },
+      {
+        "name": "request",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CanonicalRequest",
+        "components": [
+          {
+            "name": "method",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "path",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "query",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "headerBlock",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "body",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ]
+      },
+      {
+        "name": "responseBody",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "publishBuyerChunk",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "index",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "chunk",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "publishBuyerResponse",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "idempotencyKey",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      },
+      {
+        "name": "request",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.CanonicalRequest",
+        "components": [
+          {
+            "name": "method",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "path",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "query",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "headerBlock",
+            "type": "bytes",
+            "internalType": "bytes"
+          },
+          {
+            "name": "body",
+            "type": "bytes",
+            "internalType": "bytes"
+          }
+        ]
+      },
+      {
+        "name": "responseBody",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      },
+      {
+        "name": "receiptSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "publishChunk",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "index",
+        "type": "uint16",
+        "internalType": "uint16"
+      },
+      {
+        "name": "chunk",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "purchaseByKey",
+    "inputs": [
+      {
+        "name": "keyId",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "purchaseState",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "quoteSeller",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "quote",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.SellerQuote",
+        "components": [
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "deploymentToken",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "maxPurchaseValue",
+            "type": "uint96",
+            "internalType": "uint96"
+          },
+          {
+            "name": "bucketBalancePpm",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "remaining",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "quotedAtBlock",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "currentEpoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "sellerStatus",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "bondId",
+            "type": "uint32",
+            "internalType": "uint32"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "receiptDigest",
+    "inputs": [
+      {
+        "name": "receipt",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.FairBindReceipt",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "sellerId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "profileId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "requestHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "responseHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "claimsHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "predicateCommitment",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "epoch",
+            "type": "uint24",
+            "internalType": "uint24"
+          },
+          {
+            "name": "issuedAt",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "recoveryModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "registerBond",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "amount",
+        "type": "uint128",
+        "internalType": "uint128"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "registerSeller",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "signingKey",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "claimsHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "registerVerifier",
+    "inputs": [
+      {
+        "name": "classBitmap",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "signingKey",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "bondAmount",
+        "type": "uint128",
+        "internalType": "uint128"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "registryModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "reinstateSeller",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "releaseFrozen",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "releasePurchase",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "requestBondExit",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "requestEvidence",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "attempt",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "requestSellerExit",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "requestServe",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "requestVerifierExit",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "internalType": "uint32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "reviewModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "samplingModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "seal",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "sealReviewRandomness",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "served",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "bundleHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setServiceProfileActive",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "setVerifierClasses",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "classBitmap",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "settle",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "claimsHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "idempotencyKey",
+        "type": "bytes16",
+        "internalType": "bytes16"
+      },
+      {
+        "name": "requestHash",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "authorization",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.TransferAuthorization",
+        "components": [
+          {
+            "name": "from",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "to",
+            "type": "address",
+            "internalType": "address"
+          },
+          {
+            "name": "value",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "validAfter",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "validBefore",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          }
+        ]
+      },
+      {
+        "name": "paymentSignature",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "keyId",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "settlementModule",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "timeoutAnchor",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "timeoutBuyerServe",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "timeoutEvidence",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "internalType": "uint8"
+      },
+      {
+        "name": "attempt",
+        "type": "uint8",
+        "internalType": "uint8"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "timeoutJudge",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "timeoutSeal",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "internalType": "uint24"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "timeoutServe",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "topUpBond",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "amount",
+        "type": "uint128",
+        "internalType": "uint128"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "topUpVerifierBond",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "amount",
+        "type": "uint128",
+        "internalType": "uint128"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "verdictDigest",
+    "inputs": [
+      {
+        "name": "verdict",
+        "type": "tuple",
+        "internalType": "struct FairBindCore.SignedVerdict",
+        "components": [
+          {
+            "name": "version",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "nonce",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          {
+            "name": "stage",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "attempt",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "verifierId",
+            "type": "uint32",
+            "internalType": "uint32"
+          },
+          {
+            "name": "verdict",
+            "type": "uint8",
+            "internalType": "uint8"
+          },
+          {
+            "name": "evidenceHash",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          }
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "verifierRewardPool",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "Anchored",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "uint24"
+      },
+      {
+        "name": "root",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "count",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "randomBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "publicationHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BondExitRequested",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "eligibleBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BondExited",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BondRegistered",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "balance",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "scaleFactor",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BondScaled",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "oldScaleFactor",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "newScaleFactor",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "balance",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BuyerRecoveryClosed",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "state",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "BuyerRecoveryOpened",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "serveDue",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CaseFinalized",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "finalVerdict",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "financialState",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "CaseOpened",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "trigger",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "requester",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "heldValue",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ClaimWindowOpened",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "triggerNonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "claimUntilBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "poolBalance",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "DeadlineConfigCreated",
+    "inputs": [
+      {
+        "name": "deadlineConfigId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "configHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "DepositResolved",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "depositType",
+        "type": "uint8",
+        "indexed": true,
+        "internalType": "uint8"
+      },
+      {
+        "name": "recipient",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "EpochFailed",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "uint24"
+      },
+      {
+        "name": "reason",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "EpochSealed",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "indexed": true,
+        "internalType": "uint24"
+      },
+      {
+        "name": "randomness",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "verifierSetHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "sortitionVersion",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "totalEffectiveWeight",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "EvidenceDisclosed",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "attempt",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "evidenceHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "EvidenceRequested",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "attempt",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "evidenceDue",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FreezeReanchored",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "releasedNonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "triggerNonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FrozenClaimPaid",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "buyer",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "value",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "FrozenReleased",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "triggerNonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "releasedTotal",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "GovernanceChanged",
+    "inputs": [
+      {
+        "name": "previousGovernance",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "newGovernance",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "GovernanceNominated",
+    "inputs": [
+      {
+        "name": "currentGovernance",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "nominee",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "acceptAfter",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "GuardianChanged",
+    "inputs": [
+      {
+        "name": "previousGuardian",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "newGuardian",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "GuardianNominated",
+    "inputs": [
+      {
+        "name": "currentGuardian",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "nominee",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "InconclusiveRecorded",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "inconclusiveCount",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "judgedCount",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "aboveThreshold",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "NewSettlementsPaused",
+    "inputs": [
+      {
+        "name": "paused",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      },
+      {
+        "name": "actor",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PublicationChunk",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "index",
+        "type": "uint16",
+        "indexed": true,
+        "internalType": "uint16"
+      },
+      {
+        "name": "bytesWritten",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PublicationStarted",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "responseHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "chunkCount",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      },
+      {
+        "name": "totalBytes",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Refunded",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "buyer",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "value",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "source",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Released",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "value",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ResponsePublished",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "responseHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "chunkCount",
+        "type": "uint16",
+        "indexed": false,
+        "internalType": "uint16"
+      },
+      {
+        "name": "totalBytes",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ReviewResealed",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "randomBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ReviewSelected",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "partyAppeal",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      },
+      {
+        "name": "autoSelected",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      },
+      {
+        "name": "randomBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerDeferredFrozen",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "triggerNonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "frozenTotal",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "frozenAtBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerExitRequested",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "eligibleBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerExited",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerRegistered",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "signingKey",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "claimsHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerReinstated",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "atBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerSanctioned",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "failureCount",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "penalty",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SellerSuspended",
+    "inputs": [
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "triggerNonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ServeAccepted",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "requester",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ServeEscalated",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "publishDue",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ServeRequested",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "requester",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "caseOpenedBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "deadline",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Served",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "bundleHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "challengeUntil",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ServiceProfileActivationChanged",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "indexed": false,
+        "internalType": "bool"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ServiceProfileCreated",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "classId",
+        "type": "uint16",
+        "indexed": true,
+        "internalType": "uint16"
+      },
+      {
+        "name": "predicateId",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "canonId",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "parameterHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Settled",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "keyId",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "sellerId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "buyer",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "value",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "epoch",
+        "type": "uint24",
+        "indexed": false,
+        "internalType": "uint24"
+      },
+      {
+        "name": "requestHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "claimsHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "Slashed",
+    "inputs": [
+      {
+        "name": "actorType",
+        "type": "uint8",
+        "indexed": true,
+        "internalType": "uint8"
+      },
+      {
+        "name": "actorId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "recipient",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "reason",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "UnclaimedForfeited",
+    "inputs": [
+      {
+        "name": "bondId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "total",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "toVerifierPool",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "toReserve",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerdictSubmitted",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "verdict",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "evidenceHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierAssigned",
+    "inputs": [
+      {
+        "name": "nonce",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "stage",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "attempt",
+        "type": "uint8",
+        "indexed": false,
+        "internalType": "uint8"
+      },
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "deadline",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierBondChanged",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "bond",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierClassesChanged",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "classBitmap",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierExitRequested",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "eligibleBlock",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierExited",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierRegistered",
+    "inputs": [
+      {
+        "name": "verifierId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "signingKey",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "classBitmap",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "bond",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "VerifierTreeCheckpointed",
+    "inputs": [
+      {
+        "name": "profileId",
+        "type": "uint32",
+        "indexed": true,
+        "internalType": "uint32"
+      },
+      {
+        "name": "version",
+        "type": "uint64",
+        "indexed": true,
+        "internalType": "uint64"
+      },
+      {
+        "name": "setHash",
+        "type": "bytes32",
+        "indexed": false,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "totalEffectiveWeight",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "AlreadyClaimed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AlreadyFinalized",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AnchorTooEarly",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AnchorWindowClosed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AssignmentExhausted",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AuthorizationExpired",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AuthorizationMismatch",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BondMismatch",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "BondNotActive",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ClaimWindowClosed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ClaimWindowNotOpen",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ClaimsMismatch",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "CountMismatch",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "DeadlineNotReached",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "DeadlinePassed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "EvidenceTooLarge",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ExitNotReady",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "FrozenEntry",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InactiveProfile",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InsufficientSellerBond",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InsufficientVerifierBond",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidConfiguration",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidProfile",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidProof",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidPublication",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidRandomnessWindow",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidReceipt",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidSignature",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidTransition",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "KeyAlreadyUsed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "LiabilityExceeded",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "NonceAlreadyUsed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "NonceMismatch",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "NotSampled",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ObjectAlreadyExists",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Paused",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "PoolExhausted",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ProfileMismatch",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "RateLimitExceeded",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ReceiptOutOfWindow",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ReinstateConditionsUnmet",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ResponseTooLarge",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "SellerInactive",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "SellerIsSuspended",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ServiceClassUnavailable",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "TransferFailed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "Unauthorized",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "UnknownDeadlineConfig",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "UnknownProfile",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "UnsupportedServiceClass",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ValueTooLarge",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "VerifierInactive",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ZeroAddress",
+    "inputs": []
+  }
+]

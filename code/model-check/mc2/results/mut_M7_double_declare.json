@@ -1,0 +1,51 @@
+{
+ "states": 2611,
+ "terminal": 0,
+ "violations": {
+  "P3": {
+   "msg": "s0: a failure is recorded twice: [('c', 0), ('c', 0)]",
+   "trace": [
+    "t=0 s0:settle p0 fr0 dk0",
+    "t=0 tick",
+    "t=1 s0:anchor p0 e0 (0,)",
+    "t=1 tick",
+    "t=2 tick",
+    "t=3 tick",
+    "t=4 tick",
+    "t=5 s0:declare 0",
+    "t=5 s0:declare 0"
+   ]
+  }
+ },
+ "capped": false,
+ "seconds": 0.1,
+ "Hend": 8,
+ "dedup": "full",
+ "cfg": {
+  "sellers": 1,
+  "profiles": 1,
+  "epochs": 2,
+  "k": 1,
+  "smax": 2,
+  "stot": 2,
+  "L": 2,
+  "aA": 1,
+  "Mgap": 1,
+  "T_p": 1,
+  "T_c": 2,
+  "d_inc": 1,
+  "disputes": false,
+  "marks": true,
+  "fraud": false,
+  "honest": false,
+  "max_reentry": 1,
+  "claims": false,
+  "units": false,
+  "mutations": [
+   "M7_double_declare"
+  ],
+  "max_states": 40000000
+ },
+ "group": "mut",
+ "name": "mut_M7_double_declare"
+}

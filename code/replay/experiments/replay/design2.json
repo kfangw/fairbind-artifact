@@ -1,0 +1,69 @@
+{
+  "formatVersion": 2,
+  "kind": "fairbind-design2-replay-switches",
+  "description": "Switch values of the design-2 rules (design2_rules, D2-1 to D2-9 and the second edition of D2-5, D2-7, D2-8 and D2-9). Nothing here is read unless replay.py is run with --design 2. The block `edition1` lists the values of the first edition that the second edition replaces; they stay selectable with --d2-edition 1 so that a first-edition run can be repeated.",
+  "profile": "data-api-fast-v1",
+  "vmax_choices_usdc": ["0.1", "0.2", "1"],
+  "detect_floor_ppm": 400000,
+  "bond_margin": [40, 27],
+  "k_placeholder": 27,
+  "hold_choices_blocks": [30180, 51780, 60000],
+  "hold_default_blocks": 30180,
+  "failure_window_choices_blocks": [30180, 60000],
+  "multiplier": {
+    "sources": ["prior14", "cross", "insample"],
+    "default_source": "prior14",
+    "margin_choices": ["1", "1.5", "2"],
+    "default_margin": "1"
+  },
+  "threshold_rounding": {"choices": ["contract", "ceil"], "default": "contract"},
+  "floor_rule": {"choices": ["product", "ratio"], "default": "product"},
+  "bond_rule": {"choices": ["floor-fraction", "integer-b"], "default": "floor-fraction"},
+  "window_alignment": {"choices": ["first-block", "absolute"], "default": "first-block"},
+  "L_actual_blocks": 29680,
+  "reference_block_seconds": "2",
+  "edition2": {
+    "description": "Second edition of the rules (design2_rules, second edition). Defaults of --design 2 unless --d2-edition 1.",
+    "L_F_blocks": 30573,
+    "keeper_margin_blocks": 500,
+    "hold_reference_blocks": 31073,
+    "hold_rule": "T_hold = L_F + 500 blocks of the reference chain (2 s); other chains convert the seconds",
+    "failure_window_equals_hold": true,
+    "bond_rule": "integer-b",
+    "threshold_rounding": "ceil",
+    "window_alignment": "absolute",
+    "L_actual_blocks": 30573,
+    "k_table": {
+      "target_per_window": "5e-7",
+      "worst_case": "every settlement at v_max, every one inspected; F <= Bin(S, w)",
+      "S": [10, 30, 100, 300, 1000, 3245],
+      "by_w": {
+        "0.015": [5, 7, 11, 19, 38, 87],
+        "0.004728": [4, 5, 8, 11, 20, 39]
+      },
+      "default_w": "0.015"
+    },
+    "sales_cap": {
+      "small_grid": [10, 30, 100, 300, 1000],
+      "main_S": 3245,
+      "main_capacity": 137,
+      "main_refill_ppm_per_block": 50000,
+      "lambda_rule": "Lambda = failure window + hold period (2 * T_hold when they are equal)",
+      "capacity_rule": "q_S = max(1, round(S * 137 / 3245)), half up",
+      "refill_rule": "r_S = floor((S - q_S) * 10^6 / Lambda) ppm per block",
+      "no_record_cap": 10,
+      "modes": ["auto-zero-reject", "prior14", "cross"]
+    },
+    "report_w": ["0.0003", "0.004728", "0.011", "0.015"],
+    "injection_extra_settings": [{"name": "w_0.015", "w": 0.015}],
+    "injection_settings": ["main", "w_0.015"]
+  },
+  "chains": {
+    "base": {"block_seconds": "2", "address_case": "lower",
+             "source": "operating point chain.block_seconds (Base, one sequencer, 2 s blocks)"},
+    "polygon": {"block_seconds": "2", "address_case": "lower",
+                "source": "collection ledger, section 4: about 2 s; the tuning list itself shows 1.5 s (measured_in_list)"},
+    "solana": {"block_seconds": "0.4", "address_case": "keep",
+               "source": "collection ledger, section 4: about 0.4 s; the tuning list itself shows 0.30 s (measured_in_list)"}
+  }
+}

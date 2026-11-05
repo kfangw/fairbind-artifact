@@ -1,0 +1,484 @@
+{
+ "chainId": 31337,
+ "contract": "0x3333333333333333333333333333333333333333",
+ "derived": {
+  "verifierRemovals": []
+ },
+ "eventSignatures": {},
+ "events": [
+  {
+   "args": {
+    "balance": "4000000",
+    "bondId": 1,
+    "owner": "0x1111111111111111111111111111111111111111",
+    "profileId": 1,
+    "scaleFactor": 1
+   },
+   "block": 5,
+   "event": "BondRegistered",
+   "logIndex": 0,
+   "tx": "0xf4ee827d4884941114e750c435898a778cc3694840166aefd33305c7b0737d15"
+  },
+  {
+   "args": {
+    "bondId": 1,
+    "claimsHash": "0xa61808fe40feb8b3433778bbc2ececcaa47c8c47fc1657f054c239efd3f0e984",
+    "owner": "0x1111111111111111111111111111111111111111",
+    "profileId": 1,
+    "sellerId": 1,
+    "signingKey": "0x1111111111111111111111111111111111111111"
+   },
+   "block": 6,
+   "event": "SellerRegistered",
+   "logIndex": 0,
+   "tx": "0xefe5007f39b16be784b5f4659d74f912dbf2c149c0f98af7f26b15c4291416d0"
+  },
+  {
+   "args": {
+    "bond": "100000000",
+    "classBitmap": "2",
+    "owner": "0x1111111111111111111111111111111111111111",
+    "signingKey": "0x0000000000000000000000000000000000000001",
+    "verifierId": 1
+   },
+   "block": 10,
+   "event": "VerifierRegistered",
+   "logIndex": 0,
+   "tx": "0x9ad908d377008a1c6bdd274e55d6b5932ecf521c9dc3551dc4865b5b0429f08b"
+  },
+  {
+   "args": {
+    "bond": "100000000",
+    "classBitmap": "2",
+    "owner": "0x1111111111111111111111111111111111111111",
+    "signingKey": "0x0000000000000000000000000000000000000002",
+    "verifierId": 2
+   },
+   "block": 11,
+   "event": "VerifierRegistered",
+   "logIndex": 0,
+   "tx": "0x0ca8dd96b02e1862d5dd1d023003c6b83609c068dcb727115f439cd28dd72e75"
+  },
+  {
+   "args": {
+    "bondId": 1,
+    "buyer": "0x2222222222222222222222222222222222222222",
+    "claimsHash": "0xa61808fe40feb8b3433778bbc2ececcaa47c8c47fc1657f054c239efd3f0e984",
+    "epoch": 0,
+    "keyId": "0xb3d0f6139057140b186c8bb6825c70f6c85f92748f1c2000093443bb98fb69bb",
+    "nonce": "0x4ef9023986376695b09f243ed15c2ecb6b05a304739e87965844384b2118a495",
+    "profileId": 1,
+    "requestHash": "0x2e379564e71fee8f1996d0dba253e485b1a79afd216f2b98c390c5635a2ba5ee",
+    "sellerId": 1,
+    "value": "10000"
+   },
+   "block": 100,
+   "event": "Settled",
+   "logIndex": 0,
+   "tx": "0xcdc1d63d568d87cb6c6f349f0574c6df8c6412506287304982b2e7355f3a154f"
+  },
+  {
+   "args": {
+    "bondId": 1,
+    "buyer": "0x2222222222222222222222222222222222222222",
+    "claimsHash": "0xa61808fe40feb8b3433778bbc2ececcaa47c8c47fc1657f054c239efd3f0e984",
+    "epoch": 0,
+    "keyId": "0x92dbd2493254e204a9068bd58bd9d28311bb2e38eb3100251215f7129a769d15",
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "profileId": 1,
+    "requestHash": "0x765dd090821b95be212dc2829b67980c511af36bd72669f5e171dbea2b94c5ae",
+    "sellerId": 1,
+    "value": "10000"
+   },
+   "block": 200,
+   "event": "Settled",
+   "logIndex": 0,
+   "tx": "0x8765bde4c9b4da6e37130805d6ac02d04c2ff2fcb4753d5b20183204622b0c94"
+  },
+  {
+   "args": {
+    "bondId": 1,
+    "buyer": "0x2222222222222222222222222222222222222222",
+    "claimsHash": "0xa61808fe40feb8b3433778bbc2ececcaa47c8c47fc1657f054c239efd3f0e984",
+    "epoch": 1,
+    "keyId": "0x37def727c5a5c6cf9a37dcf3c70260637e4eb5585d46e00e0d8c0dec0ce4bc3b",
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+    "profileId": 1,
+    "requestHash": "0x02f3a83ae1365c503218524831f2534ef87a99f38d92f5fd2d4c4eefd39bac78",
+    "sellerId": 1,
+    "value": "10000"
+   },
+   "block": 300,
+   "event": "Settled",
+   "logIndex": 0,
+   "tx": "0x35ee1920727d33af33f7ed940084662eb45a313be283db84e6dfe733e5195be2"
+  },
+  {
+   "args": {
+    "epoch": 0,
+    "randomness": "0xb537b7fedb9ef63af3b39e05b8ecd37b7687d4773e520f6134eda690fd5cc40b",
+    "sellerId": 1,
+    "sortitionVersion": 1,
+    "totalEffectiveWeight": "2",
+    "verifierSetHash": "0xfb514134c6aaed911fa86292f44f6a7fb79759971f03d9363878c7ed0b62fc54"
+   },
+   "block": 900,
+   "event": "EpochSealed",
+   "logIndex": 0,
+   "tx": "0x739b742c3dabd5969aaa4831fc2c6847c907a7cca80b842468d0aa552018f1ac"
+  },
+  {
+   "args": {
+    "heldValue": "10000",
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "requester": "0x1111111111111111111111111111111111111111",
+    "trigger": 1
+   },
+   "block": 950,
+   "event": "CaseOpened",
+   "logIndex": 0,
+   "tx": "0xbb6bca3ef1927a42d46d16af41a215d5aebf6019304fc242ecebec0058580b62"
+  },
+  {
+   "args": {
+    "attempt": 0,
+    "deadline": 1250,
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "stage": 1,
+    "verifierId": 1
+   },
+   "block": 950,
+   "event": "VerifierAssigned",
+   "logIndex": 1,
+   "tx": "0xbb6bca3ef1927a42d46d16af41a215d5aebf6019304fc242ecebec0058580b62"
+  },
+  {
+   "args": {
+    "evidenceHash": "0x0cb4fcb11a27b85794c0ca9fede52b6850e1b1fa2ff4204a4df6318b4f3a64a2",
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "stage": 1,
+    "verdict": 2,
+    "verifierId": 1
+   },
+   "block": 1000,
+   "event": "VerdictSubmitted",
+   "logIndex": 0,
+   "tx": "0xe75b1e05a59b05df6c7ad4fcb6f5d2ef072bf064d2c5da16bee1902b1542e8a8"
+  },
+  {
+   "args": {
+    "epoch": 1,
+    "randomness": "0x1fb91fe49990e1fec076d57e6e068e04d5dfcb770ba0e5d519b1e212f24d6b5b",
+    "sellerId": 1,
+    "sortitionVersion": 1,
+    "totalEffectiveWeight": "2",
+    "verifierSetHash": "0xfb514134c6aaed911fa86292f44f6a7fb79759971f03d9363878c7ed0b62fc54"
+   },
+   "block": 1200,
+   "event": "EpochSealed",
+   "logIndex": 0,
+   "tx": "0x7d655ef9b4848a0374c9ceae53e7a58a882474dafbf7cd88357302fc643608c1"
+  },
+  {
+   "args": {
+    "heldValue": "10000",
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+    "requester": "0x1111111111111111111111111111111111111111",
+    "trigger": 1
+   },
+   "block": 1250,
+   "event": "CaseOpened",
+   "logIndex": 0,
+   "tx": "0x24ccedc890bbd6cc4e5ac0371be388e55fd15f052336c2d56aaab9372eb64675"
+  },
+  {
+   "args": {
+    "attempt": 0,
+    "deadline": 1550,
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+    "stage": 1,
+    "verifierId": 2
+   },
+   "block": 1250,
+   "event": "VerifierAssigned",
+   "logIndex": 1,
+   "tx": "0x24ccedc890bbd6cc4e5ac0371be388e55fd15f052336c2d56aaab9372eb64675"
+  },
+  {
+   "args": {
+    "evidenceHash": "0x5e373b8d25c1992efd107f1a00282c02293cf2915247354bdd2778c627c04c9c",
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+    "stage": 1,
+    "verdict": 1,
+    "verifierId": 2
+   },
+   "block": 1300,
+   "event": "VerdictSubmitted",
+   "logIndex": 0,
+   "tx": "0x36ab086f8d4e539b0afe3f360e5148e7b1a4fab37069b670fcb4f2372565d8cc"
+  },
+  {
+   "args": {
+    "finalVerdict": 1,
+    "financialState": 1,
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a"
+   },
+   "block": 2000,
+   "event": "CaseFinalized",
+   "logIndex": 0,
+   "tx": "0xc36b16e6d5c8ff1d1975ab261a2637a2dd0f98cfd6d1bcfd9e00b94d6544506c"
+  },
+  {
+   "args": {
+    "nonce": "0x4ef9023986376695b09f243ed15c2ecb6b05a304739e87965844384b2118a495",
+    "sellerId": 1,
+    "value": "10000"
+   },
+   "block": 60100,
+   "event": "Released",
+   "logIndex": 0,
+   "tx": "0xa47710a996036465c8293f44fe70e7ecc9593b98d2c3a55e1a04cdbe25c27a44"
+  },
+  {
+   "args": {
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+    "sellerId": 1,
+    "value": "10000"
+   },
+   "block": 60300,
+   "event": "Released",
+   "logIndex": 0,
+   "tx": "0xf871bf9f9c536846631c2e3b8511eccbf11b5c32f3d0532fe2a06966b743cb8c"
+  },
+  {
+   "args": {
+    "finalVerdict": 2,
+    "financialState": 4,
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889"
+   },
+   "block": 70000,
+   "event": "CaseFinalized",
+   "logIndex": 0,
+   "tx": "0xbf781f77cd5d5218122550f4d38f53c9244cd533efa250f10e3be3a176410c1b"
+  },
+  {
+   "args": {
+    "actorId": 1,
+    "actorType": 1,
+    "amount": "250000",
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "reason": 4,
+    "recipient": "0x1111111111111111111111111111111111111111"
+   },
+   "block": 70000,
+   "event": "Slashed",
+   "logIndex": 1,
+   "tx": "0xbf781f77cd5d5218122550f4d38f53c9244cd533efa250f10e3be3a176410c1b"
+  },
+  {
+   "args": {
+    "buyer": "0x2222222222222222222222222222222222222222",
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "source": 1,
+    "value": "10000"
+   },
+   "block": 70100,
+   "event": "Refunded",
+   "logIndex": 0,
+   "tx": "0xb4cdd0235733468c18a83db5397d108fdd2632582848ee70a989ccb5d9faa0a4"
+  }
+ ],
+ "format": "fairbind-ledger-dump/v1",
+ "fromBlock": 0,
+ "toBlock": 185000,
+ "viewBlock": 185000,
+ "views": {
+  "bonds": [
+   {
+    "balance": "4000000",
+    "bondId": 1,
+    "deferredBalance": "0",
+    "failureWindowScale": 1,
+    "owner": "0x1111111111111111111111111111111111111111",
+    "profileId": 1,
+    "scaleFactor": 1,
+    "statusName": "ACTIVE"
+   }
+  ],
+  "profiles": [
+   {
+    "active": true,
+    "checkpoints": [
+     {
+      "checkpointBlock": 20,
+      "setHash": "0xfb514134c6aaed911fa86292f44f6a7fb79759971f03d9363878c7ed0b62fc54",
+      "totalEffectiveWeight": "2",
+      "verifierIds": [
+       1,
+       2
+      ],
+      "version": 1,
+      "weights": [
+       "1",
+       "1"
+      ]
+     }
+    ],
+    "parameters": {
+     "appealDeposit": "5000000",
+     "beaconDelayBlocks": 768,
+     "beaconSlackL1Blocks": 0,
+     "bucketCapacity": 20,
+     "canonId": "0x5935caa956c625c8ff2a65a874e14a464e435cc193a0742b6ace012ce81a7a3d",
+     "claimWindowBlocks": 60000,
+     "classId": 1,
+     "deadlineConfigId": 1,
+     "deferBlocks": 60000,
+     "disputeDeposit": "5000000",
+     "effectivePpm": 40000,
+     "enforcementBlocks": 10000,
+     "epochBlocks": 300,
+     "epochOrigin": 1000,
+     "failureLimit": 16,
+     "failureWindowBlocks": 60000,
+     "forfeitVerifierPpm": 500000,
+     "freezeOnInitialFail": false,
+     "inconclusiveWindowBlocks": 60000,
+     "marginBlocks": 500,
+     "maxAssignments": 3,
+     "maxBadGain": "10000",
+     "maxEvidenceBytes": 131072,
+     "maxInconclusivePpm": 200000,
+     "maxPublicationCost": "5000000",
+     "maxPurchaseValue": "10000",
+     "maxRatePpmPerBlock": 60000,
+     "maxRequestBytes": 65536,
+     "maxResponseBytes": 65536,
+     "maxReviewCost": "1000000",
+     "minJudgedCount": 30,
+     "minVerifierBond": "1000000",
+     "minVerifiers": 14,
+     "predicateId": "0xb1659e2eda6c17f24434be64972e5ce19d44b5b4154752bbe83418276831812f",
+     "recheckPpm": 200000,
+     "refillPpmPerBlock": 50000,
+     "retentionBlocks": 60000,
+     "samplePpm": 100000,
+     "sellerPenalty": "4000000",
+     "strikeLimit": 3,
+     "verifierBondCap": "100000000",
+     "verifierExposurePpm": 500000,
+     "verifierLatePenalty": "500000",
+     "verifierWrongPenalty": "1000000"
+    },
+    "profileId": 1
+   }
+  ],
+  "purchases": [
+   {
+    "case": {
+     "attempt": 0,
+     "finalVerdict": 0,
+     "initialVerdict": 0,
+     "nonce": "0x4ef9023986376695b09f243ed15c2ecb6b05a304739e87965844384b2118a495",
+     "requesterRole": 0,
+     "stage": 0,
+     "state": 0,
+     "stateName": "NONE",
+     "trigger": 0
+    },
+    "nonce": "0x4ef9023986376695b09f243ed15c2ecb6b05a304739e87965844384b2118a495",
+    "purchase": {
+     "epoch": 0,
+     "financialState": 1,
+     "nonce": "0x4ef9023986376695b09f243ed15c2ecb6b05a304739e87965844384b2118a495",
+     "profileId": 1,
+     "releaseBlock": 60100,
+     "sellerId": 1,
+     "settledBlock": 100,
+     "value": "10000"
+    },
+    "purchaseState": 1,
+    "purchaseStateName": "RELEASED",
+    "settledBlock": 100
+   },
+   {
+    "case": {
+     "attempt": 0,
+     "finalVerdict": 2,
+     "initialVerdict": 0,
+     "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+     "requesterRole": 2,
+     "stage": 1,
+     "state": 0,
+     "stateName": "FINAL",
+     "trigger": 1
+    },
+    "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+    "purchase": {
+     "epoch": 0,
+     "financialState": 1,
+     "nonce": "0x12b8cab4313d2ff3b8bb1ac7c0061de067edc1633ad157676eb08d4e9026a889",
+     "profileId": 1,
+     "releaseBlock": 60200,
+     "sellerId": 1,
+     "settledBlock": 200,
+     "value": "10000"
+    },
+    "purchaseState": 1,
+    "purchaseStateName": "REFUNDED",
+    "settledBlock": 200
+   },
+   {
+    "case": {
+     "attempt": 0,
+     "finalVerdict": 1,
+     "initialVerdict": 0,
+     "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+     "requesterRole": 2,
+     "stage": 1,
+     "state": 0,
+     "stateName": "FINAL",
+     "trigger": 1
+    },
+    "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+    "purchase": {
+     "epoch": 1,
+     "financialState": 1,
+     "nonce": "0xcd0ce38a91f2dbcb2287e1a13517e11f9cdefc5f7acffec9b0366abe8db0396a",
+     "profileId": 1,
+     "releaseBlock": 60300,
+     "sellerId": 1,
+     "settledBlock": 300,
+     "value": "10000"
+    },
+    "purchaseState": 1,
+    "purchaseStateName": "RELEASED",
+    "settledBlock": 300
+   }
+  ],
+  "sellers": [
+   {
+    "bondId": 1,
+    "owner": "0x1111111111111111111111111111111111111111",
+    "profileId": 1,
+    "sellerId": 1,
+    "status": 1,
+    "statusName": "ACTIVE"
+   }
+  ],
+  "verifiers": [
+   {
+    "bond": "100000000",
+    "status": 1,
+    "statusName": "ACTIVE",
+    "verifierId": 1
+   },
+   {
+    "bond": "100000000",
+    "status": 1,
+    "statusName": "ACTIVE",
+    "verifierId": 2
+   }
+  ]
+ }
+}

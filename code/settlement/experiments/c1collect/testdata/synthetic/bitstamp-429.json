@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "bitstamp:ticker:btcusd",
+  "method": "GET",
+  "url": "https://www.bitstamp.net/api/v2/ticker/btcusd/",
+  "request_raw": "R0VUIC9hcGkvdjIvdGlja2VyL2J0Y3VzZC8gSFRUUC8xLjENCkhvc3Q6IHd3dy5iaXRzdGFtcC5uZXQNClVzZXItQWdlbnQ6IGZhaXJiaW5kLWMxY29sbGVjdC8xDQpBY2NlcHQ6IGFwcGxpY2F0aW9uL2pzb24NCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+  "started_at_unix_ms": 1789999999800,
+  "finished_at_unix_ms": 1790000000150,
+  "response_raw": "SFRUUC8xLjEgNDI5IFRvbyBNYW55IFJlcXVlc3RzDQpEYXRlOiBNb24sIDIxIFNlcCAyMDI2IDE0OjEzOjIwIEdNVA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uDQpDb250ZW50LUxlbmd0aDogNjYNCkNvbm5lY3Rpb246IGNsb3NlDQoNCnsic3RhdHVzIjoiZXJyb3IiLCJyZWFzb24iOiJSYXRlIGxpbWl0IGV4Y2VlZGVkIiwiY29kZSI6IkFQSTAwMDMifQ==",
+  "response_sha256": "b54eee4f0db79bb7010dd9dca3825bcc67e7ceefab3f521fb4362b33400e074e",
+  "response_head": "HTTP/1.1 429 Too Many Requests\r\nDate: Mon, 21 Sep 2026 14:13:20 GMT\r\nContent-Type: application/json\r\nContent-Length: 66\r\nConnection: close\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "hand-built",
+    "synthetic": true,
+    "note": "synthetic fixture: hand-built to the documented response shape; not captured from the live API"
+  }
+}

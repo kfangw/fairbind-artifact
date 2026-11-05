@@ -1,0 +1,42 @@
+# Build output
+/bin/
+/dist/
+/out/
+/cache/
+/broadcast/
+
+# Go
+*.test
+coverage.out
+
+# Python experiments
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Results remain local unless a release manifest names them.
+/results/
+/reports/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+/g10b-out/
+/g10c-out/
+/g10d-out/
+/p5-out/
+
+# Logs of contracts/test/g7/run_g7.sh
+/g7-out/
+/g7-out-noforge/

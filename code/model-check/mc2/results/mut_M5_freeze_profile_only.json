@@ -1,0 +1,59 @@
+{
+ "states": 844,
+ "terminal": 0,
+ "violations": {
+  "P1": {
+   "msg": "s0 element 0 kind M: sale 1 still held after f(i), not frozen (b2)",
+   "trace": [
+    "t=0 s0:settle p0 fr0 dk0",
+    "t=0 s0:settle p1 fr0 dk0",
+    "t=0 tick",
+    "t=1 tick",
+    "t=2 tick",
+    "t=3 s0:missed p0 e0"
+   ]
+  },
+  "P1f": {
+   "msg": "s0 failure ('m', 0) (eta_f 0): sale 1 still held, not frozen",
+   "trace": [
+    "t=0 s0:settle p0 fr0 dk0",
+    "t=0 s0:settle p1 fr0 dk0",
+    "t=0 tick",
+    "t=1 tick",
+    "t=2 tick",
+    "t=3 s0:missed p0 e0"
+   ]
+  }
+ },
+ "capped": false,
+ "seconds": 0.0,
+ "Hend": 8,
+ "dedup": "full",
+ "cfg": {
+  "sellers": 1,
+  "profiles": 2,
+  "epochs": 2,
+  "k": 1,
+  "smax": 2,
+  "stot": 2,
+  "L": 2,
+  "aA": 1,
+  "Mgap": 1,
+  "T_p": 1,
+  "T_c": 2,
+  "d_inc": 1,
+  "disputes": false,
+  "marks": true,
+  "fraud": false,
+  "honest": false,
+  "max_reentry": 1,
+  "claims": false,
+  "units": false,
+  "mutations": [
+   "M5_freeze_profile_only"
+  ],
+  "max_states": 40000000
+ },
+ "group": "mut",
+ "name": "mut_M5_freeze_profile_only"
+}

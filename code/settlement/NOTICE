@@ -1,0 +1,8 @@
+FairBind includes design patterns derived from the following MIT-licensed projects:
+
+- stablecoin-x402-gateway, copyright 2026 Hwangwook Kim
+  https://github.com/kfangw/stablecoin-x402-gateway
+- agent-payment-arena, copyright 2026 Hwangwook Kim
+  https://github.com/kfangw/agent-payment-arena
+
+Copied or adapted source files must retain their original copyright and license notices. UPSTREAMS.lock.json records the reviewed revisions.

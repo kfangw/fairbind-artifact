@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fairbind:serve-bundle:v1",
+  "title": "FairBind Serve Bundle Version 1",
+  "type": "object",
+  "required": [
+    "version",
+    "nonce",
+    "idempotencyKey",
+    "canonicalRequest",
+    "responseBody",
+    "receipt",
+    "predicatePreimage",
+    "receiptProof",
+    "bundleHash"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "nonce": { "$ref": "#/$defs/bytes32" },
+    "idempotencyKey": { "type": "string", "pattern": "^0x[0-9a-fA-F]{32}$" },
+    "canonicalRequest": {
+      "type": "object",
+      "required": ["method", "path", "query", "headerBlock", "body"],
+      "properties": {
+        "method": { "$ref": "#/$defs/base64" },
+        "path": { "$ref": "#/$defs/base64" },
+        "query": { "$ref": "#/$defs/base64" },
+        "headerBlock": { "$ref": "#/$defs/base64" },
+        "body": { "$ref": "#/$defs/base64" }
+      },
+      "additionalProperties": false
+    },
+    "responseBody": { "$ref": "#/$defs/base64" },
+    "receipt": { "$ref": "fairbind-receipt-v1.schema.json" },
+    "predicatePreimage": {
+      "oneOf": [
+        { "$ref": "#/$defs/dataPreimage" },
+        { "$ref": "#/$defs/openWeightsPreimage" }
+      ]
+    },
+    "receiptProof": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/receiptProof" }
+      ]
+    },
+    "bundleHash": { "$ref": "#/$defs/bytes32" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "base64": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+    },
+    "bytes32": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+    "uintString": { "type": "string", "pattern": "^(0|[1-9][0-9]*)$" },
+    "dataPreimage": {
+      "type": "object",
+      "required": ["kind", "referenceTime", "sourceSetHash", "tolerancePolicyHash"],
+      "properties": {
+        "kind": { "const": "data-api" },
+        "referenceTime": { "$ref": "#/$defs/uintString" },
+        "sourceSetHash": { "$ref": "#/$defs/bytes32" },
+        "tolerancePolicyHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    },
+    "openWeightsPreimage": {
+      "type": "object",
+      "required": ["kind", "toplocCommitment", "modelHash", "configHash"],
+      "properties": {
+        "kind": { "const": "open-weights-inference" },
+        "toplocCommitment": { "$ref": "#/$defs/bytes32" },
+        "modelHash": { "$ref": "#/$defs/bytes32" },
+        "configHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    },
+    "receiptProof": {
+      "type": "object",
+      "required": ["index", "count", "siblings"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "count": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "siblings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/bytes32" },
+          "maxItems": 32
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

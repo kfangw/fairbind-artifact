@@ -1,0 +1,281 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import { SdkBase } from "../SdkBase.sol";
+import { SampledSettlement, SettlementModule, Profile, Receipt, Leaf, Unit, Opening, Auth } from "../SampledSettlement.sol";
+
+/// Builders for the release-unit tests: many settlements in one profile
+/// epoch (without the optional binding), their anchor in units of N_UNIT
+/// unsigned leaves, a sample value under which only sales of the full cap
+/// are sampled, and the block after every deadline of a profile epoch.
+abstract contract OldBase is SdkBase {
+    bytes32 internal constant RESP_TAG = keccak256("p5/response/v1");
+    uint64 internal constant DUST = 100; // a small sale: sampled with probability DUST / CAP = 1e-4
+
+    bytes32[] internal pids;
+    uint256 internal e0;
+
+    // local copies of the contract's hash constants (fewer external calls)
+    bytes32 internal rsType;
+    bytes32 internal leaf0Tag;
+    bytes32 internal nodeTag;
+
+    /// One settled sale and, for a provable one, its proof material.
+    struct Sold {
+        Receipt rs;
+        bytes mat;
+    }
+
+    /// A fresh settlement contract with `np` profiles of seller-epoch
+    /// multiple k and smallest sale amount vmin; seller bonded at CAP.
+    function _deploy(uint16 k, uint256 np, uint64 vmin) internal {
+        f = _newSettlement();
+        m = SettlementModule(address(f));
+        vm.roll(f.genesis() + f.EPOCH_BLOCKS() + 5);
+        e0 = f.epochOf(block.number);
+        epoch = e0;
+        delete pids;
+        for (uint256 j; j < np; j++) {
+            Profile memory p = _profile(address(lazer), 0, 0, 1);
+            p.epochMultiple = k;
+            p.inputRule = keccak256(abi.encode("release unit input rule", j));
+            vm.prank(seller);
+            pids.push(f.register(p, 2_000_000));
+        }
+        vm.prank(seller);
+        token.approve(address(f), type(uint256).max);
+        vm.prank(seller);
+        m.depositBond(seller, CAP);
+        vm.prank(buyer);
+        token.approve(address(f), type(uint256).max);
+        rsType = f.RS_TYPEHASH();
+        leaf0Tag = f.LEAF0_TAG();
+        nodeTag = f.NODE_TAG();
+    }
+
+    /// Rolls to block `off` of profile epoch e (if the head is earlier).
+    function _at(uint256 e, uint256 off) internal {
+        uint256 b = f.genesis() + e * f.EPOCH_BLOCKS() + off;
+        if (block.number < b) vm.roll(b);
+    }
+
+    /// Settles one sale of `amount` on pid (no binding); `provable` gives it
+    /// a receipt and material that the tier 1a verifier accepts.
+    function _sell1(bytes32 pid, uint256 i, uint64 amount, bool provable) internal returns (Sold memory s) {
+        s.rs = _rs(pid, i, amount);
+        if (provable) {
+            uint64 ts = VALID_AFTER * 1e6;
+            bytes32 psi = keccak256(abi.encode("psi", pid, i));
+            s.mat = abi.encodePacked(psi, _lazerUpdate(ts, 7, FEED, feedKey));
+            s.rs.responseHash = keccak256(abi.encodePacked(RESP_TAG, psi, abi.encode(FEED, int64(7), ts)));
+            s.rs.materialCommit = keccak256(s.mat);
+        }
+        s.rs.claimsHash = bytes32(0);
+        s.rs.nonce = keccak256(abi.encode("release unit sale", address(f), pid, i));
+        Auth memory a = _auth(pid, amount, s.rs.nonce);
+        f.settle(a, _authSig(a), bytes32(0), bytes32(0), bytes32(0));
+    }
+
+    /// n sales of `amount` on pid, `perBlock` per block from the head.
+    function _sell(bytes32 pid, uint256 base, uint256 n, uint64 amount, uint256 perBlock, bool provable)
+        internal
+        returns (Sold[] memory ss)
+    {
+        ss = new Sold[](n);
+        for (uint256 i; i < n; i++) {
+            if (perBlock != 0 && i != 0 && i % perBlock == 0) vm.roll(block.number + 1);
+            ss[i] = _sell1(pid, base + i, amount, provable);
+        }
+    }
+
+    function _concat(Sold[] memory a, Sold[] memory b) internal pure returns (Sold[] memory c) {
+        c = new Sold[](a.length + b.length);
+        for (uint256 i; i < a.length; i++) c[i] = a[i];
+        for (uint256 i; i < b.length; i++) c[a.length + i] = b[i];
+    }
+
+    // ------------------------------------------------------------- anchor
+
+    function _qsort(Sold[] memory a, int256 lo, int256 hi) internal pure {
+        if (lo >= hi) return;
+        bytes32 p = a[uint256((lo + hi) / 2)].rs.nonce;
+        int256 i = lo;
+        int256 j = hi;
+        while (i <= j) {
+            while (a[uint256(i)].rs.nonce < p) i++;
+            while (a[uint256(j)].rs.nonce > p) j--;
+            if (i <= j) {
+                (a[uint256(i)], a[uint256(j)]) = (a[uint256(j)], a[uint256(i)]);
+                i++;
+                j--;
+            }
+        }
+        if (lo < j) _qsort(a, lo, j);
+        if (i < hi) _qsort(a, i, hi);
+    }
+
+    function _leafHash(bytes32 pid, bytes32 ch, Receipt memory r) internal view returns (bytes32 l, bytes32 l0) {
+        bytes32 hRS = keccak256(
+            abi.encode(
+                rsType,
+                r.nonce,
+                uint256(r.amount),
+                r.requestHash,
+                r.responseHash,
+                r.ctHash,
+                r.keyHash,
+                pid,
+                ch,
+                r.claimsHash,
+                r.materialCommit
+            )
+        );
+        l0 = keccak256(abi.encode(leaf0Tag, r.nonce, hRS, uint8(0)));
+        l = keccak256(abi.encode(l0, bytes32(0), false, false));
+    }
+
+    function _lv(bytes32[] memory leaves) internal view returns (bytes32[][] memory lv) {
+        uint256 depth;
+        for (uint256 w = leaves.length; w > 1; w = (w + 1) >> 1) depth++;
+        lv = new bytes32[][](depth + 1);
+        lv[0] = leaves;
+        for (uint256 d = 0; d < depth; d++) {
+            uint256 w = lv[d].length;
+            uint256 next = (w + 1) >> 1;
+            lv[d + 1] = new bytes32[](next);
+            for (uint256 i; i < next; i++) {
+                bytes32 a = lv[d][2 * i];
+                bytes32 b = 2 * i + 1 < w ? lv[d][2 * i + 1] : a;
+                lv[d + 1][i] = keccak256(abi.encode(nodeTag, a, b));
+            }
+        }
+    }
+
+    /// Anchors all sales of (pid, e) as unsigned leaves in units of N_UNIT,
+    /// sorted by nonce (sorts `ss` in place); returns the number of units.
+    function _anchorAll(bytes32 pid, uint256 e, Sold[] memory ss) internal returns (uint256 units) {
+        _qsort(ss, 0, int256(ss.length) - 1);
+        epoch = e;
+        vm.roll(f.lastBlock(e) + f.D_INC() + 1);
+        bytes32 ch = f.profile(pid).codeHash;
+        uint256 nu = f.N_UNIT();
+        units = (ss.length + nu - 1) / nu;
+        for (uint256 u; u < units; u++) {
+            uint256 lo = u * nu;
+            uint256 hi = lo + nu < ss.length ? lo + nu : ss.length;
+            require(f.anchorUnit(_unitOf(pid, e, ss, lo, hi, u + 1, ch)) == 0, "anchor rejected");
+            _afterAnchorUnit(u);
+        }
+        require(f.epochComplete(pid, e), "complete");
+    }
+
+    /// Hook for gas probes after each anchorUnit call.
+    function _afterAnchorUnit(uint256 u) internal virtual { }
+
+    function _unitOf(bytes32 pid, uint256 e, Sold[] memory ss, uint256 lo, uint256 hi, uint256 unitNo, bytes32 ch)
+        internal
+        returns (Unit memory x)
+    {
+        uint256 n = hi - lo;
+        bytes32[] memory lv = new bytes32[](n);
+        bytes32[] memory lv0 = new bytes32[](n);
+        x.leaves = new Leaf[](n);
+        for (uint256 i; i < n; i++) {
+            (lv[i], lv0[i]) = _leafHash(pid, ch, ss[lo + i].rs);
+            x.leaves[i].rs = ss[lo + i].rs;
+        }
+        bytes32[][] memory a = _lv(lv);
+        bytes32[][] memory b = _lv(lv0);
+        x.pid = pid;
+        x.epoch = uint32(e);
+        x.count = uint32(ss.length);
+        x.unitNo = uint32(unitNo);
+        x.first = ss[lo].rs.nonce;
+        x.last = ss[hi - 1].rs.nonce;
+        x.root = a[a.length - 1][0];
+        x.root0 = b[b.length - 1][0];
+        x.snapshot = new address[](0);
+        x.sellerSig = _sig(
+            sellerKey,
+            _typed(
+                f.DOMAIN_SEPARATOR(),
+                keccak256(
+                    abi.encode(
+                        f.UNIT_TYPEHASH(),
+                        pid,
+                        x.epoch,
+                        x.count,
+                        x.unitNo,
+                        x.first,
+                        x.last,
+                        x.root,
+                        x.root0,
+                        keccak256(abi.encode(x.snapshot))
+                    )
+                )
+            )
+        );
+    }
+
+    /// Proof of the sorted sale idx of a one-unit anchor (n <= N_UNIT).
+    function _prove1(bytes32 pid, uint256 e, Sold[] memory ss, uint256 idx) internal {
+        bytes32 ch = f.profile(pid).codeHash;
+        bytes32[] memory lv = new bytes32[](ss.length);
+        for (uint256 i; i < ss.length; i++) (lv[i],) = _leafHash(pid, ch, ss[i].rs);
+        bytes32[][] memory levels = _lv(lv);
+        Opening memory o;
+        o.pid = pid;
+        o.epoch = uint32(e);
+        o.unitNo = 1;
+        o.index = idx;
+        o.rs = ss[idx].rs;
+        o.path = new bytes32[](levels.length - 1);
+        uint256 index = idx;
+        for (uint256 d = 0; d + 1 < levels.length; d++) {
+            uint256 sib = index ^ 1;
+            o.path[d] = sib < levels[d].length ? levels[d][sib] : levels[d][index];
+            index >>= 1;
+        }
+        f.prove(o, ss[idx].mat);
+    }
+
+    // ------------------------------------------------------ sample value
+
+    /// Requests the sample value of (pid, e) and fulfills it with the first
+    /// word under which exactly the sales of `ss` with amount >= CAP are
+    /// sampled.
+    function _valueOnlyFull(bytes32 pid, uint256 e, Sold[] memory ss) internal {
+        uint256 id = _requestSample(pid, e);
+        for (uint256 w = 1;; w++) {
+            uint256 v = _valueOf(pid, e, id, w);
+            bool ok = true;
+            for (uint256 i; i < ss.length && ok; i++) {
+                if (f.sampledBy(v, ss[i].rs.nonce, ss[i].rs.amount, CAP) != (ss[i].rs.amount >= CAP)) ok = false;
+            }
+            if (ok) {
+                _fulfill(id, w);
+                return;
+            }
+        }
+    }
+
+    /// The first block after W_e, A_e + T_c and M_e + T_p of profile epoch e.
+    function _ripe(uint256 e) internal {
+        uint256 t = f.signDeadlineEnd(e);
+        uint256 a = f.anchorDeadline(e) + f.T_C();
+        uint256 p = f.valueDeadline(e) + f.T_P();
+        if (a > t) t = a;
+        if (p > t) t = p;
+        if (block.number <= t) vm.roll(t + 1);
+    }
+
+    function _s(uint256 v) internal pure returns (string memory) {
+        if (v == 0) return "0";
+        bytes memory b;
+        while (v != 0) {
+            b = abi.encodePacked(bytes1(uint8(48 + v % 10)), b);
+            v /= 10;
+        }
+        return string(b);
+    }
+}

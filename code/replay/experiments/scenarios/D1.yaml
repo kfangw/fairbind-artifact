@@ -1,0 +1,78 @@
+id: D1
+name: Deferral grid, fast cheater, cap on and off
+property_under_test:
+- T5
+- T6
+- EXPOSURE
+preconditions:
+- The bond account holds exactly one sellerPenalty (scale factor 1)
+- The verifier set judges as soon as it is assigned
+injected_fault:
+  process: seller
+  kind: calculating_cheater
+  action: 'seller acts as a calculating cheater: it settles at rate Lambda_cheater, delivers a bad response on every sale, and keeps selling until a settlement is refused (its bond account is frozen)'
+  timing: continuously after registration
+parameters:
+  D_holding_blocks:
+    default: L
+    sweep:
+    - L_min/2
+    - L_min
+    - delta_F
+    - (delta_F+L)/2
+    - L
+    - caseHorizon
+    unit: blocks (expression over L_min, delta_F, L, caseHorizon)
+  L_judgment_delay_blocks:
+    default: profile_judgment_delay
+    unit: blocks
+  Lambda_cheater:
+    default: rate:peak_hour_max
+    unit: settlements per block
+  cap_enabled:
+    default: true
+    sweep:
+    - true
+    - false
+  P_S_reserve:
+    default: profile_penalty_floor
+    unit: token
+  bucket_capacity_q:
+    default: profile_default
+    unit: settlements
+n_seeds: 30
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - effective_hold_period_blocks
+  - freeze_delay_blocks
+expected_outcome: 'Let Delta be the realized delay from the first detected bad settlement to the freeze (L_min <= Delta <= delta_F). A bad sale is released to the seller when it settled more than D blocks before the freeze, so released exposure is about g (1/p + Lambda (Delta - D)) when Delta > D and 0 when Delta <= D for this fast cheater (its first 1/p bad sales settle within a few blocks of the detected one). Region a, D < L_min (L_min/2): Delta > D always, released exposure grows linearly with Lambda. Region b, L_min <= D < delta_F (L_min): a leak only in runs with Delta > D. Region c, delta_F <= D < L (delta_F, (delta_F+L)/2): no release before the freeze. D = L and D = caseHorizon: same as c; caseHorizon is the admissible profile and runs without override.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Per run: released exposure > 0 exactly when the recorded freeze delay exceeds D (either direction failing refutes the release rule). Over seeds: mean released exposure <= g (1/p + Lambda (delta_F - D)+) with Lambda the observed settlement rate (cap off) or lambda_max plus the bucket q (cap on); a mean above the bound with its 95 percent interval refutes the exposure bound. With cap_enabled false rejected_settlement_count is 0 at every point. cheater_net_gain is reported per point; within one episode only one share of sellerPenalty (sellerPenalty / failureLimit) is charged per final failure, so its sign is not a pass criterion here (see D3 and C1).'
+notes: 'Predicted released exposure for the data API profile with the cap off (Lambda = 2.334 per block): D = 584: between 1,363 g and 7,930 g; D = 1,168: 0 to 6,567 g depending on Delta; D >= 3,971: 0 (bound 25 g). With the cap on (lambda_max 0.06, q 20): D = 584: 35 g to 248 g; D = 1,168: 0 to 213 g; D >= 3,971: 0 (bound 25 g). The deferral grid and the override rules are in the README, Deferral grid.'

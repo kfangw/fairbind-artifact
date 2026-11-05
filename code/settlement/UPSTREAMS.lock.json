@@ -1,0 +1,50 @@
+{
+  "formatVersion": 1,
+  "reviewedAt": "2026-09-04",
+  "upstreams": [
+    {
+      "name": "stablecoin-x402-gateway",
+      "repository": "https://github.com/kfangw/stablecoin-x402-gateway",
+      "revision": "ddd20fe3ec7c2109a006e1112bcac9fdeabf9b32",
+      "license": "MIT",
+      "role": "reference payment rail and integration target"
+    },
+    {
+      "name": "agent-payment-arena",
+      "repository": "https://github.com/kfangw/agent-payment-arena",
+      "revision": "e6dad720d601c282e7ac6fae5a88abcd9955488c",
+      "license": "MIT",
+      "role": "evaluation and statistical infrastructure"
+    },
+    {
+      "name": "x402",
+      "repository": "https://github.com/x402-foundation/x402",
+      "revision": "2cc7e9a6880c08433b692666032862bcbea51187",
+      "license": "Apache-2.0",
+      "role": "x402 version 2 protocol specification"
+    },
+    {
+      "name": "toploc",
+      "repository": "https://github.com/PrimeIntellect-ai/toploc",
+      "revision": "7ab7bcd6a4459ba4400fd41e4636bbeed7438997",
+      "license": "MIT",
+      "role": "optional native activation comparison diagnostic"
+    },
+    {
+      "name": "SmolLM2-135M",
+      "repository": "https://huggingface.co/HuggingFaceTB/SmolLM2-135M",
+      "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+      "license": "Apache-2.0",
+      "role": "public CPU diagnostic model, not benchmark workload"
+    }
+  ],
+  "runtimeTools": [
+    {
+      "name": "cast",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "revision": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+      "version": "1.7.1",
+      "role": "local EIP-712 digest signature verification; no vendored source"
+    }
+  ]
+}

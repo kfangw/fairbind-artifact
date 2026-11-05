@@ -1,0 +1,36 @@
+{
+ "bond": {
+  "bondId": 1
+ },
+ "chainId": 31337,
+ "contract": "0x3333333333333333333333333333333333333333",
+ "formatVersion": 1,
+ "seller": {
+  "bondId": 1,
+  "profileId": 1,
+  "sellerId": 1
+ },
+ "setupBlock": 20,
+ "verifiers": [
+  {
+   "assignable": true,
+   "bond": "100000000",
+   "verifierId": 1
+  },
+  {
+   "assignable": true,
+   "bond": "100000000",
+   "verifierId": 2
+  },
+  {
+   "assignable": true,
+   "bond": "100000000",
+   "verifierId": 3
+  },
+  {
+   "assignable": false,
+   "bond": "1000000",
+   "verifierId": 4
+  }
+ ]
+}

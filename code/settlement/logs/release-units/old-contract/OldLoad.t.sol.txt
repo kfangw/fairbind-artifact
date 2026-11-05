@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+import { OldBase } from "./OldBase.sol";
+
+struct OCallGas { uint64 gasLimit; uint64 gasTotalUsed; uint64 gasMemoryUsed; int64 gasRefunded; uint64 gasRemaining; }
+interface OGasVm { function lastCallGas() external view returns (OCallGas memory); }
+
+/// The vrf contract (7a96ae5): gas of its single cursor call for one
+/// seller epoch of n sales of 100 on one profile, none sampled. --isolate.
+contract OldLoadTest is OldBase {
+    OGasVm internal constant gvm = OGasVm(address(uint160(uint256(keccak256("hevm cheat code")))));
+    event log_string(string);
+
+    function _case(uint256 n) internal {
+        uint256 id = vm.snapshotState();
+        _deploy(1, 1, 0);
+        bytes32 pid = pids[0];
+        _at(e0, 5);
+        Sold[] memory ss = _sell(pid, 0, n, DUST, 8, false);
+        _anchorAll(pid, e0, ss);
+        _valueOnlyFull(pid, e0, ss);
+        _ripe(e0);
+        uint256 paid = m.release(seller);
+        uint256 gas = gvm.lastCallGas().gasTotalUsed;
+        require(paid == n * DUST, "paid");
+        emit log_string(string.concat("old release n=", _s(n), " gas=", _s(gas)));
+        vm.revertToState(id);
+    }
+
+    function test_old_release() public {
+        _case(1); _case(256); _case(1000);
+    }
+
+    function test_old_release_2000() public {
+        _case(2000);
+    }
+}

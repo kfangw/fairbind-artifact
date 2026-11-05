@@ -1,0 +1,96 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B1",
+  "name": "sampled-re-execution-exact-arbitration",
+  "represents": "Sampled re-execution of a deterministic computation by randomly assigned bonded checkers, with arbitration assumed always correct and no deferral of the payment.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "deferBlocks = 0 violates deferBlocks >= retentionBlocks and the case-horizon admission rule",
+    "appealBlocks = 0 and no appeal deposit violate appealBlocks > 0 and appealDeposit >= maxReviewCost",
+    "recheckPpm = 0 is admissible by the inequality but removes the only carrier of checker accountability, so the arm cannot satisfy the penalty floor derivation",
+    "sellerPenalty is fixed by configuration and is not required to meet expectedPenaltyFloor, which is the whole point of the arm",
+    "maxAssignments = 1 with minVerifiers = 3 violates minVerifiers >= 3 * maxAssignments + 5"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": "op:pi*1000000",
+    "recheckPpm": 0,
+    "effectivePpm": "op:pi*1000000",
+    "effectivePpm_justification": "By assumption the predicate is deterministic (alpha = beta = 0) and arbitration is always correct, so effective detection equals raw sampling: p = pi.",
+    "deferBlocks": 0,
+    "deferPolicy": "none",
+    "retentionBlocks": "op:L",
+    "sellerBond": {
+      "enabled": true,
+      "sizing": "g_over_own_p",
+      "amount_atomic": "op:g/pi",
+      "sensitivity_atomic": [
+        "op:g/pi",
+        "op:3*g/pi",
+        "op:10*g/pi"
+      ],
+      "note": "The arm's own detection probability is p = pi, so its bond is g/pi at the shared g. A fixed 100 USDC bond is not used; the sensitivity list covers 1, 3 and 10 times g/pi."
+    },
+    "sellerPenalty_atomic": "op:g/pi",
+    "sellerPenalty_sizing": "g divided by the arm own p (= pi); not derived from lambda or L",
+    "rateCap": {
+      "enabled": false
+    },
+    "verifier": {
+      "enabled": true,
+      "bond_atomic": "50000000",
+      "latePenalty": true,
+      "wrongPenalty": false,
+      "wrongPenalty_reason": "arbitration is assumed correct, so a wrong verdict is out of model",
+      "maxAssignments": 1,
+      "minVerifiers": 3,
+      "reassignOnTimeout": true
+    },
+    "appeal": {
+      "enabled": false,
+      "rounds": 0,
+      "depositRequired": false
+    },
+    "receiptAnchor": {
+      "enabled": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "execute_then_settle_then_respond",
+    "predicateMode": "deterministic_reexecution"
+  },
+  "cannot_express": [
+    "errorful predicates: alpha and beta are zero by assumption, so the honest-seller protection question does not arise and cannot be measured on this arm",
+    "non-deterministic services; the open-weights class cannot run here at all without the deterministic execution binding, and even then only in the exact-match regime",
+    "binding of the payment to the request and the response; a checker re-executes a job, it does not verify that this response was the thing that was paid for",
+    "non-delivery recovery; there is no redelivery ladder and no on-chain disclosure fallback",
+    "deferral of the payment, so there is no held money to refund from",
+    "a rate cap, so the accumulation during the adjudication delay is unbounded",
+    "checker accountability beyond deadline enforcement; a wrong verdict has no procedure because it is assumed not to happen"
+  ],
+  "harness_special_cases": [
+    "the predicate worker must run in a forced-deterministic mode, and the controller must assert alpha = beta = 0 on the fixtures; if any fixture disagrees the run is void, because the arm's guarantee rests on that assumption",
+    "arbitration must be forced correct by injecting ground truth at the verdict step; this is the arm's defining assumption and must be logged in the envelope as an injected oracle, not as a measured outcome",
+    "there is no refund source: on a confirmed FAIL the harness recovers from the seller bond only, and must record the recovery shortfall rather than silently paying out",
+    "scenarios F4, S1, S2, S3 have no procedure; score 'undefined'",
+    "scenarios V2 and V3 (wrong verdict, collusion) are out of model; score 'excluded by assumption' and do not count them as passes",
+    "the D-sweep does not apply; emit one point at D = 0"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Flat, single point at D = 0. This arm is the pure-bond end of the exchange axis: all protection is pre-posted capital, none is held proceeds.",
+    "cheater_scenarios": {
+      "steady_cheat": "Each cheating settlement is caught with probability p = pi, so expected undetected run length is 1/p and the term g/p is covered by the fixed bond at the calibration rate. The arm looks sound at the rate it was configured for.",
+      "S5_burst": "The discriminating run. With the rate multiplied by 100 for one adjudication window and no cap, the value settled between the cheating transaction and the confirmed verdict is g*lambda*L, while the recoverable amount is the fixed bond. Expected shortfall approximately g*(1/p + lambda*L) - B, i.e. the leak grows linearly in the rate while the bond does not move.",
+      "S6_patient_defector": "Detection is memoryless, so patience buys nothing against sampling itself. The gain comes from choosing the defection moment to coincide with the highest rate the seller can push, which is the same shortfall as S5."
+    },
+    "honest_seller_cost": "Low: a fixed bond, no held proceeds, no anchor. This arm is the strongest competitor on the cost axis and must be reported as such."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": [
+    "retentionBlocks 5400 -> op:L",
+    "sellerBond and sellerPenalty 100000000 (100 USDC, 100 times g/p at the old g) -> op:g/pi, with a 1x/3x/10x sensitivity list",
+    "samplePpm and effectivePpm -> op:pi*1000000"
+  ]
+}

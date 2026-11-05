@@ -1,0 +1,23 @@
+{
+ "full": {
+  "addresses_observed.csv": "1a8f72a5b13b9c2d4c4f361102c79129bf40f56b71d474005722800347c54357",
+  "groups_observed.csv": "3477f1eecdfde4d42c3fbc8050db8b0124712213aa684a8d41dcc8d3831717c5",
+  "addresses_injection.csv": "c10e08446b9a608daaf90097827ab4edfa41f3abb7670f74258d57118442bcd8",
+  "groups_injection.csv": "5afb409e6d640d34d9ff13e64bbcbd235015f4098f5ab47484c9826aec325106",
+  "condition.json": "2f0ad6c790b781136cfa5a730da9ec5c51bc5ea7552ebf546d22a2ab859f10cf"
+ },
+ "narrow": {
+  "addresses_observed.csv": "1a8f72a5b13b9c2d4c4f361102c79129bf40f56b71d474005722800347c54357",
+  "groups_observed.csv": "3477f1eecdfde4d42c3fbc8050db8b0124712213aa684a8d41dcc8d3831717c5",
+  "addresses_injection.csv": "e05b2485a954b838876d628a42886e9ff7380ad9c29a9f03ad4935a1b108b05f",
+  "groups_injection.csv": "c7a230421d78c7267cb80690ce9fb6e554573718a43a9f5631ce9fc658fe92d8",
+  "condition.json": "2f0ad6c790b781136cfa5a730da9ec5c51bc5ea7552ebf546d22a2ab859f10cf"
+ },
+ "design1": {
+  "addresses_observed.csv": "d9fa542e30bb11abca207cb8a45d2474a53f83a4f54a741d288c2a0e0a2a60e0",
+  "groups_observed.csv": "a097bf432d81020aa34a65662860dde3cdd240ef3a77c6c39f177bc2e349ed0f",
+  "addresses_injection.csv": "d4ccdec47e4d55f54387fcde501e00aa6ed4ec8cf69159ccfce795d20e6eb732",
+  "groups_injection.csv": "1e03e861dedcb8bdd0eb0d5cbaf754b6d230ded0be7de73d5efd09f49a8f7f4c",
+  "condition.json": "fb54a382ec8c19f08d6f3312ba00903ef878f5b0b9b3000fff6066ebff760f74"
+ }
+}

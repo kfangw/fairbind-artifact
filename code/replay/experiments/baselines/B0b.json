@@ -1,0 +1,74 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B0b",
+  "name": "rail-upfront-no-recourse",
+  "represents": "The rail's upfront flow: settle first, then execute the service, then respond. Same absence of recourse as B0a, different ordering.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "samplePpm = 0 violates 0 < samplePpm <= PPM",
+    "effectivePpm = 0 violates 0 < effectivePpm <= samplePpm",
+    "sellerPenalty = 0 violates sellerPenalty > 0",
+    "deferBlocks = 0 violates deferBlocks >= retentionBlocks",
+    "no verifier registry violates minVerifiers >= 3 * maxAssignments + 5",
+    "appealBlocks = 0 violates appealBlocks > 0"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": 0,
+    "recheckPpm": 0,
+    "effectivePpm": 0,
+    "deferBlocks": 0,
+    "deferPolicy": "none",
+    "retentionBlocks": 0,
+    "sellerBond": {
+      "enabled": false,
+      "sizing": "none",
+      "amount_atomic": "0"
+    },
+    "sellerPenalty_atomic": "0",
+    "rateCap": {
+      "enabled": false
+    },
+    "verifier": {
+      "enabled": false,
+      "bond_atomic": "0",
+      "latePenalty": false,
+      "wrongPenalty": false
+    },
+    "appeal": {
+      "enabled": false,
+      "rounds": 0,
+      "depositRequired": false
+    },
+    "receiptAnchor": {
+      "enabled": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "settle_then_execute_then_respond"
+  },
+  "cannot_express": [
+    "everything B0a cannot express, plus:",
+    "no way to distinguish 'the seller never started' from 'the seller started and failed', because settlement precedes execution and nothing records execution",
+    "no deadline on the response, so a silent seller is not in violation of anything"
+  ],
+  "harness_special_cases": [
+    "same null-metric handling as B0a",
+    "this arm is the only one where the non-delivery window opens before any service work exists; the controller must be able to kill the seller process between settle and execute and record that the payment is already final",
+    "the D-sweep does not apply; emit one point at D = 0",
+    "scenario F4 (settled, no response) is the discriminating run against B0a: here it is reachable with zero seller effort"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Flat, single point at D = 0.",
+    "cheater_scenarios": {
+      "steady_cheat": "Same as B0a, plus a strictly cheaper attack: the seller collects without executing. Cheater gain per purchase rises from g to v because the service cost is not incurred.",
+      "S5_burst": "Same as B0a. The cheapest burst attack in the whole comparison, since the attacker's marginal cost per settlement is near zero.",
+      "S6_patient_defector": "Same as B0a."
+    },
+    "honest_seller_cost": "Zero, as B0a. The honest seller is strictly better off here than under any mechanism arm; that asymmetry is the point of the comparison."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": []
+}

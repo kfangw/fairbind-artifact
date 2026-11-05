@@ -1,0 +1,16 @@
+{
+ "cursor8": {
+  "addresses_observed.csv": "5876dfb25543cf2536d069dea35f9197837f48f164c38dcb92e9059c9052c5b7",
+  "groups_observed.csv": "ea8251c0e65bf5056b279f62ad476c80caf2e8d89dcb64da897f8f48ee278adb",
+  "addresses_injection.csv": "e05b2485a954b838876d628a42886e9ff7380ad9c29a9f03ad4935a1b108b05f",
+  "groups_injection.csv": "c7a230421d78c7267cb80690ce9fb6e554573718a43a9f5631ce9fc658fe92d8",
+  "condition.json": "19b939e51d19f9ac28c5352408fb7babc29dac96ed0db48d37e5b5f6f01ac781"
+ },
+ "cursor8_short": {
+  "addresses_observed.csv": "f8833ee0dbc907730c90239991ce8923ea3811bbb9f38460c8110df177071dd8",
+  "groups_observed.csv": "016869178c6edc565d61a3baa0581e81e18dfcdf07b4113db4d7b13133b5d458",
+  "addresses_injection.csv": "e05b2485a954b838876d628a42886e9ff7380ad9c29a9f03ad4935a1b108b05f",
+  "groups_injection.csv": "c7a230421d78c7267cb80690ce9fb6e554573718a43a9f5631ce9fc658fe92d8",
+  "condition.json": "5e223c65bf7a4db7492986bd38a3ba0de1dc2e2c4e95e900a1892d01a87b108b"
+ }
+}

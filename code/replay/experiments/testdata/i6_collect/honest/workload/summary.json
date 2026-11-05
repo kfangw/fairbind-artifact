@@ -1,0 +1,20 @@
+{
+ "blocks": {
+  "end": 185000,
+  "max_blocks": null,
+  "start": 100
+ },
+ "clock": {
+  "stops": 12
+ },
+ "honest_windows": {
+  "end_block": 360100,
+  "first_window_start": 60100,
+  "window_blocks": 60000,
+  "windows": 5
+ },
+ "purchases": {
+  "attempted": 3,
+  "settled": 3
+ }
+}

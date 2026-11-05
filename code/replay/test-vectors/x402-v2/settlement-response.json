@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "transaction": "0x3333333333333333333333333333333333333333333333333333333333333333",
+  "network": "eip155:31337",
+  "payer": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+  "amount": "10000",
+  "extensions": {
+    "fairbind": {
+      "info": {
+        "version": 1,
+        "purchase": "0x756eab6ff2c296fb7c9062d26fb7b473805da0509b1ac8e0331e7479d96f6d42",
+        "keyId": "0x60f593c6957ce4344a3cfd34999d975e2d30057a7bd2df9e3bb0c836edbbb7e7",
+        "sellerId": 7,
+        "profileId": 3,
+        "epoch": 14,
+        "financialState": "DEFERRED"
+      },
+      "schema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "required": [
+          "version",
+          "purchase",
+          "keyId",
+          "sellerId",
+          "profileId",
+          "epoch",
+          "financialState"
+        ],
+        "properties": {
+          "version": { "const": 1 },
+          "purchase": { "$ref": "#/$defs/bytes32" },
+          "keyId": { "$ref": "#/$defs/bytes32" },
+          "sellerId": { "$ref": "#/$defs/uint32" },
+          "profileId": { "$ref": "#/$defs/uint32" },
+          "epoch": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16777215
+          },
+          "financialState": { "const": "DEFERRED" }
+        },
+        "additionalProperties": false,
+        "$defs": {
+          "bytes32": {
+            "type": "string",
+            "pattern": "^0x[0-9a-fA-F]{64}$"
+          },
+          "uint32": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        }
+      }
+    }
+  }
+}

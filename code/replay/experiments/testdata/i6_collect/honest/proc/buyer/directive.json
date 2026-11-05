@@ -1,0 +1,8 @@
+{
+ "kind": null,
+ "parameters": {},
+ "seed": 20260928,
+ "workload": {
+  "rate_per_block": 0.05
+ }
+}

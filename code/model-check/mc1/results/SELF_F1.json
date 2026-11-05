@@ -1,0 +1,117 @@
+[
+ {
+  "name": "F1-forge",
+  "cfg": {
+   "D": 2,
+   "d_inc": 2,
+   "A_e": 4,
+   "alphas": [
+    3,
+    4
+   ],
+   "T_c": 6,
+   "T_d": 3,
+   "T_x": 2,
+   "T_p_rd": 3,
+   "sample_blocks": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "t_sig": 2,
+   "H": 17,
+   "rdl": null,
+   "prof": "C",
+   "stage": "hash",
+   "seller": "ADV",
+   "buyers": [
+    "OBL"
+   ],
+   "colluder": true,
+   "c_del": 3,
+   "c_disc": 1,
+   "c_k": 1,
+   "c_sig": 1,
+   "d_nd": 4,
+   "d_key": 1,
+   "d_0": 2,
+   "hold": false,
+   "bind_empty": false,
+   "d_resp": 1,
+   "d_obs": 1,
+   "pre_anchor": "revert_before_anchor",
+   "bundle": true,
+   "late_trigger": false,
+   "kcrit": "leaf",
+   "dch_always": false,
+   "nd_record": "answer",
+   "seller_rec_keyp": true,
+   "forge": true,
+   "single_slot": false,
+   "ack_mode": "all",
+   "rdl_record_blocks": false,
+   "no_post_terminal_dch": false,
+   "sampled_opts": [
+    false,
+    true
+   ],
+   "coarse": false,
+   "x_dch": false,
+   "dfs": true,
+   "stop_on": [
+    "C1"
+   ],
+   "E": 10,
+   "x_k": 8,
+   "resp_lo": 0,
+   "resp_hi": 1
+  },
+  "states": 6986390,
+  "edges": 9939867,
+  "finals": 1374222,
+  "outcomes": {
+   "(('OBL', 'FREFUND'),)": 165081,
+   "(('OBL', 'UREFUND'),)": 8,
+   "(('OBL', 'REFUND'),)": 1209132,
+   "(('OBL', 'PAID'),)": 1
+  },
+  "honest_reverts": {
+   "honest_revert:C:ND_P:terminal": 13554,
+   "honest_revert:C:ND_P:slot_used": 173324,
+   "honest_revert:C:ND_P:record": 8724,
+   "honest_revert:W1:ND_P:terminal": 119112,
+   "honest_revert:W1:ND_P:slot_used": 402474,
+   "honest_revert:W1:ND_P:record": 38862,
+   "honest_revert:C:KEY_P:terminal": 61215,
+   "honest_revert:C:KEY_P:slot_used": 115153,
+   "honest_revert:C:KEY_P:window": 251
+  },
+  "complete": false,
+  "violations": [
+   "C1"
+  ],
+  "traces": {
+   "C1": [
+    "init B1:OBL ctgood=0 sampled=1",
+    "b1: S->B1 R_S+response ok",
+    "b4: net: sigma_B reaches W2",
+    "b4: net: ack of W2 reaches B1",
+    "b4: net: sigma_B reaches W1",
+    "b4: S anchor beta=[0] u=[0] swap=[0]",
+    "b8: X open ND_P (B1) [forged sigma_W]",
+    "b9: X open KEY_T (B1)",
+    "b9: X open ND_T (B1)",
+    "b9: S sample proof (B1)",
+    "b10: net: ack of W1 reaches B1",
+    "b11: S answer SIG (B1)",
+    "b12: S answer K (B1)",
+    "b13: S->B1 k good",
+    "b13: C open KEY_P [reverts: window]",
+    "end: B1(OBL) term=('PAID', 15, 'cursor') signed=1 anc=(4, 0, False, False) rs=1 rs_ok=True koff=good ctgood=False pub=None rec=None a_ctk=None a_k=12 a_sig=11 dch=() slots={'ND_P': (8, 'X', 4, 8, 11, 'sig', False), 'KEY_T': (9, 'X', 1, 9, 14, 'answered', False), 'ND_T': (9, 'X', 4, 9, 11, 'sig', False)} deps={'ND_P': 'seller', 'ND_T': 'seller', 'KEY_T': 'seller'} gas=2 tp_in=5 sb_seller=10 acks=(10, 4) wt_has=(4, 4) notes=('honest_revert:C:KEY_P:window',)"
+   ]
+  },
+  "seconds": 318.7
+ }
+]

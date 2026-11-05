@@ -1,0 +1,52 @@
+No files changed, compilation skipped
+
+Ran 3 tests for contracts/test/sdk/usdcfork/UsdcAnchorLoadFork.t.sol:UsdcAnchorLoadForkTest
+[PASS] test_gas_accepted() (gas: 897840674)
+Logs:
+  row series=unit_accepted m=1 gas=322505
+  row series=complete_accepted m=2 gas=344185
+  row series=unit_accepted m=32 gas=1155278
+  row series=complete_accepted m=33 gas=701959
+  row series=unit_accepted m=128 gas=3799856
+  row series=complete_accepted m=129 gas=1810754
+  row series=unit_accepted m=255 gas=7463062
+  row series=complete_accepted m=256 gas=3279545
+  row series=chunk_accepted m=1 gas=83588
+  row series=chunk_accepted m=64 gas=810789
+  row series=chunk_accepted m=256 gas=3030464
+  row series=pullsale_accepted m=1 gas=84406
+  row series=pullsale_accepted m=1 gas=79606
+
+[PASS] test_gas_marked() (gas: 694720703)
+Logs:
+  row series=unit_marked m=1 gas=315161
+  row series=complete_marked m=2 gas=344946
+  row series=unit_marked m=32 gas=914466
+  row series=complete_marked m=33 gas=960529
+  row series=unit_marked m=128 gas=2783984
+  row series=complete_marked m=129 gas=2867623
+  row series=unit_marked m=255 gas=5301761
+  row series=complete_marked m=256 gas=5392534
+  row series=chunk_marked m=1 gas=79391
+  row series=chunk_marked m=64 gas=1330500
+  row series=chunk_marked m=256 gas=5146847
+  row series=pullsale_marked m=1 gas=79408
+  row series=pullsale_marked m=1 gas=74608
+
+[PASS] test_gas_plain() (gas: 570867153)
+Logs:
+  row series=unit_plain m=1 gas=311995
+  row series=complete_plain m=2 gas=298831
+  row series=unit_plain m=32 gas=815200
+  row series=complete_plain m=33 gas=457933
+  row series=unit_plain m=128 gas=2400659
+  row series=complete_plain m=129 gas=950723
+  row series=unit_plain m=255 gas=4574011
+  row series=complete_plain m=256 gas=1603097
+  row series=chunk_plain m=1 gas=46361
+  row series=chunk_plain m=64 gas=369631
+  row series=chunk_plain m=256 gas=1355696
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 2.17s (5.49s CPU time)
+
+Ran 1 test suite in 2.18s (2.17s CPU time): 3 tests passed, 0 failed, 0 skipped (3 total tests)

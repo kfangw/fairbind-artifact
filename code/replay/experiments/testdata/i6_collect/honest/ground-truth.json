@@ -1,0 +1,16 @@
+{
+ "bad_sales_m": null,
+ "bad_sales_rule": "none",
+ "cell": "H",
+ "events": [],
+ "parameters": {
+  "bad_sale_gain_atomic": 10000,
+  "finite_attack_after": "none",
+  "judgment_path": "normal",
+  "keeper_delay_budget_blocks": 0,
+  "scale_factor": 1,
+  "seller_role": "honest"
+ },
+ "run_id": "I6-honest-r0",
+ "scenario": "I6"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "signing-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reference signing client and watchtower for sampled x402 settlement",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "node --test test/*.test.ts",
+    "e2e": "node e2e/run.ts"
+  },
+  "dependencies": {
+    "@x402/core": "2.28.0",
+    "@x402/evm": "2.28.0",
+    "viem": "2.48.11"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "viem": "2.48.11"
+  }
+}

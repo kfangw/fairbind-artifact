@@ -1,0 +1,62 @@
+
+> signing-client@0.1.0 test
+> node --test test/*.test.ts
+
+TAP version 13
+# Subtest: a marked sale's owed refund is pulled, then the purchase is done
+ok 1 - a marked sale's owed refund is pulled, then the purchase is done
+  ---
+  duration_ms: 3.087143
+  type: 'test'
+  ...
+# Subtest: an owed refund still unpulled keeps the purchase open; nothing to pull sends nothing
+ok 2 - an owed refund still unpulled keeps the purchase open; nothing to pull sends nothing
+  ---
+  duration_ms: 1.45624
+  type: 'test'
+  ...
+# Subtest: pad refuses unaligned responses and keeps aligned ones
+ok 3 - pad refuses unaligned responses and keeps aligned ones
+  ---
+  duration_ms: 1.68955
+  type: 'test'
+  ...
+# Subtest: encryption round trip and decryptHash against h_r
+ok 4 - encryption round trip and decryptHash against h_r
+  ---
+  duration_ms: 4.146715
+  type: 'test'
+  ...
+# Subtest: Merkle paths rebuild the root, odd widths included
+ok 5 - Merkle paths rebuild the root, odd widths included
+  ---
+  duration_ms: 4.222199
+  type: 'test'
+  ...
+# Subtest: sampling: v >= V or no value means sampled
+ok 6 - sampling: v >= V or no value means sampled
+  ---
+  duration_ms: 21.544543
+  type: 'test'
+  ...
+# Subtest: price cap for the reserve never goes below p_floor
+ok 7 - price cap for the reserve never goes below p_floor
+  ---
+  duration_ms: 0.312752
+  type: 'test'
+  ...
+# Subtest: profile id changes with every field
+ok 8 - profile id changes with every field
+  ---
+  duration_ms: 1.446652
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 472.779772

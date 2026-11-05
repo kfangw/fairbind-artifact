@@ -1,0 +1,25 @@
+{
+ "actions": [
+  {
+   "action": "appeal",
+   "block": 1001,
+   "nonce": "0x035cfcaf2e5e324dcef7f5021fbea24c22a5478b28b40f2f19582301ddcc45ef"
+  },
+  {
+   "action": "top_up",
+   "amount": 250000,
+   "block": 5099,
+   "cause": "reentry",
+   "target": 4000000
+  },
+  {
+   "action": "reinstate",
+   "block": 5100
+  }
+ ],
+ "reentry": "top_up_to_scale_then_reinstate",
+ "role": "cheater",
+ "scaleFactor": 1,
+ "topUp": "before_reentry_to_scale",
+ "version": 1
+}

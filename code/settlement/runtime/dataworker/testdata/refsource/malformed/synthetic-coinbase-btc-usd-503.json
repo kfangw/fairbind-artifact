@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "coinbase-exchange:ticker:BTC-USD",
+  "method": "GET",
+  "url": "https://api.exchange.coinbase.com/products/BTC-USD/ticker",
+  "request_raw": "R0VUIC9wcm9kdWN0cy9CVEMtVVNEL3RpY2tlciBIVFRQLzEuMQ0KSG9zdDogYXBpLmV4Y2hhbmdlLmNvaW5iYXNlLmNvbQ0KVXNlci1BZ2VudDogZmFpcmJpbmQtcmVmY2FwdHVyZS8xDQpBY2NlcHQ6IGFwcGxpY2F0aW9uL2pzb24NCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+  "started_at_unix_ms": 1789999999700,
+  "finished_at_unix_ms": 1790000000120,
+  "response_raw": "SFRUUC8xLjEgNTAzIFNlcnZpY2UgVW5hdmFpbGFibGUNCkRhdGU6IE1vbiwgMjEgU2VwIDIwMjYgMTQ6MTM6MjAgR01UDQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgNCkNvbm5lY3Rpb246IGNsb3NlDQpDYWNoZS1Db250cm9sOiBwdWJsaWMsIG1heC1hZ2U9MQ0KU2VydmVyOiBjbG91ZGZsYXJlDQpDRi1DYWNoZS1TdGF0dXM6IE1JU1MNCkNGLVJBWTogMDAwMDAwMDAwMDAwMDAwMC1JQ04NCkNvbnRlbnQtTGVuZ3RoOiAzMw0KDQp7Im1lc3NhZ2UiOiJzZXJ2aWNlIHVuYXZhaWxhYmxlIn0=",
+  "response_sha256": "167daeb82cd5cc123f44f40043e67d91d97344b271eb8bed00a53d63ae86263d",
+  "response_head": "HTTP/1.1 503 Service Unavailable\r\nDate: Mon, 21 Sep 2026 14:13:20 GMT\r\nContent-Type: application/json; charset=utf-8\r\nConnection: close\r\nCache-Control: public, max-age=1\r\nServer: cloudflare\r\nCF-Cache-Status: MISS\r\nCF-RAY: 0000000000000000-ICN\r\nContent-Length: 33\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "hand-built",
+    "synthetic": true,
+    "note": "synthetic fixture: hand-built to the documented response shape; not captured from the live API"
+  }
+}

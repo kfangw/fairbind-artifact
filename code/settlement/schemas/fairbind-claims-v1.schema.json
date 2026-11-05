@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fairbind:claims:v1",
+  "title": "FairBind Advertised Claims Version 1",
+  "oneOf": [
+    { "$ref": "#/$defs/dataClaims" },
+    { "$ref": "#/$defs/openWeightsClaims" }
+  ],
+  "$defs": {
+    "bytes32": { "type": "string", "pattern": "^0x[0-9a-fA-F]{64}$" },
+    "dataClaims": {
+      "type": "object",
+      "required": [
+        "version",
+        "classId",
+        "predicateId",
+        "sourceSetHash",
+        "tolerancePolicyHash"
+      ],
+      "properties": {
+        "version": { "const": 1 },
+        "classId": { "const": 1 },
+        "predicateId": { "$ref": "#/$defs/bytes32" },
+        "sourceSetHash": { "$ref": "#/$defs/bytes32" },
+        "tolerancePolicyHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    },
+    "openWeightsClaims": {
+      "type": "object",
+      "required": [
+        "version",
+        "classId",
+        "predicateId",
+        "modelHash",
+        "configHash"
+      ],
+      "properties": {
+        "version": { "const": 1 },
+        "classId": { "const": 2 },
+        "predicateId": { "$ref": "#/$defs/bytes32" },
+        "modelHash": { "$ref": "#/$defs/bytes32" },
+        "configHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+ "finite_attack": {
+  "after": "request_exit",
+  "cheat_sales": 1
+ },
+ "kind": "hold_period_grid",
+ "parameters": {},
+ "seed": 20260928,
+ "seller_policy": {
+  "appeal_initial_fail": true,
+  "reentry": "none",
+  "role": "finite",
+  "scale_factor": 1,
+  "top_up": "none"
+ }
+}

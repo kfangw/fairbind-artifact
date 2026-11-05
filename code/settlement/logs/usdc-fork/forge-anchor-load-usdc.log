@@ -1,0 +1,286 @@
+No files changed, compilation skipped
+
+Ran 6 tests for contracts/test/sdk/usdcfork/UsdcAnchorLoadFork.t.sol:UsdcAnchorLoadForkTest
+[PASS] test_load_marked_1024() (gas: 347769727)
+Logs:
+  load kind=marked n=1024 anchorUnit 0 gas=5318589
+  load kind=marked n=1024 anchorUnit 1 gas=5235049
+  load kind=marked n=1024 anchorUnit 2 gas=5235084
+  load kind=marked n=1024 anchorUnit 3 gas=10067637
+  load kind=marked n=1024 pullCompletion 1 gas=5151632
+  load kind=marked n=1024 pullCompletion 2 gas=5151632
+  load kind=marked n=1024 pullCompletion 3 gas=5146847
+  load kind=marked n=1024 releaseUnit 0 gas=1317945
+  load kind=marked n=1024 releaseUnit 1 gas=1300845
+  load kind=marked n=1024 releaseUnit 2 gas=1300845
+  load kind=marked n=1024 releaseUnit 3 gas=1300862
+  load kind=marked n=1024 release 0 gas=69391
+  load kind=marked n=1024 releasePay 0 gas=1320890
+  load kind=marked n=1024 releasePay 1 gas=1320890
+  load kind=marked n=1024 releasePay 2 gas=1320890
+  load kind=marked n=1024 releasePay 3 gas=1316068
+  load kind=marked n=1024 max gas=10067637
+
+[PASS] test_load_marked_2000() (gas: 741214243)
+Logs:
+  load kind=marked n=2000 anchorUnit 0 gas=5318721
+  load kind=marked n=2000 anchorUnit 1 gas=5234880
+  load kind=marked n=2000 anchorUnit 2 gas=5235012
+  load kind=marked n=2000 anchorUnit 3 gas=5235180
+  load kind=marked n=2000 anchorUnit 4 gas=5235060
+  load kind=marked n=2000 anchorUnit 5 gas=5235192
+  load kind=marked n=2000 anchorUnit 6 gas=5234844
+  load kind=marked n=2000 anchorUnit 7 gas=9305505
+  load kind=marked n=2000 pullCompletion 1 gas=5151632
+  load kind=marked n=2000 pullCompletion 2 gas=5151632
+  load kind=marked n=2000 pullCompletion 3 gas=5151632
+  load kind=marked n=2000 pullCompletion 4 gas=5151632
+  load kind=marked n=2000 pullCompletion 5 gas=5151632
+  load kind=marked n=2000 pullCompletion 6 gas=5151632
+  load kind=marked n=2000 pullCompletion 7 gas=4192274
+  load kind=marked n=2000 releaseUnit 0 gas=1317945
+  load kind=marked n=2000 releaseUnit 1 gas=1300845
+  load kind=marked n=2000 releaseUnit 2 gas=1300845
+  load kind=marked n=2000 releaseUnit 3 gas=1300845
+  load kind=marked n=2000 releaseUnit 4 gas=1300845
+  load kind=marked n=2000 releaseUnit 5 gas=1300845
+  load kind=marked n=2000 releaseUnit 6 gas=1300845
+  load kind=marked n=2000 releaseUnit 7 gas=1067470
+  load kind=marked n=2000 release 0 gas=69391
+  load kind=marked n=2000 releasePay 0 gas=1320890
+  load kind=marked n=2000 releasePay 1 gas=1320890
+  load kind=marked n=2000 releasePay 2 gas=1320890
+  load kind=marked n=2000 releasePay 3 gas=1320890
+  load kind=marked n=2000 releasePay 4 gas=1320890
+  load kind=marked n=2000 releasePay 5 gas=1320890
+  load kind=marked n=2000 releasePay 6 gas=1320890
+  load kind=marked n=2000 releasePay 7 gas=1076964
+  load kind=marked n=2000 max gas=9305505
+
+[PASS] test_load_marked_5000() (gas: 2410165191)
+Logs:
+  load kind=marked n=5000 anchorUnit 0 gas=5318661
+  load kind=marked n=5000 anchorUnit 1 gas=5234988
+  load kind=marked n=5000 anchorUnit 2 gas=5235049
+  load kind=marked n=5000 anchorUnit 3 gas=5235073
+  load kind=marked n=5000 anchorUnit 4 gas=5234761
+  load kind=marked n=5000 anchorUnit 5 gas=5235073
+  load kind=marked n=5000 anchorUnit 6 gas=5235240
+  load kind=marked n=5000 anchorUnit 7 gas=5234664
+  load kind=marked n=5000 anchorUnit 8 gas=5235120
+  load kind=marked n=5000 anchorUnit 9 gas=5235169
+  load kind=marked n=5000 anchorUnit 10 gas=5235180
+  load kind=marked n=5000 anchorUnit 11 gas=5234953
+  load kind=marked n=5000 anchorUnit 12 gas=5235120
+  load kind=marked n=5000 anchorUnit 13 gas=5235133
+  load kind=marked n=5000 anchorUnit 14 gas=5235252
+  load kind=marked n=5000 anchorUnit 15 gas=5234797
+  load kind=marked n=5000 anchorUnit 16 gas=5235096
+  load kind=marked n=5000 anchorUnit 17 gas=5234808
+  load kind=marked n=5000 anchorUnit 18 gas=5235097
+  load kind=marked n=5000 anchorUnit 19 gas=8009586
+  load kind=marked n=5000 pullCompletion 1 gas=5151632
+  load kind=marked n=5000 pullCompletion 2 gas=5151632
+  load kind=marked n=5000 pullCompletion 3 gas=5151632
+  load kind=marked n=5000 pullCompletion 4 gas=5151632
+  load kind=marked n=5000 pullCompletion 5 gas=5151632
+  load kind=marked n=5000 pullCompletion 6 gas=5151632
+  load kind=marked n=5000 pullCompletion 7 gas=5151632
+  load kind=marked n=5000 pullCompletion 8 gas=5151632
+  load kind=marked n=5000 pullCompletion 9 gas=5151632
+  load kind=marked n=5000 pullCompletion 10 gas=5151632
+  load kind=marked n=5000 pullCompletion 11 gas=5151632
+  load kind=marked n=5000 pullCompletion 12 gas=5151632
+  load kind=marked n=5000 pullCompletion 13 gas=5151632
+  load kind=marked n=5000 pullCompletion 14 gas=5151632
+  load kind=marked n=5000 pullCompletion 15 gas=5151632
+  load kind=marked n=5000 pullCompletion 16 gas=5151632
+  load kind=marked n=5000 pullCompletion 17 gas=5151632
+  load kind=marked n=5000 pullCompletion 18 gas=5151632
+  load kind=marked n=5000 pullCompletion 19 gas=2761023
+  load kind=marked n=5000 releaseUnit 0 gas=1317945
+  load kind=marked n=5000 releaseUnit 1 gas=1300845
+  load kind=marked n=5000 releaseUnit 2 gas=1300845
+  load kind=marked n=5000 releaseUnit 3 gas=1300845
+  load kind=marked n=5000 releaseUnit 4 gas=1300845
+  load kind=marked n=5000 releaseUnit 5 gas=1300845
+  load kind=marked n=5000 releaseUnit 6 gas=1300845
+  load kind=marked n=5000 releaseUnit 7 gas=1300845
+  load kind=marked n=5000 releaseUnit 8 gas=1300845
+  load kind=marked n=5000 releaseUnit 9 gas=1300845
+  load kind=marked n=5000 releaseUnit 10 gas=1300845
+  load kind=marked n=5000 releaseUnit 11 gas=1300845
+  load kind=marked n=5000 releaseUnit 12 gas=1300845
+  load kind=marked n=5000 releaseUnit 13 gas=1300845
+  load kind=marked n=5000 releaseUnit 14 gas=1300845
+  load kind=marked n=5000 releaseUnit 15 gas=1300845
+  load kind=marked n=5000 releaseUnit 16 gas=1300845
+  load kind=marked n=5000 releaseUnit 17 gas=1300845
+  load kind=marked n=5000 releaseUnit 18 gas=1300845
+  load kind=marked n=5000 releaseUnit 19 gas=717534
+  load kind=marked n=5000 release 0 gas=69391
+  load kind=marked n=5000 releasePay 0 gas=1320890
+  load kind=marked n=5000 releasePay 1 gas=1320890
+  load kind=marked n=5000 releasePay 2 gas=1320890
+  load kind=marked n=5000 releasePay 3 gas=1320890
+  load kind=marked n=5000 releasePay 4 gas=1320890
+  load kind=marked n=5000 releasePay 5 gas=1320890
+  load kind=marked n=5000 releasePay 6 gas=1320890
+  load kind=marked n=5000 releasePay 7 gas=1320890
+  load kind=marked n=5000 releasePay 8 gas=1320890
+  load kind=marked n=5000 releasePay 9 gas=1320890
+  load kind=marked n=5000 releasePay 10 gas=1320890
+  load kind=marked n=5000 releasePay 11 gas=1320890
+  load kind=marked n=5000 releasePay 12 gas=1320890
+  load kind=marked n=5000 releasePay 13 gas=1320890
+  load kind=marked n=5000 releasePay 14 gas=1320890
+  load kind=marked n=5000 releasePay 15 gas=1320890
+  load kind=marked n=5000 releasePay 16 gas=1320890
+  load kind=marked n=5000 releasePay 17 gas=1320890
+  load kind=marked n=5000 releasePay 18 gas=1320890
+  load kind=marked n=5000 releasePay 19 gas=718460
+  load kind=marked n=5000 max gas=8009586
+
+[PASS] test_load_plain_1024() (gas: 351312176)
+Logs:
+  load kind=plain n=1024 anchorUnit 0 gas=4588221
+  load kind=plain n=1024 anchorUnit 1 gas=4504717
+  load kind=plain n=1024 anchorUnit 2 gas=4504790
+  load kind=plain n=1024 anchorUnit 3 gas=5781342
+  load kind=plain n=1024 pullCompletion 1 gas=1355681
+  load kind=plain n=1024 pullCompletion 2 gas=1355681
+  load kind=plain n=1024 pullCompletion 3 gas=1355696
+  load kind=plain n=1024 releaseUnit 0 gas=2605542
+  load kind=plain n=1024 releaseUnit 1 gas=2588442
+  load kind=plain n=1024 releaseUnit 2 gas=2588442
+  load kind=plain n=1024 releaseUnit 3 gas=2588459
+  load kind=plain n=1024 release 0 gas=69391
+  load kind=plain n=1024 releasePay 0 gas=3394045
+  load kind=plain n=1024 releasePay 1 gas=3394045
+  load kind=plain n=1024 releasePay 2 gas=3394045
+  load kind=plain n=1024 releasePay 3 gas=3384423
+  load kind=plain n=1024 max gas=5781342
+
+[PASS] test_load_plain_2000() (gas: 760938979)
+Logs:
+  load kind=plain n=2000 anchorUnit 0 gas=4588328
+  load kind=plain n=2000 anchorUnit 1 gas=4504574
+  load kind=plain n=2000 anchorUnit 2 gas=4504681
+  load kind=plain n=2000 anchorUnit 3 gas=4504873
+  load kind=plain n=2000 anchorUnit 4 gas=4504717
+  load kind=plain n=2000 anchorUnit 5 gas=4504874
+  load kind=plain n=2000 anchorUnit 6 gas=4504489
+  load kind=plain n=2000 anchorUnit 7 gas=5010764
+  load kind=plain n=2000 pullCompletion 1 gas=1355681
+  load kind=plain n=2000 pullCompletion 2 gas=1355681
+  load kind=plain n=2000 pullCompletion 3 gas=1355681
+  load kind=plain n=2000 pullCompletion 4 gas=1355681
+  load kind=plain n=2000 pullCompletion 5 gas=1355681
+  load kind=plain n=2000 pullCompletion 6 gas=1355681
+  load kind=plain n=2000 pullCompletion 7 gas=1109058
+  load kind=plain n=2000 releaseUnit 0 gas=2605542
+  load kind=plain n=2000 releaseUnit 1 gas=2588442
+  load kind=plain n=2000 releaseUnit 2 gas=2588442
+  load kind=plain n=2000 releaseUnit 3 gas=2588442
+  load kind=plain n=2000 releaseUnit 4 gas=2588442
+  load kind=plain n=2000 releaseUnit 5 gas=2588442
+  load kind=plain n=2000 releaseUnit 6 gas=2588442
+  load kind=plain n=2000 releaseUnit 7 gas=2113116
+  load kind=plain n=2000 release 0 gas=69391
+  load kind=plain n=2000 releasePay 0 gas=3394045
+  load kind=plain n=2000 releasePay 1 gas=3394045
+  load kind=plain n=2000 releasePay 2 gas=3394045
+  load kind=plain n=2000 releasePay 3 gas=3394045
+  load kind=plain n=2000 releasePay 4 gas=3394045
+  load kind=plain n=2000 releasePay 5 gas=3394045
+  load kind=plain n=2000 releasePay 6 gas=3394045
+  load kind=plain n=2000 releasePay 7 gas=2762951
+  load kind=plain n=2000 max gas=5010764
+
+[PASS] test_load_plain_5000() (gas: 2561786352)
+Logs:
+  load kind=plain n=5000 anchorUnit 0 gas=4588293
+  load kind=plain n=5000 anchorUnit 1 gas=4504669
+  load kind=plain n=5000 anchorUnit 2 gas=4504693
+  load kind=plain n=5000 anchorUnit 3 gas=4504717
+  load kind=plain n=5000 anchorUnit 4 gas=4504393
+  load kind=plain n=5000 anchorUnit 5 gas=4504705
+  load kind=plain n=5000 anchorUnit 6 gas=4504909
+  load kind=plain n=5000 anchorUnit 7 gas=4504333
+  load kind=plain n=5000 anchorUnit 8 gas=4504814
+  load kind=plain n=5000 anchorUnit 9 gas=4504813
+  load kind=plain n=5000 anchorUnit 10 gas=4504874
+  load kind=plain n=5000 anchorUnit 11 gas=4504609
+  load kind=plain n=5000 anchorUnit 12 gas=4504789
+  load kind=plain n=5000 anchorUnit 13 gas=4504814
+  load kind=plain n=5000 anchorUnit 14 gas=4504933
+  load kind=plain n=5000 anchorUnit 15 gas=4504466
+  load kind=plain n=5000 anchorUnit 16 gas=4504765
+  load kind=plain n=5000 anchorUnit 17 gas=4504489
+  load kind=plain n=5000 anchorUnit 18 gas=4504766
+  load kind=plain n=5000 anchorUnit 19 gas=3826913
+  load kind=plain n=5000 pullCompletion 1 gas=1355681
+  load kind=plain n=5000 pullCompletion 2 gas=1355681
+  load kind=plain n=5000 pullCompletion 3 gas=1355681
+  load kind=plain n=5000 pullCompletion 4 gas=1355681
+  load kind=plain n=5000 pullCompletion 5 gas=1355681
+  load kind=plain n=5000 pullCompletion 6 gas=1355681
+  load kind=plain n=5000 pullCompletion 7 gas=1355681
+  load kind=plain n=5000 pullCompletion 8 gas=1355681
+  load kind=plain n=5000 pullCompletion 9 gas=1355681
+  load kind=plain n=5000 pullCompletion 10 gas=1355681
+  load kind=plain n=5000 pullCompletion 11 gas=1355681
+  load kind=plain n=5000 pullCompletion 12 gas=1355681
+  load kind=plain n=5000 pullCompletion 13 gas=1355681
+  load kind=plain n=5000 pullCompletion 14 gas=1355681
+  load kind=plain n=5000 pullCompletion 15 gas=1355681
+  load kind=plain n=5000 pullCompletion 16 gas=1355681
+  load kind=plain n=5000 pullCompletion 17 gas=1355681
+  load kind=plain n=5000 pullCompletion 18 gas=1355681
+  load kind=plain n=5000 pullCompletion 19 gas=739253
+  load kind=plain n=5000 releaseUnit 0 gas=2605542
+  load kind=plain n=5000 releaseUnit 1 gas=2588442
+  load kind=plain n=5000 releaseUnit 2 gas=2588442
+  load kind=plain n=5000 releaseUnit 3 gas=2588442
+  load kind=plain n=5000 releaseUnit 4 gas=2588442
+  load kind=plain n=5000 releaseUnit 5 gas=2588442
+  load kind=plain n=5000 releaseUnit 6 gas=2588442
+  load kind=plain n=5000 releaseUnit 7 gas=2588442
+  load kind=plain n=5000 releaseUnit 8 gas=2588442
+  load kind=plain n=5000 releaseUnit 9 gas=2588442
+  load kind=plain n=5000 releaseUnit 10 gas=2588442
+  load kind=plain n=5000 releaseUnit 11 gas=2588442
+  load kind=plain n=5000 releaseUnit 12 gas=2588442
+  load kind=plain n=5000 releaseUnit 13 gas=2588442
+  load kind=plain n=5000 releaseUnit 14 gas=2588442
+  load kind=plain n=5000 releaseUnit 15 gas=2588442
+  load kind=plain n=5000 releaseUnit 16 gas=2588442
+  load kind=plain n=5000 releaseUnit 17 gas=2588442
+  load kind=plain n=5000 releaseUnit 18 gas=2588442
+  load kind=plain n=5000 releaseUnit 19 gas=1400709
+  load kind=plain n=5000 release 0 gas=69391
+  load kind=plain n=5000 releasePay 0 gas=3394045
+  load kind=plain n=5000 releasePay 1 gas=3394045
+  load kind=plain n=5000 releasePay 2 gas=3394045
+  load kind=plain n=5000 releasePay 3 gas=3394045
+  load kind=plain n=5000 releasePay 4 gas=3394045
+  load kind=plain n=5000 releasePay 5 gas=3394045
+  load kind=plain n=5000 releasePay 6 gas=3394045
+  load kind=plain n=5000 releasePay 7 gas=3394045
+  load kind=plain n=5000 releasePay 8 gas=3394045
+  load kind=plain n=5000 releasePay 9 gas=3394045
+  load kind=plain n=5000 releasePay 10 gas=3394045
+  load kind=plain n=5000 releasePay 11 gas=3394045
+  load kind=plain n=5000 releasePay 12 gas=3394045
+  load kind=plain n=5000 releasePay 13 gas=3394045
+  load kind=plain n=5000 releasePay 14 gas=3394045
+  load kind=plain n=5000 releasePay 15 gas=3394045
+  load kind=plain n=5000 releasePay 16 gas=3394045
+  load kind=plain n=5000 releasePay 17 gas=3394045
+  load kind=plain n=5000 releasePay 18 gas=3394045
+  load kind=plain n=5000 releasePay 19 gas=1830894
+  load kind=plain n=5000 max gas=4588293
+
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 183.42s (373.46s CPU time)
+
+Ran 1 test suite in 183.43s (183.42s CPU time): 6 tests passed, 0 failed, 0 skipped (6 total tests)

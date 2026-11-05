@@ -1,0 +1,57 @@
+Real USDC gas and buyer burden: how each file here was made.
+Code: branch release-units at 2e15f8d (contracts and client unchanged); new files only:
+  contracts/test/sdk/usdcfork/{UsdcFork.sol, UsdcReleaseGasFork.t.sol, UsdcReleaseLoadFork.t.sol,
+    UsdcAnchorLoadFork.t.sol, UsdcBuyerGasFork.t.sol, MockOnFork.t.sol}
+  scripts/compare_usdc_gas.py, adapters/signing-client/bench/buyer-burden.ts
+Tools: forge 1.7.1, anvil 1.7.1, solc 0.8.24 (sdk profile: via-IR, optimizer runs 1, Osaka), node 22.23.4.
+
+The fork. Base state at block 52977000 (the block of the earlier fork runs), served by a local anvil
+node with chain id 31337:
+  anvil --fork-url https://mainnet.base.org --fork-block-number 52977000 --chain-id 31337 --port 8547
+forge run directly against Base (chain id 8453) treats the chain as OP-stack and charges each --isolate
+transaction an L1 data fee in ETH; SdkBase._newSettlement deals the test contract exactly 100 ETH and
+sends all of it to the VRF mock, so setUp reverts there (seen with forge --fork-url https://mainnet.base.org
+--isolate, also with --gas-price 0, --block-base-fee-per-gas 0, vm.fee(0), vm.txGasPrice(0) and
+--network ethereum). Gas used does not depend on the fee. FiatTokenV2_2 takes its EIP-712 domain from
+block.chainid and the tests sign against token.DOMAIN_SEPARATOR(), so USDC's checks run unchanged.
+Funding: the fork's USDC master minter (impersonated with vm.prank) configures the test contract as a
+minter, and the tests' own token.mint calls are USDC mints (UsdcFork.sol). No real funds, no keys
+(test keys are the tests' fixed hashes; the benchmark generates throwaway keys in memory).
+
+Every forge run: FOUNDRY_PROFILE=sdk forge test --isolate --gas-limit 9223372036854775807 \
+  --fork-url http://127.0.0.1:8547 -vv <selection>
+
+forge-release-gas-usdc.log     --match-contract UsdcReleaseGasForkTest   (ReleaseGas.t.sol on USDC)
+forge-anchor-gas-usdc.log      --match-contract UsdcAnchorLoadForkTest --match-test test_gas
+forge-release-load-usdc.log    --match-contract UsdcReleaseLoadForkTest  (2,000 sales)
+forge-anchor-load-usdc.log     --match-contract UsdcAnchorLoadForkTest --match-test test_load
+                               (1,024, 2,000 and 5,000 sales, marked and plain)
+forge-release-gas-mockfork.log --match-contract MockReleaseGasForkTest   (control: mock token, same fork)
+forge-anchor-gas-mockfork.log  --match-contract MockAnchorLoadForkTest --match-test test_gas
+                               The control rows equal the local mock-token rows of logs/anchor-units point
+                               for point, so the USDC differences come from the token alone.
+forge-buyer-gas.log            --match-path contracts/test/sdk/usdcfork/UsdcBuyerGasFork.t.sol
+                               completeBinding (buyer), settle with and without the binding triple
+                               (facilitator), bare USDC transferWithAuthorization; two rounds
+
+usdc-vs-mock-gas-fit.txt
+  python3 scripts/compare_usdc_gas.py logs/anchor-units/forge-release-gas-load.log \
+    logs/anchor-units/forge-anchor-load.log logs/usdc-fork/forge-release-gas-usdc.log \
+    logs/usdc-fork/forge-anchor-gas-usdc.log logs/usdc-fork/forge-release-gas-mockfork.log \
+    logs/usdc-fork/forge-anchor-gas-mockfork.log
+anchor-gas-fit-usdc.txt
+  python3 scripts/fit_anchor_gas.py <(cat logs/usdc-fork/forge-anchor-gas-usdc.log logs/usdc-fork/forge-anchor-load-usdc.log)
+release-gas-fit-usdc.txt
+  python3 scripts/fit_release_gas.py <(cat logs/usdc-fork/forge-release-gas-usdc.log logs/usdc-fork/forge-release-load-usdc.log) \
+    logs/release-units/old-contract/forge-old-release.log
+
+Small differences in the anchor-unit rows (a few gas in the fits, at most about 8,200 in one load
+transaction) come from the settlement contract's address: _useUsdc deploys one more contract, the sale
+nonces depend on address(f), and the nonce order sets which leaves share a unit.
+
+buyer-burden.json, buyer-burden-run2.json   the signing client's per-purchase work and message bytes
+  cd adapters/signing-client && node bench/buyer-burden.ts 2000 > ../../logs/usdc-fork/buyer-burden.json
+  cd adapters/signing-client && node bench/buyer-burden.ts 5000 > ../../logs/usdc-fork/buyer-burden-run2.json
+  (200 warm-up runs each; run on an otherwise idle machine, after the forge runs and with anvil stopped.
+  Machine: cloud container, Intel Xeon @ 2.80GHz, 4 logical CPUs, 15.7 GB, Linux 6.18.44, x64; a
+  shared VM, so the two runs differ by up to about 1.7x in the median and less in the p95.)

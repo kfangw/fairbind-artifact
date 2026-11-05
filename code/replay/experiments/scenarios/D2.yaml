@@ -1,0 +1,73 @@
+id: D2
+name: Deferral grid near the freeze delay, slow and fast verifier
+property_under_test:
+- T6
+- EXPOSURE
+preconditions:
+- Same cheater and bond as D1, cap off
+- The assigned verifiers either judge at once or wait until just before judgeDue
+injected_fault:
+  process:
+  - seller
+  - verifier
+  kind: calculating_cheater
+  action: 'seller acts as a calculating cheater: it settles at rate Lambda_cheater, delivers a bad response on every sale, and keeps selling until a settlement is refused (its bond account is frozen); verifiers judge at verifier_judge_timing'
+  timing: continuously after registration
+parameters:
+  D_holding_blocks:
+    default: L_min
+    sweep:
+    - L_min
+    - delta_F
+    - (delta_F+L)/2
+    unit: blocks (expression over L_min, delta_F, L)
+  Lambda_cheater:
+    default: rate:peak_hour_max
+    unit: settlements per block
+  cap_enabled:
+    default: false
+  verifier_judge_timing:
+    default: immediate
+    sweep:
+    - immediate
+    - near_deadline
+    unit: immediate, or judgeBlocks minus 5 blocks after assignment
+  P_S_reserve:
+    default: profile_penalty_floor
+    unit: token
+n_seeds: 30
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - effective_hold_period_blocks
+  - freeze_delay_blocks
+expected_outcome: 'Region b (L_min <= D < delta_F) leaks only when the realized freeze delay exceeds D. With immediate verdicts the freeze delay is close to L_min plus the seal, open and assignment steps, so at D = L_min a small leak of about g Lambda (Delta - L_min) is expected; with near-deadline verdicts Delta approaches delta_F and the leak grows to about g Lambda (delta_F - D). At D = delta_F and (delta_F+L)/2 no bad sale is released with either timing.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'Per run: released exposure > 0 exactly when the recorded freeze delay exceeds D. At D >= delta_F any released bad sale refutes the freeze rule. The near_deadline mean released exposure at D = L_min exceeds the immediate mean; if it does not, the realized freeze delay did not move and the run is reported as not exercising region b.'
+notes: Answers whether region b produces a counterexample only under a slow verifier. The grid and the override rules are in the README, Deferral grid.

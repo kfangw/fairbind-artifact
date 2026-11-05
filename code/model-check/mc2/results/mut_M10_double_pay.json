@@ -1,0 +1,63 @@
+{
+ "states": 1458,
+ "terminal": 0,
+ "violations": {
+  "P2": {
+   "msg": "s0 sale 0 (eta 0) paid before failure ('c', 0) with eta_f 0",
+   "trace": [
+    "t=0 s0:settle p0 fr0 dk0",
+    "t=0 tick",
+    "t=1 s0:anchor p0 e0 (2,)",
+    "t=1 tick",
+    "t=2 tick",
+    "t=3 tick",
+    "t=4 tick",
+    "t=5 s0:cursor E0"
+   ]
+  },
+  "P4": {
+   "msg": "s0: ledger (held, seller, refunded, frozen) (0, 2, 0, 0) vs statuses [0, 1, 0, 0], settled 1",
+   "trace": [
+    "t=0 s0:settle p0 fr0 dk0",
+    "t=0 tick",
+    "t=1 s0:anchor p0 e0 (2,)",
+    "t=1 tick",
+    "t=2 tick",
+    "t=3 tick",
+    "t=4 tick",
+    "t=5 s0:cursor E0"
+   ]
+  }
+ },
+ "capped": false,
+ "seconds": 0.1,
+ "Hend": 8,
+ "dedup": "full",
+ "cfg": {
+  "sellers": 1,
+  "profiles": 1,
+  "epochs": 2,
+  "k": 1,
+  "smax": 2,
+  "stot": 2,
+  "L": 2,
+  "aA": 1,
+  "Mgap": 1,
+  "T_p": 1,
+  "T_c": 2,
+  "d_inc": 1,
+  "disputes": false,
+  "marks": true,
+  "fraud": false,
+  "honest": false,
+  "max_reentry": 1,
+  "claims": false,
+  "units": false,
+  "mutations": [
+   "M10_double_pay"
+  ],
+  "max_states": 40000000
+ },
+ "group": "mut",
+ "name": "mut_M10_double_pay"
+}

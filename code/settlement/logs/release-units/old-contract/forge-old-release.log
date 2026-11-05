@@ -1,0 +1,24 @@
+Compiling 1 files with Solc 0.8.24
+Solc 0.8.24 finished in 92.30s
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> contracts/test/sdk/oldload/OldBase.sol:31:44:
+   |
+31 |     function _deploy(uint16 k, uint256 np, uint64 vmin) internal {
+   |                                            ^^^^^^^^^^^
+
+
+Ran 2 tests for contracts/test/sdk/oldload/OldLoad.t.sol:OldLoadTest
+[PASS] test_old_release() (gas: 410398637)
+Logs:
+  old release n=1 gas=87454
+  old release n=256 gas=4385280
+  old release n=1000 gas=17042406
+
+[PASS] test_old_release_2000() (gas: 680963432)
+Logs:
+  old release n=2000 gas=34330578
+
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 1.48s (2.28s CPU time)
+
+Ran 1 test suite in 1.48s (1.48s CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

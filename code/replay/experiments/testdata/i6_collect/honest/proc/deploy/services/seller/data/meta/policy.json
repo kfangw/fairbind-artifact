@@ -1,0 +1,17 @@
+{
+ "actions": [
+  {
+   "action": "top_up",
+   "amount": 250000,
+   "block": 70001,
+   "cause": "deduction",
+   "deductionBlock": 70000,
+   "target": 4000000
+  }
+ ],
+ "reentry": "top_up_to_scale_then_reinstate",
+ "role": "honest",
+ "scaleFactor": 1,
+ "topUp": "after_each_deduction_to_scale",
+ "version": 1
+}

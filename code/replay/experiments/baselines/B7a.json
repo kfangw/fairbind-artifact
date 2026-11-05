@@ -1,0 +1,95 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B7a",
+  "name": "open-exposure-bond-nonblocking-window-balance-at-check",
+  "represents": "A locked bond required to cover current open exposure plus the maximum payout of the instance, an optimistic claim with an assertion bond and a dispute bond during a liveness window, and an explicit rule that the window does not block the next action.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "samplePpm = 0 violates 0 < samplePpm <= PPM",
+    "effectivePpm = 0 violates 0 < effectivePpm <= samplePpm",
+    "deferBlocks = 0 violates deferBlocks >= retentionBlocks",
+    "the assertion and dispute bonds are posted per claim by whoever claims; there is no registered verifier set, so minVerifiers >= 3 * maxAssignments + 5 has no meaning here",
+    "the bond is recomputed against a running exposure register, which the profile has no field for; the profile reserves a fixed sellerPenalty instead"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": 0,
+    "recheckPpm": 0,
+    "effectivePpm": 0,
+    "deferBlocks": 0,
+    "deferPolicy": "none",
+    "deferPolicy_note": "Actions are executed and admitted before any claim exists, and the window's deadlines govern only the settlement instance, not the next action. This is the defining property of the arm.",
+    "retentionBlocks": "op:L",
+    "sellerBond": {
+      "enabled": true,
+      "sizing": "open_exposure_plus_max_payout",
+      "formula": "B >= E_open + P_max",
+      "E_open_semantics": "current outstanding balance at the moment of the check, a point-in-time quantity, not an integral over the window",
+      "P_max_atomic": "op:v",
+      "recheckOnAdmission": true,
+      "amount_atomic": "dynamic",
+      "E_open_reading": "balance_at_check"
+    },
+    "sellerPenalty_atomic": "dynamic",
+    "rateCap": {
+      "enabled": false,
+      "note": "No rate limit and no volume ceiling. The window explicitly does not gate the next action."
+    },
+    "verifier": {
+      "enabled": false,
+      "claimantBonded": true,
+      "disputerBonded": true,
+      "assertionBond_atomic": "10000000",
+      "disputeBond_atomic": "10000000",
+      "assignedChecker": false,
+      "note": "Bonded parties exist, but they are self-selected claimants and disputers, not checkers assigned to a selected transaction. Detection is challenge-driven."
+    },
+    "appeal": {
+      "enabled": true,
+      "kind": "liveness_window_with_dispute_bond",
+      "windowBlocks": "op:L",
+      "rounds": 1,
+      "depositRequired": true,
+      "blocksNextAction": false
+    },
+    "receiptAnchor": {
+      "enabled": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "execute_then_settle_then_respond",
+    "complaintPolicy": "buyer_complains_when_verdict_known"
+  },
+  "cannot_express": [
+    "sampling: nothing selects a transaction, so an undisputed fault is never examined",
+    "an assigned, penalized checker: bonds attach to whoever chooses to speak, so silence has no cost and a fault nobody notices has no procedure",
+    "accumulation during the window: the bond covers the exposure open at the moment of the check, so value settled after the check and before the verdict is outside the covered amount",
+    "a rate cap of any kind, which is stated as a feature rather than an omission",
+    "delivery recovery and payment-to-response binding"
+  ],
+  "harness_special_cases": [
+    "the exposure register must be recomputed at every admission, exactly as the arm specifies, so that the arm is tested at its best rather than as a straw configuration; the leak must come from the accumulation semantics, not from a lazy implementation",
+    "record both quantities separately: the bond required at the moment of the check, and the value that settled between the check and the verdict. Their gap is the measured quantity this arm exists to produce",
+    "detection requires a disputer; the complaint policy belongs in the scenario file, and a run with no disputer must be labelled 'undetected by construction'",
+    "the D-sweep does not apply; emit one point at D = 0 and mark that the arm's own text forbids the window from gating the next action",
+    "scenarios F4, S1, S2, S3 have no procedure; score 'undefined'"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Flat at D = 0, and flat by design rather than by omission. This is the cleanest demonstration of the exchange claim, because the arm states in its own terms that the window does not hold anything back.",
+    "cheater_scenarios": {
+      "steady_cheat": "The bond check passes at every admission, because each check sees only the exposure open at that instant. Meanwhile new settlements keep arriving during the window. Expected shortfall at a verdict is approximately g * lambda * L: the accumulation term, uncovered, with the covered part being the instantaneous balance.",
+      "S5_burst": "The discriminating run for this arm together with B1. Multiplying the rate for one window multiplies the uncovered accumulation directly, while the admission check keeps passing because it never looks at the rate. Expect the shortfall to scale linearly in the burst multiple with no saturation, in contrast to B6 where the day maximum saturates it.",
+      "S6_patient_defector": "Patience is cheap here because nothing is held and no history is required; the defector sizes the burst to the window and takes the accumulation."
+    },
+    "honest_seller_cost": "Low, comparable to B1: a bond sized to current exposure, no held proceeds, no anchor. The arm is genuinely cheap for an honest seller, which is why the comparison has to be made on the leak and not on the cost."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": [
+    "retentionBlocks and appeal.windowBlocks 5400 -> op:L",
+    "P_max 100000000 (100 USDC) -> op:v, the largest payout of one instance at the shared operating point",
+    "one of two readings of E_open; the other reading is B7b",
+    "complaintPolicy fixed to the value shared with B6"
+  ]
+}

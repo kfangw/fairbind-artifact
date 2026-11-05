@@ -1,0 +1,71 @@
+id: V1
+name: Verifier idle
+property_under_test:
+- P4
+preconditions:
+- A verifier is assigned to a sampled purchase (judgeDue is set)
+- The seller has not served the sampled response off chain when the last attempt times out
+injected_fault:
+  process:
+  - verifier
+  - seller
+  kind: verifier_idle
+  action: 'assigned verifier does not submit a verdict before judgeDue; the seller publishes when the keeper path requires it only if seller_publishes'
+  timing: no response until judgeDue
+parameters:
+  judgeBlocks:
+    default: profile_default
+    unit: blocks
+  maxAssignments:
+    default: profile_default
+    unit: count
+  neglect_repeat_count:
+    default: 1
+    sweep:
+    - 1
+    - 2
+    - 3
+    unit: consecutive assignments
+  seller_publishes:
+    default: true
+    sweep:
+    - true
+    - false
+    unit: whether the seller publishes when the keeper requires it
+n_seeds: 3
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - verifier_slash_amount
+  - reassignment_count
+  - suspension_count
+expected_outcome: 'timeoutJudge applies the late penalty to the idle verifier and, while attempts remain, returns the case to ASSIGNING for another verifier. When the last of maxAssignments times out on a sampled case with nothing served, the keeper path requires the seller to publish the response on chain (PUBLISHING). If the seller publishes, the case ends INCONCLUSIVE without a seller failure; if it does not, timeoutServe ends it UNSERVED, a seller failure that freezes the bond account and refunds the buyer.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'The late penalty is applied once per missed judgeDue; with neglect_repeat_count < maxAssignments a valid final verdict is reached; with neglect_repeat_count == maxAssignments the case goes to PUBLISHING and ends INCONCLUSIVE (seller_publishes true, no suspension) or UNSERVED (false, suspension_count 1, buyer refunded).'
+notes: Checks penalty and reassignment of a late verifier.

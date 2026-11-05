@@ -1,0 +1,7 @@
+FOUNDRY_PROFILE=sdk forge build --sizes, branch release-units 7c571a8 (limits: runtime 24,576, initcode 49,152)
+| Contract                   | Runtime Size (B) | Initcode Size (B) | Runtime Margin (B) | Initcode Margin (B) |
+| SampledSettlement          | 23,849           | 48,822            | 727                | 330                 |
+| SettlementModule           | 22,829           | 23,365            | 1,747              | 25,787              |
+
+release units only (30c79b9): SampledSettlement 24,324 / 48,263, SettlementModule 21,809 / 22,345
+vrf 7a96ae5: SampledSettlement 24,350 / 47,814, SettlementModule 20,543 / 21,874

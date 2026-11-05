@@ -1,0 +1,114 @@
+{
+  "schema": "fairbind-baseline-policy/v1",
+  "id": "B4",
+  "name": "full-collateral-session-optimistic",
+  "represents": "Collateral covering the entire volume the seller is permitted to settle in the period, session-level optimistic settlement with reputation updated on the optimistic path, and a challenge period during which a confirmed fault is slashed.",
+  "executable": true,
+  "arm_kind": "policy_adapter",
+  "profile_v1_admissible": false,
+  "profile_v1_violations": [
+    "samplePpm = 0 violates 0 < samplePpm <= PPM; the arm judges nothing on its own initiative",
+    "effectivePpm = 0 violates 0 < effectivePpm <= samplePpm",
+    "no verifier registry violates minVerifiers >= 3 * maxAssignments + 5",
+    "appealBlocks > 0 is satisfied by the challenge period, but appealDeposit >= maxReviewCost is not, because no deposit is required to challenge and no checking cost is bounded",
+    "the deferral is per session, not per purchase; the machine profile has no session object and deferBlocks is a per-purchase field",
+    "the daily volume ceiling is a policy constant and is not expressible as a token bucket with a capacity and a refill rate"
+  ],
+  "fairbind_parameters": {
+    "samplePpm": 0,
+    "recheckPpm": 0,
+    "effectivePpm": 0,
+    "deferBlocks": 0,
+    "deferPolicy": "session_optimistic_with_challenge_window",
+    "sessionLengthBlocks": 43200,
+    "challengeWindowBlocks": 43200,
+    "challengeWindowHours": 24,
+    "challengeWindowSource": "configuration constant, not derived from the adjudication delay",
+    "retentionBlocks": 43200,
+    "sellerBond": {
+      "enabled": true,
+      "sizing": "full_period_volume",
+      "formula": "dailyVolumeCeiling * durationDays",
+      "dailyVolumeCeiling_atomic": "100000000",
+      "durationDays": 10,
+      "amount_atomic": "1000000000"
+    },
+    "sellerPenalty_atomic": "1000000000",
+    "sellerPenalty_note": "Slashing is graded by fault class: full on fraud, partial on quality defect, log demerit on availability. The adapter implements only the full and partial tiers and records the classification as injected, since the arm does not specify who classifies.",
+    "rateCap": {
+      "enabled": true,
+      "kind": "fixed_daily_ceiling",
+      "dailyCeiling_atomic": "100000000",
+      "burstCapacity": null,
+      "burstCapacity_note": "No burst term. A seller may settle the whole daily ceiling in one block.",
+      "derivedFrom": "operator or user choice; not derived from the adjudication delay or from the bond condition"
+    },
+    "verifier": {
+      "enabled": false,
+      "oracle": "abstract",
+      "oracle_note": "Fault detection is assumed to be supplied from outside; who detects, by what method, and at what cost are not specified.",
+      "bond_atomic": "0",
+      "latePenalty": false,
+      "wrongPenalty": false
+    },
+    "appeal": {
+      "enabled": true,
+      "kind": "challenge_period",
+      "rounds": 1,
+      "depositRequired": false,
+      "challengerBonded": false
+    },
+    "reputation": {
+      "enabled": true,
+      "update": "optimistic_per_session",
+      "score_form": "trust_mass / (trust_mass + distrust_mass)",
+      "identity_propagation": true
+    },
+    "receiptAnchor": {
+      "enabled": true,
+      "kind": "session_log",
+      "signed": false,
+      "inclusionProofToBuyer": false
+    },
+    "nonDeliveryProcedure": {
+      "enabled": false
+    },
+    "settlementOrder": "execute_then_settle_then_respond",
+    "sessionLength_sensitivity_hours": [
+      1,
+      6,
+      24
+    ]
+  },
+  "cannot_express": [
+    "who judges: the fault oracle is an interface, so the arm cannot produce a detection rate from its own machinery and the harness must inject verdicts",
+    "sampling: there is no selection rule, so there is no cost amortization to measure and no unpredictability for the seller to face",
+    "checker accountability: with no bonded checker there is nothing to attribute a wrong verdict to",
+    "a signed receipt: the session log has no signer, so in a dispute the log itself must be believed",
+    "per-purchase deferral: the holding unit is the session, so a single purchase cannot be held while its neighbours release",
+    "a bond derived from the adjudication delay: the bond is sized to volume and does not move when the delay moves",
+    "a burst term: the daily ceiling admits an arbitrarily fast burst within the day"
+  ],
+  "harness_special_cases": [
+    "verdicts must be injected from controller ground truth at the challenge step, and the envelope must mark them injected; no detection-rate number from this arm is a measurement",
+    "the fault classification (fraud / quality defect / availability) must likewise be injected, with the mapping recorded in the scenario file",
+    "the session object does not exist in the contract; the adapter groups settlements into sessions and holds release at session granularity",
+    "reputation is computed by the adapter and reported, but must never gate anything in the safety metric; it is an observed variable, not a control",
+    "this arm needs no new predicate or verifier code: it is a policy configuration plus an injected oracle, as planned",
+    "the D-sweep does not apply; emit one point at the session challenge window and mark that the bond does not respond to the sweep"
+  ],
+  "expected_outcome": {
+    "d_sweep": "Insensitive. Moving the adjudication delay does not move the bond, because the bond is sized to volume. This insensitivity is the measurement: plot the required bond against L for the treatment arm and a horizontal line for this arm.",
+    "cheater_scenarios": {
+      "steady_cheat": "No leak while the period volume ceiling is respected, because the collateral covers the whole period volume by construction. Safety is bought outright.",
+      "S5_burst": "Within a day the burst is unconstrained but also fully collateralized, so still no leak. The burst shows up as the daily ceiling being hit and customers refused, which is the honest-seller cost of this arm.",
+      "S6_patient_defector": "No leak from the bond's side, and this is exactly the scenario where reputation contributes nothing: the defector's score is indistinguishable from an honest seller's until the moment of the defection. Report the reputation trace alongside the recovery to show that the recovery came from the collateral, not from the score."
+    },
+    "honest_seller_cost": "Locked capital is the whole period volume. Against the treatment arm at the calibration operating point the ratio is on the order of one to two percent, i.e. this arm locks roughly two orders of magnitude more capital for the same deterrence. Report the ratio as a curve over the ledger rate distribution, not as a single number, since it depends on the seller's transaction count over the period.",
+    "break_even": "The treatment arm is more expensive only for sellers whose period transaction count falls below roughly 1/p. Report where the measured rate distribution sits relative to that line; on the observed distribution almost all volume is far above it."
+  },
+  "operating_point_note": "Values written \"op:<expr>\" are read from experiments/operating-point.json (see experiments/controller/operating_point.py); this file keeps no copy of g, v, p, L or the rates.",
+  "changes_from_source": [
+    "no operating-point value changed: the daily volume ceiling (100 USDC) and the ten-day duration are the source design's own constants; a session length sensitivity list of 1, 6 and 24 hours was added"
+  ]
+}

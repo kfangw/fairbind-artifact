@@ -1,0 +1,7 @@
+k11b_output.md reproduced byte for byte: True
+V0 Table 4 cells (21): True
+V1 code paths with the model constants (set back), Table 4: True
+V0 FI (P3) and FR (K14): True True
+REL_M 16,800 through the namespace = P4 base B and P3 (b): True
+additivity: True
+wrote [research-root]/docs/11_journal/P9_posthoc/results 12s

@@ -1,0 +1,62 @@
+id: S1
+name: Anchor omits a receipt
+property_under_test:
+- P2
+preconditions:
+- The seller settles several purchases in epoch e
+- The seller leaves one receipt out of the anchored root
+injected_fault:
+  process: seller
+  kind: omit_receipt_from_anchor
+  action: 'seller omits one settled purchase''s receipt leaf from the anchor Merkle root'
+  timing: from anchorBase(e) through anchorDeadline(e)
+  target: one nonce of the epoch
+parameters:
+  epochBlocks:
+    default: 300
+    sweep:
+    - 300
+    - 1800
+    unit: blocks
+  omitted_receipt_count:
+    default: 1
+    sweep:
+    - 1
+    - 3
+    unit: count
+n_seeds: 3
+observed_metrics:
+  core:
+  - double_settlement_rate
+  - post_settlement_unrecovered_rate
+  - released_exposure
+  - anchor_gas_per_epoch
+  - retention_storage_bytes
+  - captured_funds_time_average
+  - false_positive_recovery_amount
+  - locked_capital
+  - gas_per_settlement
+  - gas_per_judgment
+  - gas_per_dispute
+  - gas_per_call
+  - recovery_time_blocks
+  - judgment_delay_distribution
+  extended:
+  - cheater_net_gain
+  - sales_lost_while_suspended
+  - exposure_vs_bond
+  - buyer_recovery_rate
+  - honest_seller_delay_blocks
+  - honest_seller_suspended_fraction
+  - frozen_amount
+  - rejected_settlement_count
+  - capital_locked_time_integral
+  - realized_detection_rate
+  - realized_sample_rate
+  scenario_specific:
+  - omission_proof_submission_rate
+  - omission_proof_gas
+expected_outcome: 'The buyer holding the omitted receipt submits it with proveOmission; the contract treats that purchase as a failure and refunds it. Other anchored purchases are unaffected.'
+ground_truth_source: 'controller (experiments/controller) records the injected fault, the true event sequence and the expected verdict outside the runtime processes; no buyer, seller, facilitator, verifier, keeper or anvil process can read it'
+pass_criteria: 'When the omission proof is submitted before claimUntil only that nonce becomes REFUNDABLE (post_settlement_unrecovered_rate == 0 for omitted purchases); purchases left without a proof are counted separately.'
+notes: Checks the rule that a signed receipt missing from the root proves omission.

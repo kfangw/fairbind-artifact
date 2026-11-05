@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "gemini:pubticker:btcusd",
+  "method": "GET",
+  "url": "https://api.gemini.com/v1/pubticker/btcusd",
+  "request_raw": "R0VUIC92MS9wdWJ0aWNrZXIvYnRjdXNkIEhUVFAvMS4xDQpIb3N0OiBhcGkuZ2VtaW5pLmNvbQ0KVXNlci1BZ2VudDogZmFpcmJpbmQtYzFjb2xsZWN0LzENCkFjY2VwdDogYXBwbGljYXRpb24vanNvbg0KQWNjZXB0LUVuY29kaW5nOiBpZGVudGl0eQ0KQ29ubmVjdGlvbjogY2xvc2UNCg0K",
+  "started_at_unix_ms": 1789999999800,
+  "finished_at_unix_ms": 1790000000150,
+  "response_raw": "SFRUUC8xLjEgNTAzIFNlcnZpY2UgVW5hdmFpbGFibGUNCkRhdGU6IE1vbiwgMjEgU2VwIDIwMjYgMTQ6MTM6MjAgR01UDQpDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24NCkNvbnRlbnQtTGVuZ3RoOiAxOA0KQ29ubmVjdGlvbjogY2xvc2UNCg0KeyJyZXN1bHQiOiJlcnJvciJ9",
+  "response_sha256": "ce02e44354bb3e8b42d14f1b84ec57ce6c883a360e5d1a91bff1687affb5182c",
+  "response_head": "HTTP/1.1 503 Service Unavailable\r\nDate: Mon, 21 Sep 2026 14:13:20 GMT\r\nContent-Type: application/json\r\nContent-Length: 18\r\nConnection: close\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "hand-built",
+    "synthetic": true,
+    "note": "synthetic fixture: hand-built to the documented response shape; not captured from the live API"
+  }
+}

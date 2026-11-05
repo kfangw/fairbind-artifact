@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fairbind:evidence:v1",
+  "title": "FairBind Predicate Evidence Version 1",
+  "type": "object",
+  "required": [
+    "version",
+    "classId",
+    "predicateId",
+    "nonce",
+    "responseHash",
+    "predicateCommitment",
+    "verdict",
+    "implementationHash",
+    "observedAt",
+    "details"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "classId": { "enum": [1, 2] },
+    "predicateId": { "$ref": "#/$defs/bytes32" },
+    "nonce": { "$ref": "#/$defs/bytes32" },
+    "responseHash": { "$ref": "#/$defs/bytes32" },
+    "predicateCommitment": { "$ref": "#/$defs/bytes32" },
+    "verdict": { "enum": ["PASS", "FAIL", "INCONCLUSIVE"] },
+    "implementationHash": { "$ref": "#/$defs/bytes32" },
+    "observedAt": { "$ref": "#/$defs/uintString" },
+    "details": {
+      "oneOf": [
+        { "$ref": "#/$defs/dataApiDetails" },
+        { "$ref": "#/$defs/openWeightsDetails" }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "bytes32": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "uintString": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$"
+    },
+    "dataApiDetails": {
+      "type": "object",
+      "required": [
+        "kind",
+        "referenceTime",
+        "sourceSetHash",
+        "tolerancePolicyHash",
+        "referenceResponsesHash",
+        "comparisonHash"
+      ],
+      "properties": {
+        "kind": { "const": "data-api" },
+        "referenceTime": { "$ref": "#/$defs/uintString" },
+        "sourceSetHash": { "$ref": "#/$defs/bytes32" },
+        "tolerancePolicyHash": { "$ref": "#/$defs/bytes32" },
+        "referenceResponsesHash": { "$ref": "#/$defs/bytes32" },
+        "comparisonHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    },
+    "openWeightsDetails": {
+      "type": "object",
+      "required": [
+        "kind",
+        "toplocCommitment",
+        "reproducedCommitment",
+        "modelHash",
+        "configHash",
+        "traceHash"
+      ],
+      "properties": {
+        "kind": { "const": "open-weights-inference" },
+        "toplocCommitment": { "$ref": "#/$defs/bytes32" },
+        "reproducedCommitment": { "$ref": "#/$defs/bytes32" },
+        "modelHash": { "$ref": "#/$defs/bytes32" },
+        "configHash": { "$ref": "#/$defs/bytes32" },
+        "traceHash": { "$ref": "#/$defs/bytes32" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

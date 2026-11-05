@@ -1,0 +1,87 @@
+No files changed, compilation skipped
+
+Ran 4 tests for contracts/test/sdk/ReleaseGas.t.sol:ReleaseGasTest
+[PASS] test_gas_check_and_inline() (gas: 216593155)
+Logs:
+  row series=inline m=1 gas=93208
+  row series=check m=1 gas=84011
+  row series=passpay m=1 gas=77964
+  row series=inline m=8 gas=211377
+  row series=check m=8 gas=153108
+  row series=passpay m=8 gas=169030
+  row series=inline m=32 gas=616643
+  row series=check m=32 gas=390064
+  row series=passpay m=32 gas=481267
+  row series=inline m=64 gas=1157282
+  row series=check m=64 gas=706131
+  row series=passpay m=64 gas=897615
+  row series=inline m=128 gas=2239531
+  row series=check m=128 gas=1338698
+  row series=passpay m=128 gas=1730419
+  row series=inline m=256 gas=4407918
+  row series=check m=256 gas=2605559
+  row series=passpay m=256 gas=3396459
+
+[PASS] test_gas_failing() (gas: 165262199)
+Logs:
+  row series=check_fail m=1 gas=146697
+  row series=check_fail m=32 gas=1419516
+  row series=check_fail m=128 gas=5362006
+  row series=check_fail m=256 gas=10620675
+
+[PASS] test_gas_payment_units() (gas: 364109617)
+Logs:
+  row series=pass m=1 gas=69391
+  row series=payunit m=256 gas=3381383
+  row series=payunit m=1 gas=71116
+  row series=pass m=64 gas=69391
+  row series=payunit m=64 gas=886357
+  row series=pass m=256 gas=69391
+  row series=payunit m=256 gas=3371761
+
+[PASS] test_gas_proven() (gas: 160018796)
+Logs:
+  row series=inline_proven m=1 gas=92368
+  row series=check_proven m=1 gas=81171
+  row series=inline_proven m=8 gas=204649
+  row series=check_proven m=8 gas=130383
+  row series=inline_proven m=32 gas=589665
+  row series=check_proven m=32 gas=299125
+  row series=inline_proven m=64 gas=1103145
+  row series=check_proven m=64 gas=524144
+
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 504.28ms (1.13s CPU time)
+
+Ran 1 test for contracts/test/sdk/ReleaseLoad.t.sol:ReleaseLoadTest
+[PASS] test_load_2000_sales() (gas: 707004134)
+Logs:
+  load anchorUnit 0 gas=4588052
+  load anchorUnit 1 gas=4504777
+  load anchorUnit 2 gas=4504646
+  load anchorUnit 3 gas=4504550
+  load anchorUnit 4 gas=4505138
+  load anchorUnit 5 gas=4504502
+  load anchorUnit 6 gas=4504574
+  load anchorUnit 7 gas=5018945
+  load releaseUnit 0 gas=2605542
+  load releaseUnit 1 gas=2588442
+  load releaseUnit 2 gas=2588442
+  load releaseUnit 3 gas=2588442
+  load releaseUnit 4 gas=2588442
+  load releaseUnit 5 gas=2588442
+  load releaseUnit 6 gas=2588442
+  load releaseUnit 7 gas=2113116
+  load release 0 gas=69391
+  load releasePay 0 gas=3381383
+  load releasePay 1 gas=3381383
+  load releasePay 2 gas=3381383
+  load releasePay 3 gas=3381383
+  load releasePay 4 gas=3381383
+  load releasePay 5 gas=3381383
+  load releasePay 6 gas=3381383
+  load releasePay 7 gas=2750289
+  load transactions=17 max gas=3381383
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.51s (1.51s CPU time)
+
+Ran 2 test suites in 1.51s (2.02s CPU time): 5 tests passed, 0 failed, 0 skipped (5 total tests)

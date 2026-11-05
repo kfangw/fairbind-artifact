@@ -1,0 +1,2332 @@
+{
+  "storage": [
+    {
+      "astId": 2125,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "governance",
+      "offset": 0,
+      "slot": "0",
+      "type": "t_address"
+    },
+    {
+      "astId": 2127,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "guardian",
+      "offset": 0,
+      "slot": "1",
+      "type": "t_address"
+    },
+    {
+      "astId": 2129,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "governanceNominee",
+      "offset": 0,
+      "slot": "2",
+      "type": "t_address"
+    },
+    {
+      "astId": 2131,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "guardianNominee",
+      "offset": 0,
+      "slot": "3",
+      "type": "t_address"
+    },
+    {
+      "astId": 2133,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "governanceAcceptAfter",
+      "offset": 20,
+      "slot": "3",
+      "type": "t_uint64"
+    },
+    {
+      "astId": 2135,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "newSettlementsPaused",
+      "offset": 28,
+      "slot": "3",
+      "type": "t_bool"
+    },
+    {
+      "astId": 2138,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "nextSellerId",
+      "offset": 0,
+      "slot": "4",
+      "type": "t_uint32"
+    },
+    {
+      "astId": 2141,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "nextVerifierId",
+      "offset": 4,
+      "slot": "4",
+      "type": "t_uint32"
+    },
+    {
+      "astId": 2144,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "entered",
+      "offset": 0,
+      "slot": "5",
+      "type": "t_uint256"
+    },
+    {
+      "astId": 2149,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "deadlineConfigs",
+      "offset": 0,
+      "slot": "6",
+      "type": "t_mapping(t_uint32,t_struct(DeadlineConfig)1694_storage)"
+    },
+    {
+      "astId": 2153,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "deadlineConfigExists",
+      "offset": 0,
+      "slot": "7",
+      "type": "t_mapping(t_uint32,t_bool)"
+    },
+    {
+      "astId": 2158,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "profiles",
+      "offset": 0,
+      "slot": "8",
+      "type": "t_mapping(t_uint32,t_struct(ServiceProfileView)1848_storage)"
+    },
+    {
+      "astId": 2163,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "sellers",
+      "offset": 0,
+      "slot": "9",
+      "type": "t_mapping(t_uint32,t_struct(SellerData)1996_storage)"
+    },
+    {
+      "astId": 2168,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "verifiers",
+      "offset": 0,
+      "slot": "10",
+      "type": "t_mapping(t_uint32,t_struct(VerifierView)1938_storage)"
+    },
+    {
+      "astId": 2173,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "purchases",
+      "offset": 0,
+      "slot": "11",
+      "type": "t_mapping(t_bytes32,t_struct(PurchaseView)1969_storage)"
+    },
+    {
+      "astId": 2177,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "purchaseForKey",
+      "offset": 0,
+      "slot": "12",
+      "type": "t_mapping(t_bytes32,t_bytes32)"
+    },
+    {
+      "astId": 2181,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "usedNonce",
+      "offset": 0,
+      "slot": "13",
+      "type": "t_mapping(t_bytes32,t_bool)"
+    },
+    {
+      "astId": 2187,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "epochPurchaseCount",
+      "offset": 0,
+      "slot": "14",
+      "type": "t_mapping(t_uint32,t_mapping(t_uint24,t_uint32))"
+    },
+    {
+      "astId": 2194,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "anchors",
+      "offset": 0,
+      "slot": "15",
+      "type": "t_mapping(t_uint32,t_mapping(t_uint24,t_struct(AnchorView)2042_storage))"
+    },
+    {
+      "astId": 2198,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "latestCheckpointVersion",
+      "offset": 0,
+      "slot": "16",
+      "type": "t_mapping(t_uint32,t_uint64)"
+    },
+    {
+      "astId": 2205,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "verifierCheckpoints",
+      "offset": 0,
+      "slot": "17",
+      "type": "t_mapping(t_uint32,t_mapping(t_uint64,t_struct(VerifierCheckpoint)2104_storage))"
+    },
+    {
+      "astId": 2210,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "cases",
+      "offset": 0,
+      "slot": "18",
+      "type": "t_mapping(t_bytes32,t_struct(CaseView)2089_storage)"
+    },
+    {
+      "astId": 2216,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "caseParticipation",
+      "offset": 0,
+      "slot": "19",
+      "type": "t_mapping(t_bytes32,t_mapping(t_uint32,t_bool))"
+    },
+    {
+      "astId": 2220,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "assignmentLiability",
+      "offset": 0,
+      "slot": "20",
+      "type": "t_mapping(t_bytes32,t_uint256)"
+    },
+    {
+      "astId": 2225,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "publications",
+      "offset": 0,
+      "slot": "21",
+      "type": "t_mapping(t_bytes32,t_struct(Publication)2116_storage)"
+    },
+    {
+      "astId": 2229,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "disputeDeposits",
+      "offset": 0,
+      "slot": "22",
+      "type": "t_mapping(t_bytes32,t_uint256)"
+    },
+    {
+      "astId": 2233,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "refundSources",
+      "offset": 0,
+      "slot": "23",
+      "type": "t_mapping(t_bytes32,t_uint8)"
+    },
+    {
+      "astId": 2239,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "epochRetainUntil",
+      "offset": 0,
+      "slot": "24",
+      "type": "t_mapping(t_uint32,t_mapping(t_uint24,t_uint64))"
+    },
+    {
+      "astId": 2244,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "buyerRecoveries",
+      "offset": 0,
+      "slot": "25",
+      "type": "t_mapping(t_bytes32,t_struct(CaseView)2089_storage)"
+    },
+    {
+      "astId": 2249,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "buyerPublications",
+      "offset": 0,
+      "slot": "26",
+      "type": "t_mapping(t_bytes32,t_struct(Publication)2116_storage)"
+    },
+    {
+      "astId": 2253,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "buyerRecoveryDeposits",
+      "offset": 0,
+      "slot": "27",
+      "type": "t_mapping(t_bytes32,t_uint256)"
+    },
+    {
+      "astId": 2259,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "assignmentHistory",
+      "offset": 0,
+      "slot": "28",
+      "type": "t_mapping(t_bytes32,t_array(t_struct(AssignmentData)1649_storage)dyn_storage)"
+    },
+    {
+      "astId": 2264,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "reviews",
+      "offset": 0,
+      "slot": "29",
+      "type": "t_mapping(t_bytes32,t_struct(ReviewData)1658_storage)"
+    },
+    {
+      "astId": 2269,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "verifierCapital",
+      "offset": 0,
+      "slot": "30",
+      "type": "t_mapping(t_uint32,t_struct(VerifierCapital)1665_storage)"
+    },
+    {
+      "astId": 2274,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "bonds",
+      "offset": 0,
+      "slot": "31",
+      "type": "t_mapping(t_uint32,t_struct(BondView)1919_storage)"
+    },
+    {
+      "astId": 2277,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "nextBondId",
+      "offset": 0,
+      "slot": "32",
+      "type": "t_uint32"
+    },
+    {
+      "astId": 2283,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "epochFailureCounted",
+      "offset": 0,
+      "slot": "33",
+      "type": "t_mapping(t_uint32,t_mapping(t_uint24,t_bool))"
+    },
+    {
+      "astId": 2303,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "freezeTriggers",
+      "offset": 0,
+      "slot": "34",
+      "type": "t_mapping(t_uint32,t_struct(TriggerQueue)2291_storage)"
+    },
+    {
+      "astId": 2308,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "triggerLinks",
+      "offset": 0,
+      "slot": "35",
+      "type": "t_mapping(t_bytes32,t_struct(TriggerLink)2298_storage)"
+    },
+    {
+      "astId": 2321,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "claimReentries",
+      "offset": 0,
+      "slot": "36",
+      "type": "t_mapping(t_uint32,t_struct(ClaimReentry)2316_storage)"
+    },
+    {
+      "astId": 2326,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "failureWindowScale",
+      "offset": 0,
+      "slot": "37",
+      "type": "t_mapping(t_uint32,t_uint32)"
+    },
+    {
+      "astId": 2331,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "reviewReseals",
+      "offset": 0,
+      "slot": "38",
+      "type": "t_mapping(t_bytes32,t_uint8)"
+    },
+    {
+      "astId": 2342,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "recentScaleHigh",
+      "offset": 0,
+      "slot": "39",
+      "type": "t_mapping(t_uint32,t_struct(ScaleHigh)2337_storage)"
+    },
+    {
+      "astId": 2345,
+      "contract": "contracts/src/FairBind.sol:FairBind",
+      "label": "lockedForfeit",
+      "offset": 0,
+      "slot": "40",
+      "type": "t_uint256"
+    }
+  ],
+  "types": {
+    "t_address": {
+      "encoding": "inplace",
+      "label": "address",
+      "numberOfBytes": "20"
+    },
+    "t_array(t_bytes32)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "bytes32[]",
+      "numberOfBytes": "32",
+      "base": "t_bytes32"
+    },
+    "t_array(t_struct(AssignmentData)1649_storage)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "struct FairBindCore.AssignmentData[]",
+      "numberOfBytes": "32",
+      "base": "t_struct(AssignmentData)1649_storage"
+    },
+    "t_array(t_uint32)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "uint32[]",
+      "numberOfBytes": "32",
+      "base": "t_uint32"
+    },
+    "t_array(t_uint96)dyn_storage": {
+      "encoding": "dynamic_array",
+      "label": "uint96[]",
+      "numberOfBytes": "32",
+      "base": "t_uint96"
+    },
+    "t_bool": {
+      "encoding": "inplace",
+      "label": "bool",
+      "numberOfBytes": "1"
+    },
+    "t_bytes32": {
+      "encoding": "inplace",
+      "label": "bytes32",
+      "numberOfBytes": "32"
+    },
+    "t_mapping(t_bytes32,t_array(t_struct(AssignmentData)1649_storage)dyn_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FairBindCore.AssignmentData[])",
+      "numberOfBytes": "32",
+      "value": "t_array(t_struct(AssignmentData)1649_storage)dyn_storage"
+    },
+    "t_mapping(t_bytes32,t_bool)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => bool)",
+      "numberOfBytes": "32",
+      "value": "t_bool"
+    },
+    "t_mapping(t_bytes32,t_bytes32)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => bytes32)",
+      "numberOfBytes": "32",
+      "value": "t_bytes32"
+    },
+    "t_mapping(t_bytes32,t_mapping(t_uint32,t_bool))": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => mapping(uint32 => bool))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_uint32,t_bool)"
+    },
+    "t_mapping(t_bytes32,t_struct(CaseView)2089_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FairBindCore.CaseView)",
+      "numberOfBytes": "32",
+      "value": "t_struct(CaseView)2089_storage"
+    },
+    "t_mapping(t_bytes32,t_struct(Publication)2116_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FairBindCore.Publication)",
+      "numberOfBytes": "32",
+      "value": "t_struct(Publication)2116_storage"
+    },
+    "t_mapping(t_bytes32,t_struct(PurchaseView)1969_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FairBindCore.PurchaseView)",
+      "numberOfBytes": "32",
+      "value": "t_struct(PurchaseView)1969_storage"
+    },
+    "t_mapping(t_bytes32,t_struct(ReviewData)1658_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FairBindCore.ReviewData)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ReviewData)1658_storage"
+    },
+    "t_mapping(t_bytes32,t_struct(TriggerLink)2298_storage)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => struct FairBindCore.TriggerLink)",
+      "numberOfBytes": "32",
+      "value": "t_struct(TriggerLink)2298_storage"
+    },
+    "t_mapping(t_bytes32,t_uint256)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => uint256)",
+      "numberOfBytes": "32",
+      "value": "t_uint256"
+    },
+    "t_mapping(t_bytes32,t_uint8)": {
+      "encoding": "mapping",
+      "key": "t_bytes32",
+      "label": "mapping(bytes32 => uint8)",
+      "numberOfBytes": "32",
+      "value": "t_uint8"
+    },
+    "t_mapping(t_uint24,t_bool)": {
+      "encoding": "mapping",
+      "key": "t_uint24",
+      "label": "mapping(uint24 => bool)",
+      "numberOfBytes": "32",
+      "value": "t_bool"
+    },
+    "t_mapping(t_uint24,t_struct(AnchorView)2042_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint24",
+      "label": "mapping(uint24 => struct FairBindCore.AnchorView)",
+      "numberOfBytes": "32",
+      "value": "t_struct(AnchorView)2042_storage"
+    },
+    "t_mapping(t_uint24,t_uint32)": {
+      "encoding": "mapping",
+      "key": "t_uint24",
+      "label": "mapping(uint24 => uint32)",
+      "numberOfBytes": "32",
+      "value": "t_uint32"
+    },
+    "t_mapping(t_uint24,t_uint64)": {
+      "encoding": "mapping",
+      "key": "t_uint24",
+      "label": "mapping(uint24 => uint64)",
+      "numberOfBytes": "32",
+      "value": "t_uint64"
+    },
+    "t_mapping(t_uint32,t_bool)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => bool)",
+      "numberOfBytes": "32",
+      "value": "t_bool"
+    },
+    "t_mapping(t_uint32,t_mapping(t_uint24,t_bool))": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => mapping(uint24 => bool))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_uint24,t_bool)"
+    },
+    "t_mapping(t_uint32,t_mapping(t_uint24,t_struct(AnchorView)2042_storage))": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => mapping(uint24 => struct FairBindCore.AnchorView))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_uint24,t_struct(AnchorView)2042_storage)"
+    },
+    "t_mapping(t_uint32,t_mapping(t_uint24,t_uint32))": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => mapping(uint24 => uint32))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_uint24,t_uint32)"
+    },
+    "t_mapping(t_uint32,t_mapping(t_uint24,t_uint64))": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => mapping(uint24 => uint64))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_uint24,t_uint64)"
+    },
+    "t_mapping(t_uint32,t_mapping(t_uint64,t_struct(VerifierCheckpoint)2104_storage))": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => mapping(uint64 => struct FairBindCore.VerifierCheckpoint))",
+      "numberOfBytes": "32",
+      "value": "t_mapping(t_uint64,t_struct(VerifierCheckpoint)2104_storage)"
+    },
+    "t_mapping(t_uint32,t_struct(BondView)1919_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.BondView)",
+      "numberOfBytes": "32",
+      "value": "t_struct(BondView)1919_storage"
+    },
+    "t_mapping(t_uint32,t_struct(ClaimReentry)2316_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.ClaimReentry)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ClaimReentry)2316_storage"
+    },
+    "t_mapping(t_uint32,t_struct(DeadlineConfig)1694_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.DeadlineConfig)",
+      "numberOfBytes": "32",
+      "value": "t_struct(DeadlineConfig)1694_storage"
+    },
+    "t_mapping(t_uint32,t_struct(ScaleHigh)2337_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.ScaleHigh)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ScaleHigh)2337_storage"
+    },
+    "t_mapping(t_uint32,t_struct(SellerData)1996_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.SellerData)",
+      "numberOfBytes": "32",
+      "value": "t_struct(SellerData)1996_storage"
+    },
+    "t_mapping(t_uint32,t_struct(ServiceProfileView)1848_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.ServiceProfileView)",
+      "numberOfBytes": "32",
+      "value": "t_struct(ServiceProfileView)1848_storage"
+    },
+    "t_mapping(t_uint32,t_struct(TriggerQueue)2291_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.TriggerQueue)",
+      "numberOfBytes": "32",
+      "value": "t_struct(TriggerQueue)2291_storage"
+    },
+    "t_mapping(t_uint32,t_struct(VerifierCapital)1665_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.VerifierCapital)",
+      "numberOfBytes": "32",
+      "value": "t_struct(VerifierCapital)1665_storage"
+    },
+    "t_mapping(t_uint32,t_struct(VerifierView)1938_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => struct FairBindCore.VerifierView)",
+      "numberOfBytes": "32",
+      "value": "t_struct(VerifierView)1938_storage"
+    },
+    "t_mapping(t_uint32,t_uint32)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => uint32)",
+      "numberOfBytes": "32",
+      "value": "t_uint32"
+    },
+    "t_mapping(t_uint32,t_uint64)": {
+      "encoding": "mapping",
+      "key": "t_uint32",
+      "label": "mapping(uint32 => uint64)",
+      "numberOfBytes": "32",
+      "value": "t_uint64"
+    },
+    "t_mapping(t_uint64,t_struct(VerifierCheckpoint)2104_storage)": {
+      "encoding": "mapping",
+      "key": "t_uint64",
+      "label": "mapping(uint64 => struct FairBindCore.VerifierCheckpoint)",
+      "numberOfBytes": "32",
+      "value": "t_struct(VerifierCheckpoint)2104_storage"
+    },
+    "t_struct(AnchorView)2042_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.AnchorView",
+      "numberOfBytes": "224",
+      "members": [
+        {
+          "astId": 2019,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "root",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2021,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "randomness",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2023,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "publicationHash",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2025,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierSetHash",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2027,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "totalEffectiveWeight",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 2029,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "anchoredBlock",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2031,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "randomBlock",
+          "offset": 8,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2033,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sealDeadline",
+          "offset": 16,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2035,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sortitionVersion",
+          "offset": 24,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2037,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "profileId",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 2039,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "count",
+          "offset": 4,
+          "slot": "6",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 2041,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "state",
+          "offset": 8,
+          "slot": "6",
+          "type": "t_uint8"
+        }
+      ]
+    },
+    "t_struct(AssignmentData)1649_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.AssignmentData",
+      "numberOfBytes": "128",
+      "members": [
+        {
+          "astId": 1628,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierId",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1630,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "stage",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1632,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "attempt",
+          "offset": 5,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1634,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verdict",
+          "offset": 6,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1636,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "released",
+          "offset": 7,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1638,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "serveUsed",
+          "offset": 8,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1640,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "evidenceRequested",
+          "offset": 9,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1642,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "evidenceDisclosed",
+          "offset": 10,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1644,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "evidenceHash",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1646,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "liability",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1648,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "penaltyReserve",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        }
+      ]
+    },
+    "t_struct(BondView)1919_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.BondView",
+      "numberOfBytes": "384",
+      "members": [
+        {
+          "astId": 1870,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bondId",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1872,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "profileId",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1874,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "owner",
+          "offset": 8,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 1876,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "balance",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1878,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bucketBalancePpm",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1880,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bucketUpdatedBlock",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1882,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "scaleFactor",
+          "offset": 8,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1884,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "registrations",
+          "offset": 12,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1886,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "failureCount",
+          "offset": 16,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1888,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "failureWindowStart",
+          "offset": 20,
+          "slot": "3",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1890,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "inconclusiveCount",
+          "offset": 28,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1892,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "judgedCount",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1894,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "inconclusiveWindowStart",
+          "offset": 4,
+          "slot": "4",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1896,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "exitEligibleBlock",
+          "offset": 12,
+          "slot": "4",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1898,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "deferredBalance",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1900,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "encumbered",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1902,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "freezeNonce",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1904,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "freezeBlock",
+          "offset": 0,
+          "slot": "8",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1906,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimUntilBlock",
+          "offset": 8,
+          "slot": "8",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1908,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "forfeitedThrough",
+          "offset": 16,
+          "slot": "8",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1910,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimedTotal",
+          "offset": 0,
+          "slot": "9",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1912,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "forfeitedTotal",
+          "offset": 0,
+          "slot": "10",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1914,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "freezeState",
+          "offset": 0,
+          "slot": "11",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1916,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "status",
+          "offset": 1,
+          "slot": "11",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1918,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sanctioned",
+          "offset": 2,
+          "slot": "11",
+          "type": "t_bool"
+        }
+      ]
+    },
+    "t_struct(CaseView)2089_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.CaseView",
+      "numberOfBytes": "256",
+      "members": [
+        {
+          "astId": 2044,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "nonce",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2046,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "requester",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_address"
+        },
+        {
+          "astId": 2048,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bundleHash",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2050,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "randomness",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2052,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "evidenceHash",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2054,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "caseOpenedBlock",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2056,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "serveDue",
+          "offset": 8,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2058,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "challengeUntil",
+          "offset": 16,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2060,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "publishDue",
+          "offset": 24,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2062,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "randomBlock",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2064,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "judgeDue",
+          "offset": 8,
+          "slot": "6",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2066,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "evidenceDue",
+          "offset": 16,
+          "slot": "6",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2068,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "assignedVerifierId",
+          "offset": 24,
+          "slot": "6",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 2070,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "publishedChunks",
+          "offset": 28,
+          "slot": "6",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 2072,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "trigger",
+          "offset": 30,
+          "slot": "6",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2074,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "state",
+          "offset": 31,
+          "slot": "6",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2076,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "resumeState",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2078,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "reviewPath",
+          "offset": 1,
+          "slot": "7",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2080,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "requesterRole",
+          "offset": 2,
+          "slot": "7",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2082,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "stage",
+          "offset": 3,
+          "slot": "7",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2084,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "attempt",
+          "offset": 4,
+          "slot": "7",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2086,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "initialVerdict",
+          "offset": 5,
+          "slot": "7",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 2088,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "finalVerdict",
+          "offset": 6,
+          "slot": "7",
+          "type": "t_uint8"
+        }
+      ]
+    },
+    "t_struct(ClaimReentry)2316_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.ClaimReentry",
+      "numberOfBytes": "96",
+      "members": [
+        {
+          "astId": 2311,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "deferredBalance",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 2313,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "encumbered",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 2315,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "reopened",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bool"
+        }
+      ]
+    },
+    "t_struct(DeadlineConfig)1694_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.DeadlineConfig",
+      "numberOfBytes": "64",
+      "members": [
+        {
+          "astId": 1677,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "anchorBlocks",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1679,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sealBlocks",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1681,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "openBlocks",
+          "offset": 8,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1683,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "responseBlocks",
+          "offset": 12,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1685,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimBlocks",
+          "offset": 16,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1687,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "serveBlocks",
+          "offset": 20,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1689,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "judgeBlocks",
+          "offset": 24,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1691,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "evidenceBlocks",
+          "offset": 28,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1693,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "appealBlocks",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint32"
+        }
+      ]
+    },
+    "t_struct(Publication)2116_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.Publication",
+      "numberOfBytes": "96",
+      "members": [
+        {
+          "astId": 2106,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "responseHash",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2108,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "totalBytes",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 2110,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bytesWritten",
+          "offset": 4,
+          "slot": "1",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 2112,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "chunkCount",
+          "offset": 8,
+          "slot": "1",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 2115,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "chunkHashes",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_array(t_bytes32)dyn_storage"
+        }
+      ]
+    },
+    "t_struct(PurchaseView)1969_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.PurchaseView",
+      "numberOfBytes": "256",
+      "members": [
+        {
+          "astId": 1940,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "nonce",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1942,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "keyId",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1944,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sellerId",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1946,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "profileId",
+          "offset": 4,
+          "slot": "2",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1948,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "buyer",
+          "offset": 8,
+          "slot": "2",
+          "type": "t_address"
+        },
+        {
+          "astId": 1950,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "value",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1952,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "requestHash",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1954,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimsHash",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1956,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "epoch",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint24"
+        },
+        {
+          "astId": 1958,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "settledBlock",
+          "offset": 3,
+          "slot": "6",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1960,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "responseDue",
+          "offset": 11,
+          "slot": "6",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1962,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimUntil",
+          "offset": 19,
+          "slot": "6",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1964,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "releaseBlock",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1966,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "retainUntil",
+          "offset": 8,
+          "slot": "7",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1968,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "financialState",
+          "offset": 16,
+          "slot": "7",
+          "type": "t_uint8"
+        }
+      ]
+    },
+    "t_struct(ReviewData)1658_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.ReviewData",
+      "numberOfBytes": "64",
+      "members": [
+        {
+          "astId": 1651,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "appealUntil",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1653,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "autoVerdict",
+          "offset": 8,
+          "slot": "0",
+          "type": "t_uint8"
+        },
+        {
+          "astId": 1655,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "appellant",
+          "offset": 9,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 1657,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "deposit",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        }
+      ]
+    },
+    "t_struct(ScaleHigh)2337_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.ScaleHigh",
+      "numberOfBytes": "32",
+      "members": [
+        {
+          "astId": 2334,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "scale",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 2336,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "dropBlock",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_uint64"
+        }
+      ]
+    },
+    "t_struct(SellerData)1996_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.SellerData",
+      "numberOfBytes": "128",
+      "members": [
+        {
+          "astId": 1995,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "viewData",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_struct(SellerView)1867_storage"
+        }
+      ]
+    },
+    "t_struct(SellerView)1867_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.SellerView",
+      "numberOfBytes": "128",
+      "members": [
+        {
+          "astId": 1850,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sellerId",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1852,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "profileId",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1854,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "owner",
+          "offset": 8,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 1856,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "signingKey",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_address"
+        },
+        {
+          "astId": 1858,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimsHash",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1860,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bondId",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1862,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "suspendedAtBlock",
+          "offset": 4,
+          "slot": "3",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1864,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "exitEligibleBlock",
+          "offset": 12,
+          "slot": "3",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1866,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "status",
+          "offset": 20,
+          "slot": "3",
+          "type": "t_uint8"
+        }
+      ]
+    },
+    "t_struct(ServiceProfileInput)1785_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.ServiceProfileInput",
+      "numberOfBytes": "448",
+      "members": [
+        {
+          "astId": 1696,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "classId",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 1698,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "predicateId",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1700,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "canonId",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 1702,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "epochOrigin",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1704,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "epochBlocks",
+          "offset": 8,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1706,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "samplePpm",
+          "offset": 12,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1708,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "effectivePpm",
+          "offset": 16,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1710,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "recheckPpm",
+          "offset": 20,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1712,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bucketCapacity",
+          "offset": 24,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1714,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "refillPpmPerBlock",
+          "offset": 28,
+          "slot": "3",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1716,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxRatePpmPerBlock",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1718,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "enforcementBlocks",
+          "offset": 4,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1720,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "deferBlocks",
+          "offset": 8,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1722,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "retentionBlocks",
+          "offset": 12,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1724,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "marginBlocks",
+          "offset": 16,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1726,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxRequestBytes",
+          "offset": 20,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1728,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxResponseBytes",
+          "offset": 24,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1730,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxEvidenceBytes",
+          "offset": 28,
+          "slot": "4",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1732,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxPublicationCost",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1734,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxReviewCost",
+          "offset": 12,
+          "slot": "5",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1736,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxPurchaseValue",
+          "offset": 0,
+          "slot": "6",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1738,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxBadGain",
+          "offset": 12,
+          "slot": "6",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1740,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "sellerPenalty",
+          "offset": 0,
+          "slot": "7",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1742,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "minVerifierBond",
+          "offset": 12,
+          "slot": "7",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1744,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierBondCap",
+          "offset": 0,
+          "slot": "8",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1746,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierLatePenalty",
+          "offset": 12,
+          "slot": "8",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1748,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierWrongPenalty",
+          "offset": 0,
+          "slot": "9",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1750,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "disputeDeposit",
+          "offset": 12,
+          "slot": "9",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1752,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "appealDeposit",
+          "offset": 0,
+          "slot": "10",
+          "type": "t_uint96"
+        },
+        {
+          "astId": 1754,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierExposurePpm",
+          "offset": 12,
+          "slot": "10",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1756,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxAssignments",
+          "offset": 16,
+          "slot": "10",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 1758,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "minVerifiers",
+          "offset": 18,
+          "slot": "10",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 1760,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "strikeLimit",
+          "offset": 20,
+          "slot": "10",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 1762,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "deadlineConfigId",
+          "offset": 22,
+          "slot": "10",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1764,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "beaconDelayBlocks",
+          "offset": 26,
+          "slot": "10",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1766,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "beaconSlackL1Blocks",
+          "offset": 0,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1768,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "claimWindowBlocks",
+          "offset": 4,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1770,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "failureLimit",
+          "offset": 8,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1772,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "failureWindowBlocks",
+          "offset": 12,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1774,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "maxInconclusivePpm",
+          "offset": 16,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1776,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "inconclusiveWindowBlocks",
+          "offset": 20,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1778,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "forfeitVerifierPpm",
+          "offset": 24,
+          "slot": "11",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1780,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "freezeOnInitialFail",
+          "offset": 28,
+          "slot": "11",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1782,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "minJudgedCount",
+          "offset": 0,
+          "slot": "12",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1784,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "parameterHash",
+          "offset": 0,
+          "slot": "13",
+          "type": "t_bytes32"
+        }
+      ]
+    },
+    "t_struct(ServiceProfileView)1848_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.ServiceProfileView",
+      "numberOfBytes": "480",
+      "members": [
+        {
+          "astId": 1840,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "profileId",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1842,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "active",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_bool"
+        },
+        {
+          "astId": 1844,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "deploymentToken",
+          "offset": 5,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 1847,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "parameters",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_struct(ServiceProfileInput)1785_storage"
+        }
+      ]
+    },
+    "t_struct(TriggerLink)2298_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.TriggerLink",
+      "numberOfBytes": "96",
+      "members": [
+        {
+          "astId": 2293,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "prev",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2295,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "next",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2297,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "pending",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_bool"
+        }
+      ]
+    },
+    "t_struct(TriggerQueue)2291_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.TriggerQueue",
+      "numberOfBytes": "96",
+      "members": [
+        {
+          "astId": 2286,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "head",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2288,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "tail",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_bytes32"
+        },
+        {
+          "astId": 2290,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "count",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint32"
+        }
+      ]
+    },
+    "t_struct(VerifierCapital)1665_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.VerifierCapital",
+      "numberOfBytes": "96",
+      "members": [
+        {
+          "astId": 1660,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "reservedPenalties",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1662,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "conservativeCap",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1664,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "conservativeFraction",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint32"
+        }
+      ]
+    },
+    "t_struct(VerifierCheckpoint)2104_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.VerifierCheckpoint",
+      "numberOfBytes": "160",
+      "members": [
+        {
+          "astId": 2091,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "version",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2093,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "checkpointBlock",
+          "offset": 8,
+          "slot": "0",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 2096,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierIds",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_array(t_uint32)dyn_storage"
+        },
+        {
+          "astId": 2099,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "weights",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_array(t_uint96)dyn_storage"
+        },
+        {
+          "astId": 2101,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "totalEffectiveWeight",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 2103,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "setHash",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_bytes32"
+        }
+      ]
+    },
+    "t_struct(VerifierView)1938_storage": {
+      "encoding": "inplace",
+      "label": "struct FairBindCore.VerifierView",
+      "numberOfBytes": "192",
+      "members": [
+        {
+          "astId": 1921,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "verifierId",
+          "offset": 0,
+          "slot": "0",
+          "type": "t_uint32"
+        },
+        {
+          "astId": 1923,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "owner",
+          "offset": 4,
+          "slot": "0",
+          "type": "t_address"
+        },
+        {
+          "astId": 1925,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "signingKey",
+          "offset": 0,
+          "slot": "1",
+          "type": "t_address"
+        },
+        {
+          "astId": 1927,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "classBitmap",
+          "offset": 0,
+          "slot": "2",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1929,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "bond",
+          "offset": 0,
+          "slot": "3",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1931,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "lockedLiability",
+          "offset": 0,
+          "slot": "4",
+          "type": "t_uint256"
+        },
+        {
+          "astId": 1933,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "exitEligibleBlock",
+          "offset": 0,
+          "slot": "5",
+          "type": "t_uint64"
+        },
+        {
+          "astId": 1935,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "strikes",
+          "offset": 8,
+          "slot": "5",
+          "type": "t_uint16"
+        },
+        {
+          "astId": 1937,
+          "contract": "contracts/src/FairBind.sol:FairBind",
+          "label": "status",
+          "offset": 10,
+          "slot": "5",
+          "type": "t_uint8"
+        }
+      ]
+    },
+    "t_uint16": {
+      "encoding": "inplace",
+      "label": "uint16",
+      "numberOfBytes": "2"
+    },
+    "t_uint24": {
+      "encoding": "inplace",
+      "label": "uint24",
+      "numberOfBytes": "3"
+    },
+    "t_uint256": {
+      "encoding": "inplace",
+      "label": "uint256",
+      "numberOfBytes": "32"
+    },
+    "t_uint32": {
+      "encoding": "inplace",
+      "label": "uint32",
+      "numberOfBytes": "4"
+    },
+    "t_uint64": {
+      "encoding": "inplace",
+      "label": "uint64",
+      "numberOfBytes": "8"
+    },
+    "t_uint8": {
+      "encoding": "inplace",
+      "label": "uint8",
+      "numberOfBytes": "1"
+    },
+    "t_uint96": {
+      "encoding": "inplace",
+      "label": "uint96",
+      "numberOfBytes": "12"
+    }
+  }
+}

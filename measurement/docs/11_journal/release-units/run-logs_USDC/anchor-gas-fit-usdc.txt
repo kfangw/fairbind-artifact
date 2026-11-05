@@ -1,0 +1,78 @@
+Anchor, completion and pull gas by records m per call (forge test --isolate, transaction gas incl. 21,000)
+unit_<kind>: a non-final anchor unit of m leaves; complete_<kind>: the completing unit (one leaf) whose
+transaction moves the transfers of m = min(count, 256) records; chunk_<kind>: pullCompletion over m records;
+pullsale_<kind>: pullSale of one sale. Kinds: plain (unsigned, answered), marked (u_n = 1), accepted (sigma_B, a = 1).
+
+chunk_accepted     points 1:83588, 64:810789, 256:3030464
+                   fixed 71637, per record 11557.4, max residual 523, max m under 2^24 1445
+
+chunk_marked       points 1:79391, 64:1330500, 256:5146847
+                   fixed 59124, per record 19873.4, max residual 523, max m under 2^24 841
+
+chunk_plain        points 1:46361, 64:369631, 256:1355696
+                   fixed 41128, per record 5134.9, max residual 131, max m under 2^24 3259
+
+complete_accepted  points 2:344185, 33:701959, 129:1810754, 256:3279545
+                   fixed 320654, per record 11556.7, max residual 718, max m under 2^24 1423
+
+complete_marked    points 2:344946, 33:960529, 129:2867623, 256:5392534
+                   fixed 304790, per record 19872.6, max residual 726, max m under 2^24 828
+
+complete_plain     points 2:298831, 33:457933, 129:950723, 256:1603097
+                   fixed 288481, per record 5134.9, max residual 161, max m under 2^24 3211
+
+pullsale_accepted  points 1:79606, 1:84406
+                   mean 82006
+
+pullsale_marked    points 1:74608, 1:79408
+                   mean 77008
+
+unit_accepted      points 1:322505, 32:1155278, 128:3799856, 255:7463062
+                   fixed 260004, per record 28126.6, max residual 60359, max m under 2^24 587
+
+unit_marked        points 1:315161, 32:914466, 128:2783984, 255:5301761
+                   fixed 286868, per record 19634.4, max residual 16084, max m under 2^24 839
+
+unit_plain         points 1:311995, 32:815200, 128:2400659, 255:4574011
+                   fixed 279844, per record 16784.8, max residual 27643, max m under 2^24 982
+
+per marked record in a pull chunk, beyond a plain record: +14738.5
+per accepted record in a pull chunk, beyond a plain record: +6422.5
+
+cost model (k11b.py): anchor transaction gas = G10B_F + G10B_M x; unsigned 129299 + 9004 x, signed 148812 + 15668 x; CAP_GAS 1564 unsigned / 924 signed sales per anchor transaction
+unit_plain against the unsigned model: fixed 2.16x, per leaf 1.86x
+unit_marked against the unsigned model: fixed 2.22x, per leaf 2.18x
+unit_accepted against the signed model: fixed 1.75x, per leaf 1.80x
+
+load (one profile epoch of n sales of v_min): transactions per call kind, largest gas
+  marked  n=1024  anchorUnit        4 transactions, largest 10067637
+  marked  n=1024  pullCompletion    3 transactions, largest 5151632
+  marked  n=1024  release           1 transactions, largest 69391
+  marked  n=1024  releasePay        4 transactions, largest 1320890
+  marked  n=1024  releaseUnit       4 transactions, largest 1317945
+  marked  n=2000  anchorUnit        8 transactions, largest 9305505
+  marked  n=2000  pullCompletion    7 transactions, largest 5151632
+  marked  n=2000  release           1 transactions, largest 69391
+  marked  n=2000  releasePay        8 transactions, largest 1320890
+  marked  n=2000  releaseUnit       8 transactions, largest 1317945
+  marked  n=5000  anchorUnit       20 transactions, largest 8009586
+  marked  n=5000  pullCompletion   19 transactions, largest 5151632
+  marked  n=5000  release           1 transactions, largest 69391
+  marked  n=5000  releasePay       20 transactions, largest 1320890
+  marked  n=5000  releaseUnit      20 transactions, largest 1317945
+  plain   n=1024  anchorUnit        4 transactions, largest 5781342
+  plain   n=1024  pullCompletion    3 transactions, largest 1355696
+  plain   n=1024  release           1 transactions, largest 69391
+  plain   n=1024  releasePay        4 transactions, largest 3394045
+  plain   n=1024  releaseUnit       4 transactions, largest 2605542
+  plain   n=2000  anchorUnit        8 transactions, largest 5010764
+  plain   n=2000  pullCompletion    7 transactions, largest 1355681
+  plain   n=2000  release           1 transactions, largest 69391
+  plain   n=2000  releasePay        8 transactions, largest 3394045
+  plain   n=2000  releaseUnit       8 transactions, largest 2605542
+  plain   n=5000  anchorUnit       20 transactions, largest 4588293
+  plain   n=5000  pullCompletion   19 transactions, largest 1355681
+  plain   n=5000  release           1 transactions, largest 69391
+  plain   n=5000  releasePay       20 transactions, largest 3394045
+  plain   n=5000  releaseUnit      20 transactions, largest 2605542
+  every row is below 2^24 = 16777216 (the tests assert it)

@@ -1,0 +1,27 @@
+{
+  "format": "fairbind/refsource-raw/v1",
+  "source_id": "gemini:pubticker:btcusd",
+  "method": "GET",
+  "url": "https://api.gemini.com/v1/pubticker/btcusd",
+  "request_raw": "R0VUIC92MS9wdWJ0aWNrZXIvYnRjdXNkIEhUVFAvMS4xDQpIb3N0OiBhcGkuZ2VtaW5pLmNvbQ0KVXNlci1BZ2VudDogZmFpcmJpbmQtYzFjb2xsZWN0LzENCkFjY2VwdDogYXBwbGljYXRpb24vanNvbg0KQWNjZXB0LUVuY29kaW5nOiBpZGVudGl0eQ0KQ29ubmVjdGlvbjogY2xvc2UNCg0K",
+  "started_at_unix_ms": 1790773191422,
+  "finished_at_unix_ms": 1790773191734,
+  "response_raw": "SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBXZWQsIDMwIFNlcCAyMDI2IDEyOjU5OjUxIEdNVA0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uDQpDb250ZW50LUxlbmd0aDogMTQ3DQpDb25uZWN0aW9uOiBjbG9zZQ0KdmFyeTogT3JpZ2luDQp4LXJlcXVlc3QtaWQ6IDAwNjU5MjlhLTllYzQtNDA4NC05M2UzLWFhNzk1MTZkYWJlOQ0KeC1lbnZveS11cHN0cmVhbS1zZXJ2aWNlLXRpbWU6IDANCnNlcnZlcjogaXN0aW8tZW52b3kNCg0KeyJiaWQiOiI4NTI3OS4zOTAwMCIsImFzayI6Ijg1Mjc5LjQwMDAwIiwibGFzdCI6Ijg1Mjk2Ljk5MDAwIiwidm9sdW1lIjp7IkJUQyI6IjEwMS45NTI2Njg2MyIsIlVTRCI6Ijg2OTYyNTUuNzU2NjA2NDIzNyIsInRpbWVzdGFtcCI6MTc5MDc3MzE0MDAwMH19",
+  "response_sha256": "03cde51733f5bd8b4371f256347faff0ec18257ec2fd45627a900f2dadfa45c0",
+  "response_head": "HTTP/1.1 200 OK\r\nDate: Wed, 30 Sep 2026 12:59:51 GMT\r\nContent-Type: application/json\r\nContent-Length: 147\r\nConnection: close\r\nvary: Origin\r\nx-request-id: 0065929a-9ec4-4084-93e3-aa79516dabe9\r\nx-envoy-upstream-service-time: 0\r\nserver: istio-envoy\r\n\r\n",
+  "tls": {
+    "version": "",
+    "cipher_suite": "",
+    "server_name": "",
+    "alpn": "",
+    "did_resume": false,
+    "peer_certificates_der": null,
+    "remote_addr": "",
+    "verified_chain_root_sha256": ""
+  },
+  "capture": {
+    "tool": "refsource.Capturer/1",
+    "synthetic": true,
+    "note": "response bytes recorded live on 2026-09-30 through a TLS-terminating egress proxy; the proxy certificate chain was removed"
+  }
+}

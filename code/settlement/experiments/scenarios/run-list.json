@@ -1,0 +1,198 @@
+{
+  "formatVersion": 1,
+  "kind": "fairbind-run-list",
+  "description": "Scenario and arm combinations of each named run. The controller reads it with --run-list NAME; a baseline arm is set as the arm parameter of every point of that scenario.",
+  "runs": {
+    "main": {
+      "note": "Every scenario on the fairbind arm, the burst (S5) and patient defection (S6) on every executable baseline arm including both readings of B7, and the window sweep (D5) on B6.",
+      "entries": [
+        {
+          "scenario": "A1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "A2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "C1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "D1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "D2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "D3",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "D5",
+          "arms": [
+            "B6"
+          ]
+        },
+        {
+          "scenario": "E1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "F1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "F2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "F3",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "F4",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "H1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "I1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "I2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "K1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "K2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "R2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "S1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "S2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "S3",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "S4",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "S5",
+          "arms": [
+            "fairbind",
+            "B0a",
+            "B0b",
+            "B1",
+            "B2",
+            "B4",
+            "B6",
+            "B7a",
+            "B7b"
+          ]
+        },
+        {
+          "scenario": "S6",
+          "arms": [
+            "fairbind",
+            "B1",
+            "B4",
+            "B6",
+            "B7a",
+            "B7b"
+          ]
+        },
+        {
+          "scenario": "V1",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "V2",
+          "arms": [
+            "fairbind"
+          ]
+        },
+        {
+          "scenario": "V3",
+          "arms": [
+            "fairbind"
+          ]
+        }
+      ]
+    },
+    "hold-period-grid": {
+      "note": "The hold-period grid I6 (ADR 0021 review): planned and validated, not part of the main run and not run yet. Plan it with --run-list hold-period-grid.",
+      "entries": [
+        {
+          "scenario": "I6",
+          "arms": [
+            "fairbind"
+          ]
+        }
+      ]
+    }
+  }
+}

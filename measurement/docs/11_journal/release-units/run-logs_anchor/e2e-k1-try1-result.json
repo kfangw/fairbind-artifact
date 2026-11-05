@@ -1,0 +1,1526 @@
+{
+  "revision": "7c571a8818d33a65c587a9ffa736fb54141d9036",
+  "dirty": false,
+  "forkRpc": "https://mainnet.base.org",
+  "forkBlock": "52977000",
+  "startedAt": "2026-11-02T05:02:53.077Z",
+  "deployGas": [
+    "2365961",
+    "10422116",
+    "396138"
+  ],
+  "vrf": {
+    "coordinator": "0xc54915eac32c56fa347f6ff0893b852c4096211d",
+    "keyHash": "0xb821aec59d784ac2c6772436bb82fa2973ef7cb586de71ebf0c3be5126cb9094",
+    "subId": "23087840379217617831084047267587765517495171325603235671615602032351668864706",
+    "requests": [
+      {
+        "path": "/h",
+        "epoch": 1,
+        "requestId": "1",
+        "input": "0xa6805de6300d0529918e7e9186a74befad504398bc644fa247b0a5fffb49d637",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "100744242383061362041100813532928658412418490110610969034915626742082374709750",
+        "requestGas": "244515",
+        "fulfillGas": "114528",
+        "inSample": {
+          "0x79072e31040ad0e06a42e2f6b00e5c35e7c33ff0e5a4618803dd7596b2187743": false
+        }
+      },
+      {
+        "path": "/hc",
+        "epoch": 1,
+        "requestId": "2",
+        "input": "0xc42097962ca2768ae624e3fe21442127a82d1fabef90ecc42e0e49ca37d3b1eb",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "99301613539947644473560951695644386001950769534977660268357433686636305258854",
+        "requestGas": "244515",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0x47dcd620f10cebdf8d48e4136b68554951180e640d94e5f9ec8e4b5a8c8d9ba8": false
+        }
+      },
+      {
+        "path": "/w",
+        "epoch": 1,
+        "requestId": "3",
+        "input": "0x748eaa0469b8140cf59b50e7ea6e8c5a7a833f773ef10240586fb7d1b24444f3",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "76501736615908594590210325990515730804691882781197232765121441605758843920135",
+        "requestGas": "244515",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0x93a196ac553d52f5690a72a9c355a0e1308e303be5099036bdf42395862f331b": false
+        }
+      },
+      {
+        "path": "/wb",
+        "epoch": 1,
+        "requestId": "4",
+        "input": "0x6af86a6ee9129a5f450e067299a69538a5c4af8475025e53585578129d3eb331",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "47051445406376996313778405480362527182008215489981679451777842548879752823884",
+        "requestGas": "244503",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0xbff76323d55f2575bfc129dc62d17c18a00f6172649e559968aaf4bd5461309f": false
+        }
+      },
+      {
+        "path": "/k",
+        "epoch": 1,
+        "requestId": "5",
+        "input": "0x766e932c4a9ecb332ed866cefa7d1c03ae51b2a208c992e24c4581c5092973a9",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "54999205136083362477274224596822642582326254104086325136402028104185036363133",
+        "requestGas": "244515",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0x1bbc4bf87cc83090ab40200378dea24849ed32ae3b28317d7bcc75f57bb6b5ab": false
+        }
+      },
+      {
+        "path": "/t",
+        "epoch": 1,
+        "requestId": "6",
+        "input": "0x6677c636a2400ba39100a744f40fbe2c5c1c8606f4f8da7214cae065f029162e",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "64231990567478574625953128972352426152784483013244547331026259209556243110288",
+        "requestGas": "244515",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0x04c60a60307dd40ab34c04b9ac423998b38a0da9904a86e3825517776f55d200": false
+        }
+      },
+      {
+        "path": "/r",
+        "epoch": 1,
+        "requestId": "7",
+        "input": "0xfb673992f8f577cfbba361f747fd06b82c1720478a5f2e8f14e8d9436dc29df9",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "113771696533710185366007489916236569652712818299516241332811035063133296888815",
+        "requestGas": "244515",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0x3643541bf49184e7b831a48dc284ea5fe5e970129de3669e4cef13a1a9c571ba": false
+        }
+      },
+      {
+        "path": "/c",
+        "epoch": 1,
+        "requestId": "8",
+        "input": "0x6219f21b8e52cc4e089e15055013953d1861d82f1b945906f03f4eda49ed9ebe",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "85240658030920606378923392868067580765882967549154378296972153236910161763564",
+        "requestGas": "244515",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0xa2b74c14b216ee7f3db535e68ec03c28bb04312927f737967e9318bab34319ab": false
+        }
+      },
+      {
+        "path": "/f",
+        "epoch": 1,
+        "requestId": "9",
+        "input": "0xbb1b9af844e8b0eb575d5cdf3f03022c3cbd68aa7be8f20e36c2ac13ddbc75b2",
+        "chosenWord": true,
+        "word": "58157244577048630891854561699254869285144438376629958026477158618927837380412",
+        "tries": 26,
+        "value": "110104996838447473011118878587164883365981631355581432169332871529108716347269",
+        "requestGas": "244515",
+        "fulfillGas": "100787",
+        "inSample": {
+          "0x572b377890f20d434f36a523896ae5f672291bec1de02158ff3f6209ad413838": false
+        }
+      },
+      {
+        "path": "/fh",
+        "epoch": 1,
+        "requestId": "10",
+        "input": "0x3b48d3dfb0368a25baa8a2343c86ea6e7c171dbc96ce29de303b7a57c39bef57",
+        "chosenWord": true,
+        "word": "100641336974291918651797626988296973499734121023682187893224901814451417582391",
+        "tries": 55,
+        "value": "101440854742318783806955113989257066580341009871502234366165951167301242562008",
+        "requestGas": "244515",
+        "fulfillGas": "100787",
+        "inSample": {
+          "0xa251785fa41a836ebaf15ed8e55aa3cd3b22c4c8d75e443f5722cd9058ec69d3": true
+        }
+      },
+      {
+        "path": "/l",
+        "epoch": 1,
+        "requestId": "11",
+        "input": "0x6b4be5bf452c65de08d33a20d5bf0520af307ab2e03201e18384ed007d85a727",
+        "chosenWord": true,
+        "word": "52208986609083610982158865556241917808997876094241043448799538598213816698256",
+        "tries": 235,
+        "value": "74566225208997383637083574713942040735447289948815277923540487653019085826369",
+        "requestGas": "244515",
+        "fulfillGas": "100787",
+        "inSample": {
+          "0x76e745786924f551cfa135f79ef4a68300574036b499daa655a7c2b96f82013f": true
+        }
+      },
+      {
+        "path": "/m",
+        "epoch": 1,
+        "reverted": true
+      },
+      {
+        "path": "/d",
+        "epoch": 1,
+        "requestId": "12",
+        "input": "0x835eb686192df01a26f2619b6a85fae231f61ddb44969194417c24c67db537f9",
+        "chosenWord": false,
+        "word": null,
+        "tries": 0,
+        "value": "93033897551714356479221721233822792395296551035835594182319753786584938637447",
+        "requestGas": "244503",
+        "fulfillGas": "100848",
+        "inSample": {
+          "0x96e3800c2f8bf002ace11c92add67bffb3a7a019dfe4c44b9b57f142ce867f8d": false
+        }
+      },
+      {
+        "path": "/fh",
+        "epoch": 4,
+        "requestId": "13",
+        "input": "0x6709ce09ec9f171c4ec9967bc0a960442afe3ed407799d86152f2cd682e9d1e3",
+        "chosenWord": true,
+        "word": "60209895507074333738779645046399273684643656375018655531615744848554139620402",
+        "tries": 27,
+        "value": "90987880214115525651533329075110149029311095367617381812622064982986468461902",
+        "requestGas": "244515",
+        "fulfillGas": "100787",
+        "inSample": {
+          "0xb0225662b0c42280bab0450442165244fc4bfb7b12eae15765329466d2e4a896": false,
+          "0xe43b7fc6b571854c815778d4a55aebd8361fb4991d955f5afc99a4d3945b3c58": true
+        }
+      }
+    ]
+  },
+  "contract": "0x0e472ab8519ccf15e844a544a911b4c657b729bf",
+  "verifier": "0x5c7e52430cdae997ea3e0af4c1e43ececbf440ea",
+  "chainId": 8453,
+  "bonds": {
+    "seller": {
+      "ok": true,
+      "gas": "108559"
+    },
+    "seller-fraud": {
+      "ok": true,
+      "gas": "91459"
+    },
+    "seller-late": {
+      "ok": true,
+      "gas": "91459"
+    },
+    "seller-miss": {
+      "ok": true,
+      "gas": "91459"
+    },
+    "seller-dbl": {
+      "ok": true,
+      "gas": "91459"
+    }
+  },
+  "profiles": {
+    "/h": "0xe7270d67794b05626cd027862e10a62a44b68a2a291bad800a7963efaf671718",
+    "/hc": "0xe4c4464d16c65e75e1d3ede94fdf8e3238c1f670121f1991bd74f3ecc8337b51",
+    "/w": "0x5463b442f7311c0ded8804ae60e373beb9e678a137fee4e657172cb22186df7f",
+    "/wb": "0xcb58b75dd7c09ee419ae0cd6761a611f4ef28a710d1c00f62f23f111469db65a",
+    "/k": "0x6c2f1f57386ba7cb62834ece4eafced9c6bf8f176e88931a3ffc69a3ced526b6",
+    "/t": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+    "/x": "0x89b801ea6a3d15937676a042c4d238ecd1799000e89e5abcc9818df0e93010bf",
+    "/r": "0x6c26bb9d9724badf4dfafb90a2d65e2b948af1665e4f532936e33cb8e570744a",
+    "/c": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+    "/f": "0xeb3327b193dbc43131df2acbc4c6904468a238ad6f9dbdd6dea3bd13e23ce1f6",
+    "/fh": "0x0471b4859cf07dc4adae8d2bfc8e2af9faf7de2b5655dd2737e1018bbea81c0f",
+    "/l": "0xd6d4f557b3288b3c1fd5f75e08ec09e5ec6e039ca753600853050a15e50c76a7",
+    "/m": "0xfe794dff825b6d9f22d473bdff20f8b527356ea069b0cb3c9e925f0ed56e3738",
+    "/d": "0xd1d244cc2fb56a6dc4bedcd1bb04afa3d3b16ba0c90017c693467c17409d120f"
+  },
+  "parity": {
+    "profileId": true,
+    "boundNonce": true,
+    "rsHash": true,
+    "node": true,
+    "decryptHash": true,
+    "vault": true,
+    "ok": true
+  },
+  "gas": {
+    "byCall": {
+      "proveDoubleSign": [
+        "stranger:138937"
+      ],
+      "openDispute": [
+        "stranger:291518",
+        "buyer-2:291161",
+        "buyer-3:291149",
+        "buyer-6:291149",
+        "tower-a:298995",
+        "buyer-7:161329",
+        "buyer-4:291477"
+      ],
+      "claimFrozen": [
+        "buyer-13:75612",
+        "buyer-11:75624",
+        "buyer-10:75720"
+      ],
+      "openDispute (reverted)": [
+        "tower-b:51188"
+      ],
+      "challengeDecrypt": [
+        "buyer-3:50354",
+        "tower-a:50342",
+        "buyer-7:50342",
+        "buyer-4:50366"
+      ],
+      "closeDispute": [
+        "stranger:76109",
+        "buyer-2:92807",
+        "buyer-3:92853",
+        "buyer-6:92807",
+        "tower-a:97653",
+        "buyer-7:92865",
+        "buyer-4:92865"
+      ],
+      "declareAnchorMissed": [
+        "buyer-11:120983"
+      ],
+      "requestSample": [
+        "seller:244515",
+        "seller:244515",
+        "seller:244515",
+        "seller:244503",
+        "seller:244515",
+        "seller:244515",
+        "seller:244515",
+        "seller:244515",
+        "seller-fraud:244515",
+        "seller-fraud:244515",
+        "seller-late:244515",
+        "seller-dbl:244503",
+        "seller-fraud:244515"
+      ],
+      "fulfill (mock)": [
+        "vrf:114528",
+        "vrf:100848",
+        "vrf:100848",
+        "vrf:100848",
+        "vrf:100848",
+        "vrf:100848",
+        "vrf:100848",
+        "vrf:100848",
+        "vrf:100787",
+        "vrf:100787",
+        "vrf:100787",
+        "vrf:100848",
+        "vrf:100787"
+      ],
+      "requestSample (reverted)": [
+        "seller-miss:30965"
+      ]
+    },
+    "sellerLogs": [
+      [
+        "depositBond 1000000 true gas 108559",
+        "answerDeliver /wb true gas 108991",
+        "answerDeliver /t true gas 108991",
+        "answerKey /c true gas 96039",
+        "answerKey /k true gas 95530",
+        "release epoch 1 true gas 393283"
+      ],
+      [
+        "depositBond 1000000 true gas 91459",
+        "prove /fh true gas 90409",
+        "release epoch 1 true gas 129569",
+        "reenter 1000000 false gas 28656",
+        "prove /fh true gas 91397",
+        "release epoch 2 true gas 48414",
+        "release epoch 3 true gas 48414",
+        "release epoch 4 true gas 130135"
+      ],
+      [
+        "depositBond 1000000 true gas 91459",
+        "prove /l false gas 47922",
+        "release epoch 1 true gas 133471"
+      ],
+      [
+        "depositBond 1000000 true gas 91459",
+        "release epoch 1 true gas 62353"
+      ],
+      [
+        "depositBond 1000000 true gas 91459",
+        "release epoch 1 true gas 70443"
+      ]
+    ],
+    "deployGas": [
+      "2365961",
+      "10422116",
+      "396138"
+    ],
+    "bonds": {
+      "seller": {
+        "ok": true,
+        "gas": "108559"
+      },
+      "seller-fraud": {
+        "ok": true,
+        "gas": "91459"
+      },
+      "seller-late": {
+        "ok": true,
+        "gas": "91459"
+      },
+      "seller-miss": {
+        "ok": true,
+        "gas": "91459"
+      },
+      "seller-dbl": {
+        "ok": true,
+        "gas": "91459"
+      }
+    },
+    "reentry": {
+      "ok": false,
+      "gas": "28656"
+    },
+    "releases": {
+      "seller": {
+        "ok": true,
+        "steps": [
+          {
+            "epoch": 1,
+            "ok": true,
+            "gas": "393283"
+          }
+        ]
+      },
+      "seller-fraud": {
+        "ok": true,
+        "steps": [
+          {
+            "epoch": 1,
+            "ok": true,
+            "gas": "129569"
+          }
+        ]
+      },
+      "seller-late": {
+        "ok": true,
+        "steps": [
+          {
+            "epoch": 1,
+            "ok": true,
+            "gas": "133471"
+          }
+        ]
+      },
+      "seller-miss": {
+        "ok": true,
+        "steps": [
+          {
+            "epoch": 1,
+            "ok": true,
+            "gas": "62353"
+          }
+        ]
+      },
+      "seller-dbl": {
+        "ok": true,
+        "steps": [
+          {
+            "epoch": 1,
+            "ok": true,
+            "gas": "70443"
+          }
+        ]
+      }
+    },
+    "releaseR1": {
+      "ok": true,
+      "steps": [
+        {
+          "epoch": 2,
+          "ok": true,
+          "gas": "48414"
+        },
+        {
+          "epoch": 3,
+          "ok": true,
+          "gas": "48414"
+        },
+        {
+          "epoch": 4,
+          "ok": true,
+          "gas": "130135"
+        }
+      ]
+    },
+    "anchors": {
+      "/h": {
+        "ok": true,
+        "gas": "384564",
+        "leaves": 1
+      },
+      "/hc": {
+        "ok": true,
+        "gas": "367476",
+        "leaves": 1
+      },
+      "/w": {
+        "ok": true,
+        "gas": "361087",
+        "leaves": 1
+      },
+      "/wb": {
+        "ok": true,
+        "gas": "361075",
+        "leaves": 1
+      },
+      "/k": {
+        "ok": true,
+        "gas": "367488",
+        "leaves": 1
+      },
+      "/t": {
+        "ok": true,
+        "gas": "361040",
+        "leaves": 1
+      },
+      "/r": {
+        "ok": true,
+        "gas": "361075",
+        "leaves": 1
+      },
+      "/c": {
+        "ok": true,
+        "gas": "367463",
+        "leaves": 1
+      },
+      "/f": {
+        "ok": true,
+        "gas": "389795",
+        "leaves": 1
+      },
+      "/fh": {
+        "ok": true,
+        "gas": "367476",
+        "leaves": 1
+      },
+      "/l": {
+        "ok": true,
+        "gas": "367465",
+        "leaves": 1
+      },
+      "/d": {
+        "ok": true,
+        "gas": "367439",
+        "leaves": 1
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "E1 honest sale (plaintext) and E1b (ciphertext, key on signature)",
+      "pass": true,
+      "checks": {
+        "e1State": "done",
+        "e1bState": "done",
+        "e1Status": 2,
+        "e1bStatus": 2,
+        "e1bKey": "ok",
+        "disputesOpenedByBuyer1": 0,
+        "buyerDelta": "-20000",
+        "reservedAtBuy": {
+          "eth": "1137444000000000",
+          "token": "100000"
+        },
+        "reservedAtEnd": {
+          "eth": "0",
+          "token": "0"
+        },
+        "proofs": [
+          {
+            "proven": 0,
+            "reverted": 0,
+            "gas": []
+          },
+          {
+            "proven": 0,
+            "reverted": 0,
+            "gas": []
+          }
+        ],
+        "expected": {
+          "e1State": "done",
+          "e1bState": "done",
+          "e1Status": 2,
+          "e1bStatus": 2,
+          "e1bKey": "ok",
+          "disputesOpenedByBuyer1": 0,
+          "buyerDelta": "-20000",
+          "reservedAtEnd": {
+            "eth": "0",
+            "token": "0"
+          }
+        }
+      }
+    },
+    {
+      "id": "E2 non-delivery dispute, no answer, refund",
+      "pass": true,
+      "checks": {
+        "state": "done",
+        "signed": false,
+        "status": 1,
+        "opened": 1,
+        "closed": 1,
+        "buyerDelta": "0",
+        "checks": [
+          "no receipt (status 503)"
+        ],
+        "expected": {
+          "signed": false,
+          "status": 1,
+          "opened": 1,
+          "closed": 1,
+          "buyerDelta": "0"
+        }
+      }
+    },
+    {
+      "id": "E2b non-delivery dispute, ct not decrypting to h_r, decryption challenge, refund",
+      "pass": true,
+      "checks": {
+        "state": "done",
+        "status": 1,
+        "opened": 1,
+        "challenged": 1,
+        "bad": true,
+        "buyerDelta": "0",
+        "expected": {
+          "status": 1,
+          "opened": 1,
+          "challenged": 1,
+          "bad": true,
+          "buyerDelta": "0"
+        }
+      }
+    },
+    {
+      "id": "E3 key dispute (key withheld, then a key under which ct does not decrypt to h_r)",
+      "pass": true,
+      "checks": {
+        "state": "done",
+        "signed": true,
+        "keyStatusBeforeDispute": "bad",
+        "status": 1,
+        "opened": 1,
+        "challenged": 1,
+        "bad": true,
+        "buyerDelta": "0",
+        "expected": {
+          "signed": true,
+          "status": 1,
+          "opened": 1,
+          "challenged": 1,
+          "bad": true,
+          "buyerDelta": "0"
+        }
+      }
+    },
+    {
+      "id": "E4 two watchtowers dispute for an offline buyer",
+      "pass": true,
+      "checks": {
+        "buyerActions": 0,
+        "openA": 1,
+        "openBreverted": 1,
+        "openBsent": 0,
+        "opener": "0x892dEdA3B46ee92Bf61B503eCb1Fe38158EEe1b9",
+        "authorized": true,
+        "challenges": 1,
+        "status": 1,
+        "buyerDelta": "0",
+        "towerAdelta": "0",
+        "towerBdelta": "0",
+        "expected": {
+          "buyerActions": 0,
+          "openA": 1,
+          "openBreverted": 1,
+          "openBsent": 0,
+          "opener": "0x892dEdA3B46ee92Bf61B503eCb1Fe38158EEe1b9",
+          "authorized": true,
+          "status": 1,
+          "buyerDelta": "0",
+          "towerAdelta": "0",
+          "towerBdelta": "0"
+        }
+      }
+    },
+    {
+      "id": "E5a 402 names a profile whose receiving address is not payTo: no payment",
+      "pass": true,
+      "checks": {
+        "state": "refused",
+        "reason": "payTo is not the profile's receiving address",
+        "settled": "none",
+        "expected": {
+          "state": "refused",
+          "settled": "none"
+        }
+      }
+    },
+    {
+      "id": "E5b receipt carries another profile id: no signature, non-delivery dispute, refund",
+      "pass": true,
+      "checks": {
+        "state": "done",
+        "signed": false,
+        "checks": [
+          "receipt profile id differs from the payment's profile"
+        ],
+        "status": 1,
+        "opened": 1,
+        "expected": {
+          "signed": false,
+          "status": 1,
+          "opened": 1
+        }
+      }
+    },
+    {
+      "id": "E6 third-party key dispute ends on the seller's side; the payer-side slot opens on its own and the stored key answers it",
+      "pass": true,
+      "checks": {
+        "signed": true,
+        "thirdPartyClosedBad": false,
+        "thirdPartyClosedState": 3,
+        "payerSlotOpener": "0x5bafF9EcE704edded1DCB5C21C5e8bEE309CB73C",
+        "payerSide": true,
+        "buyerOpened": 1,
+        "buyerChallenged": 1,
+        "sellerAnswers": 1,
+        "status": 1,
+        "buyerDelta": "0",
+        "strangerDelta": "-50000",
+        "expected": {
+          "signed": true,
+          "thirdPartyClosedBad": false,
+          "thirdPartyClosedState": 3,
+          "payerSlotOpener": "0x5bafF9EcE704edded1DCB5C21C5e8bEE309CB73C",
+          "payerSide": true,
+          "buyerOpened": 1,
+          "buyerChallenged": 1,
+          "sellerAnswers": 1,
+          "status": 1,
+          "buyerDelta": "0",
+          "strangerDelta": "-50000"
+        }
+      }
+    },
+    {
+      "id": "seller account",
+      "pass": true,
+      "checks": {
+        "sellerDelta": "70000",
+        "failures": 0,
+        "suspended": false,
+        "releases": {
+          "ok": true,
+          "steps": [
+            {
+              "epoch": 1,
+              "ok": true,
+              "gas": "393283"
+            }
+          ]
+        },
+        "expected": {
+          "sellerDelta": "70000",
+          "failures": 0,
+          "suspended": false
+        }
+      }
+    },
+    {
+      "id": "(a) fraud seller: sampled sale without a pass by T_p, confirmed failure, freeze, deduction, suspension",
+      "pass": false,
+      "checks": {
+        "signed": false,
+        "sellerProofsReverted": 0,
+        "declaredBy": 0,
+        "failuresAfter": 0,
+        "bondAfter": "1000000",
+        "lockedAfter": "0",
+        "suspendedAfter": false,
+        "saleStatus": 1,
+        "claimedBy": 0,
+        "buyerDelta": "0",
+        "noSettlementWhileSuspended": "0x9e69F919669203eE11C3e3ba68cfbBa1d3A17B1a",
+        "expected": {
+          "signed": true,
+          "sellerProofsReverted": 1,
+          "declaredBy": 1,
+          "failuresAfter": 1,
+          "bondAfter": "0",
+          "lockedAfter": "1000000",
+          "suspendedAfter": true,
+          "saleStatus": 1,
+          "claimedBy": 1,
+          "buyerDelta": "0",
+          "noSettlementWhileSuspended": "0x0000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "id": "(b) frozen sale of the same seller (settled after s_f, its own proof passed): the buyer's claim",
+      "pass": false,
+      "checks": {
+        "signed": true,
+        "passed": true,
+        "towerAcks": 1,
+        "claims": 0,
+        "saleStatus": 2,
+        "buyerDelta": "-10000",
+        "expected": {
+          "signed": true,
+          "passed": true,
+          "towerAcks": 1,
+          "claims": 1,
+          "saleStatus": 1,
+          "buyerDelta": "0"
+        }
+      }
+    },
+    {
+      "id": "(c) honest seller whose proof comes after T_p: failure in the cursor, its cost",
+      "pass": true,
+      "checks": {
+        "signed": true,
+        "lateProofReverted": 1,
+        "failuresBeforeCursor": 0,
+        "failuresAfterCursor": 1,
+        "deducted": "1000000",
+        "bondLeft": "0",
+        "suspended": true,
+        "statusAfterCursor": 4,
+        "claimedBy": 1,
+        "buyerDelta": "0",
+        "sellerDelta": "0",
+        "sellerGas": 1,
+        "expected": {
+          "signed": true,
+          "lateProofReverted": 1,
+          "failuresBeforeCursor": 0,
+          "failuresAfterCursor": 1,
+          "deducted": "1000000",
+          "bondLeft": "0",
+          "suspended": true,
+          "statusAfterCursor": 4,
+          "claimedBy": 1,
+          "buyerDelta": "0",
+          "sellerDelta": "0"
+        }
+      }
+    },
+    {
+      "id": "(d) re-entry: bond restored, new episode, a new sale paid by the cursor",
+      "pass": false,
+      "checks": {
+        "refusedWhileSuspended": "signed",
+        "reentryOk": false,
+        "bond": "1000000",
+        "episode": 1,
+        "suspended": false,
+        "newSaleEpisode": 1,
+        "newSaleSigned": true,
+        "anchored": true,
+        "proven": 1,
+        "newSaleStatus": 2,
+        "sellerDelta": "30000",
+        "buyerDelta": "-20000",
+        "expected": {
+          "refusedWhileSuspended": "unsigned",
+          "reentryOk": true,
+          "bond": "1000000",
+          "episode": 2,
+          "suspended": false,
+          "newSaleEpisode": 2,
+          "newSaleSigned": true,
+          "anchored": true,
+          "proven": 1,
+          "newSaleStatus": 2,
+          "sellerDelta": "-990000",
+          "buyerDelta": "-10000"
+        }
+      }
+    },
+    {
+      "id": "(e) missed anchor: declared after A_e, freeze from the epoch's first sale, deduction, claim",
+      "pass": true,
+      "checks": {
+        "signed": true,
+        "declaredBy": 1,
+        "missed": true,
+        "failures": 1,
+        "locked": "1000000",
+        "suspended": true,
+        "saleStatus": 1,
+        "claimedBy": 1,
+        "buyerDelta": "0",
+        "sellerDelta": "0",
+        "expected": {
+          "signed": true,
+          "declaredBy": 1,
+          "missed": true,
+          "failures": 1,
+          "locked": "1000000",
+          "suspended": true,
+          "saleStatus": 1,
+          "claimedBy": 1,
+          "buyerDelta": "0",
+          "sellerDelta": "0"
+        }
+      }
+    },
+    {
+      "id": "double-signed anchor: evidence by anyone, failure, the buyer's claim",
+      "pass": true,
+      "checks": {
+        "evidence": 1,
+        "failures": 1,
+        "locked": "1000000",
+        "claimedBy": 1,
+        "saleStatus": 1,
+        "buyerDelta": "0",
+        "expected": {
+          "evidence": 1,
+          "failures": 1,
+          "locked": "1000000",
+          "claimedBy": 1,
+          "saleStatus": 1,
+          "buyerDelta": "0"
+        }
+      }
+    }
+  ],
+  "actions": [
+    {
+      "by": "stranger",
+      "pid": "0x",
+      "nonce": "0x",
+      "call": "proveDoubleSign",
+      "tx": "0x15f2d372597412e81bb0997a6ae9d8e26aab84bf63c1ce8e53d18857f814171e",
+      "gasUsed": "138937",
+      "status": "sent"
+    },
+    {
+      "by": "stranger",
+      "pid": "0x",
+      "nonce": "0x",
+      "call": "openDispute",
+      "tx": "0xe89c908a95b7739947a2420312ca9a64938b31e99fb0bd9d7fbffa14575088d1",
+      "gasUsed": "291518",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-2",
+      "pid": "0x5463b442f7311c0ded8804ae60e373beb9e678a137fee4e657172cb22186df7f",
+      "nonce": "0x93a196ac553d52f5690a72a9c355a0e1308e303be5099036bdf42395862f331b",
+      "call": "openDispute",
+      "tx": "0x42fc5c4e811b1eddae2504f6b6bf54f99020302a5204186d907889c1a21e7471",
+      "gasUsed": "291161",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-3",
+      "pid": "0xcb58b75dd7c09ee419ae0cd6761a611f4ef28a710d1c00f62f23f111469db65a",
+      "nonce": "0xbff76323d55f2575bfc129dc62d17c18a00f6172649e559968aaf4bd5461309f",
+      "call": "openDispute",
+      "tx": "0xc8920781ddafbc63ac669772e84cbee5d9d002f08976947c11e1a390347a4247",
+      "gasUsed": "291149",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-6",
+      "pid": "0x6c26bb9d9724badf4dfafb90a2d65e2b948af1665e4f532936e33cb8e570744a",
+      "nonce": "0x3643541bf49184e7b831a48dc284ea5fe5e970129de3669e4cef13a1a9c571ba",
+      "call": "openDispute",
+      "tx": "0x86b87a80d687d3d68b3dfe829baf85d2b016d944211f6fcb8b8d131e1f76fe23",
+      "gasUsed": "291149",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-13",
+      "pid": "0xd1d244cc2fb56a6dc4bedcd1bb04afa3d3b16ba0c90017c693467c17409d120f",
+      "nonce": "0x96e3800c2f8bf002ace11c92add67bffb3a7a019dfe4c44b9b57f142ce867f8d",
+      "call": "claimFrozen",
+      "tx": "0x190a70438122fa8d45ee8c03faa0643ee98e8e9d5daae55c9a5d020356d0f617",
+      "gasUsed": "75612",
+      "status": "sent"
+    },
+    {
+      "by": "tower-a",
+      "pid": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+      "nonce": "0x04c60a60307dd40ab34c04b9ac423998b38a0da9904a86e3825517776f55d200",
+      "call": "openDispute",
+      "tx": "0x3ec355357a700f57c3ed12184bdb54301ea9b1097823fdd6e0f75c945926f546",
+      "gasUsed": "298995",
+      "status": "sent"
+    },
+    {
+      "by": "tower-b",
+      "pid": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+      "nonce": "0x04c60a60307dd40ab34c04b9ac423998b38a0da9904a86e3825517776f55d200",
+      "call": "openDispute",
+      "tx": "0xd50274dcb9cc833d4b860d7e6ff7a391aa3faae4da60c8465453131519a7d0e9",
+      "gasUsed": "51188",
+      "status": "reverted"
+    },
+    {
+      "by": "buyer-3",
+      "pid": "0xcb58b75dd7c09ee419ae0cd6761a611f4ef28a710d1c00f62f23f111469db65a",
+      "nonce": "0xbff76323d55f2575bfc129dc62d17c18a00f6172649e559968aaf4bd5461309f",
+      "call": "challengeDecrypt",
+      "tx": "0xc52e0510214e7da6900f3f895c57448da99fa77d48ea78eb63dc76593ef04314",
+      "gasUsed": "50354",
+      "status": "sent"
+    },
+    {
+      "by": "tower-a",
+      "pid": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+      "nonce": "0x04c60a60307dd40ab34c04b9ac423998b38a0da9904a86e3825517776f55d200",
+      "call": "challengeDecrypt",
+      "tx": "0xbfef768a0c6d9f8698606b8ce1cfa07c7745f3bbbb14bab23954327cfc075fc1",
+      "gasUsed": "50342",
+      "status": "sent"
+    },
+    {
+      "by": "stranger",
+      "pid": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+      "nonce": "0x",
+      "call": "closeDispute",
+      "tx": "0x03e2e1a9edc086daac2a090365597738b9318afe367e992fd5b0aa16fdc8dd41",
+      "gasUsed": "76109",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-2",
+      "pid": "0x5463b442f7311c0ded8804ae60e373beb9e678a137fee4e657172cb22186df7f",
+      "nonce": "0x93a196ac553d52f5690a72a9c355a0e1308e303be5099036bdf42395862f331b",
+      "call": "closeDispute",
+      "tx": "0xcb92059c0a50d5dae2b823ce01a0d353403413d2cdea504a73886b1d7ff920b6",
+      "gasUsed": "92807",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-3",
+      "pid": "0xcb58b75dd7c09ee419ae0cd6761a611f4ef28a710d1c00f62f23f111469db65a",
+      "nonce": "0xbff76323d55f2575bfc129dc62d17c18a00f6172649e559968aaf4bd5461309f",
+      "call": "closeDispute",
+      "tx": "0x62f6b7d7e9d6feb1cb54add3dff23c460884e9bfde51e60b01d30308aa2c6c7c",
+      "gasUsed": "92853",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-6",
+      "pid": "0x6c26bb9d9724badf4dfafb90a2d65e2b948af1665e4f532936e33cb8e570744a",
+      "nonce": "0x3643541bf49184e7b831a48dc284ea5fe5e970129de3669e4cef13a1a9c571ba",
+      "call": "closeDispute",
+      "tx": "0x6ade6dcb4b0765db25f27eec12915c1ecf17948c263631834dcdcf8db1ff3a7a",
+      "gasUsed": "92807",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-11",
+      "pid": "0xfe794dff825b6d9f22d473bdff20f8b527356ea069b0cb3c9e925f0ed56e3738",
+      "nonce": "0xdcf6950386d9392e4ade2b136a8c0bf336d323682ede385435c29a35aa347a4e",
+      "call": "declareAnchorMissed",
+      "tx": "0x43375d4062946317c0dbc16f0983b1fa21804120a6875dcb23365dd601317ced",
+      "gasUsed": "120983",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-11",
+      "pid": "0xfe794dff825b6d9f22d473bdff20f8b527356ea069b0cb3c9e925f0ed56e3738",
+      "nonce": "0xdcf6950386d9392e4ade2b136a8c0bf336d323682ede385435c29a35aa347a4e",
+      "call": "claimFrozen",
+      "tx": "0x5637df9279918f11fa1598f0944abdc4f664be1c57e9f9446e7b78d1f5d75318",
+      "gasUsed": "75624",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-7",
+      "pid": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+      "nonce": "0xa2b74c14b216ee7f3db535e68ec03c28bb04312927f737967e9318bab34319ab",
+      "call": "openDispute",
+      "tx": "0xf31928b096ddfce4fa1e926a171aefb8a82a1fcd07d3a29b43230b1de1e0b0f8",
+      "gasUsed": "161329",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-7",
+      "pid": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+      "nonce": "0xa2b74c14b216ee7f3db535e68ec03c28bb04312927f737967e9318bab34319ab",
+      "call": "challengeDecrypt",
+      "tx": "0xdbf5cdb5559b1409d348930b86774f69632afd368ba4c6c31bfcf8716aff14e0",
+      "gasUsed": "50342",
+      "status": "sent"
+    },
+    {
+      "by": "tower-a",
+      "pid": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+      "nonce": "0x04c60a60307dd40ab34c04b9ac423998b38a0da9904a86e3825517776f55d200",
+      "call": "closeDispute",
+      "tx": "0xddd966f558e6fbe5732f6193d635e1fa66cdd89047de672be91aaa569c7990f5",
+      "gasUsed": "97653",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0xe7270d67794b05626cd027862e10a62a44b68a2a291bad800a7963efaf671718",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x7ce93a59043e69aa8a84d10cb1aac64cefa4ec463599c18bbfe5cf901138648c",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0xe7270d67794b05626cd027862e10a62a44b68a2a291bad800a7963efaf671718",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x588d5f3daf62bf6d35ee9c26413b2b036ab7941e9021e5b3fcfacaa45d27d1a0",
+      "gasUsed": "114528",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0xe4c4464d16c65e75e1d3ede94fdf8e3238c1f670121f1991bd74f3ecc8337b51",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0xbb6b71ec39f4d2b891eb6956437a9b3af43ad2056339b02a3767a59bac45b405",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0xe4c4464d16c65e75e1d3ede94fdf8e3238c1f670121f1991bd74f3ecc8337b51",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x7f12e0110e12b290d0269aae46a0e785ef0270f3c5ce896e091e9da3e661da2a",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0x5463b442f7311c0ded8804ae60e373beb9e678a137fee4e657172cb22186df7f",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x541531c9f8fa5cce6cc1004a72c68c4a7a2249806b49b1e9261dd20afc96c2bc",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x5463b442f7311c0ded8804ae60e373beb9e678a137fee4e657172cb22186df7f",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x92b3e22d2a221c93ec5b6afdeb37fdc7590e4c49e0b3170936a67194385c429e",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0xcb58b75dd7c09ee419ae0cd6761a611f4ef28a710d1c00f62f23f111469db65a",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0xb3adf6bf00c025d37ec7e648a014d3d67471192f6a9b0da2a31c510a01a98e72",
+      "gasUsed": "244503",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0xcb58b75dd7c09ee419ae0cd6761a611f4ef28a710d1c00f62f23f111469db65a",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x02d060bb3d47abcc397c16148b09388700dc3487ac44ffa38d0a313aa027d06b",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0x6c2f1f57386ba7cb62834ece4eafced9c6bf8f176e88931a3ffc69a3ced526b6",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0xa2c3d73fdd93f9b11d18f45155b581427b73f1c9e29f0d57265db17d25809ec6",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x6c2f1f57386ba7cb62834ece4eafced9c6bf8f176e88931a3ffc69a3ced526b6",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x8cc9cf4b7570768fe42b27bcdf4ce14500e4195d48d93ec2c39ecaf703995e04",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x799f15d19dec547f67d2c7842e798a925b0fd465a54e9dc2fe4e032336ecdb78",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x9a49b13bdf68bcf1fb828d4912e2f1934524d9a287409139842ce5e53c6dd497",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0xc7f619ecdb8755d4c76fafe3ba7fdc86fd06db60b3fc19732a8020249344e0f5",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0x6c26bb9d9724badf4dfafb90a2d65e2b948af1665e4f532936e33cb8e570744a",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x6256a5b4e44e67a70183ce3a7de664e1771c95bf60ea49b1909f2017d89db143",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x6c26bb9d9724badf4dfafb90a2d65e2b948af1665e4f532936e33cb8e570744a",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0xdfa57f210657c64ba42b4daa2a80b77481b77d656c846fc5fa540d09a07e1bde",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller",
+      "pid": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0xdab5f6fc85efcfbecbf5756d763b0ac6316020046ffc568b795078605c9dc3ce",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x249e6e405a318feea986a22eb1842edd9a6d3b4018fb2d667ddf2b9102fc03d6",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "seller-fraud",
+      "pid": "0xeb3327b193dbc43131df2acbc4c6904468a238ad6f9dbdd6dea3bd13e23ce1f6",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x6d6ab5715956e6ba81aa8c439f46432b0e336f48edd308ca9a171fb9163f4eb5",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0xeb3327b193dbc43131df2acbc4c6904468a238ad6f9dbdd6dea3bd13e23ce1f6",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0xa8aeb969c4646b3233b2b161c222340fa2373a403a582f1c8b6037f209958c06",
+      "gasUsed": "100787",
+      "status": "sent"
+    },
+    {
+      "by": "seller-fraud",
+      "pid": "0x0471b4859cf07dc4adae8d2bfc8e2af9faf7de2b5655dd2737e1018bbea81c0f",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x07ac5e221d1d0f0bfe67fdada57c8fb62dfea84f0e6adc5943ea06ed6045bff3",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x0471b4859cf07dc4adae8d2bfc8e2af9faf7de2b5655dd2737e1018bbea81c0f",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x9953e8f0a1bb8c1c6e95708262179b1426c9441f54f739484a57d5cf0e7af7cd",
+      "gasUsed": "100787",
+      "status": "sent"
+    },
+    {
+      "by": "seller-late",
+      "pid": "0xd6d4f557b3288b3c1fd5f75e08ec09e5ec6e039ca753600853050a15e50c76a7",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0xf2f5e1eacff252ef7650a89d3cb90cd6165bf371bbe8aa6487c285a2c115bf09",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0xd6d4f557b3288b3c1fd5f75e08ec09e5ec6e039ca753600853050a15e50c76a7",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0xcdb039a26348adce46a66ce4c6d16bec6e231350d9c509d81a12fbc8a9fb76de",
+      "gasUsed": "100787",
+      "status": "sent"
+    },
+    {
+      "by": "seller-miss",
+      "pid": "0xfe794dff825b6d9f22d473bdff20f8b527356ea069b0cb3c9e925f0ed56e3738",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x34290a6875affb4799cbf7fbb4282bf76ff09bca4805095dbdec7ec25de49d6b",
+      "gasUsed": "30965",
+      "status": "reverted"
+    },
+    {
+      "by": "seller-dbl",
+      "pid": "0xd1d244cc2fb56a6dc4bedcd1bb04afa3d3b16ba0c90017c693467c17409d120f",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0x9033935c32dcff5fd12416392b673c878a411d649fb8adee1f8dda291a8857ea",
+      "gasUsed": "244503",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0xd1d244cc2fb56a6dc4bedcd1bb04afa3d3b16ba0c90017c693467c17409d120f",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0xdd8f70d487037d894752ea5b0858db1f1273b5c9b7371b9f994a2028501f8d3b",
+      "gasUsed": "100848",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-7",
+      "pid": "0x0f16f7606d19a41c0a140a70d2012121b7120beae05b3e2d5a7f29aaaae090ca",
+      "nonce": "0xa2b74c14b216ee7f3db535e68ec03c28bb04312927f737967e9318bab34319ab",
+      "call": "closeDispute",
+      "tx": "0x6be875776df7d83890f77f560997a4745338077abb0b9986c5d5c5d63d8db891",
+      "gasUsed": "92865",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-4",
+      "pid": "0x6c2f1f57386ba7cb62834ece4eafced9c6bf8f176e88931a3ffc69a3ced526b6",
+      "nonce": "0x1bbc4bf87cc83090ab40200378dea24849ed32ae3b28317d7bcc75f57bb6b5ab",
+      "call": "openDispute",
+      "tx": "0xfe3fe69e11278a9a1318d7f17088032f50649f3a095c663c11aa8321c06bed04",
+      "gasUsed": "291477",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-4",
+      "pid": "0x6c2f1f57386ba7cb62834ece4eafced9c6bf8f176e88931a3ffc69a3ced526b6",
+      "nonce": "0x1bbc4bf87cc83090ab40200378dea24849ed32ae3b28317d7bcc75f57bb6b5ab",
+      "call": "challengeDecrypt",
+      "tx": "0x35f83c17d3cb25ec95ee32e676b48e96cbbb0c39c841eab8bce450818ad5e67e",
+      "gasUsed": "50366",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-4",
+      "pid": "0x6c2f1f57386ba7cb62834ece4eafced9c6bf8f176e88931a3ffc69a3ced526b6",
+      "nonce": "0x1bbc4bf87cc83090ab40200378dea24849ed32ae3b28317d7bcc75f57bb6b5ab",
+      "call": "closeDispute",
+      "tx": "0x69c03b77c0d6835ad16c752a38f47da743130546de3c99f55ef6c577b8951fa1",
+      "gasUsed": "92865",
+      "status": "sent"
+    },
+    {
+      "by": "buyer-10",
+      "pid": "0xd6d4f557b3288b3c1fd5f75e08ec09e5ec6e039ca753600853050a15e50c76a7",
+      "nonce": "0x76e745786924f551cfa135f79ef4a68300574036b499daa655a7c2b96f82013f",
+      "call": "claimFrozen",
+      "tx": "0x091ff1a7bd42ea8a167c4456a0694255e43ec1565b29ad80dbeee1720620ca09",
+      "gasUsed": "75720",
+      "status": "sent"
+    },
+    {
+      "by": "seller-fraud",
+      "pid": "0x0471b4859cf07dc4adae8d2bfc8e2af9faf7de2b5655dd2737e1018bbea81c0f",
+      "nonce": "0x",
+      "call": "requestSample",
+      "tx": "0xecf43c7d27ed4df743b9a20345607372abb0b1c6b05fc4375f6b2c44db94ffb9",
+      "gasUsed": "244515",
+      "status": "sent"
+    },
+    {
+      "by": "vrf",
+      "pid": "0x0471b4859cf07dc4adae8d2bfc8e2af9faf7de2b5655dd2737e1018bbea81c0f",
+      "nonce": "0x",
+      "call": "fulfill (mock)",
+      "tx": "0x530ed249c2b389e1c9e45073b3e34acd11a3c9212040f15ff3e9c5c4d73e7e0a",
+      "gasUsed": "100787",
+      "status": "sent"
+    }
+  ],
+  "sellerLog": [
+    "depositBond 1000000 true gas 108559",
+    "answerDeliver /wb true gas 108991",
+    "answerDeliver /t true gas 108991",
+    "answerKey /c true gas 96039",
+    "answerKey /k true gas 95530",
+    "release epoch 1 true gas 393283"
+  ],
+  "usdcDelta": {
+    "seller": "70000",
+    "seller-fraud": "30000",
+    "seller-late": "0",
+    "seller-miss": "0",
+    "seller-dbl": "0",
+    "buyer-1": "-20000",
+    "buyer-2": "0",
+    "buyer-3": "0",
+    "buyer-4": "0",
+    "buyer-5": "0",
+    "buyer-6": "0",
+    "buyer-7": "0",
+    "buyer-8": "0",
+    "buyer-9": "-10000",
+    "buyer-10": "0",
+    "buyer-11": "0",
+    "buyer-12": "-20000",
+    "buyer-13": "0",
+    "tower-a": "0",
+    "tower-b": "0",
+    "stranger": "-50000"
+  },
+  "purchases": {
+    "E1": {
+      "state": "done",
+      "reason": "paid to seller",
+      "checks": [],
+      "note": "paid to seller"
+    },
+    "E1b": {
+      "state": "done",
+      "reason": "paid to seller",
+      "checks": [],
+      "note": "paid to seller"
+    },
+    "E2": {
+      "state": "done",
+      "reason": "refunded",
+      "checks": [
+        "no receipt (status 503)"
+      ],
+      "note": "refunded"
+    },
+    "E2b": {
+      "state": "done",
+      "reason": "refunded",
+      "checks": [
+        "no receipt (status 503)"
+      ],
+      "note": "refunded"
+    },
+    "E3": {
+      "state": "done",
+      "reason": "refunded",
+      "checks": [],
+      "note": "refunded"
+    },
+    "E4": {
+      "state": "unsigned",
+      "checks": [
+        "no receipt (status 503)"
+      ]
+    },
+    "E5a": {
+      "state": "refused",
+      "reason": "payTo is not the profile's receiving address",
+      "checks": []
+    },
+    "E5b": {
+      "state": "done",
+      "reason": "refunded",
+      "checks": [
+        "receipt profile id differs from the payment's profile"
+      ],
+      "note": "refunded"
+    },
+    "E6": {
+      "state": "done",
+      "reason": "refunded",
+      "checks": [],
+      "note": "refunded"
+    },
+    "Fa": {
+      "state": "done",
+      "reason": "unanswered mark, refunded at the anchor",
+      "checks": [
+        "no receipt (status 500)"
+      ],
+      "note": "unanswered mark, refunded at the anchor"
+    },
+    "Fb": {
+      "state": "done",
+      "reason": "paid to seller",
+      "checks": [],
+      "note": "paid to seller"
+    },
+    "L": {
+      "state": "done",
+      "reason": "frozen, claimed and refunded",
+      "checks": [],
+      "note": "frozen, claimed and refunded"
+    },
+    "M": {
+      "state": "done",
+      "reason": "frozen, claimed and refunded",
+      "checks": [],
+      "note": "frozen, claimed and refunded"
+    },
+    "D": {
+      "state": "done",
+      "reason": "frozen, claimed and refunded",
+      "checks": [],
+      "note": "frozen, claimed and refunded"
+    },
+    "R0": {
+      "state": "done",
+      "reason": "paid to seller",
+      "checks": [],
+      "note": "paid to seller"
+    },
+    "R1": {
+      "state": "done",
+      "reason": "paid to seller",
+      "checks": [],
+      "note": "paid to seller"
+    }
+  }
+}

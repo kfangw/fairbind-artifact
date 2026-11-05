@@ -1,0 +1,31 @@
+Anchor completion with owed effects and bounded pulls: how each file here was made.
+Code: branch release-units, commit 7c571a8, on 30c79b9 (release units) and vrf 7a96ae5.
+Tools: forge 1.7.1, solc 0.8.24 (sdk profile), node 22.23.4, anvil 1.7.1. All runs from the clean tree at 7c571a8.
+
+sizes.txt                FOUNDRY_PROFILE=sdk forge build --sizes
+forge-sdk-all.log        FOUNDRY_PROFILE=sdk forge test
+                         (259 passed; 6 skipped: the 4 fork tests without a fork and the two
+                         5,000-sale loads, which need a raised test gas budget)
+forge-anchor-load.log    FOUNDRY_PROFILE=sdk forge test --isolate --gas-limit 9223372036854775807 \
+                           --match-path contracts/test/sdk/AnchorLoad.t.sol -vv
+                         (loads of 1,024, 2,000 and 5,000 sales, all marked or all plain, and the
+                         gas series; every measured transaction asserts gas < 2^24)
+anchor-gas-fit.txt       python3 scripts/fit_anchor_gas.py logs/anchor-units/forge-anchor-load.log
+forge-release-gas-load.log, release-gas-fit.txt
+                         the release measurements of logs/release-units/ again at 7c571a8:
+                         FOUNDRY_PROFILE=sdk forge test --isolate --gas-limit 9223372036854775807 \
+                           --match-path "contracts/test/sdk/Release{Gas,Load}.t.sol" -vv
+                         python3 scripts/fit_release_gas.py logs/anchor-units/forge-release-gas-load.log \
+                           logs/release-units/old-contract/forge-old-release.log
+forge-sdk-fork.log       VRF_KEY=<throwaway key file, not kept> FOUNDRY_PROFILE=sdk forge test \
+                           --match-path "contracts/test/sdk/{vrf/VrfFork,Erc1271ForkGas}.t.sol" \
+                           --fork-url https://mainnet.base.org --fork-block-number 52977000 --ffi -vv
+forge-g7-provecall.log   FOUNDRY_PROFILE=g7 forge test --match-path contracts/test/g7/ProveCall.t.sol -vv
+client-tests.log         cd adapters/signing-client && npm test
+e2e-k1.log, e2e-k1-result.json   cd adapters/signing-client && E2E_K=1 ./run_e2e.sh (15/15)
+e2e-k2.log, e2e-k2-result.json   the same with E2E_K=2 (15/15)
+e2e-k1-try1.log, e2e-k1-try1-result.json   the first k = 1 run at the same commit: 12/15. The fraud
+  seller's server answered the purchase (a) with status 500, so (a), (b) and (d), which build on
+  it, missed; its log is not in the result (only the first seller's log is). The rerun is 15/15,
+  and the same harness failure (a seller's handler timing out on a fork transaction) was seen at
+  30c79b9 (logs/release-units/e2e-k1-try1-timeout.log).

@@ -1,0 +1,439 @@
+{
+ "registered": {
+  "S1r_counts": {
+   "busy": 178,
+   "median": 289
+  },
+  "V_atomic": 1000000,
+  "b_atomic": 1000000,
+  "delta_f": 2251,
+  "epoch_blocks": 300,
+  "horizon": 50.0,
+  "inputs": {
+   "busy": {
+    "r12_addr": "b88714b5e5a63377ab7496fd4eab682ea50c47d7732ebcd61fa2cd2e9dd93459",
+    "sales_addresses": "b19259d7ebeb37fde98c0fe6c3b9f021b2e28bb3883c10d663da05b182bb3635",
+    "sales_npz": "5863e172f21144d076262fff4bca87f24b11ba2f984c040c5944c522ddd54a0e"
+   },
+   "median": {
+    "r12_addr": "0c182d3006c97666e89f5801f6d542717b8286ae0bd3b956c6719c938a8f2bf8",
+    "sales_addresses": "b19259d7ebeb37fde98c0fe6c3b9f021b2e28bb3883c10d663da05b182bb3635",
+    "sales_npz": "92a74193b21d2db38b47036d810afa445ccad528c11398f1cf835ccb7d3c60c1"
+   },
+   "r12_results": "3b372f03969dee99bbe4b78bf1dfba6352ffaae2946544f8842781858ebe71df"
+  },
+  "k_grid": [
+   1,
+   2,
+   4,
+   8,
+   16,
+   32
+  ],
+  "lags": [
+   "own",
+   "k1"
+  ],
+  "mc_chunk": 512,
+  "outputs": [
+   "r13_results.json",
+   "r13_addr_median.csv",
+   "r13_addr_busy.csv",
+   "r13_totals_median.csv",
+   "r13_totals_busy.csv",
+   "r13_tables.md",
+   "r13_inputs_sha256.txt"
+  ],
+  "quantiles": {
+   "median": 0.5,
+   "p95": 0.95
+  },
+  "replicates": 10000,
+  "scale": 86400,
+  "seed": 20261030,
+  "windows": [
+   "median",
+   "busy"
+  ]
+ },
+ "registration": {
+  "numpy": "2.5.3",
+  "python": "3.13.17",
+  "seal": {
+   "R13_\uc0ac\uc804\ub4f1\ub85d.md": "0aa3104abc43fd12915b2d3596a439ecc9fe377e2459fd4106e75ccf7f8fc7e6",
+   "r13_sim.py": "6c02913d69462779fa86c1212867cc6d8b4a1a1aee662c5e7b29f89d68170d51"
+  }
+ },
+ "verdicts": {
+  "JF13": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JF13r": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JF13rs": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JF13rt": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JF13s": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JF13t": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JG13": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JG13r": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JG13rs": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JG13rt": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JG13s": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  },
+  "JG13t": {
+   "holds": true,
+   "windows": [
+    "median",
+    "busy"
+   ]
+  }
+ },
+ "windows": {
+  "busy": {
+   "F": 47086928,
+   "Z": 47994126,
+   "agg": {
+    "E_frozen_N": 141282404.8450321,
+    "E_post_k1_N": 9063555.748236861,
+    "E_post_kstar_N": 20770948.74880362,
+    "E_pre_k1_N": 34532785.001419425,
+    "E_pre_kstar_N": 22825392.000852667,
+    "E_undet_N": 38745948.49710056,
+    "P_total_G_ge_XH_k1": 0.0,
+    "P_total_G_ge_XH_own": 0.0,
+    "P_total_G_ge_XRu_k1": 0.0,
+    "P_total_G_ge_XRu_own": 0.0,
+    "P_total_N_ge_XH_k1": 0.0,
+    "P_total_N_ge_XH_own": 0.0,
+    "P_total_N_ge_XRu_k1": 0.0,
+    "P_total_N_ge_XRu_own": 0.0,
+    "X_sums_scaled": {
+     "k1": {
+      "H": 236448314802744,
+      "Ru": 238196399844044
+     },
+     "own": {
+      "H": 200857754840748,
+      "Ru": 220914401319404
+     }
+    },
+    "excess_EG_over_X_H_k1": 21277261.86304092,
+    "excess_EG_over_X_H_own": 25905351.048747357,
+    "excess_EG_over_X_Ru_k1": 25217835.31210556,
+    "excess_EG_over_X_Ru_own": 36786816.82532526,
+    "excess_EN_over_X_H_k1": 7642905.502604698,
+    "excess_EN_over_X_H_own": 9413798.80271473,
+    "excess_EN_over_X_Ru_k1": 10293083.938844971,
+    "excess_EN_over_X_Ru_own": 15315244.484104212,
+    "n": 178,
+    "nV": 178000000,
+    "sellers_EG_gt_X_H_k1": 92,
+    "sellers_EG_gt_X_H_own": 88,
+    "sellers_EG_gt_X_Ru_k1": 94,
+    "sellers_EG_gt_X_Ru_own": 104,
+    "sellers_EN_gt_X_H_k1": 70,
+    "sellers_EN_gt_X_H_own": 73,
+    "sellers_EN_gt_X_Ru_k1": 78,
+    "sellers_EN_gt_X_Ru_own": 91,
+    "sellers_q95_G_gt_X_H_k1": 116,
+    "sellers_q95_G_gt_X_H_own": 112,
+    "sellers_q95_G_gt_X_Ru_k1": 118,
+    "sellers_q95_G_gt_X_Ru_own": 119,
+    "sellers_q95_N_gt_X_H_k1": 96,
+    "sellers_q95_N_gt_X_H_own": 95,
+    "sellers_q95_N_gt_X_Ru_k1": 97,
+    "sellers_q95_N_gt_X_Ru_own": 109,
+    "sum_EG": 106029652.24522002,
+    "sum_EN": 45788517.2336991,
+    "sum_mc_max_G": 621945287,
+    "sum_mc_max_N": 231834571,
+    "sum_mc_mean_G": 105993860.7583,
+    "sum_mc_mean_N": 45638579.7744,
+    "sum_mc_p95_G": 282661515,
+    "sum_mc_p95_N": 139142338,
+    "sum_q50_G": 83288948,
+    "sum_q50_N": 10908610,
+    "sum_q95_G": 281783014,
+    "sum_q95_N": 138618575,
+    "total_max_G": 141492727,
+    "total_max_N": 68453905,
+    "total_mean_G": 105993860.7583,
+    "total_mean_N": 45638579.7744,
+    "total_median_G": 105625548,
+    "total_median_N": 45480296,
+    "total_p95_G": 120698637,
+    "total_p95_N": 55107888,
+    "total_se_G": 86410.37741335675,
+    "total_se_N": 55751.89282544455
+   },
+   "problems": [],
+   "reportable": true,
+   "verdict_cells": {
+    "JF13": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 45788517.2336991
+    },
+    "JF13r": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 45788517.2336991
+    },
+    "JF13rs": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 55107888
+    },
+    "JF13rt": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 138618575
+    },
+    "JF13s": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 55107888
+    },
+    "JF13t": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 138618575
+    },
+    "JG13": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 106029652.24522002
+    },
+    "JG13r": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 106029652.24522002
+    },
+    "JG13rs": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 120698637
+    },
+    "JG13rt": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 281783014
+    },
+    "JG13s": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 120698637
+    },
+    "JG13t": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 281783014
+    }
+   }
+  },
+  "median": {
+   "F": 49030927,
+   "Z": 49938126,
+   "agg": {
+    "E_frozen_N": 193684762.39603016,
+    "E_post_k1_N": 16084355.914232684,
+    "E_post_kstar_N": 27491296.466991976,
+    "E_pre_k1_N": 40918719.18186897,
+    "E_pre_kstar_N": 29511778.629109677,
+    "E_undet_N": 64744115.82487934,
+    "P_total_G_ge_XH_k1": 0.0,
+    "P_total_G_ge_XH_own": 0.0,
+    "P_total_G_ge_XRu_k1": 0.0,
+    "P_total_G_ge_XRu_own": 0.0,
+    "P_total_N_ge_XH_k1": 0.0,
+    "P_total_N_ge_XH_own": 0.0,
+    "P_total_N_ge_XRu_k1": 0.0,
+    "P_total_N_ge_XRu_own": 0.0,
+    "X_sums_scaled": {
+     "k1": {
+      "H": 184475543853356,
+      "Ru": 177890432763744
+     },
+     "own": {
+      "H": 186265184397424,
+      "Ru": 169966668057660
+     }
+    },
+    "excess_EG_over_X_H_k1": 48899969.48030633,
+    "excess_EG_over_X_H_own": 62837708.229372144,
+    "excess_EG_over_X_Ru_k1": 55051389.797971204,
+    "excess_EG_over_X_Ru_own": 76878857.80052595,
+    "excess_EN_over_X_H_k1": 21046094.275323488,
+    "excess_EN_over_X_H_own": 28667191.430787787,
+    "excess_EN_over_X_Ru_k1": 24775088.394635435,
+    "excess_EN_over_X_Ru_own": 37209957.91984012,
+    "n": 289,
+    "nV": 289000000,
+    "sellers_EG_gt_X_H_k1": 178,
+    "sellers_EG_gt_X_H_own": 185,
+    "sellers_EG_gt_X_Ru_k1": 187,
+    "sellers_EG_gt_X_Ru_own": 203,
+    "sellers_EN_gt_X_H_k1": 150,
+    "sellers_EN_gt_X_H_own": 165,
+    "sellers_EN_gt_X_Ru_k1": 159,
+    "sellers_EN_gt_X_Ru_own": 185,
+    "sellers_q95_G_gt_X_H_k1": 222,
+    "sellers_q95_G_gt_X_H_own": 224,
+    "sellers_q95_G_gt_X_Ru_k1": 232,
+    "sellers_q95_G_gt_X_Ru_own": 239,
+    "sellers_q95_N_gt_X_H_k1": 193,
+    "sellers_q95_N_gt_X_H_own": 203,
+    "sellers_q95_N_gt_X_Ru_k1": 203,
+    "sellers_q95_N_gt_X_Ru_own": 219,
+    "sum_EG": 153118122.10979468,
+    "sum_EN": 73068523.29479086,
+    "sum_mc_max_G": 788867435,
+    "sum_mc_max_N": 324396212,
+    "sum_mc_mean_G": 153137760.3459,
+    "sum_mc_mean_N": 73171503.9853,
+    "sum_mc_p95_G": 384842429,
+    "sum_mc_p95_N": 203644720,
+    "sum_q50_G": 126835886,
+    "sum_q50_N": 38040026,
+    "sum_q95_G": 385388004,
+    "sum_q95_N": 203033195,
+    "total_max_G": 193193313,
+    "total_max_N": 99360119,
+    "total_mean_G": 153137760.3459,
+    "total_mean_N": 73171503.9853,
+    "total_median_G": 152879437,
+    "total_median_N": 73012596,
+    "total_p95_G": 170123766,
+    "total_p95_N": 84190611,
+    "total_se_G": 99745.90759899066,
+    "total_se_N": 65657.36850848323
+   },
+   "problems": [],
+   "reportable": true,
+   "verdict_cells": {
+    "JF13": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 73068523.29479086
+    },
+    "JF13r": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 73068523.29479086
+    },
+    "JF13rs": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 84190611
+    },
+    "JF13rt": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 203033195
+    },
+    "JF13s": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 84190611
+    },
+    "JF13t": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 203033195
+    },
+    "JG13": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 153118122.10979468
+    },
+    "JG13r": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 153118122.10979468
+    },
+    "JG13rs": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 170123766
+    },
+    "JG13rt": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 385388004
+    },
+    "JG13s": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 170123766
+    },
+    "JG13t": {
+     "k1": true,
+     "own": true,
+     "value_atomic": 385388004
+    }
+   }
+  }
+ }
+}
