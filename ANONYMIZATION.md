@@ -2,7 +2,7 @@
 
 The files of this bundle are copies of five code commits and of the study's measurement files. `SOURCES.tsv` gives,
 for every file, its origin and the SHA-256 of the source file and of the shipped file; the two hashes differ for the
-216 files edited as described below and are equal for every other file. Every "original SHA-256" or fingerprint
+232 files edited as described below and are equal for every other file. Every "original SHA-256" or fingerprint
 printed inside a recorded output refers to the source file, not to the shipped copy.
 
 ## 1. Identity, tool and path edits
@@ -44,7 +44,8 @@ number still pass. Path components were renamed in the same pass:
 | run evidence | `05_run-evidence` |
 | design 2, median period | `design2`, `median-period` |
 | results, check, logs | `results`, `check`, `logs`, `logs_b`, `logs_c`, `logs_d` |
-| post hoc study folders | `P1_posthoc`, `P3_posthoc`, `P4_posthoc`, `P6_posthoc`, `P9_posthoc`, `P11_posthoc` |
+| post hoc study folders | `P1_posthoc`, `P2_posthoc`, `P3_posthoc`, `P4_posthoc`, `P6_posthoc`, `P8_posthoc`, `P9_posthoc`, `P11_posthoc` |
+| later calculations, replay, deterrence, out-of-window k | `C32`, `C34`, `W3_replay`, `C34_ASP-replay`, `W4_deterrence`, `W7_out-of-window-k` |
 | fit conditions, deployed USDC | `P10_fit-conditions`, `P10u_real-USDC` |
 | release units and their run logs | `release-units`, `run-logs`, `run-logs_anchor`, `run-logs_USDC` |
 | gas studies | `G10_gas`, `G11_gas` |
@@ -66,6 +67,12 @@ Edited files per directory:
 | `code/settlement` | 127 |
 | `data-manifests/decode_dune_results.py` | 1 |
 | `measurement/docs/11_journal/BASE1` | 2 |
+| `measurement/docs/11_journal/C32/W3_replay` | 4 |
+| `measurement/docs/11_journal/C32/W4_deterrence` | 3 |
+| `measurement/docs/11_journal/C32/W6_basefee` | 1 |
+| `measurement/docs/11_journal/C32/W7_out-of-window-k` | 3 |
+| `measurement/docs/11_journal/C34` | 3 |
+| `measurement/docs/11_journal/C34_ASP-replay` | 1 |
 | `measurement/docs/11_journal/D3` | 2 |
 | `measurement/docs/11_journal/K11` | 3 |
 | `measurement/docs/11_journal/K12` | 2 |
@@ -78,6 +85,7 @@ Edited files per directory:
 | `measurement/docs/11_journal/P3_posthoc` | 6 |
 | `measurement/docs/11_journal/P4_posthoc` | 2 |
 | `measurement/docs/11_journal/P6_posthoc` | 3 |
+| `measurement/docs/11_journal/P8_posthoc` | 1 |
 | `measurement/docs/11_journal/P9_posthoc` | 5 |
 | `measurement/docs/11_journal/R13` | 2 |
 | `measurement/docs/11_journal/R14` | 1 |
@@ -112,7 +120,28 @@ Hashes of the three K13 gas logs edited in section 1:
 | `k13_gas_run2.log.gz` | `e7226bc2915fe07d402e38764b39514d06903ffe13a6c4eae9022a4d0da4a91c` | `12fddd027c83f1910b5afdc4ba41ff97afdd6d4423cbb9ef2748fabbde570ee8` |
 | `k13_gas_run3.log.gz` | `0c744f16d24cebe047edefa4ac26369d16df6cccb7d82a32597fb6d66693bfc8` | `39e9d01b31862400f9aa6e60a4c074fe2cdeb33d4c6c63e74aedcfa5abb1345f` |
 
-## 4. Regenerated and recorded outputs
+## 4. Later calculations (C32, C34)
+
+The folders `C32/W3_replay`, `C32/W4_deterrence`, `C32/W6_basefee`, `C32/W7_out-of-window-k`, `C34` and
+`C34_ASP-replay` were added after the first version of the bundle, with the inputs they read that were not yet in it
+(`P2_posthoc/results/p2_c.json`, `P8_posthoc/results/p8.json`, and the prior-period day tables
+`days_busy_prior14.csv.gz`, `days_median_prior14.csv.gz` of `data/processed/agg_2026-10-21`). They were edited in
+the same way as the rest of the bundle:
+
+* Comments, labels, table headings and recorded outputs were translated with the glossary of section 2, extended by
+  35 words that occur only in these files; scripts and recorded outputs were translated alike, so a rerun prints the
+  same tables.
+* Absolute local paths in usage examples read `$RAW`, `$REPLAYER` and `$RAWDATA`.
+* `w4.py`, `w7.py` and `c34.py` record the SHA-256 of their calculation documents, which are not included; they now
+  record `absent` for a missing file (one expression each, line counts unchanged).
+* The working documents of these calculations (calculation rules and result write-ups) are not included; the short
+  `README.md` of each folder replaces them.
+* `C32/W6_basefee/results/w6_stdout.txt` is new: the study kept the output of `w6.py` only in a working document, so
+  the standard output of the source script was recorded for the bundle (a rerun of the shipped script gives the same
+  bytes).
+* The `SHA256SUMS.txt` files in `results/` list the hashes of the source outputs, as elsewhere in the bundle.
+
+## 5. Regenerated and recorded outputs
 
 `K11/k11b_output.md` and `K12/k12_output.md` were regenerated in the bundle after the edits, because several
 scripts compare their own rerun of `k11b.py` with `k11b_output.md` byte for byte. They differ from the translated

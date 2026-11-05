@@ -1,0 +1,5409 @@
+{
+ "checks": {
+  "k11b_reproduced": true,
+  "p11_maxdiff": 5.551115123125783e-17,
+  "p11_kdiff": 0,
+  "p11_cells": 63,
+  "p11_ok": true,
+  "manuscript_B": {
+   "busy": {
+    "se": [
+     4.31,
+     6.56
+    ],
+    "six": [
+     11.25,
+     14.06
+    ]
+   },
+   "median": {
+    "se": [
+     4.44,
+     6.8
+    ],
+    "six": [
+     30.9,
+     34.75
+    ]
+   },
+   "quiet": {
+    "se": [
+     6.53,
+     9.82
+    ],
+    "six": [
+     21.45,
+     25.47
+    ]
+   }
+  },
+  "manuscript_B_ok": true,
+  "tee_ok": true,
+  "ok": true
+ },
+ "cells": {
+  "base|busy|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0675544030437073,
+      4
+     ],
+     "OneSource": [
+      0.45712811353804633,
+      1
+     ],
+     "CoinMarketCap": [
+      0.5435958579011917,
+      32
+     ],
+     "StableApify": [
+      0.360814955081354,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      15.989911189929947,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      5.488461668219603,
+      1
+     ]
+    },
+    "agg": 0.09214104542532718,
+    "agg_wo_os": 0.08464991944038788
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06910243781246107,
+      4
+     ],
+     "OneSource": [
+      3.534892071216811,
+      1
+     ],
+     "CoinMarketCap": [
+      0.2566501789170941,
+      32
+     ],
+     "StableApify": [
+      0.19237744688011912,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3329774313900953,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.2027595350881874,
+      1
+     ]
+    },
+    "agg": 0.14495951134295262,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.0815911670420362,
+    "agg_wo_os": 0.0753833150744856,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.043075836318255956,
+      4
+     ],
+     "OneSource": [
+      3.3045403565768576,
+      1
+     ],
+     "CoinMarketCap": [
+      0.15768923795709405,
+      32
+     ],
+     "StableApify": [
+      0.12860628960038623,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.343368021790095,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      1.5280258467245509,
+      1
+     ]
+    },
+    "agg": 0.11250458961777056,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.05523862296075371,
+    "agg_wo_os": 0.046990098371910434,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06562056118265805,
+      4
+     ],
+     "OneSource": [
+      3.5040752835536777,
+      1
+     ],
+     "CoinMarketCap": [
+      0.2434110401970941,
+      32
+     ],
+     "StableApify": [
+      0.18384604863985202,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.200586044190095,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.1124926801790966,
+      1
+     ]
+    },
+    "agg": 0.1406176446761825,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.07933871484423381,
+    "agg_wo_os": 0.07158482921748113,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.0675544030437073,
+     4
+    ],
+    "same": [
+     0.06910243781246107,
+     4
+    ],
+    "own_a": [
+     0.043075836318255956,
+     4
+    ],
+    "own_b": [
+     0.06562056118265805,
+     4
+    ]
+   }
+  },
+  "base|busy|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06897083517485617,
+      1
+     ],
+     "OneSource": [
+      0.4603906707826901,
+      1
+     ],
+     "CoinMarketCap": [
+      0.5885896621305606,
+      1
+     ],
+     "StableApify": [
+      0.36195316780677805,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      16.90096758508921,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      5.526705075498665,
+      1
+     ]
+    },
+    "agg": 0.09497169417840254,
+    "agg_wo_os": 0.0874717035480909
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07361317090915209,
+      1
+     ],
+     "OneSource": [
+      4.235211801789052,
+      1
+     ],
+     "CoinMarketCap": [
+      0.31420516643460844,
+      1
+     ],
+     "StableApify": [
+      0.2007036419812999,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.36228287958774,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.290855228663446,
+      1
+     ]
+    },
+    "agg": 0.1651374666126729,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.08481259817550398,
+    "agg_wo_os": 0.0816017956900574,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.047586569414946975,
+      1
+     ],
+     "OneSource": [
+      4.004860087149098,
+      1
+     ],
+     "CoinMarketCap": [
+      0.21524422547460842,
+      1
+     ],
+     "StableApify": [
+      0.136932484701567,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.372673469987739,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      1.6161215402998095,
+      1
+     ]
+    },
+    "agg": 0.1326825448874908,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.06139765527915179,
+    "agg_wo_os": 0.05320857898748223,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07013129427934905,
+      1
+     ],
+     "OneSource": [
+      4.204395014125917,
+      1
+     ],
+     "CoinMarketCap": [
+      0.30096602771460845,
+      1
+     ],
+     "StableApify": [
+      0.19217224374103278,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.22989149238774,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.2005883737543552,
+      1
+     ]
+    },
+    "agg": 0.16079559994590273,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.08439605534972053,
+    "agg_wo_os": 0.07780330983305293,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.06897083517485617,
+     1
+    ],
+    "same": [
+     0.07361317090915209,
+     1
+    ],
+    "own_a": [
+     0.047586569414946975,
+     1
+    ],
+    "own_b": [
+     0.07013129427934905,
+     1
+    ]
+   }
+  },
+  "base|busy|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10699848785797093,
+      4
+     ],
+     "OneSource": [
+      0.8045266524836492,
+      1
+     ],
+     "CoinMarketCap": [
+      0.7014549292035301,
+      32
+     ],
+     "StableApify": [
+      0.46207678426065285,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      17.80806031888314,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      6.5955324214559665,
+      1
+     ]
+    },
+    "agg": 0.14157812916240156,
+    "agg_wo_os": 0.12797153500165934
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10854652262672472,
+      4
+     ],
+     "OneSource": [
+      3.8822906101624137,
+      1
+     ],
+     "CoinMarketCap": [
+      0.4145092502194325,
+      32
+     ],
+     "StableApify": [
+      0.2936392760594179,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.151126560343287,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.309830288324551,
+      1
+     ]
+    },
+    "agg": 0.194396595080027,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.1310282507791106,
+    "agg_wo_os": 0.1187049306357571,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0825199211325196,
+      4
+     ],
+     "OneSource": [
+      3.6519388955224605,
+      1
+     ],
+     "CoinMarketCap": [
+      0.3155483092594325,
+      32
+     ],
+     "StableApify": [
+      0.229868118779685,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.161517150743286,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.6350965999609146,
+      1
+     ]
+    },
+    "agg": 0.1619416733548449,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.10467570669782807,
+    "agg_wo_os": 0.09031171393318191,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.1050646459969217,
+      4
+     ],
+     "OneSource": [
+      3.8514738224992806,
+      1
+     ],
+     "CoinMarketCap": [
+      0.40127011149943254,
+      32
+     ],
+     "StableApify": [
+      0.2851078778191508,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.018735173143287,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.21956343341546,
+      1
+     ]
+    },
+    "agg": 0.1900547284132569,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.12877579858130822,
+    "agg_wo_os": 0.11490644477875264,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.10699848785797093,
+     4
+    ],
+    "same": [
+     0.10854652262672472,
+     4
+    ],
+    "own_a": [
+     0.0825199211325196,
+     4
+    ],
+    "own_b": [
+     0.1050646459969217,
+     4
+    ]
+   }
+  },
+  "base|median|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07592495313041149,
+      8
+     ],
+     "OneSource": [
+      0.6157669867139987,
+      4
+     ],
+     "CoinMarketCap": [
+      0.7995038130886528,
+      1
+     ],
+     "StableApify": [
+      0.9324094937903046,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      15.953743651710564,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      8.82920314154441,
+      1
+     ]
+    },
+    "agg": 0.11699975480988387,
+    "agg_wo_os": 0.08137620562066995
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07168700834010204,
+      8
+     ],
+     "OneSource": [
+      4.278992682482309,
+      4
+     ],
+     "CoinMarketCap": [
+      0.32461670873370335,
+      1
+     ],
+     "StableApify": [
+      0.3070559096824818,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3971681314280064,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.3088070919493164,
+      1
+     ]
+    },
+    "agg": 0.35341656484339284,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.10921867561819659,
+    "agg_wo_os": 0.07303937689372943,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04444316920512846,
+      8
+     ],
+     "OneSource": [
+      3.99987270458779,
+      4
+     ],
+     "CoinMarketCap": [
+      0.22565576777370333,
+      1
+     ],
+     "StableApify": [
+      0.22155365669304178,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.407558721828006,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.3191976823493166,
+      1
+     ]
+    },
+    "agg": 0.30902333382152186,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.08343213583054646,
+    "agg_wo_os": 0.04541108005031193,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06804228788701876,
+      8
+     ],
+     "OneSource": [
+      4.241651605578416,
+      4
+     ],
+     "CoinMarketCap": [
+      0.31137757001370336,
+      1
+     ],
+     "StableApify": [
+      0.29561729382840185,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.2647767442280067,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.1764157047493167,
+      1
+     ]
+    },
+    "agg": 0.3474775737826154,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.10576891479290804,
+    "agg_wo_os": 0.06934322312882953,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.07592495313041149,
+     8
+    ],
+    "same": [
+     0.07168700834010204,
+     8
+    ],
+    "own_a": [
+     0.04444316920512846,
+     8
+    ],
+    "own_b": [
+     0.06804228788701876,
+     8
+    ]
+   }
+  },
+  "base|median|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07867132384098892,
+      1
+     ],
+     "OneSource": [
+      0.6280359027836226,
+      1
+     ],
+     "CoinMarketCap": [
+      0.8013421971444241,
+      1
+     ],
+     "StableApify": [
+      0.9367182054065883,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      16.78702671813147,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      8.918938308470224,
+      1
+     ]
+    },
+    "agg": 0.1205645021523066,
+    "agg_wo_os": 0.08431927342408022
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0776861165050433,
+      1
+     ],
+     "OneSource": [
+      5.136635181140961,
+      1
+     ],
+     "CoinMarketCap": [
+      0.33753741045807456,
+      1
+     ],
+     "StableApify": [
+      0.3182193959723385,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.349977356925718,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.4380141091930287,
+      1
+     ]
+    },
+    "agg": 0.41641012896067364,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.11585796030534108,
+    "agg_wo_os": 0.07927657532170798,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.05044227737006972,
+      1
+     ],
+     "OneSource": [
+      4.857515203246444,
+      1
+     ],
+     "CoinMarketCap": [
+      0.23857646949807454,
+      1
+     ],
+     "StableApify": [
+      0.23271714298289847,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3603679473257184,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.448404699593029,
+      1
+     ]
+    },
+    "agg": 0.37201689793880277,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.09007142051769097,
+    "agg_wo_os": 0.05164827847829047,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07404139605196002,
+      1
+     ],
+     "OneSource": [
+      5.099294104237069,
+      1
+     ],
+     "CoinMarketCap": [
+      0.3242982717380746,
+      1
+     ],
+     "StableApify": [
+      0.3067807801182585,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.217585969725718,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.305622721993029,
+      1
+     ]
+    },
+    "agg": 0.41047113789989625,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.11240819948005255,
+    "agg_wo_os": 0.07558042155680805,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.07867132384098892,
+     1
+    ],
+    "same": [
+     0.0776861165050433,
+     1
+    ],
+    "own_a": [
+     0.05044227737006972,
+     1
+    ],
+    "own_b": [
+     0.07404139605196002,
+     1
+    ]
+   }
+  },
+  "base|median|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11739892645630928,
+      8
+     ],
+     "OneSource": [
+      1.0384150495438278,
+      4
+     ],
+     "CoinMarketCap": [
+      0.9618853701036222,
+      1
+     ],
+     "StableApify": [
+      1.0778145725231045,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      17.769507602865623,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      10.468201379372982,
+      1
+     ]
+    },
+    "agg": 0.18452412893625134,
+    "agg_wo_os": 0.12353651133282592
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11316098166599982,
+      8
+     ],
+     "OneSource": [
+      4.701640745312138,
+      4
+     ],
+     "CoinMarketCap": [
+      0.4869982657486728,
+      1
+     ],
+     "StableApify": [
+      0.4524609884152818,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.2129320825830625,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.947805329777888,
+      1
+     ]
+    },
+    "agg": 0.4209409389697602,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.176743049744564,
+    "agg_wo_os": 0.11519968260588537,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.08591714253102624,
+      8
+     ],
+     "OneSource": [
+      4.42252076741762,
+      4
+     ],
+     "CoinMarketCap": [
+      0.3880373247886727,
+      1
+     ],
+     "StableApify": [
+      0.3669587354258418,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.223322672983063,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.9581959201778885,
+      1
+     ]
+    },
+    "agg": 0.3765477079478893,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.15095650995691395,
+    "agg_wo_os": 0.08757138576246791,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10951626121291654,
+      8
+     ],
+     "OneSource": [
+      4.664299668408245,
+      4
+     ],
+     "CoinMarketCap": [
+      0.47375912702867273,
+      1
+     ],
+     "StableApify": [
+      0.44102237256120186,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.080540695383062,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.815413942577889,
+      1
+     ]
+    },
+    "agg": 0.41500194790898287,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.1732932889192755,
+    "agg_wo_os": 0.1115035288409855,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.11739892645630928,
+     8
+    ],
+    "same": [
+     0.11316098166599982,
+     8
+    ],
+    "own_a": [
+     0.08591714253102624,
+     8
+    ],
+    "own_b": [
+     0.10951626121291654,
+     8
+    ]
+   }
+  },
+  "base|quiet|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09165266550397323,
+      32
+     ],
+     "OneSource": [
+      0.4207692804741364,
+      4
+     ],
+     "CoinMarketCap": [
+      1.340302434725467,
+      1
+     ],
+     "StableApify": [
+      1.3309086483891055,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      18.792142048678677,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      6.73131562775311,
+      1
+     ]
+    },
+    "agg": 0.11919836449887987,
+    "agg_wo_os": 0.0983650759331766
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.1032415794248828,
+      32
+     ],
+     "OneSource": [
+      2.524351114987157,
+      4
+     ],
+     "CoinMarketCap": [
+      0.3851748930327218,
+      1
+     ],
+     "StableApify": [
+      0.40219004372715716,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.285946735188672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.054687978634471,
+      1
+     ]
+    },
+    "agg": 0.2608963913860955,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.11414649089712087,
+    "agg_wo_os": 0.10453116213416705,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06528003782864453,
+      32
+     ],
+     "OneSource": [
+      2.360416733385327,
+      4
+     ],
+     "CoinMarketCap": [
+      0.28621395207272177,
+      1
+     ],
+     "StableApify": [
+      0.2949823576871572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.296337325588672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.065078569034471,
+      1
+     ]
+    },
+    "agg": 0.21446767574307554,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.08913049175763413,
+    "agg_wo_os": 0.06622003780166287,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09816302913683743,
+      32
+     ],
+     "OneSource": [
+      2.502419734808776,
+      4
+     ],
+     "CoinMarketCap": [
+      0.37193575431272174,
+      1
+     ],
+     "StableApify": [
+      0.38784764344715716,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.1535553479886724,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.9222965914344714,
+      1
+     ]
+    },
+    "agg": 0.25468509023003816,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.1140937446059723,
+    "agg_wo_os": 0.09940584415884379,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.09165266550397323,
+     32
+    ],
+    "same": [
+     0.1032415794248828,
+     32
+    ],
+    "own_a": [
+     0.06528003782864453,
+     32
+    ],
+    "own_b": [
+     0.09816302913683743,
+     32
+    ]
+   }
+  },
+  "base|quiet|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09560875560581623,
+      1
+     ],
+     "OneSource": [
+      0.4241211285273306,
+      1
+     ],
+     "CoinMarketCap": [
+      1.3432404670799738,
+      1
+     ],
+     "StableApify": [
+      1.341644615646349,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      20.113704372202587,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      6.9592655179412635,
+      1
+     ]
+    },
+    "agg": 0.12342084708858277,
+    "agg_wo_os": 0.10264770417875516
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11184849662053946,
+      1
+     ],
+     "OneSource": [
+      3.0228680973807682,
+      1
+     ],
+     "CoinMarketCap": [
+      0.398095594757093,
+      1
+     ],
+     "StableApify": [
+      0.41618747059522593,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.722345844054549,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.1838949958781835,
+      1
+     ]
+    },
+    "agg": 0.3014958451680744,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.11840704245729995,
+    "agg_wo_os": 0.11349650431089223,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07388695502430118,
+      1
+     ],
+     "OneSource": [
+      2.8589337157789387,
+      1
+     ],
+     "CoinMarketCap": [
+      0.299134653797093,
+      1
+     ],
+     "StableApify": [
+      0.3089797845552259,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.732736434454548,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.194285586278183,
+      1
+     ]
+    },
+    "agg": 0.2550671295250544,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.0977330981471387,
+    "agg_wo_os": 0.07518537997838805,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10676994633249409,
+      1
+     ],
+     "OneSource": [
+      3.0009367172023875,
+      1
+     ],
+     "CoinMarketCap": [
+      0.38485645603709295,
+      1
+     ],
+     "StableApify": [
+      0.401845070315226,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.5899544568545485,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.0515036086781837,
+      1
+     ]
+    },
+    "agg": 0.29528454401201687,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.11835429616615142,
+    "agg_wo_os": 0.108371186335569,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.09560875560581623,
+     1
+    ],
+    "same": [
+     0.11184849662053946,
+     1
+    ],
+    "own_a": [
+     0.07388695502430118,
+     1
+    ],
+    "own_b": [
+     0.10676994633249409,
+     1
+    ]
+   }
+  },
+  "base|quiet|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 86824,
+    "same": 86824,
+    "own": [
+     45615,
+     81311
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.14907109096510174,
+      32
+     ],
+     "OneSource": [
+      0.6700228996936436,
+      4
+     ],
+     "CoinMarketCap": [
+      1.514421976436625,
+      1
+     ],
+     "StableApify": [
+      1.5166428220691053,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      20.680082133478678,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      8.321057992116746,
+      1
+     ]
+    },
+    "agg": 0.1896353864936173,
+    "agg_wo_os": 0.15644899100354992
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.1606600048860113,
+      32
+     ],
+     "OneSource": [
+      2.773604734206664,
+      4
+     ],
+     "CoinMarketCap": [
+      0.5592944347438797,
+      1
+     ],
+     "StableApify": [
+      0.5879242174071572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.173886819988672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.644430342998108,
+      1
+     ]
+    },
+    "agg": 0.33133341338083294,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.1845835128918583,
+    "agg_wo_os": 0.16261507720454035,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.12269846328977302,
+      32
+     ],
+     "OneSource": [
+      2.609670352604834,
+      4
+     ],
+     "CoinMarketCap": [
+      0.46033349378387967,
+      1
+     ],
+     "StableApify": [
+      0.4807165313671572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.184277410388671,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.654820933398107,
+      1
+     ]
+    },
+    "agg": 0.28490469773781296,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.1595675137523715,
+    "agg_wo_os": 0.12430395287203616,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.1555814545979659,
+      32
+     ],
+     "OneSource": [
+      2.7516733540282834,
+      4
+     ],
+     "CoinMarketCap": [
+      0.5460552960238797,
+      1
+     ],
+     "StableApify": [
+      0.5735818171271572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.041495432788672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.512038955798108,
+      1
+     ]
+    },
+    "agg": 0.3251221122247755,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.18453076660070972,
+    "agg_wo_os": 0.15748975922921707,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.14907109096510174,
+     32
+    ],
+    "same": [
+     0.1606600048860113,
+     32
+    ],
+    "own_a": [
+     0.12269846328977302,
+     32
+    ],
+    "own_b": [
+     0.1555814545979659,
+     32
+    ]
+   }
+  },
+  "T|busy|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06634452053824855,
+      4
+     ],
+     "OneSource": [
+      0.45712811353804633,
+      1
+     ],
+     "CoinMarketCap": [
+      0.5435958579011917,
+      32
+     ],
+     "StableApify": [
+      0.360814955081354,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      15.989911189929947,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      5.488461668219603,
+      1
+     ]
+    },
+    "agg": 0.09099243308242946,
+    "agg_wo_os": 0.08347773256425259
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.03728268193815785,
+      4
+     ],
+     "OneSource": [
+      3.534892071216811,
+      1
+     ],
+     "CoinMarketCap": [
+      0.2566501789170941,
+      32
+     ],
+     "StableApify": [
+      0.19237744688011912,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3329774313900953,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.2027595350881874,
+      1
+     ]
+    },
+    "agg": 0.11475115294425078,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.05285244874028843,
+    "agg_wo_os": 0.04455494945269775,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.03728268193815785,
+      4
+     ],
+     "OneSource": [
+      3.3045403565768576,
+      1
+     ],
+     "CoinMarketCap": [
+      0.15768923795709405,
+      32
+     ],
+     "StableApify": [
+      0.12860628960038623,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.343368021790095,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      1.5280258467245509,
+      1
+     ]
+    },
+    "agg": 0.1070048087751922,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.04973884211817535,
+    "agg_wo_os": 0.04137743804734291,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.03728268193815785,
+      4
+     ],
+     "OneSource": [
+      3.5040752835536777,
+      1
+     ],
+     "CoinMarketCap": [
+      0.2434110401970941,
+      32
+     ],
+     "StableApify": [
+      0.18384604863985202,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.200586044190095,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.1124926801790966,
+      1
+     ]
+    },
+    "agg": 0.11371483574645369,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.052435905914505,
+    "agg_wo_os": 0.044129857351998356,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.06634452053824855,
+     4
+    ],
+    "same": [
+     0.03728268193815785,
+     4
+    ],
+    "own_a": [
+     0.03728268193815785,
+     4
+    ],
+    "own_b": [
+     0.03728268193815785,
+     4
+    ]
+   },
+   "tee_check": true
+  },
+  "T|busy|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06776095266939741,
+      1
+     ],
+     "OneSource": [
+      0.4603906707826901,
+      1
+     ],
+     "CoinMarketCap": [
+      0.5885896621305606,
+      1
+     ],
+     "StableApify": [
+      0.36195316780677805,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      16.90096758508921,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      5.526705075498665,
+      1
+     ]
+    },
+    "agg": 0.0938230818355048,
+    "agg_wo_os": 0.08629951667195562
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04179341503484887,
+      1
+     ],
+     "OneSource": [
+      4.235211801789052,
+      1
+     ],
+     "CoinMarketCap": [
+      0.31420516643460844,
+      1
+     ],
+     "StableApify": [
+      0.2007036419812999,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.36228287958774,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.290855228663446,
+      1
+     ]
+    },
+    "agg": 0.13492910821397106,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.05901148105868652,
+    "agg_wo_os": 0.05077343006826956,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04179341503484887,
+      1
+     ],
+     "OneSource": [
+      4.004860087149098,
+      1
+     ],
+     "CoinMarketCap": [
+      0.21524422547460842,
+      1
+     ],
+     "StableApify": [
+      0.136932484701567,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.372673469987739,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      1.6161215402998095,
+      1
+     ]
+    },
+    "agg": 0.12718276404491244,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.05589787443657343,
+    "agg_wo_os": 0.047595918662914696,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04179341503484887,
+      1
+     ],
+     "OneSource": [
+      4.204395014125917,
+      1
+     ],
+     "CoinMarketCap": [
+      0.30096602771460845,
+      1
+     ],
+     "StableApify": [
+      0.19217224374103278,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.22989149238774,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.2005883737543552,
+      1
+     ]
+    },
+    "agg": 0.13389279101617393,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.058594938232903085,
+    "agg_wo_os": 0.05034833796757017,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.06776095266939741,
+     1
+    ],
+    "same": [
+     0.04179341503484887,
+     1
+    ],
+    "own_a": [
+     0.04179341503484887,
+     1
+    ],
+    "own_b": [
+     0.04179341503484887,
+     1
+    ]
+   },
+   "tee_check": true
+  },
+  "T|busy|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10578860535251218,
+      4
+     ],
+     "OneSource": [
+      0.8045266524836492,
+      1
+     ],
+     "CoinMarketCap": [
+      0.7014549292035301,
+      32
+     ],
+     "StableApify": [
+      0.46207678426065285,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      17.80806031888314,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      6.5955324214559665,
+      1
+     ]
+    },
+    "agg": 0.1404295168195038,
+    "agg_wo_os": 0.12679934812552404
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07672676675242149,
+      4
+     ],
+     "OneSource": [
+      3.8822906101624137,
+      1
+     ],
+     "CoinMarketCap": [
+      0.4145092502194325,
+      32
+     ],
+     "StableApify": [
+      0.2936392760594179,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.151126560343287,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.309830288324551,
+      1
+     ]
+    },
+    "agg": 0.16418823668132515,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.10228953247736282,
+    "agg_wo_os": 0.08787656501396923,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07672676675242149,
+      4
+     ],
+     "OneSource": [
+      3.6519388955224605,
+      1
+     ],
+     "CoinMarketCap": [
+      0.3155483092594325,
+      32
+     ],
+     "StableApify": [
+      0.229868118779685,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.161517150743286,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.6350965999609146,
+      1
+     ]
+    },
+    "agg": 0.15644189251226656,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.09917592585524972,
+    "agg_wo_os": 0.08469905360861438,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07672676675242149,
+      4
+     ],
+     "OneSource": [
+      3.8514738224992806,
+      1
+     ],
+     "CoinMarketCap": [
+      0.40127011149943254,
+      32
+     ],
+     "StableApify": [
+      0.2851078778191508,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.018735173143287,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.21956343341546,
+      1
+     ]
+    },
+    "agg": 0.16315191948352809,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.10187298965157938,
+    "agg_wo_os": 0.08745147291326985,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.10578860535251218,
+     4
+    ],
+    "same": [
+     0.07672676675242149,
+     4
+    ],
+    "own_a": [
+     0.07672676675242149,
+     4
+    ],
+    "own_b": [
+     0.07672676675242149,
+     4
+    ]
+   },
+   "tee_check": true
+  },
+  "T|median|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07471507062495274,
+      8
+     ],
+     "OneSource": [
+      0.6157669867139987,
+      4
+     ],
+     "CoinMarketCap": [
+      0.7995038130886528,
+      1
+     ],
+     "StableApify": [
+      0.9324094937903046,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      15.953743651710564,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      8.82920314154441,
+      1
+     ]
+    },
+    "agg": 0.11587305758155932,
+    "agg_wo_os": 0.08016903607666953
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.03837907489567352,
+      8
+     ],
+     "OneSource": [
+      4.278992682482309,
+      4
+     ],
+     "CoinMarketCap": [
+      0.32461670873370335,
+      1
+     ],
+     "StableApify": [
+      0.3070559096824818,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3971681314280064,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.3088070919493164,
+      1
+     ]
+    },
+    "agg": 0.32239871300758455,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.07820082378238827,
+    "agg_wo_os": 0.03980613098241562,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.03837907489567352,
+      8
+     ],
+     "OneSource": [
+      3.99987270458779,
+      4
+     ],
+     "CoinMarketCap": [
+      0.22565576777370333,
+      1
+     ],
+     "StableApify": [
+      0.22155365669304178,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.407558721828006,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.3191976823493166,
+      1
+     ]
+    },
+    "agg": 0.30337617534130984,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.07778497735033446,
+    "agg_wo_os": 0.03936058346961743,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.03837907489567352,
+      8
+     ],
+     "OneSource": [
+      4.241651605578416,
+      4
+     ],
+     "CoinMarketCap": [
+      0.31137757001370336,
+      1
+     ],
+     "StableApify": [
+      0.29561729382840185,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.2647767442280067,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.1764157047493167,
+      1
+     ]
+    },
+    "agg": 0.31985385023114793,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.0781451912414406,
+    "agg_wo_os": 0.039746524987655824,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.07471507062495274,
+     8
+    ],
+    "same": [
+     0.03837907489567352,
+     8
+    ],
+    "own_a": [
+     0.03837907489567352,
+     8
+    ],
+    "own_b": [
+     0.03837907489567352,
+     8
+    ]
+   },
+   "tee_check": true
+  },
+  "T|median|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07746144133553017,
+      1
+     ],
+     "OneSource": [
+      0.6280359027836226,
+      1
+     ],
+     "CoinMarketCap": [
+      0.8013421971444241,
+      1
+     ],
+     "StableApify": [
+      0.9367182054065883,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      16.78702671813147,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      8.918938308470224,
+      1
+     ]
+    },
+    "agg": 0.11943780492398205,
+    "agg_wo_os": 0.0831121038800798
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04437818306061478,
+      1
+     ],
+     "OneSource": [
+      5.136635181140961,
+      1
+     ],
+     "CoinMarketCap": [
+      0.33753741045807456,
+      1
+     ],
+     "StableApify": [
+      0.3182193959723385,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.349977356925718,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.4380141091930287,
+      1
+     ]
+    },
+    "agg": 0.38539227712486535,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.0848401084695328,
+    "agg_wo_os": 0.04604332941039415,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04437818306061478,
+      1
+     ],
+     "OneSource": [
+      4.857515203246444,
+      1
+     ],
+     "CoinMarketCap": [
+      0.23857646949807454,
+      1
+     ],
+     "StableApify": [
+      0.23271714298289847,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3603679473257184,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.448404699593029,
+      1
+     ]
+    },
+    "agg": 0.36636973945859075,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.08442426203747896,
+    "agg_wo_os": 0.04559778189759597,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04437818306061478,
+      1
+     ],
+     "OneSource": [
+      5.099294104237069,
+      1
+     ],
+     "CoinMarketCap": [
+      0.3242982717380746,
+      1
+     ],
+     "StableApify": [
+      0.3067807801182585,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.217585969725718,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.305622721993029,
+      1
+     ]
+    },
+    "agg": 0.38284741434842884,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.08478447592858511,
+    "agg_wo_os": 0.04598372341563436,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.07746144133553017,
+     1
+    ],
+    "same": [
+     0.04437818306061478,
+     1
+    ],
+    "own_a": [
+     0.04437818306061478,
+     1
+    ],
+    "own_b": [
+     0.04437818306061478,
+     1
+    ]
+   },
+   "tee_check": true
+  },
+  "T|median|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11618904395085053,
+      8
+     ],
+     "OneSource": [
+      1.0384150495438278,
+      4
+     ],
+     "CoinMarketCap": [
+      0.9618853701036222,
+      1
+     ],
+     "StableApify": [
+      1.0778145725231045,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      17.769507602865623,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      10.468201379372982,
+      1
+     ]
+    },
+    "agg": 0.1833974317079268,
+    "agg_wo_os": 0.1223293417888255
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0798530482215713,
+      8
+     ],
+     "OneSource": [
+      4.701640745312138,
+      4
+     ],
+     "CoinMarketCap": [
+      0.4869982657486728,
+      1
+     ],
+     "StableApify": [
+      0.4524609884152818,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.2129320825830625,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.947805329777888,
+      1
+     ]
+    },
+    "agg": 0.389923087133952,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.14572519790875574,
+    "agg_wo_os": 0.0819664366945716,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0798530482215713,
+      8
+     ],
+     "OneSource": [
+      4.42252076741762,
+      4
+     ],
+     "CoinMarketCap": [
+      0.3880373247886727,
+      1
+     ],
+     "StableApify": [
+      0.3669587354258418,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.223322672983063,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.9581959201778885,
+      1
+     ]
+    },
+    "agg": 0.3709005494676773,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.14530935147670193,
+    "agg_wo_os": 0.0815208891817734,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0798530482215713,
+      8
+     ],
+     "OneSource": [
+      4.664299668408245,
+      4
+     ],
+     "CoinMarketCap": [
+      0.47375912702867273,
+      1
+     ],
+     "StableApify": [
+      0.44102237256120186,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.080540695383062,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.815413942577889,
+      1
+     ]
+    },
+    "agg": 0.38737822435751545,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.14566956536780806,
+    "agg_wo_os": 0.08190683069981179,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.11618904395085053,
+     8
+    ],
+    "same": [
+     0.0798530482215713,
+     8
+    ],
+    "own_a": [
+     0.0798530482215713,
+     8
+    ],
+    "own_b": [
+     0.0798530482215713,
+     8
+    ]
+   },
+   "tee_check": true
+  },
+  "T|quiet|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09044278299851448,
+      32
+     ],
+     "OneSource": [
+      0.4207692804741364,
+      4
+     ],
+     "CoinMarketCap": [
+      1.340302434725467,
+      1
+     ],
+     "StableApify": [
+      1.3309086483891055,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      18.792142048678677,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      6.73131562775311,
+      1
+     ]
+    },
+    "agg": 0.11806880709548137,
+    "agg_wo_os": 0.09715748582141687
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.05683033412751052,
+      32
+     ],
+     "OneSource": [
+      2.524351114987157,
+      4
+     ],
+     "CoinMarketCap": [
+      0.3851748930327218,
+      1
+     ],
+     "StableApify": [
+      0.40219004372715716,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.285946735188672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.054687978634471,
+      1
+     ]
+    },
+    "agg": 0.21756642712091778,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.08163604295493361,
+    "agg_wo_os": 0.05820785334782164,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.05683033412751052,
+      32
+     ],
+     "OneSource": [
+      2.360416733385327,
+      4
+     ],
+     "CoinMarketCap": [
+      0.28621395207272177,
+      1
+     ],
+     "StableApify": [
+      0.2949823576871572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.296337325588672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.065078569034471,
+      1
+     ]
+    },
+    "agg": 0.20657895487218336,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.08124177088674196,
+    "agg_wo_os": 0.057786343958870896,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.05683033412751052,
+      32
+     ],
+     "OneSource": [
+      2.502419734808776,
+      4
+     ],
+     "CoinMarketCap": [
+      0.37193575431272174,
+      1
+     ],
+     "StableApify": [
+      0.38784764344715716,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.1535553479886724,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.9222965914344714,
+      1
+     ]
+    },
+    "agg": 0.21609650709113615,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.08158329666378505,
+    "agg_wo_os": 0.05815146320825782,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.09044278299851448,
+     32
+    ],
+    "same": [
+     0.05683033412751052,
+     32
+    ],
+    "own_a": [
+     0.05683033412751052,
+     32
+    ],
+    "own_b": [
+     0.05683033412751052,
+     32
+    ]
+   },
+   "tee_check": true
+  },
+  "T|quiet|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09439887310035748,
+      1
+     ],
+     "OneSource": [
+      0.4241211285273306,
+      1
+     ],
+     "CoinMarketCap": [
+      1.3432404670799738,
+      1
+     ],
+     "StableApify": [
+      1.341644615646349,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      20.113704372202587,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      6.9592655179412635,
+      1
+     ]
+    },
+    "agg": 0.12229128968518424,
+    "agg_wo_os": 0.10144011406699538
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06543725132316719,
+      1
+     ],
+     "OneSource": [
+      3.0228680973807682,
+      1
+     ],
+     "CoinMarketCap": [
+      0.398095594757093,
+      1
+     ],
+     "StableApify": [
+      0.41618747059522593,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.722345844054549,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.1838949958781835,
+      1
+     ]
+    },
+    "agg": 0.25816588090289666,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.09023864934443818,
+    "agg_wo_os": 0.06717319552454686,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06543725132316719,
+      1
+     ],
+     "OneSource": [
+      2.8589337157789387,
+      1
+     ],
+     "CoinMarketCap": [
+      0.299134653797093,
+      1
+     ],
+     "StableApify": [
+      0.3089797845552259,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.732736434454548,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.194285586278183,
+      1
+     ]
+    },
+    "agg": 0.2471784086541622,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.08984437727624654,
+    "agg_wo_os": 0.0667516861355961,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06543725132316719,
+      1
+     ],
+     "OneSource": [
+      3.0009367172023875,
+      1
+     ],
+     "CoinMarketCap": [
+      0.38485645603709295,
+      1
+     ],
+     "StableApify": [
+      0.401845070315226,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.5899544568545485,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.0515036086781837,
+      1
+     ]
+    },
+    "agg": 0.25669596087311497,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.09018590305328965,
+    "agg_wo_os": 0.06711680538498302,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.09439887310035748,
+     1
+    ],
+    "same": [
+     0.06543725132316719,
+     1
+    ],
+    "own_a": [
+     0.06543725132316719,
+     1
+    ],
+    "own_b": [
+     0.06543725132316719,
+     1
+    ]
+   },
+   "tee_check": true
+  },
+  "T|quiet|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 36440,
+    "same": 36440,
+    "own": [
+     36440,
+     36440
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.14786120845964298,
+      32
+     ],
+     "OneSource": [
+      0.6700228996936436,
+      4
+     ],
+     "CoinMarketCap": [
+      1.514421976436625,
+      1
+     ],
+     "StableApify": [
+      1.5166428220691053,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      20.680082133478678,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      8.321057992116746,
+      1
+     ]
+    },
+    "agg": 0.1885058290902188,
+    "agg_wo_os": 0.15524140089179017
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.114248759588639,
+      32
+     ],
+     "OneSource": [
+      2.773604734206664,
+      4
+     ],
+     "CoinMarketCap": [
+      0.5592944347438797,
+      1
+     ],
+     "StableApify": [
+      0.5879242174071572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.173886819988672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.644430342998108,
+      1
+     ]
+    },
+    "agg": 0.28800344911565523,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.15207306494967102,
+    "agg_wo_os": 0.11629176841819495,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.114248759588639,
+      32
+     ],
+     "OneSource": [
+      2.609670352604834,
+      4
+     ],
+     "CoinMarketCap": [
+      0.46033349378387967,
+      1
+     ],
+     "StableApify": [
+      0.4807165313671572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.184277410388671,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.654820933398107,
+      1
+     ]
+    },
+    "agg": 0.2770159768669208,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.15167879288147934,
+    "agg_wo_os": 0.11587025902924418,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.114248759588639,
+      32
+     ],
+     "OneSource": [
+      2.7516733540282834,
+      4
+     ],
+     "CoinMarketCap": [
+      0.5460552960238797,
+      1
+     ],
+     "StableApify": [
+      0.5735818171271572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.041495432788672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.512038955798108,
+      1
+     ]
+    },
+    "agg": 0.2865335290858735,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.15202031865852245,
+    "agg_wo_os": 0.1162353782786311,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.14786120845964298,
+     32
+    ],
+    "same": [
+     0.114248759588639,
+     32
+    ],
+    "own_a": [
+     0.114248759588639,
+     32
+    ],
+    "own_b": [
+     0.114248759588639,
+     32
+    ]
+   },
+   "tee_check": true
+  },
+  "W|busy|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06767753586784855,
+      4
+     ],
+     "OneSource": [
+      0.45712811353804633,
+      1
+     ],
+     "CoinMarketCap": [
+      0.5435958579011917,
+      32
+     ],
+     "StableApify": [
+      0.360814955081354,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      15.989911189929947,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      5.488461668219603,
+      1
+     ]
+    },
+    "agg": 0.09225794262897,
+    "agg_wo_os": 0.08476921588432244
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07234081541244333,
+      4
+     ],
+     "OneSource": [
+      3.534892071216811,
+      1
+     ],
+     "CoinMarketCap": [
+      0.2566501789170941,
+      32
+     ],
+     "StableApify": [
+      0.19237744688011912,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3329774313900953,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.2027595350881874,
+      1
+     ]
+    },
+    "agg": 0.14803389291762692,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.08170806424567903,
+    "agg_wo_os": 0.07852079636340661,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.04631421391823824,
+      4
+     ],
+     "OneSource": [
+      3.3045403565768576,
+      1
+     ],
+     "CoinMarketCap": [
+      0.15768923795709405,
+      32
+     ],
+     "StableApify": [
+      0.12860628960038623,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.343368021790095,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      1.5280258467245509,
+      1
+     ]
+    },
+    "agg": 0.11557897119244487,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.05831300453542802,
+    "agg_wo_os": 0.05012757966083147,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06885893878264032,
+      4
+     ],
+     "OneSource": [
+      3.5040752835536777,
+      1
+     ],
+     "CoinMarketCap": [
+      0.2434110401970941,
+      32
+     ],
+     "StableApify": [
+      0.18384604863985202,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.200586044190095,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.1124926801790966,
+      1
+     ]
+    },
+    "agg": 0.14369202625085684,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.0812915214198956,
+    "agg_wo_os": 0.07472231050640216,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.06767753586784855,
+     4
+    ],
+    "same": [
+     0.07234081541244333,
+     4
+    ],
+    "own_a": [
+     0.04631421391823824,
+     4
+    ],
+    "own_b": [
+     0.06885893878264032,
+     4
+    ]
+   }
+  },
+  "W|busy|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.06909396799899742,
+      1
+     ],
+     "OneSource": [
+      0.4603906707826901,
+      1
+     ],
+     "CoinMarketCap": [
+      0.5885896621305606,
+      1
+     ],
+     "StableApify": [
+      0.36195316780677805,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      16.90096758508921,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      5.526705075498665,
+      1
+     ]
+    },
+    "agg": 0.09508859138204535,
+    "agg_wo_os": 0.08759099999202545
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07685154850913437,
+      1
+     ],
+     "OneSource": [
+      4.235211801789052,
+      1
+     ],
+     "CoinMarketCap": [
+      0.31420516643460844,
+      1
+     ],
+     "StableApify": [
+      0.2007036419812999,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.36228287958774,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.290855228663446,
+      1
+     ]
+    },
+    "agg": 0.16821184818734716,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.08492949537914679,
+    "agg_wo_os": 0.08473927697897844,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.05082494701492926,
+      1
+     ],
+     "OneSource": [
+      4.004860087149098,
+      1
+     ],
+     "CoinMarketCap": [
+      0.21524422547460842,
+      1
+     ],
+     "StableApify": [
+      0.136932484701567,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.372673469987739,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      1.6161215402998095,
+      1
+     ]
+    },
+    "agg": 0.1357569264621651,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.0644720368538261,
+    "agg_wo_os": 0.05634606027640328,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07336967187933136,
+      1
+     ],
+     "OneSource": [
+      4.204395014125917,
+      1
+     ],
+     "CoinMarketCap": [
+      0.30096602771460845,
+      1
+     ],
+     "StableApify": [
+      0.19217224374103278,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.22989149238774,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.2005883737543552,
+      1
+     ]
+    },
+    "agg": 0.16386998152057708,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.08451295255336336,
+    "agg_wo_os": 0.08094079112197398,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.06909396799899742,
+     1
+    ],
+    "same": [
+     0.07685154850913437,
+     1
+    ],
+    "own_a": [
+     0.05082494701492926,
+     1
+    ],
+    "own_b": [
+     0.07336967187933136,
+     1
+    ]
+   }
+  },
+  "W|busy|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1458.9044000000001,
+    30.906000000000002,
+    43.62,
+    2.995,
+    0.235,
+    0.066
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10712162068211219,
+      4
+     ],
+     "OneSource": [
+      0.8045266524836492,
+      1
+     ],
+     "CoinMarketCap": [
+      0.7014549292035301,
+      32
+     ],
+     "StableApify": [
+      0.46207678426065285,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      17.80806031888314,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      6.5955324214559665,
+      1
+     ]
+    },
+    "agg": 0.14169502636604436,
+    "agg_wo_os": 0.12809083144559388
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11178490022670698,
+      4
+     ],
+     "OneSource": [
+      3.8822906101624137,
+      1
+     ],
+     "CoinMarketCap": [
+      0.4145092502194325,
+      32
+     ],
+     "StableApify": [
+      0.2936392760594179,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.151126560343287,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.309830288324551,
+      1
+     ]
+    },
+    "agg": 0.19747097665470129,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.1311451479827534,
+    "agg_wo_os": 0.12184241192467811,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.08575829873250189,
+      4
+     ],
+     "OneSource": [
+      3.6519388955224605,
+      1
+     ],
+     "CoinMarketCap": [
+      0.3155483092594325,
+      32
+     ],
+     "StableApify": [
+      0.229868118779685,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.161517150743286,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.6350965999609146,
+      1
+     ]
+    },
+    "agg": 0.16501605492951923,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.979888417352627,
+    "min_design": 0.10775008827250239,
+    "agg_wo_os": 0.09344919522210295,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10830302359690397,
+      4
+     ],
+     "OneSource": [
+      3.8514738224992806,
+      1
+     ],
+     "CoinMarketCap": [
+      0.40127011149943254,
+      32
+     ],
+     "StableApify": [
+      0.2851078778191508,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.018735173143287,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.21956343341546,
+      1
+     ]
+    },
+    "agg": 0.1931291099879312,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.03052983276658747,
+    "min_design": 0.13072860515696996,
+    "agg_wo_os": 0.11804392606767365,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.10712162068211219,
+     4
+    ],
+    "same": [
+     0.11178490022670698,
+     4
+    ],
+    "own_a": [
+     0.08575829873250189,
+     4
+    ],
+    "own_b": [
+     0.10830302359690397,
+     4
+    ]
+   }
+  },
+  "W|median|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07604808595455274,
+      8
+     ],
+     "OneSource": [
+      0.6157669867139987,
+      4
+     ],
+     "CoinMarketCap": [
+      0.7995038130886528,
+      1
+     ],
+     "StableApify": [
+      0.9324094937903046,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      15.953743651710564,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      8.82920314154441,
+      1
+     ]
+    },
+    "agg": 0.11711442165649893,
+    "agg_wo_os": 0.08149906233981369
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07507684156177191,
+      8
+     ],
+     "OneSource": [
+      4.278992682482309,
+      4
+     ],
+     "CoinMarketCap": [
+      0.32461670873370335,
+      1
+     ],
+     "StableApify": [
+      0.3070559096824818,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3971681314280064,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.3088070919493164,
+      1
+     ]
+    },
+    "agg": 0.3565733306269345,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.11237544140173829,
+    "agg_wo_os": 0.07642160897492568,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.047833002426798325,
+      8
+     ],
+     "OneSource": [
+      3.99987270458779,
+      4
+     ],
+     "CoinMarketCap": [
+      0.22565576777370333,
+      1
+     ],
+     "StableApify": [
+      0.22155365669304178,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.407558721828006,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.3191976823493166,
+      1
+     ]
+    },
+    "agg": 0.31218009960506354,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.08658890161408818,
+    "agg_wo_os": 0.04879331213150818,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07143212110868863,
+      8
+     ],
+     "OneSource": [
+      4.241651605578416,
+      4
+     ],
+     "CoinMarketCap": [
+      0.31137757001370336,
+      1
+     ],
+     "StableApify": [
+      0.29561729382840185,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.2647767442280067,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.1764157047493167,
+      1
+     ]
+    },
+    "agg": 0.3506343395661571,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.10892568057644976,
+    "agg_wo_os": 0.07272545521002578,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.07604808595455274,
+     8
+    ],
+    "same": [
+     0.07507684156177191,
+     8
+    ],
+    "own_a": [
+     0.047833002426798325,
+     8
+    ],
+    "own_b": [
+     0.07143212110868863,
+     8
+    ]
+   }
+  },
+  "W|median|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07879445666513017,
+      1
+     ],
+     "OneSource": [
+      0.6280359027836226,
+      1
+     ],
+     "CoinMarketCap": [
+      0.8013421971444241,
+      1
+     ],
+     "StableApify": [
+      0.9367182054065883,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      16.78702671813147,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      8.918938308470224,
+      1
+     ]
+    },
+    "agg": 0.1206791689989217,
+    "agg_wo_os": 0.08444213014322398
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.08107594972671317,
+      1
+     ],
+     "OneSource": [
+      5.136635181140961,
+      1
+     ],
+     "CoinMarketCap": [
+      0.33753741045807456,
+      1
+     ],
+     "StableApify": [
+      0.3182193959723385,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.349977356925718,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.4380141091930287,
+      1
+     ]
+    },
+    "agg": 0.4195668947442153,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.002092856170880803,
+    "min_design": 0.1168900967159235,
+    "agg_wo_os": 0.08265880740290424,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.05383211059173958,
+      1
+     ],
+     "OneSource": [
+      4.857515203246444,
+      1
+     ],
+     "CoinMarketCap": [
+      0.23857646949807454,
+      1
+     ],
+     "StableApify": [
+      0.23271714298289847,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.3603679473257184,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.448404699593029,
+      1
+     ]
+    },
+    "agg": 0.37517366372234445,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.0932281863012327,
+    "agg_wo_os": 0.055030510559486726,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07743122927362989,
+      1
+     ],
+     "OneSource": [
+      5.099294104237069,
+      1
+     ],
+     "CoinMarketCap": [
+      0.3242982717380746,
+      1
+     ],
+     "StableApify": [
+      0.3067807801182585,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.217585969725718,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.305622721993029,
+      1
+     ]
+    },
+    "agg": 0.413627903683438,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.11556496526359428,
+    "agg_wo_os": 0.07896265363800431,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.07879445666513017,
+     1
+    ],
+    "same": [
+     0.08107594972671317,
+     1
+    ],
+    "own_a": [
+     0.05383211059173958,
+     1
+    ],
+    "own_b": [
+     0.07743122927362989,
+     1
+    ]
+   }
+  },
+  "W|median|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    1134.6576,
+    81.223,
+    1.63,
+    0.625,
+    0.267,
+    0.028
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11752205928045054,
+      8
+     ],
+     "OneSource": [
+      1.0384150495438278,
+      4
+     ],
+     "CoinMarketCap": [
+      0.9618853701036222,
+      1
+     ],
+     "StableApify": [
+      1.0778145725231045,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      17.769507602865623,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      10.468201379372982,
+      1
+     ]
+    },
+    "agg": 0.18463879578286643,
+    "agg_wo_os": 0.12365936805196967
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11655081488766969,
+      8
+     ],
+     "OneSource": [
+      4.701640745312138,
+      4
+     ],
+     "CoinMarketCap": [
+      0.4869982657486728,
+      1
+     ],
+     "StableApify": [
+      0.4524609884152818,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.2129320825830625,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.947805329777888,
+      1
+     ]
+    },
+    "agg": 0.424097704753302,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.17989981552810572,
+    "agg_wo_os": 0.11858191468708162,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.08930697575269611,
+      8
+     ],
+     "OneSource": [
+      4.42252076741762,
+      4
+     ],
+     "CoinMarketCap": [
+      0.3880373247886727,
+      1
+     ],
+     "StableApify": [
+      0.3669587354258418,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.223322672983063,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.9581959201778885,
+      1
+     ]
+    },
+    "agg": 0.379704473731431,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.15411327574045564,
+    "agg_wo_os": 0.09095361784366415,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11290609443458641,
+      8
+     ],
+     "OneSource": [
+      4.664299668408245,
+      4
+     ],
+     "CoinMarketCap": [
+      0.47375912702867273,
+      1
+     ],
+     "StableApify": [
+      0.44102237256120186,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.080540695383062,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.815413942577889,
+      1
+     ]
+    },
+    "agg": 0.41815871369252455,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9333380169539406,
+    "min_design": 0.17645005470281724,
+    "agg_wo_os": 0.11488576092218176,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.11752205928045054,
+     8
+    ],
+    "same": [
+     0.11655081488766969,
+     8
+    ],
+    "own_a": [
+     0.08930697575269611,
+     8
+    ],
+    "own_b": [
+     0.11290609443458641,
+     8
+    ]
+   }
+  },
+  "W|quiet|lo": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09177579832811449,
+      32
+     ],
+     "OneSource": [
+      0.4207692804741364,
+      4
+     ],
+     "CoinMarketCap": [
+      1.340302434725467,
+      1
+     ],
+     "StableApify": [
+      1.3309086483891055,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      18.792142048678677,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      6.73131562775311,
+      1
+     ]
+    },
+    "agg": 0.1193133224327971,
+    "agg_wo_os": 0.09848797545457241
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10796497006785341,
+      32
+     ],
+     "OneSource": [
+      2.524351114987157,
+      4
+     ],
+     "CoinMarketCap": [
+      0.3851748930327218,
+      1
+     ],
+     "StableApify": [
+      0.40219004372715716,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.285946735188672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.054687978634471,
+      1
+     ]
+    },
+    "agg": 0.26530619221042245,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.1142614488310381,
+    "agg_wo_os": 0.1092456032544369,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.07000342847161514,
+      32
+     ],
+     "OneSource": [
+      2.360416733385327,
+      4
+     ],
+     "CoinMarketCap": [
+      0.28621395207272177,
+      1
+     ],
+     "StableApify": [
+      0.2949823576871572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      2.296337325588672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.065078569034471,
+      1
+     ]
+    },
+    "agg": 0.21887747656740245,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.09354029258196103,
+    "agg_wo_os": 0.0709344789219327,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.10288641977980804,
+      32
+     ],
+     "OneSource": [
+      2.502419734808776,
+      4
+     ],
+     "CoinMarketCap": [
+      0.37193575431272174,
+      1
+     ],
+     "StableApify": [
+      0.38784764344715716,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.1535553479886724,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      2.9222965914344714,
+      1
+     ]
+    },
+    "agg": 0.25909489105436506,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.11420870253988953,
+    "agg_wo_os": 0.10412028527911363,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.09177579832811449,
+     32
+    ],
+    "same": [
+     0.10796497006785341,
+     32
+    ],
+    "own_a": [
+     0.07000342847161514,
+     32
+    ],
+    "own_b": [
+     0.10288641977980804,
+     32
+    ]
+   }
+  },
+  "W|quiet|up": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.09573188842995749,
+      1
+     ],
+     "OneSource": [
+      0.4241211285273306,
+      1
+     ],
+     "CoinMarketCap": [
+      1.3432404670799738,
+      1
+     ],
+     "StableApify": [
+      1.341644615646349,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      20.113704372202587,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      6.9592655179412635,
+      1
+     ]
+    },
+    "agg": 0.12353580502249996,
+    "agg_wo_os": 0.10277060370015093
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11657188726351007,
+      1
+     ],
+     "OneSource": [
+      3.0228680973807682,
+      1
+     ],
+     "CoinMarketCap": [
+      0.398095594757093,
+      1
+     ],
+     "StableApify": [
+      0.41618747059522593,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.722345844054549,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.1838949958781835,
+      1
+     ]
+    },
+    "agg": 0.3059056459924013,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.11852200039121714,
+    "agg_wo_os": 0.11821094543116208,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.0786103456672718,
+      1
+     ],
+     "OneSource": [
+      2.8589337157789387,
+      1
+     ],
+     "CoinMarketCap": [
+      0.299134653797093,
+      1
+     ],
+     "StableApify": [
+      0.3089797845552259,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      3.732736434454548,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      2.194285586278183,
+      1
+     ]
+    },
+    "agg": 0.2594769303493813,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.10214289897146564,
+    "agg_wo_os": 0.0798998210986579,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "B",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.11149333697546471,
+      1
+     ],
+     "OneSource": [
+      3.0009367172023875,
+      1
+     ],
+     "CoinMarketCap": [
+      0.38485645603709295,
+      1
+     ],
+     "StableApify": [
+      0.401845070315226,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.5899544568545485,
+      1
+     ],
+     "CoinStats(0.01 or less)": [
+      3.0515036086781837,
+      1
+     ]
+    },
+    "agg": 0.29969434483634383,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.11846925410006862,
+    "agg_wo_os": 0.11308562745583885,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "A",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.09573188842995749,
+     1
+    ],
+    "same": [
+     0.11657188726351007,
+     1
+    ],
+    "own_a": [
+     0.0786103456672718,
+     1
+    ],
+    "own_b": [
+     0.11149333697546471,
+     1
+    ]
+   }
+  },
+  "W|quiet|fac": {
+   "names": [
+    "StableEnrich(Out candidates excluded)",
+    "OneSource",
+    "CoinMarketCap",
+    "StableApify",
+    "Exa(0.001 or less)",
+    "CoinStats(0.01 or less)"
+   ],
+   "R": [
+    726.4313999999999,
+    50.278999999999996,
+    0.95,
+    0.24,
+    0.178,
+    0.011
+   ],
+   "se_gas": {
+    "fb": 91949,
+    "same": 91949,
+    "own": [
+     50740,
+     86436
+    ]
+   },
+   "fb": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.149194223789243,
+      32
+     ],
+     "OneSource": [
+      0.6700228996936436,
+      4
+     ],
+     "CoinMarketCap": [
+      1.514421976436625,
+      1
+     ],
+     "StableApify": [
+      1.5166428220691053,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      20.680082133478678,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      8.321057992116746,
+      1
+     ]
+    },
+    "agg": 0.18975034442753452,
+    "agg_wo_os": 0.15657189052494572
+   },
+   "same": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.1653833955289819,
+      32
+     ],
+     "OneSource": [
+      2.773604734206664,
+      4
+     ],
+     "CoinMarketCap": [
+      0.5592944347438797,
+      1
+     ],
+     "StableApify": [
+      0.5879242174071572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.173886819988672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.644430342998108,
+      1
+     ]
+    },
+    "agg": 0.3357432142051599,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.1846984708257755,
+    "agg_wo_os": 0.16732951832481022,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_a": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.12742185393274363,
+      32
+     ],
+     "OneSource": [
+      2.609670352604834,
+      4
+     ],
+     "CoinMarketCap": [
+      0.46033349378387967,
+      1
+     ],
+     "StableApify": [
+      0.4807165313671572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      4.184277410388671,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      3.654820933398107,
+      1
+     ]
+    },
+    "agg": 0.2893144985621399,
+    "fi_cheaper_n": 5,
+    "fi_cheaper_share": 0.9353814613076595,
+    "min_design": 0.16397731457669842,
+    "agg_wo_os": 0.129018393992306,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fi",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "own_b": {
+    "per": {
+     "StableEnrich(Out candidates excluded)": [
+      0.16030484524093652,
+      32
+     ],
+     "OneSource": [
+      2.7516733540282834,
+      4
+     ],
+     "CoinMarketCap": [
+      0.5460552960238797,
+      1
+     ],
+     "StableApify": [
+      0.5735818171271572,
+      1
+     ],
+     "Exa(0.001 or less)": [
+      5.041495432788672,
+      32
+     ],
+     "CoinStats(0.01 or less)": [
+      4.512038955798108,
+      1
+     ]
+    },
+    "agg": 0.32953191304910245,
+    "fi_cheaper_n": 4,
+    "fi_cheaper_share": 0.0017722899193845848,
+    "min_design": 0.18464572453462694,
+    "agg_wo_os": 0.16220420034948693,
+    "region": {
+     "StableEnrich(Out candidates excluded)": "C_fb",
+     "OneSource": "C_fb",
+     "CoinMarketCap": "C_fi",
+     "StableApify": "C_fi",
+     "Exa(0.001 or less)": "C_fi",
+     "CoinStats(0.01 or less)": "C_fi"
+    }
+   },
+   "se": {
+    "name": "StableEnrich(Out candidates excluded)",
+    "fb": [
+     0.149194223789243,
+     32
+    ],
+    "same": [
+     0.1653833955289819,
+     32
+    ],
+    "own_a": [
+     0.12742185393274363,
+     32
+    ],
+    "own_b": [
+     0.16030484524093652,
+     32
+    ]
+   }
+  }
+ },
+ "meta": {
+  "sha256": {
+   "c34.py": "5978dd156c9c6906c40b993e6be482290166fce123510e30c4a75aea98d8a65c",
+   "calc-rules.md": "343f5c1f72405c00dbf3bad1e23b55c6f1ff35567f769b70fee86f1ade94130d"
+  },
+  "p11_sha256": "32f1eec01e4a267a8bcf217744b5b9c91cd064f8bc7757d37595af1e21166609",
+  "k11b_sha256": "8e62d141ad49d5a2c72d72eaf5ac28fdf70685a86da651e7cf3199fc5ee70213"
+ }
+}

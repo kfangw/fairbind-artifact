@@ -1,0 +1,428 @@
+{
+ "window": "busy",
+ "r12_compute_sha256": "98c3018f02cfd5e395a44909855a5076cd9dc6301954685cf69f0b81cdb6251e",
+ "addresses": 415,
+ "addresses_equal_sales_addresses": true,
+ "list_sha256": {
+  "settlements_base_2026-06-09_2026-06-29.csv": "91412e264212412afcd4ecdd21e7ca7d98ce7ab8522572fdabef756e6fa10133",
+  "settlements_base_prior_2026-05-26_2026-06-08.csv": "617c9a753bdd331b0c5f2e4f83565cf8789f486fe4105ca3bc00551f0e2e4e21"
+ },
+ "list_sha_ok": true,
+ "C_prior_mismatch": 0,
+ "C_prior_first": [],
+ "list_meta": {
+  "first_block": 47086928,
+  "last_block": 47994126,
+  "rows": 10580910,
+  "date_mismatches": 0
+ },
+ "prior_meta": {
+  "first_block": 46482128,
+  "last_block": 47086925,
+  "rows": 1178201,
+  "date_mismatches": 0
+ },
+ "manifests": {
+  "S1b_busy-window": {
+   "sha256": "90371183d2bfcad691db4ab7d886754010f876eda4e794f72ca0ff55bc72d7e1",
+   "registered": "90371183d2bfcad691db4ab7d886754010f876eda4e794f72ca0ff55bc72d7e1",
+   "ok": true
+  },
+  "S1c_busy-window-prior14": {
+   "sha256": "e5d68f67636a831cbfc161403a25201b5e9b4b74cee509c261a4af73f7d17f4d",
+   "registered": "e5d68f67636a831cbfc161403a25201b5e9b4b74cee509c261a4af73f7d17f4d",
+   "ok": true
+  }
+ },
+ "files_all_ok": true,
+ "rows_off_date": 0,
+ "file_checks": {
+  "S1b_busy-window": [
+   {
+    "file": "settlements_2026-06-09.csv.gz",
+    "date": "2026-06-09",
+    "sha256_gz_ok": true,
+    "rows": 386356,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-10.csv.gz",
+    "date": "2026-06-10",
+    "sha256_gz_ok": true,
+    "rows": 617510,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-11.csv.gz",
+    "date": "2026-06-11",
+    "sha256_gz_ok": true,
+    "rows": 300868,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-12.csv.gz",
+    "date": "2026-06-12",
+    "sha256_gz_ok": true,
+    "rows": 157148,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-13.csv.gz",
+    "date": "2026-06-13",
+    "sha256_gz_ok": true,
+    "rows": 93485,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-14.csv.gz",
+    "date": "2026-06-14",
+    "sha256_gz_ok": true,
+    "rows": 103514,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-15.csv.gz",
+    "date": "2026-06-15",
+    "sha256_gz_ok": true,
+    "rows": 194957,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-16.csv.gz",
+    "date": "2026-06-16",
+    "sha256_gz_ok": true,
+    "rows": 783736,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-17.csv.gz",
+    "date": "2026-06-17",
+    "sha256_gz_ok": true,
+    "rows": 927815,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-18.csv.gz",
+    "date": "2026-06-18",
+    "sha256_gz_ok": true,
+    "rows": 767863,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-19.csv.gz",
+    "date": "2026-06-19",
+    "sha256_gz_ok": true,
+    "rows": 543676,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-20.csv.gz",
+    "date": "2026-06-20",
+    "sha256_gz_ok": true,
+    "rows": 386337,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-21.csv.gz",
+    "date": "2026-06-21",
+    "sha256_gz_ok": true,
+    "rows": 366028,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-22.csv.gz",
+    "date": "2026-06-22",
+    "sha256_gz_ok": true,
+    "rows": 583157,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-23.csv.gz",
+    "date": "2026-06-23",
+    "sha256_gz_ok": true,
+    "rows": 339531,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-24.csv.gz",
+    "date": "2026-06-24",
+    "sha256_gz_ok": true,
+    "rows": 583106,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-25.csv.gz",
+    "date": "2026-06-25",
+    "sha256_gz_ok": true,
+    "rows": 988616,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-26.csv.gz",
+    "date": "2026-06-26",
+    "sha256_gz_ok": true,
+    "rows": 803298,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-27.csv.gz",
+    "date": "2026-06-27",
+    "sha256_gz_ok": true,
+    "rows": 513836,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-28.csv.gz",
+    "date": "2026-06-28",
+    "sha256_gz_ok": true,
+    "rows": 466289,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-29.csv.gz",
+    "date": "2026-06-29",
+    "sha256_gz_ok": true,
+    "rows": 673784,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   }
+  ],
+  "S1c_busy-window-prior14": [
+   {
+    "file": "settlements_2026-05-26.csv.gz",
+    "date": "2026-05-26",
+    "sha256_gz_ok": true,
+    "rows": 65493,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-05-27.csv.gz",
+    "date": "2026-05-27",
+    "sha256_gz_ok": true,
+    "rows": 59690,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-05-28.csv.gz",
+    "date": "2026-05-28",
+    "sha256_gz_ok": true,
+    "rows": 60360,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-05-29.csv.gz",
+    "date": "2026-05-29",
+    "sha256_gz_ok": true,
+    "rows": 53869,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-05-30.csv.gz",
+    "date": "2026-05-30",
+    "sha256_gz_ok": true,
+    "rows": 66782,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-05-31.csv.gz",
+    "date": "2026-05-31",
+    "sha256_gz_ok": true,
+    "rows": 49759,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-01.csv.gz",
+    "date": "2026-06-01",
+    "sha256_gz_ok": true,
+    "rows": 92438,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-02.csv.gz",
+    "date": "2026-06-02",
+    "sha256_gz_ok": true,
+    "rows": 87982,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-03.csv.gz",
+    "date": "2026-06-03",
+    "sha256_gz_ok": true,
+    "rows": 66044,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-04.csv.gz",
+    "date": "2026-06-04",
+    "sha256_gz_ok": true,
+    "rows": 99631,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-05.csv.gz",
+    "date": "2026-06-05",
+    "sha256_gz_ok": true,
+    "rows": 122040,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-06.csv.gz",
+    "date": "2026-06-06",
+    "sha256_gz_ok": true,
+    "rows": 101676,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-07.csv.gz",
+    "date": "2026-06-07",
+    "sha256_gz_ok": true,
+    "rows": 105278,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   },
+   {
+    "file": "settlements_2026-06-08.csv.gz",
+    "date": "2026-06-08",
+    "sha256_gz_ok": true,
+    "rows": 147159,
+    "rows_ok": true,
+    "value_ok": true,
+    "rows_off_date": 0
+   }
+  ]
+ },
+ "dates": [
+  "2026-05-26",
+  "2026-06-29",
+  35
+ ],
+ "compare_r12_vs_raw": {
+  "cells": 14525,
+  "nonzero_days_A": 3395,
+  "nonzero_days_B": 3395,
+  "diff_cells": 0,
+  "over_tol_cells": 0,
+  "max_abs_diff_usdc": 0.0,
+  "first": [],
+  "stray_keys": 0,
+  "addresses_with_diff": 0
+ },
+ "compare_r12_vs_raw_S1r": {
+  "cells": 6230,
+  "nonzero_days_A": 3360,
+  "nonzero_days_B": 3360,
+  "diff_cells": 0,
+  "over_tol_cells": 0,
+  "max_abs_diff_usdc": 0.0,
+  "first": [],
+  "stray_keys": 0,
+  "addresses_with_diff": 0
+ },
+ "S1r": 178,
+ "agg_sha256": {
+  "days_busy.csv.gz": "6eaf55c4e19b78b768b35b3aeac7f2d7c10d1056bfad989482ef08819b1b4b7f",
+  "days_busy_prior14.csv.gz": "a8caabc264b7f36d4fa2ab5d2f6c8d3393368553d2973438cf722c81970831cc"
+ },
+ "compare_agg_vs_raw": {
+  "cells": 14525,
+  "nonzero_days_A": 3396,
+  "nonzero_days_B": 3395,
+  "diff_cells": 4,
+  "over_tol_cells": 1,
+  "max_abs_diff_usdc": 0.12,
+  "first": [
+   [
+    "0x0e84ddedaae6a779c462c22a59f301ec31b6b808",
+    "2026-05-30",
+    216000,
+    215000
+   ],
+   [
+    "0x0e84ddedaae6a779c462c22a59f301ec31b6b808",
+    "2026-06-17",
+    145000,
+    144000
+   ],
+   [
+    "0x788b4ca11950879550353d8ae82d1c0af6018454",
+    "2026-06-25",
+    3010000,
+    3000000
+   ],
+   [
+    "0xd993eafba87cffa2ca2cff5a56ef89034575a7ef",
+    "2026-06-15",
+    120000,
+    0
+   ]
+  ],
+  "stray_keys": 0,
+  "addresses_with_diff": 3
+ }
+}

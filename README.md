@@ -27,6 +27,14 @@ matplotlib 3.11), Foundry 1.5.1, Go 1.25 and Node 22.
 `measurement/docs/11_journal/release-units/` is a byte-identical copy of `code/settlement/logs/` placed where the
 cost-model scripts read the gas fits.
 
+`measurement/docs/11_journal/C32/`, `C34/` and `C34_ASP-replay/` hold the later post hoc calculations: the
+replay comparison of FairBind's payout with the bonds' uncovered revenue and the daily-sum check of the bond replay
+(`C32/W3_replay`), the deterrence margin and the cost of a larger deduction (`C32/W4_deterrence`), the base-fee
+filling cost (`C32/W6_basefee`), the out-of-window seller-epoch multiple and threshold sensitivity
+(`C32/W7_out-of-window-k`), StableEnrich priced with the enclave-receipt proof call (`C34`), and the rolling reserve
+of a published settlement profile on the bond replay (`C34_ASP-replay`). Each folder has a short `README.md`
+(section 3.7).
+
 ## 2. Requirements
 
 * Foundry 1.7.1 as recorded (`forge`, `anvil`, `cast`; 1.5.1 also builds and runs the tests of section 3.1); Foundry downloads solc 0.8.24.
@@ -164,6 +172,28 @@ python3 -I r12_compute.py selfcheck --registration $REG --work /tmp/r12-selfchec
 constant in the code; `selfcheck` ends with a JSON line in which `verdict_paths_present`, `outputs_present`,
 `g3_records_equal` and `flags_as_registered` are `true`. The full replay (`run_r12.sh`, about 5 GB per window)
 needs the raw data of section 4; its recorded aggregation is `measurement/docs/11_journal/R12/results/`.
+
+### 3.7 Replay comparisons, cost sensitivities and the rolling-reserve replay
+
+```sh
+cd measurement/docs/11_journal
+(cd C32/W4_deterrence && python3 -I w4.py --out /tmp/w4)                 #  8 s
+(cd C32/W6_basefee && python3 -I w6.py > /tmp/w6_stdout.txt)               #  1 s
+(cd C32/W7_out-of-window-k && python3 -I w7.py --out /tmp/w7)            # 11 s
+(cd C34 && python3 -I c34.py --out /tmp/c34)                             #  7 s
+```
+
+Expected: `w4_tables.md`, `w7_tables.md`, `c34_tables.md` and `w6_stdout.txt` equal the recorded files in each
+`results/` byte for byte; `w4.json`, `w7.json` and `c34.json` differ from the recorded ones only in the SHA-256
+fingerprints of the scripts and of the calculation documents (`absent`, not included). Each script first checks that
+its in-memory rerun of `k11b.py` and its unchanged cells reproduce `K11/k11b_output.md`, `P11_posthoc/results/p11.json`
+(and `P8_posthoc/results/p8.json`, `P10u_real-USDC/results/p10u.json`) and prints the result; `w6.py --check` checks
+the base-fee rule against two on-chain block pairs and the eight cells of the margin table.
+
+`C32/W3_replay/w3_compare.py`, `w3_daily.py` and `C34_ASP-replay/c34_asp.py` need the R12 replay outputs and sale
+lists or the raw daily files (section 4), whose commands are in the folders' `README.md`. With them, `w3_compare.json`,
+`w3_sellers_<window>.csv`, `w3_daily_<window>.json`, `c34_asp.json` and `c34_sellers_<window>.csv` are reproduced;
+the JSON files differ only in the recorded script fingerprints and in the numpy version they record.
 
 ## 4. Raw data
 
