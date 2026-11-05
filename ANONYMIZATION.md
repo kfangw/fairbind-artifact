@@ -2,7 +2,7 @@
 
 The files of this bundle are copies of five code commits and of the study's measurement files. `SOURCES.tsv` gives,
 for every file, its origin and the SHA-256 of the source file and of the shipped file; the two hashes differ for the
-232 files edited as described below and are equal for every other file. Every "original SHA-256" or fingerprint
+238 files edited as described below and are equal for every other file. Every "original SHA-256" or fingerprint
 printed inside a recorded output refers to the source file, not to the shipped copy.
 
 ## 1. Identity, tool and path edits
@@ -46,6 +46,7 @@ number still pass. Path components were renamed in the same pass:
 | results, check, logs | `results`, `check`, `logs`, `logs_b`, `logs_c`, `logs_d` |
 | post hoc study folders | `P1_posthoc`, `P2_posthoc`, `P3_posthoc`, `P4_posthoc`, `P6_posthoc`, `P8_posthoc`, `P9_posthoc`, `P11_posthoc` |
 | later calculations, replay, deterrence, out-of-window k | `C32`, `C34`, `W3_replay`, `C34_ASP-replay`, `W4_deterrence`, `W7_out-of-window-k` |
+| fixed-delay replay, duty-cost share | `C35_fixed-delay-replay`, `C35_duty-cost-share` |
 | fit conditions, deployed USDC | `P10_fit-conditions`, `P10u_real-USDC` |
 | release units and their run logs | `release-units`, `run-logs`, `run-logs_anchor`, `run-logs_USDC` |
 | gas studies | `G10_gas`, `G11_gas` |
@@ -73,7 +74,10 @@ Edited files per directory:
 | `measurement/docs/11_journal/C32/W7_out-of-window-k` | 3 |
 | `measurement/docs/11_journal/C34` | 3 |
 | `measurement/docs/11_journal/C34_ASP-replay` | 1 |
+| `measurement/docs/11_journal/C35_duty-cost-share` | 3 |
+| `measurement/docs/11_journal/C35_fixed-delay-replay` | 2 |
 | `measurement/docs/11_journal/D3` | 2 |
+| `measurement/docs/11_journal/F/seller-tiers` | 1 |
 | `measurement/docs/11_journal/K11` | 3 |
 | `measurement/docs/11_journal/K12` | 2 |
 | `measurement/docs/11_journal/K13` | 10 |
@@ -120,7 +124,7 @@ Hashes of the three K13 gas logs edited in section 1:
 | `k13_gas_run2.log.gz` | `e7226bc2915fe07d402e38764b39514d06903ffe13a6c4eae9022a4d0da4a91c` | `12fddd027c83f1910b5afdc4ba41ff97afdd6d4423cbb9ef2748fabbde570ee8` |
 | `k13_gas_run3.log.gz` | `0c744f16d24cebe047edefa4ac26369d16df6cccb7d82a32597fb6d66693bfc8` | `39e9d01b31862400f9aa6e60a4c074fe2cdeb33d4c6c63e74aedcfa5abb1345f` |
 
-## 4. Later calculations (C32, C34)
+## 4. Later calculations (C32, C34, C35) and the seller tiers
 
 The folders `C32/W3_replay`, `C32/W4_deterrence`, `C32/W6_basefee`, `C32/W7_out-of-window-k`, `C34` and
 `C34_ASP-replay` were added after the first version of the bundle, with the inputs they read that were not yet in it
@@ -140,6 +144,17 @@ the same way as the rest of the bundle:
   the standard output of the source script was recorded for the bundle (a rerun of the shipped script gives the same
   bytes).
 * The `SHA256SUMS.txt` files in `results/` list the hashes of the source outputs, as elsewhere in the bundle.
+* `C35_fixed-delay-replay` and `C35_duty-cost-share` were added later in the same way: their scripts and recorded
+  outputs were translated with the glossary (extended only by the two folder names), and usage examples read `$RAW` and
+  `$REPLAYER`. Unlike the earlier folders, each ships its calculation rules as `calc-rules.md`, translated by hand
+  from the study's document, with references to internal working documents and review records left out; the
+  results write-up is replaced by the folder's `README.md`. Neither script fingerprints its rules document.
+* `F/seller-tiers/seller_tiers.csv` is the study's seller tier table with its text columns (family, alternative
+  tier, reason, evidence, confidence, basis) translated by hand; the numeric columns are unchanged. References to
+  internal working documents in the evidence column were removed, and one third-party listing URL was replaced by
+  the name of the service list it shows. `tier_shares.py`, `results/tier_shares.md` and the `README.md` were written
+  for the bundle. The table is shipped at a new path, so the `absent` fingerprint lines of `k11b.py` and `k12.py`,
+  which name the study path, are unchanged.
 
 ## 5. Regenerated and recorded outputs
 

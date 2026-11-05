@@ -1,0 +1,198 @@
+{
+ "windows": {
+  "median": {
+   "n": 289,
+   "n_avg": 876127,
+   "revenue": 108353.56772,
+   "k_star_counts": {
+    "1": 24,
+    "2": 1,
+    "4": 14,
+    "8": 7,
+    "16": 24,
+    "32": 219
+   },
+   "max_hold_FB_kstar": {
+    "min": 2251,
+    "max": 11551
+   },
+   "rules": {
+    "D_df": {
+     "locked_time": 557.7621041910146,
+     "held_time": 268.76210419101454,
+     "locked_worst_per_seller": 3094.008199,
+     "locked_worst_simultaneous": 1128.594194,
+     "mean_hold_blocks": 2251.0
+    },
+    "D_own": {
+     "locked_time": 978.4010882739854,
+     "held_time": 689.4010882739854,
+     "locked_worst_per_seller": 4226.070651,
+     "locked_worst_simultaneous": 1872.949172,
+     "mean_hold_blocks": 5756.619416938567
+    },
+    "FB_kstar": {
+     "locked_time": 724.7006775845933,
+     "held_time": 435.70067758459334,
+     "locked_worst_per_seller": 3926.246052,
+     "locked_worst_simultaneous": 1597.708315,
+     "mean_hold_blocks": 3646.3965899266746
+    },
+    "FB_k1": {
+     "locked_time": 540.2295267932411,
+     "held_time": 251.22952679324115,
+     "locked_worst_per_seller": 2878.380111,
+     "locked_worst_simultaneous": 1126.519194,
+     "mean_hold_blocks": 2104.359963215838
+    }
+   },
+   "compare": {
+    "own": {
+     "fourth_locked_time": 978.4010882739854,
+     "FB_locked_time": 724.7006775845933,
+     "FB_k1_locked_time": 540.2295267932411,
+     "ratio_fourth_over_FB": 1.350076132859387,
+     "ratio_fourth_over_FB_k1": 1.8110840665849852,
+     "ratio_FB_over_fourth": 0.7406989692366865,
+     "oracle": 976.5553922305114,
+     "history": 2366.5626784171614,
+     "ratio_fourth_over_oracle": 1.0018900065046574,
+     "ratio_fourth_over_history": 0.41342707598531625,
+     "fourth_worst_per_seller": 4226.070651,
+     "FB_worst_per_seller": 3926.246052,
+     "fourth_worst_simultaneous": 1872.949172,
+     "FB_worst_simultaneous": 1597.708315,
+     "sellers_fourth_less": 0,
+     "sellers_fourth_more": 289,
+     "sellers_equal": 0
+    },
+    "df": {
+     "fourth_locked_time": 557.7621041910146,
+     "FB_locked_time": 724.7006775845933,
+     "FB_k1_locked_time": 540.2295267932411,
+     "ratio_fourth_over_FB": 0.7696447946620111,
+     "ratio_fourth_over_FB_k1": 1.0324539413864426,
+     "ratio_FB_over_fourth": 1.299300673421886,
+     "oracle": 557.8534842787919,
+     "history": 829.7861286316424,
+     "ratio_fourth_over_oracle": 0.9998361933906437,
+     "ratio_fourth_over_history": 0.6721757389591356,
+     "fourth_worst_per_seller": 3094.008199,
+     "FB_worst_per_seller": 3926.246052,
+     "fourth_worst_simultaneous": 1128.594194,
+     "FB_worst_simultaneous": 1597.708315,
+     "sellers_fourth_less": 226,
+     "sellers_fourth_more": 63,
+     "sellers_equal": 0
+    }
+   },
+   "problems": []
+  },
+  "busy": {
+   "n": 178,
+   "n_avg": 876126,
+   "revenue": 24502.855019,
+   "k_star_counts": {
+    "1": 12,
+    "2": 2,
+    "4": 1,
+    "16": 13,
+    "32": 150
+   },
+   "max_hold_FB_kstar": {
+    "min": 2251,
+    "max": 11551
+   },
+   "rules": {
+    "D_df": {
+     "locked_time": 238.02965197342735,
+     "held_time": 60.029651973427335,
+     "locked_worst_per_seller": 3147.459174,
+     "locked_worst_simultaneous": 1352.1206,
+     "mean_hold_blocks": 2251.0
+    },
+    "D_own": {
+     "locked_time": 483.50087649551665,
+     "held_time": 305.50087649551665,
+     "locked_worst_per_seller": 3776.043198,
+     "locked_worst_simultaneous": 1740.285962,
+     "mean_hold_blocks": 11514.7540603774
+    },
+    "FB_kstar": {
+     "locked_time": 324.48783687037366,
+     "held_time": 146.48783687037366,
+     "locked_worst_per_seller": 3591.480499,
+     "locked_worst_simultaneous": 1273.0623,
+     "mean_hold_blocks": 5410.931441705724
+    },
+    "FB_k1": {
+     "locked_time": 233.98714409910332,
+     "held_time": 55.987144099103325,
+     "locked_worst_per_seller": 3129.877394,
+     "locked_worst_simultaneous": 1228.9026,
+     "mean_hold_blocks": 2100.3586178043
+    }
+   },
+   "compare": {
+    "own": {
+     "fourth_locked_time": 483.50087649551665,
+     "FB_locked_time": 324.48783687037366,
+     "FB_k1_locked_time": 233.98714409910332,
+     "ratio_fourth_over_FB": 1.4900431435544548,
+     "ratio_fourth_over_FB_k1": 2.0663565870556284,
+     "ratio_FB_over_fourth": 0.6711215070018235,
+     "oracle": 489.00601887884466,
+     "history": 1655.1704333313382,
+     "ratio_fourth_over_oracle": 0.9887421786833017,
+     "ratio_fourth_over_history": 0.29211546240732517,
+     "fourth_worst_per_seller": 3776.043198,
+     "FB_worst_per_seller": 3591.480499,
+     "fourth_worst_simultaneous": 1740.285962,
+     "FB_worst_simultaneous": 1273.0623,
+     "sellers_fourth_less": 0,
+     "sellers_fourth_more": 176,
+     "sellers_equal": 2
+    },
+    "df": {
+     "fourth_locked_time": 238.02965197342735,
+     "FB_locked_time": 324.48783687037366,
+     "FB_k1_locked_time": 233.98714409910332,
+     "ratio_fourth_over_FB": 0.7335549284964891,
+     "ratio_fourth_over_FB_k1": 1.017276623849949,
+     "ratio_FB_over_fourth": 1.363224430990632,
+     "oracle": 238.79804612633941,
+     "history": 325.35237635622,
+     "ratio_fourth_over_oracle": 0.9967822427135541,
+     "ratio_fourth_over_history": 0.7316056966887334,
+     "fourth_worst_per_seller": 3147.459174,
+     "FB_worst_per_seller": 3591.480499,
+     "fourth_worst_simultaneous": 1352.1206,
+     "FB_worst_simultaneous": 1273.0623,
+     "sellers_fourth_less": 153,
+     "sellers_fourth_more": 23,
+     "sellers_equal": 2
+    }
+   },
+   "problems": []
+  }
+ },
+ "inputs": {
+  "r12_compute.py": "98c3018f02cfd5e395a44909855a5076cd9dc6301954685cf69f0b81cdb6251e",
+  "median/k1/sales.npz": "92a74193b21d2db38b47036d810afa445ccad528c11398f1cf835ccb7d3c60c1",
+  "median/k2/sales.npz": "68063ffa2019f1f79432d733f553f974efca2dcd69f746f6db2f00fd194b86a9",
+  "median/k4/sales.npz": "008aba86c895fa3ee138c8c594ac38984fbbcaf62be5838c2f6f1c8397e915e0",
+  "median/k8/sales.npz": "6c644349be34e26ee91f2e53c21f9b6ca0230e8282fcde6f53fa783fcb293c03",
+  "median/k16/sales.npz": "fe00a0fd8782f6462b28b3d161cd895fe6172094085b5f2e748d4974cd4060d7",
+  "median/k32/sales.npz": "7b0fd35d58049fbccce0ccd539196a066d875def1713db18297b0170d7750f2e",
+  "busy/k1/sales.npz": "5863e172f21144d076262fff4bca87f24b11ba2f984c040c5944c522ddd54a0e",
+  "busy/k2/sales.npz": "3c43f7206d22c6a6dd6d5e40185fde6faad25763d9e17e69896517f702c3b403",
+  "busy/k4/sales.npz": "c1320d5f96f9d01aa56257d7df2875c5284f23820c303341b9f690c4a76a2690",
+  "busy/k16/sales.npz": "0b1daa50eb5bfff57aca26b490af71c679871edae8be5147f60b2a76ef7b5648",
+  "busy/k32/sales.npz": "c1bc19e67f1a088fb54b69118ed25a578d6a7176bd541bcf62215abbe6872082"
+ },
+ "pass": true,
+ "env": {
+  "numpy": "2.5.4",
+  "python": "3.13.17"
+ }
+}

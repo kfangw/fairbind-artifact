@@ -1,0 +1,1599 @@
+{
+ "meta": {
+  "note": "POST HOC, no registered verdict; rules calc-rules.md",
+  "script_sha256": "c4a62821c51ac6f00262aa5985743b60cac995b9dd5a01da94c496b4f80fb1cd",
+  "costs_usd": {
+   "D2@0.010": 0.008584246591783383,
+   "D1@0.010": 0.004011515217921642,
+   "D2@0.0161": 0.013778104798039382,
+   "D2@1": 0.8515218899021834
+  },
+  "thresholds_atomic": {
+   "D2@0.010": 8585,
+   "D1@0.010": 4012,
+   "D2@0.0161": 13779,
+   "D2@1": 851522
+  },
+  "gas": {
+   "g_open": 166809,
+   "g_dec": 187750,
+   "w_open": 2372396696,
+   "w_dec": 26662241764
+  },
+  "inputs": {
+   "median": {
+    "file": "median/settlements_base_2026-07-24_2026-08-13.csv",
+    "sha256": "091476280d744b7cd932c06beabf35d3d96d382ecb0d69bfb0383200a709052a"
+   },
+   "busy": {
+    "file": "busy/settlements_base_2026-06-09_2026-06-29.csv",
+    "sha256": "91412e264212412afcd4ecdd21e7ca7d98ce7ab8522572fdabef756e6fa10133"
+   }
+  }
+ },
+ "checks": {
+  "P1_median": {
+   "n": 1153924,
+   "n_P1": 1153924,
+   "cells": {
+    "D2@0.010": {
+     "below_count": 83.6938134573854,
+     "below_value": 2.054656002424437,
+     "P1": [
+      83.69,
+      2.05
+     ],
+     "match": true
+    },
+    "D1@0.010": {
+     "below_count": 77.51758348036786,
+     "below_value": 1.6711105449514179,
+     "P1": [
+      77.52,
+      1.67
+     ],
+     "match": true
+    },
+    "D2@0.0161": {
+     "below_count": 90.50630717447596,
+     "below_value": 2.788197768260801,
+     "P1": [
+      90.51,
+      2.79
+     ],
+     "match": true
+    },
+    "D2@1": {
+     "below_count": 97.40216860035844,
+     "below_value": 10.347901907553364,
+     "P1": [
+      97.4,
+      10.35
+     ],
+     "match": true
+    }
+   },
+   "pass": true
+  },
+  "six_median": {
+   "s1b_bins_match": {
+    "StableEnrich": true,
+    "OneSource": true,
+    "CoinMarketCap": true,
+    "StableApify": true,
+    "Exa": true,
+    "CoinStats": true
+   },
+   "revenue": 1218.4306,
+   "paper": 1218.43,
+   "revenue_match": true,
+   "pass_": true
+  },
+  "P1_busy": {
+   "n": 762322,
+   "n_P1": 762322,
+   "cells": {
+    "D2@0.010": {
+     "below_count": 80.16861641143768,
+     "below_value": 5.787449862068669,
+     "P1": [
+      80.17,
+      5.79
+     ],
+     "match": true
+    },
+    "D1@0.010": {
+     "below_count": 74.99993441091823,
+     "below_value": 4.890012029499815,
+     "P1": [
+      75.0,
+      4.89
+     ],
+     "match": true
+    },
+    "D2@0.0161": {
+     "below_count": 89.12900322960638,
+     "below_value": 8.64597930060502,
+     "P1": [
+      89.13,
+      8.65
+     ],
+     "match": true
+    },
+    "D2@1": {
+     "below_count": 98.47570973945393,
+     "below_value": 31.042119439151065,
+     "P1": [
+      98.48,
+      31.04
+     ],
+     "match": true
+    }
+   },
+   "pass": true
+  },
+  "six_busy": {
+   "s1b_bins_match": {
+    "StableEnrich": true,
+    "OneSource": true,
+    "CoinMarketCap": true,
+    "StableApify": true,
+    "Exa": true,
+    "CoinStats": true
+   },
+   "revenue": 1536.7264,
+   "paper": 1536.73,
+   "revenue_match": true,
+   "pass_": true
+  },
+  "six_quiet": {
+   "revenue": 778.0894,
+   "paper": 778.09,
+   "revenue_match": true
+  }
+ },
+ "all": {
+  "median": {
+   "n_sellers": 289,
+   "n_sales": 1153924,
+   "revenue_usdc": 108353.56772,
+   "cells": {
+    "D2@0.010": {
+     "c_usd": 0.008584246591783383,
+     "n_ge": 188161,
+     "value_ge_usdc": 106127.274637,
+     "count_share": 16.30618654261459,
+     "value_share": 97.94534399757556,
+     "seller_count_share": {
+      "n": 289,
+      "q1": 4.615384615384615,
+      "median": 45.45454545454545,
+      "q3": 100.0
+     },
+     "seller_value_share": {
+      "n": 289,
+      "q1": 30.45298819946707,
+      "median": 94.22434367541766,
+      "q3": 100.0
+     },
+     "sellers_all_ge": 89,
+     "sellers_none_ge": 52
+    },
+    "D1@0.010": {
+     "c_usd": 0.004011515217921642,
+     "n_ge": 259430,
+     "value_ge_usdc": 106542.859824,
+     "count_share": 22.482416519632142,
+     "value_share": 98.32888945504858,
+     "seller_count_share": {
+      "n": 289,
+      "q1": 23.61111111111111,
+      "median": 88.88888888888889,
+      "q3": 100.0
+     },
+     "seller_value_share": {
+      "n": 289,
+      "q1": 83.91608391608392,
+      "median": 99.68354430379746,
+      "q3": 100.0
+     },
+     "sellers_all_ge": 127,
+     "sellers_none_ge": 35
+    },
+    "D2@0.0161": {
+     "c_usd": 0.013778104798039382,
+     "n_ge": 109550,
+     "value_ge_usdc": 105332.455963,
+     "count_share": 9.493692825524038,
+     "value_share": 97.2118022317392,
+     "seller_count_share": {
+      "n": 289,
+      "q1": 0.0,
+      "median": 13.698630136986301,
+      "q3": 56.37883008356546
+     },
+     "seller_value_share": {
+      "n": 289,
+      "q1": 0.0,
+      "median": 68.01007556675063,
+      "q3": 96.63742438082762
+     },
+     "sellers_all_ge": 36,
+     "sellers_none_ge": 84
+    },
+    "D2@1": {
+     "c_usd": 0.8515218899021834,
+     "n_ge": 29977,
+     "value_ge_usdc": 97141.246819,
+     "count_share": 2.5978313996415707,
+     "value_share": 89.65209809244664,
+     "seller_count_share": {
+      "n": 289,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0
+     },
+     "seller_value_share": {
+      "n": 289,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.0
+     },
+     "sellers_all_ge": 4,
+     "sellers_none_ge": 237
+    }
+   }
+  },
+  "busy": {
+   "n_sellers": 178,
+   "n_sales": 762322,
+   "revenue_usdc": 24502.855019,
+   "cells": {
+    "D2@0.010": {
+     "c_usd": 0.008584246591783383,
+     "n_ge": 151179,
+     "value_ge_usdc": 23084.76457,
+     "count_share": 19.831383588562314,
+     "value_share": 94.21255013793133,
+     "seller_count_share": {
+      "n": 178,
+      "q1": 8.067375886524824,
+      "median": 75.95709570957095,
+      "q3": 100.0
+     },
+     "seller_value_share": {
+      "n": 178,
+      "q1": 46.65482574367556,
+      "median": 98.29041782291628,
+      "q3": 100.0
+     },
+     "sellers_all_ge": 71,
+     "sellers_none_ge": 27
+    },
+    "D1@0.010": {
+     "c_usd": 0.004011515217921642,
+     "n_ge": 190581,
+     "value_ge_usdc": 23304.662461,
+     "count_share": 25.00006558908178,
+     "value_share": 95.10998797050019,
+     "seller_count_share": {
+      "n": 178,
+      "q1": 17.585520517833448,
+      "median": 99.42986782971899,
+      "q3": 100.0
+     },
+     "seller_value_share": {
+      "n": 178,
+      "q1": 81.23601789709171,
+      "median": 99.99698905156184,
+      "q3": 100.0
+     },
+     "sellers_all_ge": 88,
+     "sellers_none_ge": 14
+    },
+    "D2@0.0161": {
+     "c_usd": 0.013778104798039382,
+     "n_ge": 82872,
+     "value_ge_usdc": 22384.343246,
+     "count_share": 10.870996770393614,
+     "value_share": 91.35402069939498,
+     "seller_count_share": {
+      "n": 178,
+      "q1": 0.0,
+      "median": 14.241878460409579,
+      "q3": 80.41125541125541
+     },
+     "seller_value_share": {
+      "n": 178,
+      "q1": 0.0,
+      "median": 76.94118819679395,
+      "q3": 99.63781580387752
+     },
+     "sellers_all_ge": 34,
+     "sellers_none_ge": 55
+    },
+    "D2@1": {
+     "c_usd": 0.8515218899021834,
+     "n_ge": 11620,
+     "value_ge_usdc": 16896.649498,
+     "count_share": 1.5242902605460684,
+     "value_share": 68.95788056084893,
+     "seller_count_share": {
+      "n": 178,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 0.2658868316013434
+     },
+     "seller_value_share": {
+      "n": 178,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 7.352969415660474
+     },
+     "sellers_all_ge": 2,
+     "sellers_none_ge": 126
+    }
+   }
+  }
+ },
+ "six": {
+  "median": {
+   "StableEnrich": {
+    "n_sales": 31237,
+    "revenue_usdc": 1134.6576,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 29806,
+      "value_ge_usdc": 1131.7956,
+      "count_share": 95.41889426001217,
+      "value_share": 99.74776531704366
+     },
+     "D1@0.010": {
+      "n_ge": 29806,
+      "value_ge_usdc": 1131.7956,
+      "count_share": 95.41889426001217,
+      "value_share": 99.74776531704366
+     },
+     "D2@0.0161": {
+      "n_ge": 10408,
+      "value_ge_usdc": 930.0416,
+      "count_share": 33.319460895732625,
+      "value_share": 81.9667184179615
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "OneSource": {
+    "n_sales": 22909,
+    "revenue_usdc": 81.223,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 3188,
+      "value_ge_usdc": 31.88,
+      "count_share": 13.915928237810467,
+      "value_share": 39.24996614259508
+     },
+     "D1@0.010": {
+      "n_ge": 7440,
+      "value_ge_usdc": 57.571,
+      "count_share": 32.47631935047362,
+      "value_share": 70.88016941014244
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinMarketCap": {
+    "n_sales": 163,
+    "revenue_usdc": 1.63,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 163,
+      "value_ge_usdc": 1.63,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D1@0.010": {
+      "n_ge": 163,
+      "value_ge_usdc": 1.63,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "StableApify": {
+    "n_sales": 54,
+    "revenue_usdc": 0.625,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 53,
+      "value_ge_usdc": 0.62,
+      "count_share": 98.14814814814815,
+      "value_share": 99.2
+     },
+     "D1@0.010": {
+      "n_ge": 54,
+      "value_ge_usdc": 0.625,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 1,
+      "value_ge_usdc": 0.1,
+      "count_share": 1.8518518518518519,
+      "value_share": 16.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "Exa": {
+    "n_sales": 267,
+    "revenue_usdc": 0.267,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D1@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinStats": {
+    "n_sales": 28,
+    "revenue_usdc": 0.028,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D1@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "six": {
+    "n_sales": 54658,
+    "revenue_usdc": 1218.4306,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 33210,
+      "value_ge_usdc": 1165.9256,
+      "count_share": 60.7596326246844,
+      "value_share": 95.69076810776092
+     },
+     "D1@0.010": {
+      "n_ge": 37463,
+      "value_ge_usdc": 1191.6216,
+      "count_share": 68.54074426433459,
+      "value_share": 97.79971054568065
+     },
+     "D2@0.0161": {
+      "n_ge": 10409,
+      "value_ge_usdc": 930.1416,
+      "count_share": 19.04387280910388,
+      "value_share": 76.33931715109584
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   }
+  },
+  "busy": {
+   "StableEnrich": {
+    "n_sales": 38369,
+    "revenue_usdc": 1458.9044,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 37912,
+      "value_ge_usdc": 1457.9904,
+      "count_share": 98.80893429591598,
+      "value_share": 99.9373502472129
+     },
+     "D1@0.010": {
+      "n_ge": 37912,
+      "value_ge_usdc": 1457.9904,
+      "count_share": 98.80893429591598,
+      "value_share": 99.9373502472129
+     },
+     "D2@0.0161": {
+      "n_ge": 23441,
+      "value_ge_usdc": 1297.8104,
+      "count_share": 61.093591180379995,
+      "value_share": 88.95787825439419
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "OneSource": {
+    "n_sales": 7194,
+    "revenue_usdc": 30.906,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 273,
+      "value_ge_usdc": 2.73,
+      "count_share": 3.7948290241868223,
+      "value_share": 8.83323626480295
+     },
+     "D1@0.010": {
+      "n_ge": 3498,
+      "value_ge_usdc": 21.375,
+      "count_share": 48.62385321100918,
+      "value_share": 69.16132789749564
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinMarketCap": {
+    "n_sales": 4362,
+    "revenue_usdc": 43.62,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 4362,
+      "value_ge_usdc": 43.62,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D1@0.010": {
+      "n_ge": 4362,
+      "value_ge_usdc": 43.62,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "StableApify": {
+    "n_sales": 193,
+    "revenue_usdc": 2.995,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 190,
+      "value_ge_usdc": 2.98,
+      "count_share": 98.44559585492227,
+      "value_share": 99.49916527545909
+     },
+     "D1@0.010": {
+      "n_ge": 193,
+      "value_ge_usdc": 2.995,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 12,
+      "value_ge_usdc": 1.2,
+      "count_share": 6.217616580310881,
+      "value_share": 40.06677796327212
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "Exa": {
+    "n_sales": 235,
+    "revenue_usdc": 0.235,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D1@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinStats": {
+    "n_sales": 45,
+    "revenue_usdc": 0.066,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D1@0.010": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "six": {
+    "n_sales": 50398,
+    "revenue_usdc": 1536.7264,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 42737,
+      "value_ge_usdc": 1507.3204,
+      "count_share": 84.79899996031588,
+      "value_share": 98.08645182382499
+     },
+     "D1@0.010": {
+      "n_ge": 45965,
+      "value_ge_usdc": 1525.9804,
+      "count_share": 91.20401603238224,
+      "value_share": 99.3007213255398
+     },
+     "D2@0.0161": {
+      "n_ge": 23453,
+      "value_ge_usdc": 1299.0104,
+      "count_share": 46.535576808603516,
+      "value_share": 84.53101345821872
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   }
+  },
+  "quiet": {
+   "StableEnrich": {
+    "n_sales": 27866,
+    "revenue_usdc": 726.4314,
+    "cells": {
+     "D2@0.010": {
+      "exact": false,
+      "count_share": [
+       33.17304241728271,
+       97.59563625924065
+      ],
+      "value_share": [
+       78.6908990993506,
+       99.90767607237242
+      ],
+      "count_share_imputed": 95.29517485489912,
+      "value_share_imputed": 99.68204671903435
+     },
+     "D1@0.010": {
+      "exact": false,
+      "count_share": [
+       81.17419077011412,
+       100.0
+      ],
+      "value_share": [
+       97.10341458257449,
+       100.0
+      ],
+      "count_share_imputed": 95.29517485489912,
+      "value_share_imputed": 99.68204671903435
+     },
+     "D2@0.0161": {
+      "exact": false,
+      "count_share": [
+       10.406947534630016,
+       33.17304241728271
+      ],
+      "value_share": [
+       66.65843023856073,
+       78.6908990993506
+      ],
+      "count_share_imputed": 26.671219294022944,
+      "value_share_imputed": 75.86116642043159
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   },
+   "OneSource": {
+    "n_sales": 8329,
+    "revenue_usdc": 50.279,
+    "cells": {
+     "D2@0.010": {
+      "exact": false,
+      "count_share": [
+       11.357906111177812,
+       48.06099171569216
+      ],
+      "value_share": [
+       39.18136796674556,
+       91.38933153006225
+      ],
+      "count_share_imputed": 26.444577373000953,
+      "value_share_imputed": 59.62672337706119
+     },
+     "D1@0.010": {
+      "exact": false,
+      "count_share": [
+       19.13795173490215,
+       88.37795653739944
+      ],
+      "value_share": [
+       52.068583305157226,
+       98.0747429344259
+      ],
+      "count_share_imputed": 59.03719252025655,
+      "value_share_imputed": 85.81757219161635
+     },
+     "D2@0.0161": {
+      "exact": false,
+      "count_share": [
+       0.9364869732260775,
+       11.357906111177812
+      ],
+      "value_share": [
+       15.395485192625152,
+       39.18136796674556
+      ],
+      "count_share_imputed": NaN,
+      "value_share_imputed": NaN
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   },
+   "CoinMarketCap": {
+    "n_sales": 95,
+    "revenue_usdc": 0.95,
+    "cells": {
+     "D2@0.010": {
+      "exact": true,
+      "count_share": [
+       100.0,
+       100.0
+      ],
+      "value_share": [
+       100.0,
+       100.0
+      ],
+      "count_share_imputed": 100.0,
+      "value_share_imputed": 100.0
+     },
+     "D1@0.010": {
+      "exact": true,
+      "count_share": [
+       100.0,
+       100.0
+      ],
+      "value_share": [
+       100.0,
+       100.0
+      ],
+      "count_share_imputed": 100.0,
+      "value_share_imputed": 100.0
+     },
+     "D2@0.0161": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   },
+   "StableApify": {
+    "n_sales": 26,
+    "revenue_usdc": 0.24,
+    "cells": {
+     "D2@0.010": {
+      "exact": false,
+      "count_share": [
+       46.15384615384615,
+       100.0
+      ],
+      "value_share": [
+       49.92666666666667,
+       100.0
+      ],
+      "count_share_imputed": 98.29059829059828,
+      "value_share_imputed": 99.13793103448276
+     },
+     "D1@0.010": {
+      "exact": false,
+      "count_share": [
+       88.46153846153847,
+       100.0
+      ],
+      "value_share": [
+       94.98625,
+       100.0
+      ],
+      "count_share_imputed": 100.0,
+      "value_share_imputed": 100.0
+     },
+     "D2@0.0161": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   },
+   "Exa": {
+    "n_sales": 178,
+    "revenue_usdc": 0.178,
+    "cells": {
+     "D2@0.010": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D1@0.010": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D2@0.0161": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   },
+   "CoinStats": {
+    "n_sales": 11,
+    "revenue_usdc": 0.011,
+    "cells": {
+     "D2@0.010": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D1@0.010": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D2@0.0161": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   },
+   "six": {
+    "n_sales": 36505,
+    "revenue_usdc": 778.0894,
+    "cells": {
+     "D2@0.010": {
+      "exact": false,
+      "count_share": [
+       28.207094918504314,
+       85.79646623750172
+      ],
+      "value_share": [
+       76.13588155808317,
+       99.33310645280606
+      ],
+      "count_share_imputed": 79.10718485144224,
+      "value_share_imputed": 97.06973759197473
+     },
+     "D1@0.010": {
+      "exact": false,
+      "count_share": [
+       66.65388302972195,
+       96.83057115463635
+      ],
+      "value_share": [
+       94.17262643598538,
+       99.85130243388484
+      ],
+      "count_share_imputed": 86.54475055493317,
+      "value_share_imputed": 98.76241787279947
+     },
+     "D2@0.0161": {
+      "exact": false,
+      "count_share": [
+       8.157786604574715,
+       27.91398438570059
+      ],
+      "value_share": [
+       63.227755576672806,
+       75.99838784592104
+      ],
+      "count_share_imputed": NaN,
+      "value_share_imputed": NaN
+     },
+     "D2@1": {
+      "exact": true,
+      "count_share": [
+       0.0,
+       0.0
+      ],
+      "value_share": [
+       0.0,
+       0.0
+      ],
+      "count_share_imputed": 0.0,
+      "value_share_imputed": 0.0
+     }
+    }
+   }
+  }
+ },
+ "six_full": {
+  "median": {
+   "StableEnrich": {
+    "n_sales": 31237,
+    "revenue_usdc": 1134.6576,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 29806,
+      "value_ge_usdc": 1131.7956,
+      "count_share": 95.41889426001217,
+      "value_share": 99.74776531704366
+     },
+     "D1@0.010": {
+      "n_ge": 29806,
+      "value_ge_usdc": 1131.7956,
+      "count_share": 95.41889426001217,
+      "value_share": 99.74776531704366
+     },
+     "D2@0.0161": {
+      "n_ge": 10408,
+      "value_ge_usdc": 930.0416,
+      "count_share": 33.319460895732625,
+      "value_share": 81.9667184179615
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "OneSource": {
+    "n_sales": 22909,
+    "revenue_usdc": 81.223,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 3188,
+      "value_ge_usdc": 31.88,
+      "count_share": 13.915928237810467,
+      "value_share": 39.24996614259508
+     },
+     "D1@0.010": {
+      "n_ge": 7440,
+      "value_ge_usdc": 57.571,
+      "count_share": 32.47631935047362,
+      "value_share": 70.88016941014244
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinMarketCap": {
+    "n_sales": 163,
+    "revenue_usdc": 1.63,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 163,
+      "value_ge_usdc": 1.63,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D1@0.010": {
+      "n_ge": 163,
+      "value_ge_usdc": 1.63,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "StableApify": {
+    "n_sales": 54,
+    "revenue_usdc": 0.625,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 53,
+      "value_ge_usdc": 0.62,
+      "count_share": 98.14814814814815,
+      "value_share": 99.2
+     },
+     "D1@0.010": {
+      "n_ge": 54,
+      "value_ge_usdc": 0.625,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 1,
+      "value_ge_usdc": 0.1,
+      "count_share": 1.8518518518518519,
+      "value_share": 16.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "Exa": {
+    "n_sales": 2914,
+    "revenue_usdc": 17.579,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 53,
+      "value_ge_usdc": 0.649,
+      "count_share": 1.818805765271105,
+      "value_share": 3.691905114056545
+     },
+     "D1@0.010": {
+      "n_ge": 2290,
+      "value_ge_usdc": 16.285,
+      "count_share": 78.58613589567605,
+      "value_share": 92.63894419477786
+     },
+     "D2@0.0161": {
+      "n_ge": 5,
+      "value_ge_usdc": 0.074,
+      "count_share": 0.17158544955387783,
+      "value_share": 0.4209568234825644
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinStats": {
+    "n_sales": 30,
+    "revenue_usdc": 0.108,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 2,
+      "value_ge_usdc": 0.08,
+      "count_share": 6.666666666666667,
+      "value_share": 74.07407407407408
+     },
+     "D1@0.010": {
+      "n_ge": 2,
+      "value_ge_usdc": 0.08,
+      "count_share": 6.666666666666667,
+      "value_share": 74.07407407407408
+     },
+     "D2@0.0161": {
+      "n_ge": 2,
+      "value_ge_usdc": 0.08,
+      "count_share": 6.666666666666667,
+      "value_share": 74.07407407407408
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "six": {
+    "n_sales": 57307,
+    "revenue_usdc": 1235.8226,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 33265,
+      "value_ge_usdc": 1166.6546,
+      "count_share": 58.04700996387876,
+      "value_share": 94.40308018319134
+     },
+     "D1@0.010": {
+      "n_ge": 39755,
+      "value_ge_usdc": 1207.9866,
+      "count_share": 69.37197899035021,
+      "value_share": 97.74757315491722
+     },
+     "D2@0.0161": {
+      "n_ge": 10416,
+      "value_ge_usdc": 930.2956,
+      "count_share": 18.17579004310119,
+      "value_share": 75.27743868739736
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   }
+  },
+  "busy": {
+   "StableEnrich": {
+    "n_sales": 38380,
+    "revenue_usdc": 1475.4044,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 37923,
+      "value_ge_usdc": 1474.4904,
+      "count_share": 98.80927566440855,
+      "value_share": 99.93805088286302
+     },
+     "D1@0.010": {
+      "n_ge": 37923,
+      "value_ge_usdc": 1474.4904,
+      "count_share": 98.80927566440855,
+      "value_share": 99.93805088286302
+     },
+     "D2@0.0161": {
+      "n_ge": 23452,
+      "value_ge_usdc": 1314.3104,
+      "count_share": 61.104742053152684,
+      "value_share": 89.0813664375679
+     },
+     "D2@1": {
+      "n_ge": 11,
+      "value_ge_usdc": 16.5,
+      "count_share": 0.0286607608129234,
+      "value_share": 1.118337453785552
+     }
+    }
+   },
+   "OneSource": {
+    "n_sales": 7194,
+    "revenue_usdc": 30.906,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 273,
+      "value_ge_usdc": 2.73,
+      "count_share": 3.7948290241868223,
+      "value_share": 8.83323626480295
+     },
+     "D1@0.010": {
+      "n_ge": 3498,
+      "value_ge_usdc": 21.375,
+      "count_share": 48.62385321100918,
+      "value_share": 69.16132789749564
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinMarketCap": {
+    "n_sales": 4362,
+    "revenue_usdc": 43.62,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 4362,
+      "value_ge_usdc": 43.62,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D1@0.010": {
+      "n_ge": 4362,
+      "value_ge_usdc": 43.62,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "StableApify": {
+    "n_sales": 193,
+    "revenue_usdc": 2.995,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 190,
+      "value_ge_usdc": 2.98,
+      "count_share": 98.44559585492227,
+      "value_share": 99.49916527545909
+     },
+     "D1@0.010": {
+      "n_ge": 193,
+      "value_ge_usdc": 2.995,
+      "count_share": 100.0,
+      "value_share": 100.0
+     },
+     "D2@0.0161": {
+      "n_ge": 12,
+      "value_ge_usdc": 1.2,
+      "count_share": 6.217616580310881,
+      "value_share": 40.06677796327212
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "Exa": {
+    "n_sales": 2577,
+    "revenue_usdc": 16.845,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 67,
+      "value_ge_usdc": 1.03,
+      "count_share": 2.5999223903764066,
+      "value_share": 6.1145740575838525
+     },
+     "D1@0.010": {
+      "n_ge": 2263,
+      "value_ge_usdc": 16.397,
+      "count_share": 87.81528909584789,
+      "value_share": 97.3404571089344
+     },
+     "D2@0.0161": {
+      "n_ge": 47,
+      "value_ge_usdc": 0.793,
+      "count_share": 1.8238261544431509,
+      "value_share": 4.707628376372811
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "CoinStats": {
+    "n_sales": 53,
+    "revenue_usdc": 0.386,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 8,
+      "value_ge_usdc": 0.32,
+      "count_share": 15.09433962264151,
+      "value_share": 82.90155440414507
+     },
+     "D1@0.010": {
+      "n_ge": 8,
+      "value_ge_usdc": 0.32,
+      "count_share": 15.09433962264151,
+      "value_share": 82.90155440414507
+     },
+     "D2@0.0161": {
+      "n_ge": 8,
+      "value_ge_usdc": 0.32,
+      "count_share": 15.09433962264151,
+      "value_share": 82.90155440414507
+     },
+     "D2@1": {
+      "n_ge": 0,
+      "value_ge_usdc": 0.0,
+      "count_share": 0.0,
+      "value_share": 0.0
+     }
+    }
+   },
+   "six": {
+    "n_sales": 52759,
+    "revenue_usdc": 1570.1564,
+    "cells": {
+     "D2@0.010": {
+      "n_ge": 42823,
+      "value_ge_usdc": 1525.1704,
+      "count_share": 81.16719422278663,
+      "value_share": 97.13493509309009
+     },
+     "D1@0.010": {
+      "n_ge": 48247,
+      "value_ge_usdc": 1559.1974,
+      "count_share": 91.44790462290794,
+      "value_share": 99.30204405115312
+     },
+     "D2@0.0161": {
+      "n_ge": 23519,
+      "value_ge_usdc": 1316.6234,
+      "count_share": 44.578176235334254,
+      "value_share": 83.85300980208086
+     },
+     "D2@1": {
+      "n_ge": 11,
+      "value_ge_usdc": 16.5,
+      "count_share": 0.02084952330408082,
+      "value_share": 1.0508507305386903
+     }
+    }
+   }
+  }
+ }
+}

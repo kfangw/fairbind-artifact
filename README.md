@@ -35,6 +35,12 @@ filling cost (`C32/W6_basefee`), the out-of-window seller-epoch multiple and thr
 of a published settlement profile on the bond replay (`C34_ASP-replay`). Each folder has a short `README.md`
 (section 3.7).
 
+`measurement/docs/11_journal/C35_fixed-delay-replay/` and `C35_duty-cost-share/` give the locked money and holding
+time of a fixed payment delay after settlement on the bond replay, and the share of sales worth at least the
+buyer's duty cost; each has its calculation rules (`calc-rules.md`) and a `README.md` with the results (section 3.8).
+`measurement/docs/11_journal/F/seller-tiers/` holds the tier assignment of the thirteen classified Base sellers and
+the script that recomputes their tier shares (section 3.8).
+
 ## 2. Requirements
 
 * Foundry 1.7.1 as recorded (`forge`, `anvil`, `cast`; 1.5.1 also builds and runs the tests of section 3.1); Foundry downloads solc 0.8.24.
@@ -194,6 +200,32 @@ the base-fee rule against two on-chain block pairs and the eight cells of the ma
 lists or the raw daily files (section 4), whose commands are in the folders' `README.md`. With them, `w3_compare.json`,
 `w3_sellers_<window>.csv`, `w3_daily_<window>.json`, `c34_asp.json` and `c34_sellers_<window>.csv` are reproduced;
 the JSON files differ only in the recorded script fingerprints and in the numpy version they record.
+
+### 3.8 Fixed-delay replay, duty-cost share, seller tiers and seller sets
+
+```sh
+cd measurement/docs/11_journal
+(cd F/seller-tiers && python3 -I tier_shares.py > /tmp/tier_shares.md)                                   # < 1 s
+(cd C35_duty-cost-share && python3 -I c35_duty_share.py --lists $RAW/lists --out /tmp/c35d)             # 25 s
+(cd C35_fixed-delay-replay && python3 -I c35_fixed.py --raw $RAW --replayer ../../../../code/replay --out /tmp/c35f)  # 40 s
+```
+
+Expected: `tier_shares.md` equals `F/seller-tiers/results/tier_shares.md` byte for byte and the script exits 0. The
+two C35 scripts need the R12 sale lists (and, for `c35_fixed.py`, the R12 replay outputs) of section 4; with them,
+`c35_sellers_<window>.csv` of both folders are reproduced byte for byte, and `c35_results.json` and `c35_fixed.json`
+differ only in the recorded script fingerprints (and the environment block, with another Python or numpy). Both
+JSON files carry `checks` or `problems` entries that tie their inputs to the P1 and R12 results.
+
+The seller sets of the replays come from files already in the bundle. The 415 replayed addresses are the 400 Base
+recipients with the most settlements from 8 to 22 September 2026,
+`replay-inputs/11_journal/J9/in/ref/sellers_dune_top400.csv`, and 15 addresses chosen by the rule of group `C` in
+`replay-inputs/11_journal/J9/in/conditions_base_busy.json` (five nearest to each of the 90th, 75th and 50th
+percentiles of the mean rate over the 4,400 addresses of `replay-inputs/11_journal/J9/in/ref/sellers_dune_all4400.csv`).
+The resulting list, with each address's groups, is `addresses_observed.csv` of the replayer outputs
+(`replay-inputs/11_journal/J9/out/.../condition-01-seed-0/` for the busy window,
+`replay-inputs/05_run-evidence/design2/median-period/seed0/.../condition-01-seed-0/` for the median window). The R12
+main set S1r is the `in_S1r` column of `measurement/docs/11_journal/R12/results/r12_addr_<window>.csv` (289 and 178
+sellers with revenue).
 
 ## 4. Raw data
 
