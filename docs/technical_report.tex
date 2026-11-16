@@ -1,0 +1,1185 @@
+\documentclass[10pt,a4paper]{article}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+\pdfinfo{/Producer () /Creator ()}
+\usepackage[a4paper,margin=0.75in]{geometry}
+
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage[hyphens]{url}
+
+\newcommand{\vmax}{V}
+\newcommand{\Thold}{T_{\mathrm{hold}}}
+\newcommand{\Fmax}{F_{\max}}
+\newcommand{\kS}{\kappa_{\Sigma}}
+\newcommand{\Dw}{\bar D_w}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ist}{i^{*}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\one}{\mathbf{1}}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S-\arabic{table}}
+
+\theoremstyle{plain}
+\newtheorem{slemma}{Lemma}
+\renewcommand{\theslemma}{S\arabic{slemma}}
+\theoremstyle{remark}
+\newtheorem{sremark}{Remark}
+\renewcommand{\thesremark}{S\arabic{sremark}}
+
+\setlist{itemsep=1pt,topsep=2pt,parsep=0pt}
+\setlist[itemize]{label=$\bullet$}
+
+\title{FairBind: proofs, derivations and additional results}
+\author{Hwangwook Kim and Sooyong Park\\ Sogang University}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+{\raggedright
+\paragraph{Scope.} This independent report accompanies the FairBind ICOW3 manuscript. The manuscript states the theorems, assumptions and proof spine. This report supplies full proofs, derivations, additional results and replay instructions. Unprefixed numbers refer to the manuscript. S-prefixed numbering is retained for stable artifact citations; S2 and S9 are unused. Condensed formal statements are in manuscript Appendix A.
+
+Code and input manifests: \url{https://github.com/kfangw/fairbind-artifact}. Report path: \url{docs/technical_report.pdf}.\par}
+
+\paragraph{Notation.} As in manuscript Appendix A: let $V(s)$ be the cap in force at block $s$, and $v_i$, $s_i$ the value and settlement block of the $i$-th fraudulent sale. For an event $t$, the \emph{full history} $\cA_t$ is the chain record, the internal state of the seller and its colluders, every decision any party has made, and every random value fixed through $t$; $\theta_i$ is the event just before the sampling value of sale $i$'s epoch is fixed. A block is \emph{unpaused} for an account if no case of it waits in that block under rule (vi) or queues under rule (viii). Let $\kS$ be the keeper delays summed on one path (at most 499 blocks, assumed; Table~\ref{atab:profile}), and $\Fmax$ the deadline of J3. The full proof in Section~S3 uses $\Delta_i$ (coupled detection events), $\cK_i=\cA_{\theta_i}\vee\sigma(\one_{\Delta_j}:j<i)$, $\ist=\inf\{i:\Delta_i\}$, $N_i=\one_{\Delta_i}$, anchoring types L, O, S, the events $\cS_i$ (sale $i$ is drawn), $\cR_i$ (its epoch is not refunded) and $\cB_i=\bigcap_{j<i}\Delta_j^c$, and the coins $W_{i,k}$ with indicators $\xi_{i,k}$, $\xi_i$. Other symbols are those of the paper: the cap $V$, the largest cap of the episode $\bar V$, the detection floor $p_0$, the deduction $b$, the wrongful-failure bound $w$, the error rates $\alpha$, $\beta$, $c$ and honest share $h$ of Table~\ref{atab:error}, the hold $\Thold$, the longest judgment path $L_F$, the per-call keeper delay $\kappa$, the waiting margin $\Dw$, the released fraudulent proceeds $X$ and the in-cap revenue rate $R$.
+
+%=====================================================================
+\section{Evaluation Data and Additional Results}
+\label{sec:moved}
+
+This section gives the data and the replayer behind Section~5 and the results that its tables leave out. Tables~S-1 to S-3 give the columns and rows of Tables~2 and 3 and of Section~S10 that the paper does not show, with unchanged values; each caption names the table it extends. Each number below is stated with its basis: replay or closed form, the hold (the replay's hold of 31,073 blocks or the hold of 34,673 blocks), the freeze (narrow or full) and the population. The deterrence replays, with their replicates, standard errors and closed forms under both freezes, are in Section~\ref{sec:s5}.
+
+\subsection{Data and Replayer}
+\label{sec:data}
+
+\emph{Data window.} Each chain has one 21-day window, 2026-07-24 to 2026-08-13 UTC. On Base it is the 14-day window of median settlement count among the 140 starting from 2026-05-01 to 2026-09-17, plus the 7 days before. The Base record is the successful USDC \texttt{transferWithAuthorization} calls of 20 addresses that we read as one unnamed x402 facilitator's rotating signing keys: among the busiest senders of such calls in the 14 days to 2026-09-22, each with at least 30,000 calls, to 500 to 1,000 recipients from at least 3,000 payers (67.5\% of such events). Polygon and Solana records come from published facilitator address lists.
+
+\emph{Hold.} The replays use 31,073 Base blocks and the corresponding tiers; multiplier 1 allows 3,245 settlements with the stated rate limit. FairBind's hold is 34,673 blocks; held proceeds and $\lambda$ (expected wrongful failures, Section~\ref{sec:s3}) scale to it by 1.116.
+
+\emph{Replayer.} The replayer runs at $\vmax\in\{0.1,0.2,1\}$ on Base, Polygon (1.5 s blocks) and Solana (0.4216 s). Base replays 415 of a September address list of 4,400 receiving addresses (the 400 busiest plus 15): 414 are anchorable, 283 have in-cap revenue in the window, and 132 have none and still post $b$. The top-1\% sellers are the top 1\% of the ranking population, 44 of the 4,400 on Base; Polygon and Solana are ranked by the window itself. A comparison row picks the tier from the 14 days before the window (tier 10 if absent). The replayer, its scripts, inputs and recorded outputs are in the public code repository given in footnote~1 of the paper. Its README (Section~3) lists the command that reruns each replay setting and recomputes each table. The raw daily settlement files (about 1.1~GB) are not redistributed; the repository's \texttt{data-manifests/} holds the queries, per-file manifests and checksums with which to fetch and check them.
+
+\subsection{Replay Conventions}
+\label{sec:dep}
+
+The replay uses the artifact's address groups and within-block ordering, and a Solana slot time of 0.4216 s. Derived cost rows use the formulas in Section~\ref{sec:s3}; deterrence settings are in Section~\ref{sec:s5}.
+
+\subsection{Polygon and Solana}
+\label{sec:other}
+
+\begin{table}[!htbp]
+\centering
+\caption{Replay of the median window on Polygon and Solana at $\vmax=0.2$ USDC and the replay's hold of 31,073 blocks, smallest zero-rejection tier per address, seed 0 (extends Table~\ref{atab:eval}, which gives the Base column).}
+\label{tab:S1}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright}p{4.6cm}rr@{}}
+\toprule
+& Polygon & Solana \\
+\midrule
+Settlements in window & 3,912,431 & 444,754 \\
+Replayed addresses (top-1\% sellers); their share of settlements & 53 (1); 100.0\% & 410 (18); 90.7\% \\
+Settlements within the cap, all window addresses, by count / by value & 99.9\% / 33.3\% & 99.3\% / 10.6\% \\
+Prepaid bond sum (USDC): rule; implemented contract ($n\,b$ per seller) & 39.26; 102.96 & 303.70; 363.70 \\
+In-cap sales rejected with the tier of the 14 days before the window, share of all attempts & 0.3\% & 27.6\% \\
+Held proceeds, time average (USDC); scaled to 34,673 blocks & 1,340.5; 1,495.8 & 291.5; 325.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These replays are exploratory and use seed 0 and the replay's hold (Table~S-1). With the tier of the 14 days before the window, in-cap sales rejected are 0.3\% of all attempts on Polygon and 27.6\% on Solana, against 3.3\% on Base (Table~\ref{atab:eval}). Polygon's in-cap revenue comes almost entirely from one address whose multiplier, 87, is above the one-transaction limit (Section~5.4); Solana has no such address. Under the full freeze, replayed at 31,073 blocks at $w=0.015$, all Polygon sellers lose 1.055 and all Solana sellers 0.689 of their in-cap revenue (Table~S-3).
+
+\subsection{All Base Addresses: Money Locked}
+\label{sec:movedres}
+
+\begin{table}[!htbp]
+\centering
+\caption{Money locked and cases judged to deter fraud at $\vmax=0.2$ USDC over all 415 replayed Base addresses (extends Table~2, which gives the 414 anchorable addresses). Prepaid and Locked in USDC; Judged in expected cases; Rate: what must be known in advance about the seller's rate. (c): an idealized reference that knows each seller's mean rate exactly.}
+\label{tab:S2}
+\scriptsize
+\setlength{\tabcolsep}{1.6pt}
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+ & \multicolumn{3}{c}{All 415 addresses} & \\
+\cmidrule(lr){2-4}
+Option & Prepaid & Locked & Judged & Rate \\
+\midrule
+\textbf{(a) FairBind} & 307.41 & 2,783.25 & 322,368 & no \\
+\midrule
+(b) Judge all & 307.41 & 2,783.25 & 4,385,610 & no \\
+(c) Known rate & 2,480.19 & 2,480.19 & 322,368 & yes \\
+(d) Ladder, count & 232,535 & 232,535 & 322,368 & tier \\
+(d$'$) Ladder, value & 20,417 & 20,417 & 322,368 & tier \\
+(e) Bucket, sales & 198,757 & 198,757 & -- & forecast \\
+(e$'$) Bucket, USDC & 7,056 & 7,056 & -- & forecast \\
+\bottomrule
+\multicolumn{5}{@{}p{8.6cm}@{}}{--: not computed. Rows (e), (e$'$) reject 2.9\%, 2.6\% of evaluated sales (2.8\%, 3.9\% of value) over all addresses and 1.0\%, 1.1\% (2.9\%, 6.7\%) on anchorable ones.}
+\end{tabular}
+\end{table}
+
+\emph{The dominant address.} The one Base address that is not anchorable, the \emph{dominant address}, carries 0.887 of the replayed in-cap revenue (Table~S-3) and dominates the Base loss. It received 3,319,274 of the window's Base settlements (73\%), its in-cap sales arrive at about 6,490 per hour at a mean of 0.0175 USDC, and we have not identified its service (189 distinct payers in the September address list). Its multiplier is above the one-transaction limit (Section~5.4), and it loses more than its in-cap revenue at the two larger values of $w$ (under the full freeze, at both values reported).
+
+\emph{Money locked over all 415 addresses.} With held proceeds from the replay scaled to the hold and row (c) in closed form (Table~S-2), FairBind locks 12\% more than row (c) ($2{,}783.25/2{,}480.19=1.122$, Section~\ref{sec:s3}), because its hold exceeds $L_F$ by the keeper and waiting margins. The dominant address holds 79\% of FairBind's locked money, $(2{,}783.25-585.70)/2{,}783.25=0.790$ from Tables~2 and S-2.
+
+\emph{The no-hold rows of Table~S-2.} Sized by the allowed tiers, a no-hold bond over all addresses is 20,417 USDC by value, row (d$'$), and 232,535 USDC by count, row (d) (closed form). Forecast buckets lock 2.5 to 165 times as much as FairBind ($7{,}056/2{,}783.25$ for row (e$'$) over all addresses; $96{,}698/585.70$ for row (e) on anchorable addresses) and still reject sales: over all addresses both rows reject more than the 1\% allowed on days 5 to 7, and row (e$'$) does so on anchorable addresses as well. Judging every sale, row (b), costs an honest seller $4.7w$ of revenue in closed form (Section~\ref{sec:s3}).
+
+\emph{Forecast buckets (rows (e) and (e$'$) of Tables~\ref{atab:more} and S-2).} Each seller gets a bucket of in-cap sales or USDC, initially full and refilled at a multiple of its forecast rate. The rate is estimated on days 1 to 4. One pair serves all sellers: the smallest multiple, with a capacity of 10, 137 or one hour of the rate, that rejects at most 1\% of sales on days 5 to 7. The rate is then re-estimated on days 1 to 7 and applied to days 8 to 21, the only days evaluated. Each seller's bond is $b$ plus what the bucket admits within $L_F$: $V$ times its capacity and refill, or for the USDC bucket the larger of $V$ and the capacity's value plus the refill.
+
+\subsection{Honest-Seller Loss over All Addresses and under the Full Freeze}
+\label{sec:loss}
+
+\begin{table}[!htbp]
+\centering
+\caption{Honest-seller loss as a revenue-weighted share of their in-cap revenue, at three values of $w$: all Base addresses, the dominant address and the other sellers under the rule's narrow freeze; the full-freeze variant, which the prototype applies; and Polygon and Solana (extends Table~3, which gives the anchorable narrow-freeze rows). Narrow freeze: replayed at 31,073 blocks (same at both holds); rows (a) to (e$'$): closed forms at $L_F$. Full freeze: replayed at 31,073 blocks unless 34,673 is stated.}
+\label{tab:S3}
+\scriptsize
+\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}>{\raggedright}p{3.7cm}rrrr@{}}
+\toprule
+ & Share of & \multicolumn{3}{c}{Loss, share of own in-cap} \\
+ & in-cap & \multicolumn{3}{c}{revenue, at $w$} \\
+\cmidrule(l){3-5}
+Sellers & revenue & 0.0015 & 0.004728 & 0.015 \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Narrow freeze (the rule)}} \\
+All Base addresses & 1 & 0.874 & 0.922 & 0.985 \\
+\quad (a), (c) to (e$'$): closed form at $L_F$ & & 0.908 & 0.942 & 1.010 \\
+\quad (b) judge all & & 0.007 & 0.022 & 0.071 \\
+\quad dominant address & 0.887 & 0.977 & 1.016 & 1.055 \\
+\quad the 247 others & 0.020 & 0.027 & 0.077 & 0.204 \\
+\midrule
+\emph{Full freeze (variant):} anchorable & & 0.168 & 0.404 & 0.715 \\
+\quad scaled to 34,673 blocks & & 0.18 & 0.43 & 0.74 \\
+\quad closed form at 34,673 blocks & & 0.153 & 0.374 & 0.678 \\
+\quad closed form, stall range of $w$ & \multicolumn{4}{r}{0.74 to 0.82} \\
+All Base addresses & & 0.910 & 0.948 & 1.017 \\
+\quad closed form at 34,673 blocks & & 0.909 & 0.945 & 1.013 \\
+\quad dominant address & & 1.006 & -- & 1.055 \\
+\quad other 35 top-1\% sellers & 0.093 & -- & -- & 0.796 \\
+\quad the 247 others & & -- & -- & 0.346 \\
+All Polygon; all Solana & & -- & -- & 1.055; 0.689 \\
+\bottomrule
+\multicolumn{5}{@{}p{8.4cm}@{}}{All Base at $w=0.015$: deductions 0.056; full-freeze closed form at 31,073 blocks 1.010. Dominant address: 3,270,832 in-cap sales. The no-hold rows (c) to (e$'$) share row (a)'s closed form at $L_F$ (same formula and span); FairBind's replay is lower because the replayer uses the no-appeal confirmation delay (no reviews or waits). --: not reported.}
+\end{tabular}
+\end{table}
+
+\emph{Narrow freeze, all Base addresses.} Over all Base addresses the narrow-freeze loss is near the whole in-cap revenue at every $w$, since the dominant address carries most of that revenue and loses about all of its own (Table~S-3). Replayed at 31,073 blocks (the same at both holds), all Base addresses lose 0.874, 0.922 and 0.985 of their in-cap revenue at $w=0.0015$, 0.004728 and 0.015. The dominant address loses 0.977, 1.016 and 1.055; the 247 other sellers listed in Table~S-3, with 0.020 of the in-cap revenue, lose 0.027, 0.077 and 0.204. In closed form at $L_F$, rows (a) and (c) to (e$'$) give 0.908, 0.942 and 1.010 over all Base addresses, and row (b) gives 0.007, 0.022 and 0.071. Deductions are 0.056 at $w=0.015$.
+
+\emph{Full freeze (the prototype's variant).} The full freeze costs anchorable sellers more at every $w$. Replayed at 31,073 blocks they lose 0.168, 0.404 and 0.715, and scaled to 34,673 blocks 0.18, 0.43 and 0.74 (scaling in Section~\ref{sec:s3}). The closed form at 34,673 blocks gives 0.153, 0.374 and 0.678 (Table~\ref{tab:cf}), and 0.74 to 0.82 over the stall range of $w$ of Table~\ref{atab:error}. Over all Base addresses the replay at 31,073 blocks gives 0.910, 0.948 and 1.017, and the closed form at 34,673 blocks gives 0.909, 0.945 and 1.013 (1.010 at 31,073 blocks). In the replay the dominant address loses 1.006 and 1.055 at the outer values of $w$; at $w=0.015$ the other 35 top-1\% sellers, with 0.093 of the in-cap revenue, lose 0.796 and the 247 others 0.346.
+
+\emph{The closed form and the spread of $\lambda$.} In the closed form a seller takes on average $\lambda$ wrongful failures in the $\Thold$ a freeze reaches back, $w$ times its expected cases in that span, and loses a frozen share of about $1-e^{-\lambda}$ plus deductions. $\lambda$ spans more than five orders of magnitude: on Base, 207 of the 283 addresses have $\lambda<0.01$ at $w=0.015$ and carry 0.3\% of the in-cap revenue.
+
+\subsection{Measured Judgment Error}
+\label{sec:measured}
+
+At the measured miss rate, the five-step product is 0.355, or 0.350 after the reported scaling (Table~\ref{tab:beta}). Substituting this lower floor gives the reported 0.57 USDC bound only if it satisfies J1 on every history and the remaining theorem premises hold; the measurement alone does not establish that floor. The miss rate comes from the data-API check of Section~S10.5, which returned FAIL on none of 3,000 honest responses from two exchanges, taken in 2,057 five-minute intervals from 30 September to 7 October 2026 (one-sided 95\% upper bound 0.10\%). Among wrong responses generated by rule, it rejected all 368 off by larger multiples of the tolerance and missed 10 of 90 at 1.05 times the tolerance and 1 of 125 at 1.25 times.
+
+\subsection{Prototype Measurements}
+\label{sec:proto}
+
+\emph{Scope of the prototype.} The prototype has caps, tiers, sampling by value, the deduction rule, the hold, checkpoint eligibility, the receipt list with both proofs and the eight rules of Section~3.5. It lacks checkpoint writing and redraw calls and has rules (i) and (ii) only while the block hash they use is available (256 blocks). It releases each held payment by its own call.
+
+\emph{One commitment per sale.} A measurement entry point, \texttt{settleLean}, stores one hash of each purchase record instead of the record itself and lowers the gas per sale from a median of 402,852 for \texttt{settle} to 177,442 (submission build, 16 sales of 0.25 USDC on one account, medians after the first sale). \texttt{settle} writes each purchase record (buyer, value, request and claims hashes, epoch and deadlines) to new storage slots, besides an idempotency-key slot, a used-nonce slot and the sampling rate. \texttt{settleLean} keeps every check and account update of \texttt{settle} (cap, rate limit, bond state, held balance, epoch count and retention) and stores instead the one hash, keyed by the idempotency key; the token's own nonce check replaces the used-nonce slot. Calls that read the record (sampling, cases, release, claims) would take it as calldata and check it against the hash; they are not rebuilt.
+
+\emph{Signature-judged cases.} A development branch of the prototype implements the signature-judged layer of Section~6 as one module; its ten unit tests and the rest of that branch's suite pass. On the optimized build a passing posting costs 210,387 to 218,190 transaction gas over receipt trees of 8 and 32 purchases and bodies of 72 and 252 bytes, about 0.0024 USD at the window's gas and ETH prices; the failing path costs 377,889 to 385,640 gas, a timeout 366,607 and the one-time rule registration 99,259. The figures exclude the L1 data fee of about 1.2 kB of calldata per posting. The worst path from an epoch's first block to a confirmed failure is 2,269 blocks on this layer against 8,180 on the verifier path. The layer has not run on a signed-source service, and its source signer is trusted for the value.
+
+Table~\ref{tab:proto} gives the exact values of the prototype measurements that Section~5.4 and Section~S10.6 round or state only once. Each value was measured, recorded or computed for those sections; only the two decoy figures appear, rounded, in Table~\ref{atab:example}. Extra gas over the x402 median is priced at the window's gas price and divided by the mean sale.
+
+\begin{table}[!htbp]
+\centering
+\caption{Prototype measurements with their exact values and where the paper uses them.}
+\label{tab:proto}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}>{\raggedright}p{8.2cm}r>{\raggedright\arraybackslash}p{5.2cm}@{}}
+\toprule
+Measurement & Exact value & Main text \\
+\midrule
+Gas of the prototype's \texttt{settle} (build before rules (i) and (vii)) & 395,642 & report only; Table~3 (extra \texttt{settle} gas) \\
+Median gas of 120 sampled x402 settlements of the window & 86,278 & Sec.~5.4 (``about 86,000'') \\
+Gas to anchor the worst-case list of 3,245 entries, computed from calldata & 8,307,150 & report only \\
+Entries one anchor transaction holds under a 30,000,000 gas limit & 11,742 & Sec.~5.4 (exact; multiplier at most 77) \\
+Entries one anchor transaction holds under a 16,777,216 gas limit & 6,562 & report only (multiplier at most 43) \\
+Entries an epoch adds per multiplier unit (one burst plus one epoch's refill) & 152 & report only \\
+Decoy cases per epoch that fill every honest verifier's capacity at the assumed honest share & 33 & Table~\ref{atab:example} (``about 33'') \\
+Refundable dispute deposits for those decoy cases (USDC) & 1,305 & Table~\ref{atab:example} (``about 1,300'') \\
+Median Base gas price of the window (gwei); ETH price used (USD) & 0.006; 1,890 & Sec.~5.4; Table~3 (exact) \\
+Gas of \texttt{settle}, submission build, median of 15 sales after the first & 402,852 & report only \\
+Gas of \texttt{settleLean} on the same build and sales & 177,442 & Sec.~5.4 (``about 177,000''); Table~3 (about 16\%) \\
+Gas of \texttt{releasePurchase}, submission build, median of two calls & 105,161 & Sec.~5.4 (``about 105,000''); Table~3 (about 18\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Capacity, Griefing and Alternatives}
+\label{sec:alternatives}
+
+This subsection gives the figures behind the paragraph on effects not covered by the theorem in Section~6 of the main text and the alternatives that Section~6 names.
+
+\emph{Decoy cases (Section~S10.6).} Rule (viii) closes the decoy path: eligibility reads checkpointed state only and a drawn verifier queues the case instead of being skipped, so decoys change only start blocks, which rule (vii) pauses (Lemma~3, Section~\ref{sec:decoy}). In the attack, a seller that knows an earlier epoch's verifier draws opens the cases assigned to honest verifiers early, within about five minutes or as its Sybil buyers' disputes. Under this version's rule (vii) a queued buyer dispute still pauses the seller's release clock, a griefing cost not evaluated; the extended version narrows rule (vii) to sampled cases.
+
+\emph{Waiting, capacity and griefing (Table~1).} Since a checkpoint with room admits any number of cases, a seller could place its own sales at the cap, always sampled, on the verifiers and keep later checkpoints full past the waiting margin, at a cost in returned capital and gas not growing with its rate. Under the reference settings of Table~\ref{atab:profile} and the prototype's dispute deposit, honest Base traffic alone can exceed 14 verifiers' capacity at 50-minute slots, and a non-delivery dispute the seller does not serve within 10 minutes freezes up to $\Thold$ of its proceeds for a 5 USDC deposit. Buyers gain from wrongful failures: a full freeze of the largest Base seller returns 1,969 USDC to its buyers at the replay's hold, 197 to 394 times the deposit for a buyer with half to all of its sales.
+
+\emph{Inclusion (Table~1, C3).} The inclusion condition (C3) assumes timely inclusion by the Base sequencer; forced inclusion would lengthen every deadline and the hold.
+
+\emph{Judging every sale} deters without a freeze. Each sale is held for $\Thold$ and until its own case ends; a failed sale deducts its value over $0.675\,p_0$ (the deduction formula of Section~3.2 applied per sale), a missed anchor fails every sale of its epoch, and a released payment first pays any outstanding deduction and restores the prepaid bond before the rest reaches the seller. A fraudulent sale thus expects to lose about 0.88 of its value at any rate, and Proposition~S1 (Section~\ref{sec:rowb}) proves that deductions the account cannot collect do not make fraud pay.
+
+\emph{Releasing each sale once its own case passes} would bring back rate dependence with one deduction per episode. By appealing every FAIL, a fraudulent seller delays confirmation to the longest judgment path while later sales pass after an unappealed one, releasing about $1-p_0$ times its selling rate per block of the difference.
+
+\emph{Compensating honest sellers.} Under opinion-based judgment the contract cannot tell a wrongful failure from a correct one, so unconditional compensation of frozen proceeds would also pay a fraudulent seller and restore the rate dependence. A rule could instead return frozen proceeds on proof that the frozen seller's sampled sales were correct; its soundness depends on the verifiers' miss rate, and we give neither proof nor replay.
+
+\setcounter{section}{2}\setcounter{table}{5}
+\section{Full Proof of Lemma 2 (Detection)}
+\label{sec:s1}
+
+This section gives the full proof of Lemma~2 (Detection, Section~4), which manuscript Appendix A condenses, and writes out the step from Lemma~2 to Theorem~1 that manuscript Appendix A sketches; it also proves Lemma~3 (Section~\ref{sec:decoy}) and Proposition~S1 on the judge-every-sale account (Section~\ref{sec:rowb}). The mathematics is that of manuscript Appendix A; we add the definitions, the auxiliary lemma on fresh randomness, the treatment of waiting cases under rules (vi) and (vii), and remarks on what the statement does and does not claim.
+
+\subsection{Setting}
+
+\emph{Sales.} Index the fraudulent sales of one episode by $i=1,2,\dots$ in settlement order, ties within a block broken by position in the block. Sale $i$ settles at block $s_i$ in epoch $e(i)$ with value $v_i\in(0,V(s_i)]$. If the seller stops after $n$ fraudulent sales, put $v_i=0$ for $i>n$ and let every event about such $i$ be empty. A sale is fraudulent when the response it commits to is wrong or missing. The seller chooses, adaptively, each sale's value, time and cap, whether it is fraudulent, and how it is anchored: (L) listed with the leaf of the receipt given to the buyer, (O) omitted from the list, or (S) listed at the buyer's nonce with another leaf.
+
+\emph{Parties.} The \emph{adversary} is the seller together with every party colluding with it: dishonest verifiers, Sybil buyers and any keeper it runs. Keeper delays are chosen adversarially within the bound of C2 and need no probability.
+
+\emph{Randomness.} The probability space carries (1) the adversary's internal randomness and strategy (values, times, caps, value delivery, case opening, appeals, seal actions, stopping, anchoring, Sybil disputes, dishonest verdicts); (2) the sampling value $\Psi_e$ of each epoch $e$ and the per-sale draws $U_j=H(\Psi_{e(j)},\text{seller},e(j),\text{nonce}_j)$; (3) each review-assignment value, each redraw value of rule (vi), and the verifier draws derived from these and from $\Psi_e$; (4) the verdict randomness of honest verifiers; (5) the proof decisions of buyers of substituted sales; (6) auxiliary uniforms used only to build the coupling of Section~\ref{sec:coupling}. No party sees the auxiliary uniforms, so adding them changes neither the protocol's law nor the bounds of J1.
+
+\emph{Order of events.} Everything that happens is a sequence of events ordered by block and by position within the block. $\cA_t$ is the full history through event $t$ and $\cA_{t-}$ the same strictly before $t$, both enlarged with the auxiliary uniforms fixed by then. A stopping time is an event index $\tau$ with $\{\tau=t\}\in\cA_t$.
+
+\emph{Epoch landmarks.} For epoch $e$: its anchoring deadline; its checkpoint, at or before the anchoring deadline (rule (iv)); the event $C_e$ that the checkpoint has fewer eligible verifiers than the fixed minimum (rule (i)), a test fixed before $\Psi_e$, after which rule (i) refunds the epoch; and $\theta_e$, the event just before $\Psi_e$ is fixed. Write $\theta_i=\theta_{e(i)}$; since epochs do not decrease in settlement order, $\theta_i$ does not decrease in $i$. Put $\cR_i=C_{e(i)}^c$ and $\cS_i=\{U_i<\mathrm{thr}(v_i)\}$, where the threshold is $v_i/V(s_i)$ rounded up to a millionth, so that $\Pr(\cS_i\mid\cA_{\theta_i})=s(v_i)\ge v_i/V(s_i)$ with $s(v_i)=\min(1,v_i/V(s_i))$ after rounding.
+
+\emph{Release clock.} Fix the account and let $P(t)$ count the blocks before $t$ in which some case of the account waits under rule (vi) or queues under rule (viii). The \emph{effective age} of entry $j$ at block $t$ is $e_j(t)=(t-s_j)-(P(t)-P(s_j))$, the number of unpaused blocks since its settlement. Under rule (vii) entry $j$ is released at the first block with $e_j(t)\ge\Thold$ at which no case of it is open and no freeze applies. For a sampled sale $i$ let $\mathrm{act}_i(t)$ be the number of blocks in $[s_i,t)$ in which the case of $i$ is neither waiting nor queued, counting the blocks before the case opens.
+
+\subsection{Fresh randomness}
+
+A \emph{fresh family} is a family $(Z_\ell)_{\ell\in L}$ with a countable label set $L$ fixed in advance such that each $Z_\ell$ is fixed at a stopping time $\tau_\ell$ (possibly $\infty$, in which case $Z_\ell$ is an auxiliary draw appended after all events), the label fixed at event $t$ is determined by $\cA_{t-}$, and, given $\cA_{\tau_\ell-}$, $Z_\ell$ has a fixed law $\mu_\ell$ that does not depend on the history.
+
+\begin{slemma}\label{lem:fresh}
+Let $K,M\subset L$ be finite and disjoint and let $\theta$ be a stopping time with $\theta<\tau_\ell$ for every $\ell\in K$. Then $(Z_\ell)_{\ell\in K}$ has law $\bigotimes_{\ell\in K}\mu_\ell$ and is independent of $\cA_\theta\vee\sigma(Z_m:m\in M)$.
+\end{slemma}
+
+\begin{proof}
+Let $f$ be a bounded function of $z_K$, $g$ one of $z_M$, and $A\in\cA_\theta$. Let $\sigma_1<\dots<\sigma_n$ be the events after $\theta$ at which labels of $K\cup M$ are fixed, labels with $\tau=\infty$ last in a fixed order. For $r=n,n-1,\dots,1$, condition on $\cA_{\sigma_r-}$: the label fixed at $\sigma_r$ is known there and its value has law $\mu$ given $\cA_{\sigma_r-}\supseteq\cA_\theta$, so it can be integrated out against $\mu$ while every value fixed earlier stays as it is. After $n$ steps,
+\[
+\E[f(Z_K)g(Z_M)\mid\cA_\theta]=\int f\,d\mu_K\cdot\int g(z_{M'},Z_{M\setminus M'})\,\mu_{M'}(dz_{M'}),
+\]
+where $M'\subseteq M$ are the labels of $M$ fixed after $\theta$; every label of $K$ is integrated out because $\tau_\ell>\theta$. The same computation with $f\equiv1$ identifies the second factor as $\E[g(Z_M)\mid\cA_\theta]$. Multiplying by $\one_A$ and taking expectations gives $\E[f(Z_K)g(Z_M)\one_A]=\int f\,d\mu_K\cdot\E[g(Z_M)\one_A]$, which is the claim by a monotone-class argument.
+\end{proof}
+
+The lemma needs neither a deterministic order of fixing nor a deterministic set of labels actually used; it needs only that each value, when fixed, is independent of everything before it. Which values are fresh is what J1 and J4 supply.
+
+\subsection{The properties the proof uses}
+
+We use J1, J3 and J4 as stated in manuscript Appendix A and C2, C3, C6 and C7 as stated there and in Table~1. Two readings are made explicit.
+\begin{itemize}
+\item J4 covers three kinds of value: the sampling value of an epoch (fixed after its anchoring deadline), a review-assignment value (fixed after the appeal) and a redraw value of rule (vi) (fixed after the checkpoint it uses). Each is uniform given the full history, unknown in advance to every party, independent of who delivers it and when, and never redrawn; the hash that maps a value and distinct inputs to a draw is a random oracle. Probabilities are computed in this ideal model.
+\item J3 has a \emph{length part}, $\mathrm{act}_i(t)\le\Fmax\le L_F+\kS$ for every block $t$ before the case of a sampled sale $i$ ends (for every $t$ if it never ends), a freeze in the block of a confirmed failure, and $\Thold>\Fmax$; and an \emph{ending part}, that the case ends. Lemma~1, C2 and C3 give the length part; in the example judging layer the ending part needs every waiting case to be assigned eventually (C4) and every queued case to start (Lemma~3, part (4), Section~\ref{sec:decoy}). Parts (1) and (3) of Lemma~2 use only the length part.
+\end{itemize}
+
+\subsection{How the example judging layer supplies J1}
+\label{sec:honestpath}
+
+For a type-L sale the honest path has five steps, each decided at one event (Table~\ref{tab:steps}). C5 gives, on every history and at every checkpoint (including those a redraw uses), an honest share of at least $h$ of the eligible weight, also with any one honest verifier removed, and an honest miss probability of at most $\beta$ given the full history before the verdict. The five-step product is $h^2(1-\beta)^2$, which C5 requires to be at least $p_0$.
+
+\begin{table}[!htbp]
+\centering
+\caption{The honest path of a type-L fraudulent sale in the example judging layer.}
+\label{tab:steps}
+\footnotesize
+\begin{tabular}{@{}cp{5.2cm}p{5.6cm}c@{}}
+\toprule
+Step & Decided at & Success & Bound \\
+\midrule
+1 & the identity of the first eligible draw of the first search that is not exhausted (first assignment, or a redraw under rule (vi)) & that verifier is honest & $h$ \\
+2 & that verifier's verdict & FAIL within the deadline & $1-\beta$ \\
+3 & the review-assignment value (only if the seller appeals) & the search, which skips the first verifier, is exhausted (rule (iii) confirms the FAIL) or its first eligible draw is honest & $h$ \\
+4 & the reviewer's verdict (only if step 3 found a reviewer) & FAIL within the deadline & $1-\beta$ \\
+5 & execution & the case is confirmed and the account frozen with $\mathrm{act}\le\Fmax$ & $1$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Step 1.} The draws of the first assignment are hashes of $\Psi_{e(i)}$ and distinct inputs (nonce, stage, attempt, round), so by J4 they are weight-proportional over the checkpoint table and independent of the history before $\Psi_{e(i)}$ is fixed. By rules (iv) and (viii) the eligible set is the state-eligible set of the checkpoint, which is at or before the anchoring deadline, hence before $\Psi_{e(i)}$; no case opening of any epoch, nor the order of openings or seal timing, changes it (Section~\ref{sec:decoy}). A search has three outcomes: exhausted, an honest verifier found, a dishonest one found. Split it into two sub-events: first whether it is exhausted (the positions of the eligible draws), then, if not, the identity of the first eligible draw. Since the eligible draws are independent and weight-proportional over the eligible set, the identity is weight-proportional over that set given the first sub-event, and it is honest with conditional probability at least $h$. If the first search is exhausted, the case waits (rule (vi)) and is redrawn at a later checkpoint $c'$ with a value fixed after $c'$; by J4 that value is uniform given the history, and the eligible set of $c'$ is fixed before it, so the same argument applies with C5 at $c'$. Step 1 is decided at the identity sub-event of the first search that is not exhausted. That this sub-event decides step 1 is known just before it, so the step fits J1's requirement that the event deciding a step be known in advance. If no search ever succeeds, the step never opens and its coin below is auxiliary.
+
+\emph{Steps 2 and 4.} C5 bounds the honest miss probability given the full history before the verdict, including the outcomes of earlier cases and earlier verdicts in the same case (Remark~\ref{rem:beta}).
+
+\emph{Step 3.} The review-assignment value is fixed after the appeal enters the chain (J4). A lapsed seal window reopens with unchanged draw inputs (rule (ii)), and J4 makes the value the same whoever delivers it and whenever, so seal actions do not change the candidate. The draws skip ineligible verifiers and the first verifier $u$. If the search is exhausted, rule (iii) confirms the first verifier's FAIL, which is a detection; otherwise the first eligible draw is honest with conditional probability at least $h$ (C5 with $u$ removed). With $\rho$ the ineligible share and $m_d$ the draws of one search, the success probability is $\rho^{m_d}+(1-\rho^{m_d})h\ge h$. A review that fails to progress for another reason is also confirmed by rule (iii) and only adds detection.
+
+\emph{Step 5.} Under C2 and C3 every duty call and every honest transaction on the path happens in time, and if the case ends it is confirmed and the account frozen in the same block. Waiting arises only at the first assignment, and a queue under rule (viii) can arise at any stage; since the deadlines of a started case run from its start, with the waiting and queued blocks removed the remaining path is one Lemma~1 enumerates (a redraw or a queue start that assigns or starts at some block gives the same path as a first search that assigned at that block), and the keeper delay of a redraw call lies inside the wait. Hence $\mathrm{act}\le L_F+\kS$. This last statement is not checked by an enumeration that includes the waiting state (Remark~\ref{rem:notproved}).
+
+\emph{Types O and S.} A sampled type-O sale cannot be served, since no inclusion proof exists for a sale missing from the list; its receipt deadline runs from the case opening regardless of waiting, so under C2 it ends in a confirmed failure within $\Fmax$ blocks. A type-S case judges the anchored leaf and may pass; detection comes from the buyer's proof (C7).
+
+\subsection{Statement}
+
+\begin{trivlist}\item \textbf{Lemma~2 (formal, as in manuscript Appendix A).} \itshape Assume the rules of Section~3, J1, J3, J4, C2, C3 and C7. For every seller strategy there are events $\Delta_i$, the coupled detection events, such that, with $\cK_i=\cA_{\theta_i}\vee\sigma(\one_{\Delta_j}:j<i)$:
+(1) on the event that sale $i$'s epoch is not refunded, $\Pr(\Delta_i\mid\cK_i)\ge p_0v_i/V(s_i)$;
+(2) on $\Delta_i$ the account has a confirmed failure within $\Fmax$ unpaused blocks of $s_i$, and sale $i$ is never released;
+(3) if also $\Thold>\Fmax$ and C6 holds, then with $\ist=\inf\{i:\Delta_i\}$,
+\[
+\E[X]\le\E\big[(V(s_{\ist})/p_0-v_{\ist})\,\one\{\ist<\infty\}\big]\le\E\big[\bar V\,\one\{\ist<\infty\}\big]/p_0 .
+\]
+\end{trivlist}
+
+Part (1) conditions on $\cK_i$: the full history before the epoch's sampling value is fixed, which contains the seller's information at $s_i$, together with the coupled outcomes of all earlier sales, including those of the same epoch resolved after the value. It does not condition on the actual outcomes of earlier cases, under which the bound can fail (Remark~\ref{rem:actual}).
+
+\subsection{Coupled detection events}
+\label{sec:coupling}
+
+\emph{Coins.} Attach to step $k$ of sale $i$'s honest path a label $(i,k)$ and a uniform $W_{i,k}$. If the step opens at event $t$ with success indicator $Y$, let $\pi=\Pr(Y=1\mid\cA_{t-})$ and put $W_{i,k}=\pi U'$ if $Y=1$ and $W_{i,k}=\pi+(1-\pi)U'$ otherwise, with $U'$ an auxiliary uniform. Then $W_{i,k}$ is uniform given $\cA_{t-}$ and $Y=\one\{W_{i,k}\le\pi\}$. If the step never opens (an earlier step failed, the seller did not appeal, the epoch is refunded, or a wait never ends), $W_{i,k}$ is an auxiliary uniform with $\tau=\infty$. Put $\xi_{i,k}=\one\{W_{i,k}\le a_k\}$ with $a_k$ the step bound of J1. Where the step opens, $\pi\ge a_k$ by J1, hence $\xi_{i,k}\le Y$. Under rule (vi) step 1 carries one label whatever the number of searches; it is fixed at the identity sub-event of the first search that is not exhausted. A label per search, using the coin of the search that succeeded, would make $N_i$ depend on the search outcomes, which depend on load the seller controls, and the independence argument below would fail.
+
+For type O, one label $(i,\mathrm O)$ carries an auxiliary uniform fixed just after $\theta_i$, with $\xi_i=\one\{W_{i,\mathrm O}\le p_0\}$. For type S, one label $(i,\mathrm S)$ is fixed just after $\theta_i$: by C7 the buyer's decision is $Y^{\mathrm S}_i=\varphi(\cA_{\theta_i},\zeta_i)$ with $\zeta_i$ the buyer's own randomness, and the same construction gives $W_{i,\mathrm S}$ uniform given $\cA_{\theta_i}$ with $Y^{\mathrm S}_i=\one\{W_{i,\mathrm S}\le\pi^{\mathrm S}\}$ and $\pi^{\mathrm S}\ge p_0$; put $\xi_i=\one\{W_{i,\mathrm S}\le p_0\}$.
+
+\emph{Events.} Let
+\[
+\Delta_i=\begin{cases}
+\cS_i\cap\{\prod_k\xi_{i,k}=1\}\cap\cR_i & \text{type L},\\
+\cS_i\cap\{\xi_i=1\}\cap\cR_i & \text{type O},\\
+\{\xi_i=1\}\cap\cR_i & \text{type S},
+\end{cases}
+\qquad N_i=\one_{\Delta_i},\quad \cB_i=\textstyle\bigcap_{j<i}\Delta_j^c .
+\]
+
+\emph{The family is fresh.} The sampling values (J4), the per-sale draws and verifier draws (J4: outputs of a random oracle at inputs containing an unpredictable value are uniform and independent of everything fixed earlier, and the contract's nonce record makes the inputs distinct), the review-assignment values and redraw values (J4), and the coins (by construction) form a fresh family. The anchoring type, $v_j$, $C_e$ and the eligible set are fixed before $\Psi_e$ (anchor rule, rule (iv), J4), so they lie in $\cA_{\theta_e}$.
+
+\subsection{Proof of part (2)}
+
+Four facts about the release clock are used.
+\begin{itemize}
+\item[F1.] $e_j(t)$ does not decrease in $t$ and grows by 0 or 1 per block, since $P$ grows by 0 or 1 per block.
+\item[F2.] If $s_i\le s_j\le t$, then $e_i(t)-e_j(t)=(s_j-s_i)-(P(s_j)-P(s_i))\ge0$.
+\item[F3.] $e_i(t)\le\mathrm{act}_i(t)$: every block of $[s_i,t)$ in which $i$'s case waits or queues is counted in $P$; blocks paused by another case's wait only lower $e_i$ further.
+\item[F4.] Under the length part of J3, $\mathrm{act}_i(t)\le\Fmax<\Thold$ for every block $t$ before $i$'s case ends and at the block where it ends.
+\end{itemize}
+
+\emph{(2a) Release order.} On $\Delta_i$ every opened step succeeded, so $i$'s case ends only in a confirmed failure (for types O and S the case or the proof can only produce a confirmed failure). At every block $t$ before the freeze at $i$'s own confirmed failure (which may follow an earlier failure caused by a later sale), and at every block if no freeze comes, every entry $j$ with $s_j\ge s_i$ has $e_j(t)\le e_i(t)\le\mathrm{act}_i(t)\le\Fmax<\Thold$ by F2, F3 and F4, so it is not released. At the freeze block $f$ also $e_j(f)<\Thold$, so $j$ is not released in that block whatever the order of releases, and the freeze covers it. Sale $i$ itself is held while its case is open, including while it waits. For type S the proof arrives within $\Fmax$ blocks counted on the chain clock, which counts at least as many blocks as the effective age, so the same line holds. By definition $\Delta_i\subseteq\cR_i$. This part uses only the length part of J3.
+
+\emph{(2b) Confirmed failure.} By the ending part of J3 the case of $i$ ends. For type L: if the seller did not appeal, the first verifier's FAIL is confirmed after the appeal period; if it appealed, the review was eligible, honest and FAIL, or its search was exhausted or it failed to progress and rule (iii) confirmed the first verifier's FAIL. Execution freezes the account at a block $f$ with $\mathrm{act}_i(f)\le\Fmax$. Dishonest verdicts, tiebreaks and automatic rechecks can only add detection. For type O the sampled case cannot be served and ends as a confirmed failure under C2; for type S the buyer's proof is a confirmed failure within $\Fmax$ blocks. In each case the freeze comes within $\Fmax$ unpaused blocks of $s_i$ and, by (2a), sale $i$ is never released. \hfill$\square$
+
+\subsection{Proof of part (1)}
+
+Fix $i$ and work on $\cR_i\in\cA_{\theta_i}$. Let $K$ be the labels of sale $i$ (its draw $U_i$ and its coins) and $M$ those of all sales $j<i$. Every label in $K$ is fixed after $\theta_i$: $U_i$ when $\Psi_{e(i)}$ is fixed, the coins when their steps are decided (after the wait, if the case waits) or just after $\theta_i$. By construction $N_j$ is a function of $(Z_m)_{m\in M}$ and of $v_j$, the type of $j$ and $C_{e(j)}$, which lie in $\cA_{\theta_i}$ because $e(j)\le e(i)$. Hence $\cK_i\subseteq\cA_{\theta_i}\vee\sigma(Z_m:m\in M)$, and Lemma~\ref{lem:fresh} shows that $(U_i,W_{i,\cdot})$ has its product law and is independent of $\cK_i$. Since $v_i$ and the type of $i$ are $\cA_{\theta_i}$-measurable,
+\[
+\Pr(\Delta_i\mid\cK_i)=\one_{\cR_i}\cdot\begin{cases}s(v_i)\prod_ka_k & \text{type L},\\ s(v_i)\,p_0 & \text{type O},\\ p_0 & \text{type S}.\end{cases}
+\]
+By the rounded-up threshold $s(v_i)\ge v_i/V(s_i)$, by J1 $\prod_ka_k\ge p_0$, and $v_i\le V(s_i)$; so in each case $\Pr(\Delta_i\mid\cK_i)\ge p_0v_i/V(s_i)$ on $\cR_i$. \hfill$\square$
+
+The argument uses time order only as follows. The draws of one epoch are fixed together when $\Psi_e$ is fixed, after the checkpoint and every anchoring choice of the epoch; the coins of a case are fixed when its steps are decided, possibly after the coins of later sales' cases, and the step-1 coin of a waiting case later still. Lemma~\ref{lem:fresh} does not depend on this order. It needs that no value of $K$ is fixed before $\theta_i$ and that every value is independent of the full history at the moment it is fixed: steps 1 and 3 get this from J4 and rules (iv) and (vi), steps 2 and 4 from J1 (in the example layer, C5), and type S from C7.
+
+\subsection{Proof of part (3)}
+
+\emph{Released sales precede $\ist$.} Suppose sale $i$ is released. If $\Delta_j$ holds for some $j<i$, so that $s_j\le s_i$, then by (2a) $i$ is not released before the freeze and is frozen at it, or is never released if no freeze comes; this holds for $s_j=s_i$ as well. If $\Delta_i$ holds, $i$ is not released by (2a). By rule (i) a sale of an epoch with a short checkpoint is refunded, so a released sale lies in $\cR_i$. After a freeze no sale settles until re-entry, which starts a new episode. Hence
+\begin{equation}\label{eq:xbound}
+X\le\sum_iv_i\,\one_{\cB_i}\one_{\cR_i}(1-N_i).
+\end{equation}
+C6 makes the seller's gain from these sales at most $X$; buyer dispute deposits are not counted.
+
+\emph{Filtration.} $\cK_i$ increases in $i$, because $\theta_i$ does not decrease and $\sigma(N_j:j<i)$ grows. Moreover $v_i$, $\one_{\cR_i}$ and $\one_{\cB_i}$ are $\cK_i$-measurable and $N_i$ is $\cK_{i+1}$-measurable.
+
+\emph{Compensator.} Let $P_i=\Pr(\Delta_i\mid\cK_i)$ and $\underline\pi_i=p_0v_i/V(s_i)$, so that $P_i\ge\underline\pi_i$ on $\cR_i$ by (1). The process $M_n=\sum_{i\le n}\one_{\cB_i}(N_i-P_i)$ is a $(\cK_{n+1})$-martingale with increments at most 1 in absolute value: $\sum_{i\le n}\one_{\cB_i}P_i$ is the compensator of the counting process $\one\{\ist\le n\}=\sum_{i\le n}\one_{\cB_i}N_i$, and the same holds with $\cK_i$-measurable weights. Put $\underline g_i=v_i(1-\underline\pi_i)/\underline\pi_i=V(s_i)/p_0-v_i$, and $\underline g_i=0$ when $v_i=0$. On $\cR_i$,
+\[
+v_i(1-P_i)\le v_i(1-\underline\pi_i)=\underline g_i\,\underline\pi_i\le\underline g_i\,P_i ,
+\]
+and off $\cR_i$ the term of \eqref{eq:xbound} vanishes. Taking conditional expectations term by term,
+\[
+\E\big[v_i\one_{\cB_i}\one_{\cR_i}(1-N_i)\big]=\E\big[v_i\one_{\cB_i}\one_{\cR_i}(1-P_i)\big]\le\E\big[\underline g_i\one_{\cB_i}P_i\big]=\E\big[\underline g_i\one_{\cB_i}N_i\big],
+\]
+where the two equalities are the tower property on $\cK_i$, using $\Delta_i\subseteq\cR_i$. Every term is nonnegative, so summing over $i$ with monotone convergence,
+\[
+\E[X]\le\E\Big[\sum_i\underline g_i\one_{\cB_i}N_i\Big]=\E\big[\underline g_{\ist}\one\{\ist<\infty\}\big]=\E\big[(V(s_{\ist})/p_0-v_{\ist})\one\{\ist<\infty\}\big],
+\]
+because on each path $\one_{\cB_i}N_i=1$ for exactly one $i$, namely $\ist$, when $\ist<\infty$, and for none otherwise. Finally $V(s_{\ist})\le\bar V$ and $v_{\ist}\ge0$. \hfill$\square$
+
+\emph{Integrability.} $\underline g_i\le V(s_i)/p_0\le\bar V/p_0$ and at most one term of the right-hand sum is nonzero, so the right side is finite and bounds every partial sum of the left side.
+
+\emph{Why the bound has this form.} With a constant detection probability $\pi$ and value $v$, the undetected sales before the first detection are geometric with mean $(1-\pi)/\pi$, so the released value is $v(1-\pi)/\pi$. The compensator argument is the adaptive version: each released unit is charged to the conditional detection mass it would have carried, and $v(1-\underline\pi(v))/\underline\pi(v)=V/p_0-v\le V/p_0$ for every $v$. No independence between sales is used beyond (1).
+
+\subsection{From Lemma 2 to Theorem 1}
+
+manuscript Appendix A proves Theorem~1 in sketch. In full, with the facts F1 to F4 and $\Thold>\Fmax$:
+
+\emph{Part (a).} By (2a) applied to $\ist$, $\ist$ and every entry settled after it are unreleased until $\ist$'s own confirmed failure freezes them, and forever if no freeze comes. The freeze covers every unreleased entry settled up to it, including waiting ones, and no sale settles until re-entry. Part (3) bounds the sales before $\ist$, which gives $\E[X]\le\E[\bar V\one\{\ist<\infty\}]/p_0$. This part does not use the ending part of J3: if no freeze comes, (2a) keeps $\ist$ and every later sale held to the end.
+
+\emph{Part (b).} Take a realization with $\ist<\infty$. By the ending part of J3 and (2b), the case of $\ist$ produces a confirmed failure at a block $f$ with $\mathrm{act}_{\ist}(f)\le\Fmax$. Let $t\le f$ be the block of the first confirmed failure of the episode; since no sale settles after a freeze, $s_{\ist}\le t$. The failure at $t$ may be caused by another sale.
+\begin{enumerate}
+\item For every $u$ with $s_{\ist}\le u\le t$, $e_{\ist}(u)\le e_{\ist}(f)\le\mathrm{act}_{\ist}(f)\le\Fmax<\Thold$ (F1, F3, F4). So block $s_{\ist}$ lies in the preceding hold of $u$, measured over unpaused blocks (rule (vii)), and the largest cap of that hold is at least $V(s_{\ist})$.
+\item Settling $\ist$ required a balance of at least $b$ at the largest cap of its preceding hold, which is at least $b(V(s_{\ist}))$.
+\item No deduction comes between $s_{\ist}$ and $t$, since $t$ is the first confirmed failure. Exit is not completed while the case of $\ist$ is open. A bond payout after lowering the cap cannot take the balance below $b$ at the largest cap of the preceding hold, which by step 1 is at least $b(V(s_{\ist}))$. So the balance just before $t$ is at least $b(V(s_{\ist}))$.
+\item The deduction at $t$, the smaller of $b$ at the largest cap of the preceding hold and the balance, is therefore at least $b(V(s_{\ist}))\ge V(s_{\ist})/p_0$.
+\end{enumerate}
+With the first inequality of part (3), $\E[X-D]\le\E[(V(s_{\ist})/p_0-b(V(s_{\ist})))\one\{\ist<\infty\}]\le0$. Neither the selling rate, the multiplier, the number of fraudulent sales, the length of waits nor the tier enters.
+
+If the ending part of J3 fails, a waiting case of $\ist$ may never end and no deduction may come. Part (a) still holds and $\ist$ and every later sale stay held to the end, but $\E[X-D]\le0$ is not proved in that case. Measuring the largest cap over raw blocks instead of unpaused blocks would break step 1: with a wait longer than $\Thold$ raw blocks, a seller could lower its cap and have the first counted failure, or a bond payout, use the lower cap. Rule (vii) measures the cap, the required balance and the payout floor over unpaused blocks for this reason.
+
+\subsection{Remarks}
+
+\emph{Risk attitude.} Theorem~1 bounds expected released proceeds, so its deterrence statement holds for a risk-neutral seller: part (b) makes fraud unprofitable in expectation, strictly only through the safety factor. A risk-seeking seller may still cheat for the spread of its gain, and a tail bound is left to the extended version.
+
+\begin{sremark}[actual outcomes of earlier cases]\label{rem:actual}
+Conditioning on the actual honest-path outcomes of earlier cases, rather than on the coupled $\Delta_j$, can break (1). Take two type-L fraudulent sales $j<i$ of one epoch with all step bounds at their values. After the epoch's value is fixed, the seller sees whether $i$ is sampled and appeals the first verifier's FAIL on $j$ exactly when $i$ is not sampled. The actual detection probability of $j$ is then $q_{\mathrm{no}}=h(1-\beta)$ if $i$ is sampled and $q_{\mathrm{app}}=h^2(1-\beta)^2<q_{\mathrm{no}}$ if not, so with $s=s(v_i)$
+\[
+\Pr(\cS_i\mid j\text{ not detected})=\frac{s(1-q_{\mathrm{no}})}{s(1-q_{\mathrm{no}})+(1-s)(1-q_{\mathrm{app}})}<s,
+\]
+and the detection probability of $i$ given that $j$ was not detected falls below $s\,h^2(1-\beta)^2$, and below $p_0v_i/V(s_i)$ once the product is near $p_0$. Dishonest verifiers voting on $j$ according to whether $i$ is sampled have the same effect. The coupled events do not carry this information, since $\Delta_j$ is a function of $U_j$, $C_{e(j)}$, the type of $j$ and coins independent of $U_i$. The bound on released fraudulent proceeds is unaffected: $\ist$ is defined by the coupled events, $\Delta_{\ist}$ is an actual detection, and Theorem~1 uses only (2a) and (2b) for $\ist$.
+\end{sremark}
+
+\begin{sremark}[the honest miss rate needs a conditional bound]\label{rem:beta}
+The proof uses only the bound of C5 on the honest miss probability given the full history. Independence of honest misses across cases is sufficient, not necessary. A marginal bound is not enough: suppose a miss state, such as a stale reference, starts with probability $\beta$ and then persists, and honest verifiers pass every wrong response while it lasts. Each case has marginal miss probability at least $\beta$, yet a seller that observes one passed sampled case learns that the state holds and sells at full rate until it ends, so the released fraudulent proceeds grow with the rate, without bound if the state is permanent. There the conditional miss probability given an earlier miss is 1, and C5 fails. The wrongful-failure rate $\alpha$ plays no role in Lemma~2.
+\end{sremark}
+
+\begin{sremark}[draws within an epoch]\label{rem:draws}
+One sampling value serves every sale of an epoch. If all sales were compared with one draw, the sample indicators would be nested: a seller could split value into many sales of one epoch with small $s(v)$, and the chance that any is sampled would be the largest single $s(v)$, not $1-\prod_j(1-s(v_j))$, so the released fraudulent proceeds per epoch would no longer be bounded by $V/p_0$. The draw $H(\Psi_e,\text{seller},e,\text{nonce})$ with distinct nonces separates domains, and the draws are independent under the random-oracle reading of J4 (or a pseudorandom function keyed by $\Psi_e$); uniformity of $\Psi_e$ alone does not give it.
+\end{sremark}
+
+\begin{sremark}[capacity under rules (iv) and (viii)]\label{rem:capacity}
+Under rule (viii) open cases of any epoch do not enter a checkpoint's eligible weight, which records state only (Section~\ref{sec:decoy}), and C5, read on the state-eligible set, bounds step 1 and step 3 given everything. Cases of any epoch can push a drawn verifier past its slots, and then the case queues; the only place load could matter is that verifier's verdict, which C5 bounds given the cases it already holds. If eligibility were read at assignment time instead, same-epoch occupancy would change eligibility, and same-epoch targeted decoys would break the first step. An exhausted first search no longer lowers the floor, because rule (vi) turns it into a wait and rule (vii) keeps the wait out of the release clock; an exhausted review is a detection by rule (iii). A floor multiplied by factors for exhausted searches would also be true, and conservative.
+\end{sremark}
+
+
+\begin{sremark}[what is not proved here]\label{rem:notproved}
+The longest-path bound $\Fmax\le L_F+\kS$ is Lemma~1, a code reading checked by enumeration, not a formal verification (Section~\ref{sec:s2}). The step that a waiting or queued case, with its waiting and queued blocks removed, follows a path Lemma~1 enumerates is argued, not enumerated with the waiting and queue states. The claim that a buyer dispute opened on the same sale before its case judges the same anchored response is taken from the contract reading and not re-derived. The computational step from the ideal model of J4 to a concrete randomness source is not quantified. Lemma~2 holds for the strategies under which C5 and C7 hold on every history; it does not show that a seller cannot leave that class, for example by targeting buyers that never check (Section~6); Lemma~3 shows that case openings leave it only through confirmed penalties on honest verifiers, which C5 covers (Section~\ref{sec:decoy}). If a waiting case never ends, part (a) still holds and every later sale stays held, but part (b), which uses the ending part of J3, is not proved. The implemented contract does not meet C1 and is not covered.
+\end{sremark}
+
+\subsection{Lemma 3: decoy-free assignment}
+\label{sec:decoy}
+
+This subsection proves Lemma~3 of Section~4, which the paper takes from the extended version, in the setting of Section~\ref{sec:honestpath}. The lemma says that, under rule (viii), no case that the seller or its colluders open can change which verifier a draw selects, that the probability of an honest verifier can be lowered only through the checkpointed state, which C5 covers, and that a case kept waiting in a verifier's queue starts within a finite number of blocks. Steps 1 and 3 of Table~\ref{tab:steps} then keep their bound $h$ with C5 read on the state-eligible set, and the decoy attack of Table~\ref{atab:example}, which worked by filling honest verifiers' capacity before a checkpoint, has no effect on the five-step product.
+
+\emph{Setting and notation.} Fix a seller account. The \emph{colluding group} is the seller with its Sybil sellers and buyers, the dishonest verifiers and any keeper it runs; it has finitely many funded accounts. The group acts adaptively: it opens cases of any kind at blocks of its choice (own sales at the cap, which are always sampled; Sybil buyers' disputes; appeals of its own and of its Sybil buyers), chooses when its verifiers return verdicts within their deadlines or let them lapse, times its seal and redelivery calls, registers and exits verifiers, moves bonds, and chooses the blocks at which it makes any call that anyone may make. For epoch $e$ let $c(e)$ be its checkpoint, written at or before its anchoring deadline (rule (iv)), and $\Psi_e$ its sampling value, fixed after that deadline (J4). The \emph{state-eligible set} $E_e$ is the set of verifiers that $c(e)$ records as actively registered, without an exit request and with a bond above the minimum after confirmed penalties (rule (viii)); their recorded weights form the table of $c(e)$. For a block $\tau$ let $E_e^\natural(\tau)\subseteq E_e$ be the \emph{effective set}, $E_e$ less the verifiers that have asked to exit or withdrawn their bond to zero slots by $\tau$, and $\eta_e(\tau)$ the honest share of its weight; $\eta_e^{(-u)}(\tau)$ is the same share with verifier $u$ removed. A redraw under rule (vi) reads a later checkpoint $c'$ with the same definitions. A value is \emph{determined} at the block whose beacon output it is (rule (vi), Table~\ref{atab:profile}), a block the contract knows in advance; its delivery transaction comes later, and between the two the group may know the value. The move clause of rule (viii) and every $\tau$ below use the block at which the value is determined. The first-assignment draws of a sampled case of epoch $e$ are $H(\Psi_e,\mathrm{nonce},\mathrm{stage},\mathrm{attempt},\mathrm{round})$ over the table of $c(e)$; a review draws from the review-assignment value, fixed after the appeal, and a redraw from a value fixed after $c'$ (J4). A dispute case keeps the assignment it has and enters queues with the key of the epoch in which it opened, behind that seller's sampled cases of that batch (rule (viii)); the lemma's part (3) is about sampled cases. A search is the sequence of draws of one attempt and round; it is \emph{exhausted} if every draw falls on a verifier that is not in the effective set or has already taken part in the case.
+
+\emph{Hypotheses.} Rules (ii), (iii), (iv), (vi), (vii) and (viii) of the paper; J4, with the draws read in the random-oracle model as in Section~\ref{sec:coupling}; C2 and C3; and C5 read on the effective set: on every history, for every checkpoint that a first assignment or a redraw reads and for every block $\tau$, $\eta_e(\tau)\ge h$ and $\eta_e^{(-u)}(\tau)\ge h$ for every honest $u$, and an honest verifier facing a wrong response returns FAIL within its deadline with probability at least $1-\beta$ given the full history before its verdict, which includes the cases it already holds. We also use that a batch holds finitely many cases: a seller's tier admits finitely many settlements per $2\Thold$ and the group has finitely many funded accounts, so an epoch has finitely many sampled cases, and each dispute case needs a deposit, so finitely many open per block.
+
+\begin{trivlist}\item \textbf{Lemma~3 (formal).} \itshape Under the hypotheses above, for every strategy of the colluding group:
+(1) the candidate sequence of every first, review and redraw assignment is a function of its draw value, its fixed inputs and the table of the checkpoint it reads; of the quantities that decide who judges a case, the group's actions change only the blocks at which assignments and started cases begin, the registration blocks of review and redraw values, which are fixed before those values are determined, and the checkpointed state;
+(2) once the draw value of an assignment is determined, the case changes verifier only along the candidate sequence fixed with that value: by a timeout to the next attempt, or by a move to the next round when the candidate had asked to exit or withdrawn its bond before the value was determined; the only such moves the group can cause are off its own verifiers, and none can turn an honest first effective candidate into a dishonest one;
+(3) for a sampled fraudulent sale of type L, given the full history before the identity sub-event of the first search that is not exhausted, the first effective candidate of its first assignment is honest with probability at least $h$, and the same holds for the review assignment with the first verifier removed, where an exhausted review search counts as a success by rule (iii);
+(4) under C2 and C3 every queued case starts within a finite number of blocks, and every block before its start is paused for the account by rule (vii).
+\end{trivlist}
+
+\emph{Proof of (1): draws.} An assignment's candidate sequence is the sequence $H(R,\mathrm{nonce},\mathrm{stage},\mathrm{attempt},\mathrm{round})$, $\mathrm{round}=0,1,\dots$, read against the table of its checkpoint, where $R$ is $\Psi_e$ for a first assignment, the review-assignment value for a review and the redraw value for a redraw. In the random-oracle model draws with distinct inputs are independent and weight-proportional over the table given the history before $R$ is determined (J4). The inputs are the value, the case's nonce, the stage, the attempt and the round; none of them is a verifier's load, the number of open cases or the time at which the case opened. The table is the checkpoint's record of state (rule (viii)), written before $\Psi_e$ is determined (rule (iv), J4) and, for a redraw, before the redraw value (rule (vi)); a lapsed seal window reopens with unchanged inputs (rule (ii)). Before $R$ is determined the group can choose the blocks of the transactions that open cases, appeal, seal and register redraws, and through registration, exit, bonds and penalties it can change the state that later checkpoints record; it also chooses which cases exist, whether they are appealed, and its own verifiers' verdicts and timeouts, none of which a draw reads. It cannot change $R$ (J4: the value is uniform given the history, unknown in advance and the same whoever delivers it), the inputs or the table already written. After $R$ is determined the sequence is fixed. This is (1).
+
+\emph{Proof of (2): moves along one sequence.} Rule (viii) lists the only ways a case leaves a candidate: a move to the next round of the same value, allowed only when the candidate has asked to exit or withdrawn its bond to zero slots, and only if the candidate was fixed, at the block at which the value is determined, after that request; and a timeout, which moves to the next attempt of the same value. A full queue is not a reason to move: the drawn verifier keeps the case. A search that finds no effective candidate does not reassign either; it waits and redraws at a later checkpoint with a fresh value (rule (vi)), or, for a seller-appealed review, confirms the FAIL (rule (iii)). An honest verifier judges within its deadline and its exit does not complete while it holds a case (rule (viii)), so neither move occurs at an honest candidate with probability more than $\beta$, which step 2 already charges. The moves the group can cause are therefore a timeout of its own verifier, which the group decides after the value is known but which only passes the case to the next attempt of the same sequence, and an exit or withdrawal of its own verifier requested before the value was determined, which removes that dishonest verifier from the effective set. Removing a dishonest verifier from the candidate sequence can turn a dishonest first effective candidate into a later candidate; it cannot turn an honest one into a dishonest one. This is (2).
+
+\emph{Proof of (3): honest draw.} Fix a first assignment reading checkpoint $c(e)$ and let $\tau_1$ be the block at which its value is determined. By (1) the draws are independent and weight-proportional over the table of $c(e)$ given $\cA_{\tau_1-}$, and the effective set $E_e^\natural(\tau_1)$ is $\cA_{\tau_1-}$-measurable: exit requests and withdrawals that count are on chain before $\tau_1$ (a request in the block of $\tau_1$ counts as before it only if its transaction precedes the beacon output in the block order, and the move clause of rule (viii) uses the same order), and requests made later, with knowledge of the value, move no case whose candidate is already fixed. As in Section~\ref{sec:honestpath}, split the disclosure of the value into the sub-event that discloses whether the search is exhausted and the sub-event that discloses the identity of the first effective draw. Given the first sub-event, the identity is weight-proportional over $E_e^\natural(\tau_1)$, so it is honest with conditional probability $\eta_e(\tau_1)\ge h$ by C5. The value of $\eta_e(\tau_1)$ is a function of the table of $c(e)$ and of the exits and withdrawals before $\tau_1$ alone; no case opening enters it, because rule (viii) keeps load out of the state a checkpoint records and out of the effective set. Should the effective set be read instead at the later block of delivery, by (2) the only verifiers that can have left it in between with knowledge of the value are the group's own, and their removal does not lower the probability that the first effective candidate is honest, so the bound $h$ holds either way. If the search is exhausted, the case waits and is redrawn at a later checkpoint $c'$ with a value fixed after $c'$ (rule (vi)); the same argument applies with $E^\natural$ and $\eta$ of $c'$ at the block at which that value is determined, and by (2) nothing happens to the case in between. Step 1 is decided at the identity sub-event of the first search that is not exhausted, as in Section~\ref{sec:honestpath}. For the review, the value is fixed after the appeal, the draws skip the first verifier $u$ and the verifiers not in the effective set, and the first effective draw is honest with conditional probability $\eta_e^{(-u)}(\tau_3)\ge h$, with $\tau_3$ the block at which the review value is determined; an exhausted review search confirms the first verifier's FAIL, a detection, by rule (iii). This is (3).
+
+\emph{Proof of (4): queue start.} Let case $c$ be in the queue of verifier $u$. Queues are ordered by batch, then by the case's rank among its seller's cases of that batch, the table value of its first assignment, then by a seller permutation drawn from the sampling value (rule (viii)); a dispute case carries the key of the epoch in which it opened and stands behind that seller's sampled cases of that batch. So a case can be preceded by cases of batches up to its own only, and the cases that can enter the queue ahead of $c$ after $c$ has entered are cases of those batches that are assigned later: review and tiebreak stages, next attempts after a timeout, redraws, moves from verifiers that have exited, and disputes opened in those epochs. Each batch holds finitely many cases, and each case enters a queue a bounded number of times, at most the number of stages times the attempts per stage plus the moves, which are bounded by the size of the table. So finitely many cases ever stand ahead of $c$. A started case frees its slot by its judging deadline plus the keeper delay $\kappa$ (C2, C3), and rule (viii) starts the head of $u$'s queue inside every transaction that frees a slot or adds a case when fewer cases than slots are being judged, and starts one case even without a free slot when $u$ judges nothing, which also lets a verifier that has withdrawn to zero slots drain its queue one case at a time. Hence the state ``$u$ judges nothing and its queue is not empty'' does not survive any transaction, and by induction over the finitely many cases ahead of $c$, each of which starts and then ends or times out within a bounded number of blocks, $c$ starts within a finite number of blocks. Every block in which $c$ is queued is paused for its account by rule (vii). This is (4). \hfill$\square$
+
+\emph{What the lemma gives.} Table~\ref{tab:steps} reads step 1 and step 3 with bound $h$ at the identity sub-events named there. Part (3) supplies these bounds with C5 read on the effective set, and part (2) is what makes the identity sub-event the deciding event: nothing the group does after the value is determined changes the verifier against the honest path. Parts (1) and (2) also replace the first sentence that Remark~\ref{rem:capacity} had in the evaluated configuration: under rule (viii) open cases of any epoch do not enter a checkpoint's eligible weight, so the decoy attack of Table~\ref{atab:example}, which filled honest verifiers' capacity before the next checkpoint to make them ineligible, changes nothing that a draw reads. What it still changes is the start block of the cases it delays, which rule (vii) keeps out of the hold of the seller that opened them and of every seller whose case stands behind them in a queue. The unpaused length of a path through a queue is the length of the same path without the queue state, since the deadlines of a started case run from its start (rule (viii)); this is argued, not enumerated, as for the waiting state (Remark~\ref{rem:notproved}). Part (4) gives the ending part of J3 for queued cases, with no bound in blocks; parts (1) and (3) of Lemma~2 do not use it. The value $h=0.67$ is the same assumption as before, now read on the state-eligible set rather than on an eligible weight that counted capacity.
+
+\emph{What the lemma does not cover.} Four things remain assumptions or costs. First, the checkpointed weights: the group can lower the honest share by registration, exit, bond withdrawal, confirmed penalties against honest verifiers that a colluding reviewer and tiebreaker impose, and bribery; C5 on the effective set assumes none of these brings the share below $h$, and the lemma shows that case openings reach the share by this route alone, through penalties confirmed on the checkpointed state. The penalty route is case-driven and its cost (appeal deposits, the Sybil seller's own deduction and suspension when a correct sale is wrongly failed) is not evaluated. Honest verifiers' own exits and withdrawals shrink the effective set as well, which is why C5 is read on $E^\natural$. Second, the length of queues: with eligibility independent of load, nothing in the rule bounds how many cases a verifier's queue holds. The extended version states an operational slot condition on verifier capacity against demand, which the contract does not enforce and which is not measured; a broken condition delays releases and deductions, not the bound of Theorem~1, and an exited verifier drains its queue one case per judging deadline plus $\kappa$. Third, delay to others: queues are shared, so a seller's decoys delay other sellers' cases and, through rule (vii), their releases; the round-robin order puts a seller's own decoys mostly behind its own cases and makes the delay to each other seller at most one case per round per Sybil account, each of which costs one prepaid bond. Fourth, a targeted pause: rule (vii) as this version states it pauses a seller's clock while any case of it, a buyer dispute included, waits or queues, so one dispute deposit pauses every release of the targeted seller for as long as the drawn verifier's queue lasts, and an attacker lengthens that queue with sales at the cap. This affects honest sellers' cost, not the bound; the paper does not evaluate it (Section~6 of the main text), and the extended version narrows rule (vii) to sampled cases.
+
+\emph{Relation to the extended version.} The extended version draws each batch's first assignments from a separate value requested after a batch-close block that follows the opening deadline of the epoch's sampled cases, and adds the structural wait for that value to $L_F$, which lengthens the hold. That value lets the batch also carry the first assignments of buyer disputes opened since the previous close and fixes the queue permutation before any party knows it. Lemma~3 as stated here does not need it: the first-assignment draws of the paper already come from $\Psi_e$, which is fixed after the checkpoint $c(e)$, and (1) to (3) use only that the table is written before the value and that load enters neither the table nor the effective set. Since $\Psi_e$ arrives before the opening window of the epoch's sampled cases, the seller knows which verifier each of its sampled cases will reach before the case opens; under rule (viii) that knowledge buys only a delay of its own case, which is paused. Importing the separate value would change $L_F$ and $\Thold$ and with them the evaluated hold; the paper leaves it to the extended version (Section~6).
+
+%=====================================================================
+\subsection{Judging every sale: deterrence with uncollectable deductions}
+\label{sec:rowb}
+
+This subsection proves, as Proposition~S1, that under the judge-every-sale account of row (b) of Table~2 no adaptive seller gains in expectation, including the case in which the deductions exceed what the contract holds. Row (b) judges every sale and has no freeze: a confirmed failure refunds its own sale and deducts that sale's value over $0.675\,p_0$. Section~\ref{sec:alternatives} states that a fraudulent sale then expects to lose about 0.88 of its value; the proposition extends the claim to the account as a whole. The difficulty is that a deduction is bounded by what the contract can take: a prepaid bond of one deduction at the cap, and the seller's later releases. When many cases of one seller fail together, their deductions exceed the bond, and a seller that exits leaves the remainder uncollected. We show that this remainder cannot turn the sign of the seller's expected gain, provided that released proceeds restore the bond before they reach the seller and that the deduction carries the margin $0.675$, or any margin that passes the test in (2) below. The bare Becker bond $b(v)=v/p_0$ does not pass it, and we give a strategy that gains under that bond.
+
+\emph{The judge-every-sale account.} A seller account follows the rules of Section~3, except that (B1) to (B5) replace the freeze, the suspension and the deduction of Section~3.2.
+\begin{enumerate}[label=(B\arabic*),leftmargin=2.6em]
+\item Every sale is sampled. A payment is held for $\Thold$ unpaused blocks and until its own case has ended or its sale has a confirmed failure; a sale with a confirmed failure is refunded to its buyer in full and is never released. There is no freeze and no suspension.
+\item The cap $V$ is fixed for the account's lifetime. The seller prepays a bond $b_0\ge b(V)$, where $b(v)=v/(m\,p_0)$ is the deduction for a sale of value $v$; the rule takes $m=0.675$, the deduction formula of Section~3.2 applied to $v$, and parts (2) and (3) below treat $m$ as a parameter. The balance never exceeds $b_0$. The seller may add funds at any time; added funds first pay the debt and then restore the balance.
+\item A confirmed failure of a sale of value $v$ deducts $b(v)$ from the balance; what exceeds the balance is recorded as the seller's debt. A missing anchor is a confirmed failure of every sale of its epoch, each deducting its own $b(v)$. It is confirmed by a duty call after the epoch's anchoring deadline, which is at most 699 blocks after any settlement of the epoch (Section~\ref{sec:s2}), so with the keeper delay of C2 it comes fewer than $\Thold$ blocks after each of these settlements.
+\item A released payment first pays the debt, then restores the balance to $b_0$; only the remainder is paid to the seller.
+\item The seller may exit once none of its payments is held; it then receives the balance, and any debt is written off. The bond is paid out only at exit.
+\end{enumerate}
+Under these rules the balance and the debt are never both positive: a deduction records debt only after it has taken the whole balance, and releases and added funds pay the debt before they restore the balance. Rule (B4) is the collection rule stated in Section~\ref{sec:alternatives}; Remark~\ref{rem:rowb-refill} says what changes without it. Rule (B2) is the prepaid bond of Section~3.2 at the account's cap, 3.7037 USDC at $V=1$ USDC and 74.07 USDC at $V=20$ USDC. Section~3.2 also requires a balance of one deduction at the cap to settle. The proof below does not use this settlement condition, so Proposition~S1 holds with or without it, and the example in (3) meets it.
+
+\emph{Notation.} Index the fraudulent sales of the account by $i=1,2,\dots$ in settlement order as in Section~\ref{sec:s1}, with $v_i$, $\cR_i$, $\cK_i$ and the coupled detection events $\Delta_i$ of Section~\ref{sec:coupling}, $N_i=\one_{\Delta_i}$; a seller that stops after $n$ sales has $v_i=0$ for $i>n$. Under (B1), $\cS_i$ is the sure event. A sale of an epoch without an anchor is coupled as a type-O sale, with one auxiliary coin fixed just after $\theta_i$; whether the epoch is anchored is fixed by its anchoring deadline, before $\theta_i$. Put
+\[
+Y_i=\one_{\cR_i}\big(v_i(1-N_i)-b(v_i)N_i\big),
+\]
+the coupled outcome of sale $i$, and let $Y_i'$ be its actual outcome: $v_i$ if the sale is released, $-b(v_i)$ if it has a confirmed failure, $0$ if its epoch is refunded under rule (i). The seller's \emph{net gain from fraud} over the account's lifetime is
+\[
+G=R_\infty+B_\infty-b_0-D_\infty-H,
+\]
+where $R_\infty$ is what the contract paid the seller under (B4), $B_\infty$ the balance paid out at exit, $D_\infty$ the funds the seller added under (B2) and $H$ the released value of its honest sales. Thus $G$ is what the seller ends with beyond its bond, its added funds and the released value of its honest sales. Deductions for honest sales that fail wrongly count against it, and an uncollected debt enters $G$ as money the seller kept. Measured instead against the same seller making only its honest sales, with the same verdicts on them, whose final amount is reduced by the deductions collected for their wrongful failures, the bound $\E[G]\le0$ below is weaker by the expected value of those deductions, at most $w$ times the honest sales' summed deductions when each honest sale fails wrongly with probability at most $w$.
+
+\begin{trivlist}\item \textbf{Proposition~S1 (judge-every-sale account).} \itshape Let the account follow (B1) to (B5), and let J1, J3 (with its ending part), J4, C2, C3, C6 and C7 hold. For every adaptive seller strategy that makes finitely many sales:
+\begin{enumerate}[label=(\arabic*),leftmargin=2em]
+\item for every fraudulent sale $i$, on $\cR_i$,
+$\E[Y_i\mid\cK_i]\le-(p_0+1/m-1)\,v_i$; at $m=0.675$ and $p_0=0.40$ the constant is $0.8815$;
+\item if
+\begin{equation}\tag{T}\label{eq:rowb-test}
+(1-p_0)\,e^{m p_0}+p_0\,e^{-1}\le1,
+\end{equation}
+then $\E[G]\le0$;
+\item the test \eqref{eq:rowb-test} holds at $m=0.675$ for every $p_0\in[0.093,1)$, with value $0.933$ at $p_0=0.40$, and at $p_0=0.40$ for every $m\le0.879$, which includes every deduction $b(v)\ge1.138\,v/p_0$. Under the bare Becker bond $m=1$ it fails for every $p_0\le0.517$, and at $p_0=0.10$ a seller that settles 74 sales at the cap in one block and then exits has an expected gain of $2.79\,V$ when every sale is detected with probability exactly $p_0$, independently; so J1 and $b(v)\ge v/p_0$ alone do not give (2).
+\end{enumerate}
+\end{trivlist}
+
+Part (1) is the per-sale closed form of Section~\ref{sec:alternatives} with the deduction collected in full. Part (2) is the statement for the account as a whole: with the collection rules (B2) to (B5), uncollected deductions included, no adaptive seller gains in expectation. The seller may choose every value, time and anchoring type, may leave an epoch without an anchor, may use what it learns from earlier verdicts, including first-verifier verdicts of cases still open, may time its sales so that their cases end after a release has paid it, and may exit with debt. Part (3) locates the margin: the proof needs \eqref{eq:rowb-test}, which the rule's $0.675$ satisfies with room, and the example shows that some condition beyond the Becker bond is needed.
+
+\emph{Proof of (1).} Under (B1), $\cS_i$ is the sure event, that is $s(v_i)=1$ in the proof of part (1) of Lemma~2 (Section~\ref{sec:s1}). That proof then gives, on $\cR_i$, $\Pr(\Delta_i\mid\cK_i)=\prod_ka_k\ge p_0$ for a type-L sale (Table~\ref{tab:steps}) and $\Pr(\Delta_i\mid\cK_i)=p_0$ for a sale of type O or S and for a sale of an epoch without an anchor. It uses J1, J4, C7, the anchoring deadline and rules (i), (iv), (vi) and (viii) only, which (B1) to (B5) keep, and no freeze, suspension, deduction or settlement rule, so it applies to this account although Lemma~2 is stated under the rules of Section~3. Since $v_i$ is $\cK_i$-measurable, on $\cR_i$
+\[
+\E[Y_i\mid\cK_i]=v_i-\big(v_i+b(v_i)\big)\Pr(\Delta_i\mid\cK_i)\le v_i-\big(v_i+v_i/(m p_0)\big)p_0=-\big(p_0+1/m-1\big)v_i .\qquad\square
+\]
+
+\emph{Proof of (2).} The proof has four steps. Step 1 writes $G$ as a sum over the sales resolved before the seller was last paid, plus a capped sum over the rest. Step 2 compares that expression with a virtual account that is settled in settlement order and banks every excess over $b_0$ at once. Step 3 shows that the virtual account's gain has nonpositive expectation under \eqref{eq:rowb-test}. Step 4 collects the limit argument.
+
+\emph{Step 1: the accounting identity.} Events are ordered by block and by position in the block, as in Section~\ref{sec:s1}. Let $B(t)$, $S(t)$, $R(t)$ and $D(t)$ be the balance, the debt, the payments to the seller and the seller's added funds through event $t$, and $U(t)$ the value of the seller's sales whose cases have passed but which are not yet released. Each case end or confirmed failure changes $B-S+U$ by the actual outcome of its sale, a release changes $B-S+U$ by minus the part paid to the seller, and added funds change $B-S$ and $D$ by their amount; so
+\begin{equation}\label{eq:rowb-ledger}
+R(t)+B(t)-S(t)+U(t)=b_0+D(t)+\sum_{\text{sales ended by }t}Y'^{\,\mathrm{all}},
+\end{equation}
+where the sum runs over all sales, honest and fraudulent, whose case has ended or which have a confirmed failure by event $t$, with $Y'^{\mathrm{all}}$ the actual outcome as defined above. Let $t_0$ be the last event at which $R$ increases, a release that pays the seller, or the registration event if $R$ never increases, and let $\tau_0$ be the block of $t_0$. By (B4), just after $t_0$ the debt is zero and the balance is $b_0$. Call a sale \emph{resolved} by $t_0$ if it has a confirmed failure, has been refunded under rule (i) or has been released at or before event $t_0$; let $A^c$ be the resolved sales and $A$ the rest. After $t_0$ no payment reaches the seller, so every later release goes to the debt or the balance, and $B_\infty-S_\infty=b_0+\sum_{A}Y'^{\,\mathrm{all}}+(D_\infty-D(t_0))$. At exit $U_\infty=0$, and $B_\infty S_\infty=0$ since the balance and the debt are never both positive, so $B_\infty=(B_\infty-S_\infty)^+$. By \eqref{eq:rowb-ledger} at $t_0$, with $B(t_0)-S(t_0)=b_0$ and $U(t_0)$ the value of the passed sales in $A$, $R_\infty=R(t_0)=D(t_0)+\sum_{A^c}Y'^{\,\mathrm{all}}$. Hence
+\[
+G=\sum_{A^c}Y'^{\,\mathrm{all}}+\max\Big(\sum_{A}Y'^{\,\mathrm{all}}+d,\,-b_0\Big)-d-H
+\le\sum_{A^c}Y'^{\,\mathrm{all}}+\max\Big(\sum_{A}Y'^{\,\mathrm{all}},\,-b_0\Big)-H,
+\]
+with $d=D_\infty-D(t_0)\ge0$, because $\max(x+d,-b_0)-d\le\max(x,-b_0)$.
+
+Three moves simplify the right side, each of which can only increase it: for $y\ge0$, $\max(x+y,-b_0)\le\max(x,-b_0)+y$, and for $y\le0$, $y+\max(x,-b_0)\le\max(x+y,-b_0)$ and $\max(x+y,-b_0)\le\max(x,-b_0)$. A sale of a refunded epoch has $Y'=0$ and may sit in either sum. First, the honest sales. A released honest sale contributes $v_h$ to the sum it lies in and $v_h$ to $H$; an honest sale with a confirmed failure contributes $-b(v_h)\le0$; a refunded one $0$. Removing the released ones against $H$ and dropping the failed ones leaves sums over fraudulent sales only. Second, the order of resolution. If $t_0$ is the registration event, $A^c$ is empty and we put $\kappa=0$. Otherwise let $j^*$ be the latest-settled sale, honest or fraudulent, released at or before $t_0$; its release needed $e_{j^*}\ge\Thold$ at the block of the release, so $e_{j^*}(\tau_0)\ge\Thold$ by F1. Every sale $i$ settled no later than $j^*$ has $e_i(\tau_0)\ge e_{j^*}(\tau_0)\ge\Thold>\Fmax$ by F2, so by F3 and F4 its case has ended at a block before $\tau_0$. For a type-S sale the buyer's proof arrives within $\Fmax$ chain blocks, which count at least as many blocks as the effective age; for a sale of an epoch without an anchor the confirmed failure of (B3) comes fewer than $\Thold\le e_i(\tau_0)\le\tau_0-s_i$ blocks after $s_i$, so also before $\tau_0$. Such a sale is in $A$ only if its case passed and its release has not been made, a nonnegative term that moves into the first sum. Every sale settled after $j^*$ is unreleased at $t_0$ by the choice of $j^*$; it is in $A^c$ only if it has a confirmed failure or was refunded, a nonpositive term that moves into the second sum. Third, actual to coupled outcomes. By the ending part of J3 every case ends, so $Y_i'\in\{v_i,-b(v_i),0\}$. A sale of an epoch without an anchor has $Y_i'=-b(v_i)\le Y_i$ by (B3). For any other sale, on $\Delta_i$ the case ends in a confirmed failure ((2b) of Section~\ref{sec:s1}) and $Y_i'=-b(v_i)=Y_i$; on $\cR_i\setminus\Delta_i$, $Y_i'\le v_i=Y_i$; and off $\cR_i$ the epoch is refunded under rule (i), so $Y_i'=0=Y_i$. So $Y_i'\le Y_i$, and both sums and the maximum are monotone. With $\kappa$ the number of fraudulent sales settled no later than $j^*$,
+\begin{equation}\label{eq:rowb-prefix}
+G\le\sum_{i\le\kappa}Y_i+\max\Big(\sum_{i>\kappa}Y_i,\,-b_0\Big).
+\end{equation}
+The index $\kappa$ depends on the whole path, not only on the first $\kappa$ sales, so \eqref{eq:rowb-prefix} cannot be integrated by optional stopping; Step 2 removes $\kappa$.
+
+\emph{Step 2: comparison with a greedy virtual account.} Define, in settlement order, $w_0=b_0$, $\tilde R_0=0$ and for $n\ge1$
+\[
+u_n=w_{n-1}+Y_n,\qquad r_n=(u_n-b_0)^+,\qquad \tilde R_n=\tilde R_{n-1}+r_n,\qquad w_n=\min(u_n,b_0).
+\]
+This is an account that receives the coupled outcomes one sale at a time and pays the seller every excess over $b_0$ at once, so that $w_n\le b_0$ and $\tilde R_n+w_n=b_0+\sum_{i\le n}Y_i$. Let $n_{\max}$ bound the number of fraudulent sales and $\tilde G=\tilde R_{n_{\max}}+w_{n_{\max}}^+-b_0$. For every $\kappa\le n_{\max}$, since $\tilde R$ does not decrease,
+\[
+\tilde R_{n_{\max}}+w_{n_{\max}}^+\ge\max\big(\tilde R_{n_{\max}}+w_{n_{\max}},\tilde R_{n_{\max}}\big)\ge\max\Big(\tilde R_\kappa+w_\kappa+\sum_{i>\kappa}Y_i,\ \tilde R_\kappa\Big)
+=\tilde R_\kappa+\max\Big(w_\kappa+\sum_{i>\kappa}Y_i,\,0\Big),
+\]
+and $\tilde R_\kappa=b_0+\sum_{i\le\kappa}Y_i-w_\kappa$, so
+\[
+\tilde G\ge\sum_{i\le\kappa}Y_i+\max\Big(\sum_{i>\kappa}Y_i,\,-w_\kappa\Big)\ge\sum_{i\le\kappa}Y_i+\max\Big(\sum_{i>\kappa}Y_i,\,-b_0\Big),
+\]
+using $w_\kappa\le b_0$. With \eqref{eq:rowb-prefix}, $G\le\tilde G$ on every path, whatever $\kappa$ turns out to be.
+
+\emph{Step 3: the virtual account loses in expectation.} Let $\psi(w)=b_0\,e^{w/b_0-1}$. Then $\psi\ge\max(w,0)$ with equality at $w=b_0$, and $\psi(w+y)=\psi(w)e^{y/b_0}$. We claim
+\begin{equation}\label{eq:rowb-exp}
+\E\big[e^{Y_n/b_0}\,\big|\,\cK_n\big]\le1 .
+\end{equation}
+Off $\cR_n$, $Y_n=0$. On $\cR_n$, with $P_n=\Pr(\Delta_n\mid\cK_n)\ge p_0$ by (1) and $v=v_n\in[0,V]$ fixed by $\cK_n$, the left side is $(1-P_n)e^{v/b_0}+P_ne^{-b(v)/b_0}$, which decreases in $P_n$, so it is at most $g(v)=(1-p_0)e^{v/b_0}+p_0e^{-v/(mp_0b_0)}$. The function $g$ is convex with $g(0)=1$, so $g\le1$ on $[0,V]$ once $g(V)\le1$. Put $x=V/b_0\le mp_0$ (by (B2)); $g(V)=h(x)$ with $h(x)=(1-p_0)e^{x}+p_0e^{-x/(mp_0)}$, again convex with $h(0)=1$ and $h(mp_0)$ the left side of \eqref{eq:rowb-test}, so $h\le1$ on $[0,mp_0]$ and \eqref{eq:rowb-exp} follows. Now let $\Phi_n=\tilde R_n+\psi(w_n)$. Each $Y_j$ is $\cK_{j+1}$-measurable, since $v_j$ and $\one_{\cR_j}$ lie in $\cA_{\theta_j}\subseteq\cA_{\theta_{j+1}}$ and $N_j\in\sigma(N_k:k\le j)$; so $\tilde R_{n-1}$ and $w_{n-1}$, functions of $Y_1,\dots,Y_{n-1}$, are $\cK_n$-measurable. Moreover $r_n+\psi(w_n)\le\psi(u_n)$: if $u_n\le b_0$ the two sides agree, and if $u_n>b_0$ the left side is $u_n-b_0+\psi(b_0)=u_n\le\psi(u_n)$. Therefore
+\[
+\E[\Phi_n\mid\cK_n]\le\tilde R_{n-1}+\psi(w_{n-1})\,\E\big[e^{Y_n/b_0}\,\big|\,\cK_n\big]\le\Phi_{n-1},
+\]
+so $(\Phi_n)_{n\ge0}$ is a supermartingale with respect to $(\cK_{n+1})_{n\ge0}$, which increases (Section~\ref{sec:s1}, Proof of part (3)), and $\E[\Phi_{n_{\max}}]\le\Phi_0=\psi(b_0)=b_0$; every term is integrable since $0\le\tilde R_n\le n_{\max}V$ and $0\le\psi(w_n)\le b_0$. Finally $\tilde G+b_0=\tilde R_{n_{\max}}+w_{n_{\max}}^+\le\tilde R_{n_{\max}}+\psi(w_{n_{\max}})=\Phi_{n_{\max}}$, so $\E[\tilde G]\le0$ and, by Step 2, $\E[G]\le0$.
+
+\emph{Step 4: finitely many sales.} If the strategy makes at most $n_{\max}$ fraudulent sales, Steps 1 to 3 apply. If it makes finitely many sales on every path but without a fixed bound, let $\tilde G_n$ be the virtual gain after the first $n$ sales; $\tilde G_n+b_0\ge0$ and $\tilde G_n\to\tilde G$ on every path, so $\E[\tilde G]+b_0\le\liminf_n\E[\tilde G_n+b_0]\le b_0$ by Fatou's lemma, and $G\le\tilde G$ still holds. \hfill$\square$
+
+\emph{Proof of (3).} The numbers are direct evaluations of \eqref{eq:rowb-test}. At $m=0.675$ the left side is $0.9331$ at $p_0=0.40$, $0.9996$ at $p_0=0.10$ and $1.0010$ at $p_0=0.05$, and it crosses one only at $p_0=0.0924$ in $(0,1)$. At $p_0=0.40$ the left side increases in $m$ and equals one at $m=0.8791$; a deduction $b(v)=c\,v/p_0$ has $m=1/c$, and $1/0.8791=1.1375$. At $m=1$ it crosses one only at $p_0=0.5174$ in $(0,1)$ and exceeds one below. For the example, $n$ sales at the cap settled in one block resolve before any of them is released, since $\Fmax<\Thold$; with $k$ passes the seller's gain is $kV-(n-k)b(V)$ if this exceeds $-b_0$ and $-b_0$ otherwise, because the passed sales' releases pay the debt first and the rest is written off at exit under (B5). With $m=1$, $p_0=0.10$, $b_0=b(V)=10V$ and $k\sim\mathrm{Bin}(74,0.9)$ the expectation is $2.79\,V$. This is one strategy, not the best one: among bursts of up to 3,000 sales the best has 259 sales and an expected gain of $4.05\,V$. Each of these sales settles with a balance of $b_0$, so the example meets the settlement condition of Section~3.2. A judging layer whose detections are independent with probability exactly $p_0$ satisfies J1, so no proposition from J1 and the Becker bond alone can exclude this strategy. \hfill$\square$
+
+\begin{sremark}[what each input does]\label{rem:rowb-inputs}
+The hold enters only through $\Thold>\Fmax$, which orders events: by the time a release pays the seller, every earlier-settled sale has ended, so a payment to the seller never precedes a deduction it should have covered (Step 1, second move). An account that released each sale as soon as its own case passed would lose this order, a seller could bank passes before earlier failures confirmed, and Step 1 fails; this is the rate dependence that Section~\ref{sec:alternatives} notes for releasing on a pass. Rule (B4) enters once, where the balance is $b_0$ and the debt zero right after the last payment to the seller. The order of payment in (B2) and (B4) enters where the balance and the debt are never both positive, and the fixed cap of (B2) through $x=V/b_0$ in Step 3. The epoch rule of (B3) keeps $Y_i'\le Y_i$ for a sale of an epoch without an anchor; a rule that refunded such an epoch with a single deduction would give $Y_i'=0>Y_i$ on $\Delta_i$. The margin enters only through \eqref{eq:rowb-test}; a bond above $b(V)$ is allowed and only helps, by the convexity of $h$. The ending part of J3 is needed, as in Theorem~1(b): a case that never ends holds its sale and never deducts, and $Y'_i\le Y_i$ can fail. The coupling of Lemma~2 is what lets the proof condition on $\cK_n$ rather than on the actual verdicts the seller sees; Remark~\ref{rem:actual} explains why the latter would not do. No freeze, no suspension, no tier and no settlement condition enter.
+\end{sremark}
+
+\begin{sremark}[the Becker bond at $p_0=0.40$]\label{rem:rowb-becker}
+Part (3) shows that the margin is needed at small $p_0$. At the paper's $p_0=0.40$ the bare Becker bond $m=1$ also falls short of (2) under (B1) to (B5). A dynamic program over bursts of up to 25 sales at the values $V$ and $V/2$, each burst resolving before the next (script \texttt{rowb\_dp.py}), finds a strategy with an expected gain of $0.34\,V$ at $m=1$, $p_0=0.40$ under (B4), when the seller may also settle with an empty balance or a debt. The program values a state only by strategies it can follow, so the gain is that of an actual strategy. With the settlement condition of Section~3.2, under which a burst starts only from a balance of $b_0$, the same program finds no gain at $m=1$ for $p_0=0.20$ and $0.40$; we have no proof of that. Under (B4) at the rule's $m=0.675$ it finds no gain at $p_0=0.40$ and $0.10$, with or without the settlement condition, as (2) requires.
+\end{sremark}
+
+\begin{sremark}[without rule (B4)]\label{rem:rowb-refill}
+If released proceeds reached the seller while the balance was below $b_0$, a seller whose bond was taken would face no further downside: with an empty balance and no debt, a burst of $n$ sales at the cap pays $\E[(kV-(n-k)b(V))^+]$, which is positive. Whether the cost of reaching that state outweighs the option is a parameter question that the proof does not settle. The program of Remark~\ref{rem:rowb-becker}, with releases paying the debt and then the seller, finds no gain from a fresh account at $m=0.675$, $p_0=0.40$, a gain of $1.84\,V$ at $m=1$, $p_0=0.40$, and a gain of $8.32\,V$ at $m=0.675$, $p_0=0.10$, where (2) holds with (B4). When settling does not require a balance, rule (B4) is therefore needed even at the rule's margin, for some $p_0$ that pass \eqref{eq:rowb-test}. With the settlement condition of Section~3.2 the program finds no gain without (B4) either, in the four settings it computes. These are numerical statements about one strategy class, unlike Proposition~S1.
+\end{sremark}
+
+\begin{sremark}[a rate-dependent alternative]\label{rem:rowb-pending}
+Full collection, and with it the per-sale bound (1) summed over all sales without any margin condition, follows if (B2) is replaced by a rule under which a sale settles only while the balance covers the deductions of every case of the account still open, the new one included. By induction the balance then covers $b(v_i)$ at every confirmed failure, and $G\le\sum_iY_i'\le\sum_iY_i$, which has nonpositive expectation by (1) and the tower property, summed over the sales when their number is bounded. The required balance then grows with the number of cases open at once, about the selling rate times $\Fmax$ times $b(V)$, which is the known-rate bond of row (c); Proposition~S1 avoids it at the price of \eqref{eq:rowb-test}.
+\end{sremark}
+
+\begin{sremark}[the two-account design of Section~5.5]\label{rem:rowb-two}
+The second account of Section~5.5, which judges every sale above 1 USDC singly, is a judge-every-sale account with its own cap $V$ and prepaid bond $b(V)$. Its cap must cover the seller's largest such sale, at most 493.92 USDC in the window, so a bond reaches 1,829 USDC and the 31 such accounts together prepay about 3,336 USDC; a 5\% yearly cost of capital on them over the window is below 0.01\% of the revenue. Proposition~S1 applies to it as soon as its rule states (B1) to (B5), with (B4) and the epoch rule of (B3). Its honest-seller cost in the subsection ``Judging every sale (row (b))'' of Section~\ref{sec:s3}, $w\,v\,(1+1/(0.675\,p_0))$ per sale, is unchanged: under (B4) a wrongful deduction is collected from the honest seller's own later releases, which costs it the same in expectation and adds a delay in receiving them until the bond is restored. A seller that misses an anchor now pays one deduction per sale of that epoch rather than one; this cost of a missed anchor is not evaluated. The deterrence closed form of that section, $-0.8815\,v$ per sale, is part (1); part (2) is what replaces the numerical check.
+\end{sremark}
+
+\section{Lemma 1: The Path Enumeration}
+\label{sec:s2}
+
+This section gives the enumeration behind Lemma~1 (Longest path): it extends the formula and proof sketch of manuscript Appendix A with the model, the components of $L_F$ at the reference settings of Table~\ref{atab:profile}, the enumerated paths, the settings and the effect of rules (i), (vi) and (vii).
+
+\subsection{Model}
+
+The enumeration works on the contract's case state machine extended with rules (i) to (v). Blocks are Base blocks of 2 seconds and the settlement block is 0. Conventions read from the contract's deadline checks:
+Each actor acts at the last block its deadline allows. A call valid only after a deadline (a timeout, a reopening, a finalization) has no upper deadline; it is made at its first valid block, and any later block counts as keeper delay on that call (a $\kappa$ transition), measured once from the first valid block. Settlement is at the first block of its epoch, which makes every opening deadline latest. A case opens at the latest at the end of the case-opening window after the seal deadline; a later opening is a $\kappa$ transition. Review and epoch seals can be made by anyone inside the seal window, and an empty window is an allowed outcome; only the reopening or finishing call after an empty window is a $\kappa$ transition. The longest path lets both review seals empty their first window and seal at the end of the reopened one.
+
+\subsection{Opening times}
+
+With settlement at the first block of the epoch, the anchoring deadline is $2T_{\mathrm{epoch}}-1+T_{\mathrm{anchor}}=699$, the beacon block is the next block plus $D_{\mathrm{beacon}}$, the seal window ends $T_{\mathrm{seal}}$ later at 1,668, and the latest opening of a sampled sale's case is $O_s=2T_{\mathrm{epoch}}+T_{\mathrm{anchor}}+D_{\mathrm{beacon}}+T_{\mathrm{seal}}+T_{\mathrm{open}}=1{,}868$. A buyer's dispute opens at the latest at $O_d=T_{\mathrm{resp}}+T_{\mathrm{disp}}=1{,}860$. Rule (v) adds a third opening: a non-delivery dispute opens no later than $\min(O_s,O_d)$ (after the sampled sale's case opens, the same call no longer starts this ladder), its three redelivery windows of $T_{\mathrm{serve}}$ end in a delivery at the latest $\min(O_s,O_d)+3T_{\mathrm{serve}}=2{,}760$, and the sampled sale's case opens in the same block. Hence
+\[
+O=\max\big(O_s,\,O_d,\,\min(O_s,O_d)+3T_{\mathrm{serve}}\big)=2{,}760 .
+\]
+
+\subsection{Components of $L_F$}
+
+Inside the case, every deadline is the block of the preceding transition plus a constant, so the longest in-case path does not depend on the opening time, and acting at the last allowed block is worst. With $m$ attempts per judging stage,
+\[
+L_F=O+3m(2T_{\mathrm{judge}}+3T_{\mathrm{serve}})+m(T_{\mathrm{appeal}}+T_{\mathrm{evid}})+T_{\mathrm{appeal}}+3(m-1)+2(2T_{\mathrm{seal}}+3)+1 .
+\]
+Table~\ref{tab:lf} gives each term at the reference settings of Table~\ref{atab:profile}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Components of $L_F$ at the reference settings (data APIs, Base blocks).}
+\label{tab:lf}
+\footnotesize
+\begin{tabular}{@{}p{8.2cm}lr@{}}
+\toprule
+Component & Formula & Blocks \\
+\midrule
+Latest case opening (rule (v) path) & $O$ & 2,760 \\
+Judgment and redelivery: per attempt two judging windows and three redelivery windows, three stages & $3m(2T_{\mathrm{judge}}+3T_{\mathrm{serve}})$ & 18,900 \\
+Appeal and evidence windows of the initial stage, per attempt & $m(T_{\mathrm{appeal}}+T_{\mathrm{evid}})$ & 6,300 \\
+Appeal window reopened by disclosed evidence & $T_{\mathrm{appeal}}$ & 1,800 \\
+One extra block for each timeout or invalidation & $3(m-1)$ & 6 \\
+Two review seals (review, tiebreak), each reopened once & $2(2T_{\mathrm{seal}}+3)$ & 806 \\
+Last tiebreak attempt times out and rule (iii) confirms the FAIL & $+1$ & 1 \\
+\midrule
+In-case part (without the last block) & & 27,812 \\
+$L_F$ & & 30,573 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{The longest path} (thick in Fig.~2). The buyer opens a non-delivery dispute at 1,860; the seller submits 300 blocks later, the buyer escalates 300 blocks after that, and the seller publishes at 2,760, ending in delivery; the case opens and assigns in that block. The initial stage uses three attempts with evidence requests, and the seller appeals the FAIL at 17,162. The review's seal window passes empty, reopens, and seals at its end (17,565). The review uses three attempts and passes at 23,867; the tiebreak seal is reopened in the same way (24,270). The tiebreak uses three attempts; its last assignment is at 28,472, and the third attempt times out at 30,573, which rule (iii) turns into a confirmed FAIL. The path has 10 $\kappa$ transitions, one of them before the case opens.
+
+\emph{Longest path by opening.} Case opened at $O_s=1{,}868$: freeze by 29,681. Dispute opened at $O_d=1{,}860$: 29,673. Rule (v) path through publication: opening at 2,760, freeze by 30,573. Rule (v) path ending by a finalizing call (a $\kappa$ transition): opening at 2,461, freeze by 30,274.
+
+\subsection{Enumeration settings}
+
+The case graph has 514 reachable states and is acyclic: flags and counters bound each assignment, redelivery, evidence request and seal reopening. The enumeration uses two sets of case settings (the data-API reference settings and longer windows), three readings of rule (v) (absent; opening after a delivered dispute whether or not a recovery claim is open; opening only when none is open), and three of rule (iii) (absent; review only; review and tiebreak), giving 18 configurations. Table~\ref{tab:configs} gives the nine data-API values.
+
+\begin{table}[!htbp]
+\centering
+\caption{Longest path to a freeze / to any case end, data-API reference settings, $\kS=0$. The paper's rule set is the first row.}
+\label{tab:configs}
+\footnotesize
+\begin{tabular}{@{}llr@{}}
+\toprule
+Rule (v) & Rule (iii) & $L_F$ / longest to any end \\
+\midrule
+opens whether or not a claim is open & review and tiebreak & 30,573 / 30,573 \\
+opens whether or not a claim is open & review only & 30,572 / 30,573 \\
+opens whether or not a claim is open & absent & 30,572 / 30,573 \\
+opens only with none open & review and tiebreak & 30,573 / 30,573 \\
+opens only with none open & review only & 30,572 / 30,573 \\
+opens only with none open & absent & 30,572 / 30,573 \\
+absent & review and tiebreak & 29,681 / 29,681 \\
+absent & review only & 29,680 / 29,681 \\
+absent & absent & 29,680 / 29,681 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Keeper margin}
+
+A $\kappa$ transition late by some blocks moves every later deadline by the same amount, so a freeze comes within $L_F+\kS$ blocks of settlement. The longest freezing path has 10 $\kappa$ transitions; at $\kappa=49$ per call their sum is 490, within the assumed bound $\kS\le499$ that the keeper margin of 500 blocks leaves (the release block itself must exceed $\Fmax$).
+
+\subsection{Rules (i), (vi) and (vii)}
+
+\emph{Rule (i).} Holding an anchored epoch until its sampling value arrives removes the timeout of the epoch seal and lets the value come late. Enumerated with this rule, with no keeper delay the longest path stays 30,573 blocks under both readings of whether a late value moves the case-opening deadline; with 49 blocks per $\kappa$ call it is 31,063 blocks, within $L_F+499=31{,}072$.
+
+\emph{Rule (vi).} The enumeration above excludes the waiting state. With that state added at the first draw for up to four waits, the longest freezing path is 30,573 unpaused blocks: a redraw enters the same state as a first assignment and reopens no window. The script \texttt{path\_enum.py} uses an acyclic graph of 390 states, with 10 keeper calls and $O=2{,}760$. This needs a wait to end when the redraw assigns the case, as rule (vii) states; if the pause ended at the checkpoint, each wait would add 819 unpaused blocks. With a per-call keeper delay of at most 49 blocks, every freezing path, not only the longest, ends within $L_F+490=31{,}063$ blocks; without rule (vii), the hold of 34,673 blocks covers up to three waits (34,567 blocks) and not four. One waiting cycle is bounded by $c_w=T_{\mathrm{cp}}+\kappa+D_{\mathrm{beacon}}+2+\kappa$: the next checkpoint is written within the checkpoint interval $T_{\mathrm{cp}}$ plus a keeper delay, the redraw value is the beacon value $D_{\mathrm{beacon}}$ blocks after the checkpoint, callable one block later, and a keeper calls within $\kappa$. At $T_{\mathrm{cp}}=300$, $\kappa=49$ and $D_{\mathrm{beacon}}=768$, $c_w=1{,}168$ blocks, and three redraws take $3{,}504\le\Dw=3{,}600$ blocks (Table~\ref{atab:profile}).
+
+\emph{Rule (vii).} While a case of the account waits, or queues under rule (viii), the hold stops counting, so waiting and queued blocks do not count toward $\Thold$ and $\Fmax$ is counted in unpaused blocks. A queue is not enumerated either; the deadlines of a started case run from its start (rule (viii)), so the unpaused path through a queue is the path without the queue state (Section~\ref{sec:decoy}). Then $\Fmax\le L_F+\kS\le31{,}072<\Thold=L_F+500+3{,}600=34{,}673$ whatever the length of a wait, and the waiting margin is not used by the proof. Without rule (vii), a wait adds to the path, $\Fmax\le L_F+\kS+D_w$, and the hold covers a total wait $D_w$ up to $\Dw$ (condition C4).
+
+%=====================================================================
+\section{Closed-Form Derivations Used in the Evaluation}
+\label{sec:s3}
+
+This section gives the definitions and formulas behind the derived rows of Section~5 (Tables~3, \ref{atab:eval}, 2 and 3, Tables~S-2 and S-3, Fig.~3 and Section~S10.5) and the intermediate quantities needed to reproduce them.
+
+\subsection{Common inputs}
+
+All values are for Base at $V=0.2$ USDC: $p_0=0.40$, $b=0.740741$ USDC ($b/V=3.7037$), $L_F=30{,}573$ blocks (61,146 s). Replays ran at the replay's hold of 31,073 blocks; the hold is 34,673, and $34{,}673/31{,}073=1.11586$ (the paper's 1.116). The window has 907,200 Base blocks (21 days). Of the 415 replayed addresses, 283 have in-cap revenue; 414 are anchorable (multiplier at most 77), 282 of them with in-cap revenue. The one address that is not anchorable, the dominant address (multiplier 536), carries 0.8872 of the replayed in-cap revenue. Over all 415 addresses the replay admits 4,385,610 in-cap sales, and the expected number of sampled cases is 322,368.
+
+\subsection{The three values of $w$}
+
+By Markov's inequality, the number of erring verifiers among three honest ones has mean $3\alpha$, so at least two err with probability at most $3\alpha/2=1.5\alpha$, whatever their dependence. The operating point uses the measured bound $\alpha\le0.001$ (no FAIL among 3,000 honest responses, one-sided 95\%): $w=1.5\times0.001=0.0015$. The independent-error model counts dishonest verifiers: $w_1=c(1-h)+h\alpha=0.1\times0.33+0.67\times0.01=0.0397$ and $w=3w_1^2=0.004728$. The conservative rate is $1.5\alpha=0.015$ at the assumed $\alpha=0.01$.
+
+\subsection{Honest-seller loss under the full freeze}
+
+\emph{Definition.} An honest seller's loss, the honest-seller loss, is the refunds of its frozen correct sales plus its deductions, over its in-cap revenue; group values are revenue-weighted (summed losses over summed revenue).
+
+\emph{Formula.} For address $a$ with $n_a$ expected sampled cases in the window, the expected number of wrongful failures in a span of $L$ blocks is
+\[
+\lambda_a(L)=w\cdot\frac{n_a}{907{,}200}\cdot L .
+\]
+Under the full freeze a failure reaches back $L=\Thold$, and the frozen share is $1-e^{-\lambda_a}$. Each failure deducts $b$; since sampling is proportional to value over the cap, the expected deduction per unit of revenue is $\bar s_a\,w\,b/\bar v_a=w\,b/V=3.7037\,w$ for every address ($\bar s_a=\bar v_a/V$ the mean sampling probability, $\bar v_a$ the mean sale). The deduction share is 0.0056, 0.0175 and 0.0556 at the three values of $w$. The closed form assumes that every frozen sale is claimed, re-entry has no delay and deductions are uncapped, as the replay does.
+
+\emph{Spread of $\lambda$.} At the replayed hold and $w=0.015$, 207 of the 283 addresses with in-cap revenue have $\lambda<0.01$ and carry 0.3\% of the in-cap revenue; the dominant address has $\lambda=147$ ($\lambda=15$ at $w=0.0015$) and loses its whole in-cap revenue to freezes.
+
+\emph{Numbers in Table~S-3.} Table~\ref{tab:cf} splits the closed form into refunds and deductions.
+
+\begin{table}[!htbp]
+\centering
+\caption{Closed-form honest-seller loss under the full freeze: refunds + deductions, revenue-weighted.}
+\label{tab:cf}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Group, hold & $w=0.0015$ & $w=0.004728$ & $w=0.015$ \\
+\midrule
+All Base addresses, 34,673 blocks & $0.9038+0.0056=0.909$ & $0.9274+0.0175=0.945$ & $0.9575+0.0556=1.013$ \\
+All Base addresses, 31,073 blocks & & & $0.9549+0.0556=1.010$ \\
+Anchorable, 34,673 blocks & $0.1473+0.0056=0.153$ & $0.3561+0.0175=0.374$ & $0.6228+0.0556=0.678$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Scaling replayed values to the hold.} Each replayed group value at 31,073 blocks is multiplied by the ratio of the closed form at 34,673 to the closed form at 31,073 for the same group and $w$. For the anchorable sellers the replayed losses 0.1682 ($0.1627+0.0055$), 0.4036 ($0.3862+0.0174$) and 0.7145 ($0.6596+0.0549$) become 0.1845, 0.4325 and 0.7396, reported as 0.18, 0.43 and 0.74 (Table~S-3). Held proceeds scale by the hold ratio: the replayed time average 2,218.78 USDC (Table~\ref{atab:eval}) becomes $2{,}218.78\times1.11586=2{,}475.84$ over all addresses, and 279.04 over the anchorable ones.
+
+\emph{Cost by cap (Table~4).} For each cap the anchorable Base addresses of that cap's replay with in-cap revenue, the dominant address excluded (280, 282 and 287 at $V=0.1$, 0.2 and 1), give the revenue-weighted shares. Judging is $(0.036+0.0098)/V$. The extra \texttt{settle} gas, $177{,}442-86{,}278$ gas, and the release call, 105,161 gas, are priced at the window's gas price and divided by the mean in-cap sale (0.0052, 0.0065 and 0.0250 USDC). The honest-seller loss is the closed form of this section with $L=L_F$ and $w=0.004728$, plus the deduction share. The last column restricts the same terms to the addresses with 1 to 50 USDC of in-cap revenue a day (33, 37 and 40 addresses). At $V=1$ the five addresses above 50 USDC a day lose 0.70 of their in-cap revenue.
+
+\emph{Per seller.} The same terms computed for each address, with the judging share $\pi\,n_s/r$ from its expected cases $n_s$ and revenue $r$, the \texttt{settle} and release gas over its own mean sale, and its own $\lambda$ at $L_F$, give the following. At $V=1$, 34 of the 287 addresses pay at most 0.10 of their in-cap revenue in these terms, 118 at most 0.20 and 167 at most 0.30; they carry 0.028, 0.100 and 0.246 of the in-cap revenue, and the median address pays 0.270. Without the release call per sale (a release per epoch, not built), the counts are 72, 175 and 219. At $V=0.2$ no address pays 0.20 or less, 23 pay at most 0.30, and the median address pays 0.474. The aggregate rows of Table~4 are the revenue-weighted means of these per-seller totals. The totals exclude anchoring, sealing and the L1 data fee. Adding them (anchor gas from the prototype's measurements at the mean entries per seller-epoch, sealing at 208,152 gas per epoch with sales, and the L1 data fee at 16 L1 gas units per calldata byte plus a 110-byte envelope, priced at the window's pooled 592,874 wei per unit; per-block medians run from 228,613 to 3,761,477 wei) raises the aggregate at $V=1$ from 0.717 to 0.726 and the median address from 0.270 to 0.425; 15 addresses then pay at most 0.10 (0.016 of the in-cap revenue), 79 at most 0.20 (0.085) and 119 at most 0.30 (0.241), and the addresses with 1 to 50 USDC a day pay 0.246 against 0.226. At $V=0.2$ the aggregate goes from 0.915 to 0.950 and the median address from 0.474 to 0.748. Anchoring and sealing together are 0.032 of revenue in aggregate and 0.172 for the median address at $V=0.2$, and 0.009 and 0.129 at $V=1$; the L1 fee alone is 0.0028 and 0.0007 of revenue at the pooled price and 0.0176 and 0.0045 at the highest per-block median.  All four necessary conditions of the main text at $s=0.10$ (mean sale above $g/s$, cap above $\pi/s$, in-cap revenue over one hold at least $b$, and $\lambda<0.1$ at $L_F$) hold for 9 of the 287 addresses at $V=1$, with 0.061 of the in-cap revenue; most others fail the hold condition.
+
+\emph{Choice of cap.} With each address's sales up to 1 USDC kept and its cap $K$ chosen from 1 to $K_{\max}$ USDC to minimise its total subject to the hold condition, its expected cases and $\lambda$ scale as $1/K$ (a lower bound, since sampling probabilities are rounded up), the deduction share stays $w\,b/K=3.7w$ and the gas per sale is unchanged. For $K_{\max}=5$, 10 and 20 the revenue-weighted total is 0.320, 0.227 and 0.175 against 0.717 at $K=1$, and the addresses paying at most 0.20 carry 0.241, 0.449 and 0.906 of the in-cap revenue. Only 14 addresses choose $K>1$, and one address with 0.457 of the in-cap revenue, which pays 0.952 at $K=1$ and 0.133 at $K=20$, drives most of the change. The replay at $V=1$ rejected sales above 1 USDC worth 2.77 times the kept in-cap revenue, mostly at the two busiest addresses; admitting all of them at $K=20$ would raise that address's total to 0.456. The kept-sales figures therefore understate the cost of the busiest addresses; a replay at larger caps would settle it. The buyers' bound per episode grows to $K/p_0$, 50 USDC at $K=20$.
+
+\emph{Two accounts.} Each address keeps its sales up to 1 USDC at the cap chosen as above ($K\le20$, hold condition, release per sale) and takes the sales above 1 USDC that the $V=1$ replay rejected (31 addresses, 12,505 sales worth 78,772 USDC against 28,485 USDC of in-cap revenue) through a second account that judges every sale as row (b). There each sale costs $\pi+g$ and a wrongful failure costs the sale plus its deduction, $w\,v\,(1+1/(0.675\,p_0))$ in expectation. Over the in-cap and the admitted revenue the revenue-weighted total is 0.043, 0.068 and 0.144 at $w=0.0015$, 0.004728 and 0.015; at $w=0.004728$, 53 addresses pay at most 0.10 and carry 0.950 of that revenue, 129 pay at most 0.20 (0.975), the median address pays 0.235, and the second account costs a median 0.034 of its own revenue. The busiest address pays 0.048. Kept in one account instead, the admitted sales give 0.273 to 0.563 in aggregate, depending on their unknown sizes. A cost of capital of 5\% or 10\% a year on the bond and the mean held proceeds leaves the aggregate at 0.175 (one account) and adds about 0.03 to the median address. Of the 287 addresses, 242 have less than 1 USDC of in-cap revenue a day, 34 have 1 to 10, 6 have 10 to 50 and 5 more than 50. The gas per sale alone exceeds 0.10 of revenue for 192 of the 287 addresses (0.108 of the in-cap revenue), and for 135 even with one release per epoch, which lowers the median address of the one-account case to 0.153. These figures are closed forms over the recorded traffic, with each large sale charged one case, not a replay (scripts \texttt{econ\_scenarios.py}, \texttt{two\_lane.py}).
+
+\emph{Replay.} Replaying the sales up to 1 USDC under the narrow freeze at caps of 1, 2, 5, 10 and 20 USDC (seed 0, the replay's hold; scripts in \texttt{mac\_replay/}), with the sales above 1 USDC in the second account as above and each address choosing its cap under the hold condition, gives a revenue-weighted total of 0.040, 0.059 and 0.117 at $w=0.0015$, 0.004728 and 0.015, against 0.044, 0.069 and 0.145 in closed form over the same caps; at $w=0.004728$, 48 addresses pay at most 0.10 and carry 0.956 of the revenue, 129 pay at most 0.20 (0.975), the median address pays 0.228 and the busiest 0.036. Revenue is concentrated: the busiest of the 287 sellers has 67\% of their revenue and the busiest two 88\%. Without the busiest seller the closed-form aggregate at the example rate is 0.109; the 101 sellers whose mean sale exceeds $g/s$ at $s=0.10$ carry 0.971 of the revenue, with aggregate 0.048 and median 0.097 (script \texttt{concentration\_sens.py}).
+
+\emph{One account.} Replayed the same way under the narrow freeze, with every sale up to the cap admitted to one account and sales above it rejected, judging, gas and the replayed loss take 0.337, 0.208 and 0.173 of all revenue at caps of 5, 10 and 20 USDC ($w=0.004728$; admitted revenue 0.654, 0.701 and 0.984 of the total), against 0.059 for two accounts; most of the difference is the frozen proceeds of the busiest sellers' large sales (0.274, 0.152 and 0.129 of all revenue). At $w=0.0015$ and 0.015 the cap of 20 USDC gives 0.075 and 0.415, against 0.040 and 0.117 for two accounts. The stored one-account run at $V=1$ used the full freeze and is not compared. Results: \texttt{mac\_replay/results/detected-onward/aggregate/report.txt}.
+
+\emph{Sellers below the hold condition.} 269 of the 287 addresses cannot meet the hold condition at any cap, since their revenue over one hold is below $b(1)$; they carry 4.4\% of the revenue and are kept at $K=1$. Without them the two-account aggregate is 0.066 in closed form and 0.056 replayed, against 0.068 and 0.059 with them.
+
+\emph{Sensitivity} (script \texttt{two\_lane\_sens.py}). The two-account aggregate is 0.068, 0.074, 0.087 and 0.111 at verifier pay of 0.036, 0.072, 0.15 and 0.30 USDC per case; 0.068, 0.124 and 0.284 at Base gas prices of 0.006, 0.02 and 0.06 gwei (0.095, 0.213 and 0.551 at 4,000 USD per ETH); 0.068, 0.074 and 0.090 when a large sale costs one, two or five cases; and 0.107, 0.082, 0.068 and 0.060 with caps up to 5, 10, 20 and 50 USDC. With pay 0.15 USDC, 0.02 gwei, large sales at two cases and $w=0.015$ together it is 0.237.
+
+\emph{Missed anchors.} A missed anchor freezes the epoch from its first sale and deducts $b$; with each epoch with sales missed independently with probability $q$, the expected cost is $q$ times the seller's epochs with sales times (frozen proceeds plus $b$), mostly $b$. At $q=10^{-4}$ it is $6.2\times10^{-4}$ and $8.5\times10^{-4}$ of the in-cap revenue weighted by revenue at $V=0.2$ and 1, and 0.003 and 0.012 for the median address; at $q=10^{-3}$ ten times more (script \texttt{anchor\_miss.py}).
+
+\subsection{Narrow freeze}
+
+\emph{Definition.} The narrow freeze freezes, at a confirmed failure $f$, only the entries settled from the sampled sale whose case failed up to $f$ and still unreleased; earlier entries are released on schedule. Deductions, claims and re-entry are as under the full freeze, and an entry covered by several failures is counted once.
+
+\emph{Span.} In the closed form the span $L$ replaces $\Thold$ in $\lambda_a(L)$. In the replay a sampled case opens in the block after its epoch's beacon block, 1,170 to 1,469 blocks after the sale (mean 1,319.5), and a wrongful failure is confirmed 7,512 blocks later (the judgment and appeal horizons plus one block). The span from a sale to its confirmation is therefore 8,682 to 8,981 blocks (mean 8,832); the replayer does not produce the longer paths through appeals that reach $L_F$.
+
+\emph{Numbers in Tables~3 and S-3.} The narrow-freeze row is a replay at 31,073 blocks with the same failure draws as the full freeze, so the two differ only in the freeze scope. For the anchorable sellers it gives $0.0593+0.0055=0.065$, $0.1655+0.0174=0.183$ and $0.3809+0.0549=0.436$ at $w=0.0015$, 0.004728 and 0.015. No address loses more under the narrow freeze than under the full freeze.
+
+\subsection{No-hold bond at a known rate (row (c))}
+
+\emph{Definition.} A design that samples but does not hold pays each sale at once. At the confirmed failure, which comes at $L_F$, it deducts $b$ and repays to their buyers, from the bond, the sales settled since the failed sale; to deter, the bond must hold $b$ plus what that repayment can reach.
+
+\emph{Formula.} For address $a$ with mean in-cap revenue rate $R_a$ (USDC per hour, the admitted sales per hour times the mean in-cap sale) the bond is
+\[
+B_a=b+R_a\,L_F ,
+\]
+with $L_F$ in hours (Table~\ref{atab:profile}) and the safety factor $1/0.675$ applied only to the $V/p_0$ term through $b$. Addresses without in-cap revenue post $b$. The rate must be known in advance; the contract cannot enforce it.
+
+\emph{Numbers in Tables~2, 3 and S-2.} Summed over the 415 addresses, $\sum_aB_a=2{,}480.19$ USDC; over the 414 anchorable ones, 551.72. FairBind prepays $415b=307.41$ (306.67 anchorable) and locks the prepaid bonds plus the held proceeds at the hold: $307.41+2{,}475.84=2{,}783.25$ over all addresses and $306.67+279.04\approx585.70$ anchorable (unrounded terms). The ratios in Section~5.3 and Table~3 follow: locked $585.70/551.72=1.062$ (6\% more) and $2{,}783.25/2{,}480.19=1.122$ (12\% more); prepaid $306.67/551.72=0.556$ (about half). Restricted to the 282 anchorable addresses with in-cap revenue (Table~3, ``0.46 over sellers with in-cap revenue''), the 132 anchorable addresses without in-cap revenue, each of which posts exactly $b$ under both designs, are removed from both sums: $(306.67-132b)/(551.72-132b)=208.89/453.94=0.460$, a ratio of 0.46. Under the implemented contract, which locks $n\,b$ at multiplier $n$, the sum over all addresses is 753.33 (Table~\ref{atab:eval}), $753.33-536b=356.29$ over the anchorable ones, and $356.29/551.72=0.65$.
+
+\emph{Loss.} The repaid sales are the span of the narrow freeze, reaching back at most $L_F$, so in closed form the loss is $1-e^{-\lambda_a(L_F)}$ plus the deduction share: over all addresses $0.9021+0.0056=0.908$ and $0.9545+0.0556=1.010$, anchorable $0.1319+0.0056=0.137$ and $0.5966+0.0556=0.652$, at $w=0.0015$ and 0.015 (Tables~3 and S-3, rows (c) to (e$'$)).
+
+\emph{Allowed tiers, by count (row (d)).} The most the tier's rate limit admits within $L_F$ is $V\cdot\min(S,\lceil(q+r\,L_F)\,n\rceil)$ per address, with capacity $q=137$, refill $r=0.05$ per block and multiplier $n$. Summed over the 415 addresses this is 232,535 USDC. Fig.~3 plots, for the 283 addresses with in-cap revenue, $b$, about $b+R\,\Thold$ (FairBind prepaid and prepaid plus held, the held proceeds approximated by the rate times the hold), $b+R\,L_F$ (row (c)) and this tier bond (row (d)).
+
+\subsection{Judging every sale (row (b))}
+
+Each sale is held for $\Thold$, released only after its own case ends, and a failed sale deducts $b(v)=v/(0.675\,p_0)=3.7037\,v$ of its value $v$. A fraudulent sale, detected with probability at least $p_0$, gains in expectation at most $(1-p_0)v-p_0\,b(v)=(0.6000-1.4815)v=-0.8815\,v$, the ``about 0.88 of its value'' of Section~\ref{sec:alternatives}; Proposition~S1 (Section~\ref{sec:rowb}) extends this to the account as a whole, with deductions that exceed the balance written off at exit. An honest seller loses the refund of each wrongly failed sale plus its deduction: $w+w/(0.675\,p_0)=4.70\,w$, that is 0.0071, 0.0222 and 0.0706 at the three values of $w$ (0.007 and 0.071 in Table~3). It judges every admitted sale: 4,385,610 cases over all addresses and 1,114,778 over the anchorable ones, against FairBind's expected 322,368 and 36,358 (30.66 times on the anchorable addresses, ``31 times'').
+
+\subsection{Measured miss rate (Section~S10.5)}
+
+\emph{Conditional calculation.} The table multiplies the five-step product $h^2(1-\beta)^2$ by the reported margin
+\[
+0.40/0.40513225=0.987332.
+\] Theorem~1 permits substitution of the resulting lower floor if its J1 step bounds hold given the full history and the other premises remain satisfied. A marginal miss-rate measurement does not establish those conditional bounds (Remark~\ref{rem:beta}).
+
+\begin{table}[!htbp]
+\centering
+\caption{Floor and bound on released fraudulent proceeds at $h=0.67$, $V=0.2$ USDC, $b=0.740741$ USDC.}
+\label{tab:beta}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$\beta$ & $h(1-\beta)$ & $h^2(1-\beta)^2$ & times 0.987332 & bound (USDC) & $b$ over bound \\
+\midrule
+0.05 (assumed) & 0.636500 & 0.405132 & 0.400000 & 0.5000 & 1.481 \\
+0.111 (measured, 10 of 90) & 0.595630 & 0.354775 & 0.350281 & 0.5710 & 1.297 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The deduction equals the bound when the floor is $V/b=27/40\times0.40=0.27$, independent of $V$. Solving $(h(1-\beta))^2\times0.987332=0.27$ gives $\beta=0.2195$ (0.2245 without the margin): the deduction exceeds the bound for a history-conditional miss-rate upper bound up to about 0.22, provided the remaining theorem and example-layer assumptions hold.
+
+%=====================================================================
+\section{The 64-Strategy Search}
+\label{sec:s4}
+
+This section extends Section~5.2 (tightness of the bound of Theorem~1) with the strategy space, the results per configuration and the ablations.
+
+\emph{Summary.} A search over pure strategies of value delivery, case opening, appeal and seal actions found a largest ratio of expected released fraudulent proceeds to the bound of 0.987 (the margin of Table~\ref{atab:error}, since the example layer's five-step product exceeds $p_0$), and 0.999998 when one step's bound is lowered until the five-step product equals $p_0$. The search is non-adaptive, so the adaptive guarantee rests on the proof. Without the reopening rule (ii) the ratio is 1.47.
+
+
+\subsection{Tightness without strategy choices}
+
+When each sale is detected with probability exactly $p_0\,s(v)$ and the seller learns each outcome at once, the optimal adaptive value strategy at a fixed cap solves $W^*=\max_v(1-p_0s(v))(v+W^*)$, so $W^*=\max_v v(1-p_0s(v))/(p_0s(v))$. With values in whole base units, $W^*=0.499999$ USDC at $V=0.2$ (bound 0.5), reached by selling one base unit at a time; it is the bound minus one base unit, and the same holds at $V=0.1$ (0.249999) and $V=1$ (2.499999). Selling only at the cap gives $(1-p_0)V/p_0=0.3$ USDC (a Monte Carlo run with 50,000 episodes gives $0.30026\pm0.00174$). With $N$ sales the optimal value reaches 50\%, 90\% and 99\% of the bound at $N=4$, 34 and 392.
+
+\subsection{Strategy space}
+
+Six seller choices are switched on or off, giving $2^6=64$ pure strategies:
+\begin{itemize}
+\item \texttt{drop}: do not deliver the sampling value of an epoch in which a fraudulent sale is sampled;
+\item \texttt{t1}: choose when the case of a sampled sale opens;
+\item \texttt{ap}: appeal the first verifier's FAIL;
+\item \texttt{d1}: lapse the first review seal window when an honest reviewer is visible;
+\item \texttt{d2}: lapse the reopened window too;
+\item \texttt{t2}: choose the seal block.
+\end{itemize}
+The model favours the seller: dishonest verifiers always PASS, tiebreaks and automatic rechecks are not counted as detection, and no party other than the seller seals. For each strategy the model gives the probabilities that a sampled fraudulent sale is detected, released, or neither. A stationary strategy sells at one value $v$; with $s=s(v)$ the per-sale detection probability is $\pi=s\cdot\mathrm{det}$ and the released mass $(1-s)+s\cdot\mathrm{rel}$, so the expected released fraudulent proceeds are $v\,((1-s)+s\cdot\mathrm{rel})/\pi$. The values scanned are every integer number of base units from 1 to 2,000 and 2,000 evenly spaced values between 1 and 200,000 base units, about 4,000 distinct levels. The reported ratio is the largest expected released fraudulent proceeds over the 64 strategies and the value levels, divided by $V/p_0$. The search is non-adaptive (one strategy and one value per run); the adaptive guarantee rests on the proof. Under rule (iv) the eligible set is fixed at the checkpoint, so \texttt{t1} and \texttt{t2} cannot change eligibility; those strategies are still enumerated.
+
+\subsection{Results}
+
+\begin{table}[!htbp]
+\centering
+\caption{Largest ratio of expected released fraudulent proceeds to $V/p_0$ over the 64 strategies and about 4,000 value levels ($V=0.2$ unless stated).}
+\label{tab:search}
+\footnotesize
+\begin{tabular}{@{}p{8.4cm}rl@{}}
+\toprule
+Configuration & Ratio & Maximizer \\
+\midrule
+All rules, step bounds at the assumed values (detection of a sampled sale 0.405132) & 0.987330 & \texttt{ap}, 1 base unit \\
+\quad same, $V=0.1$ / $V=1$ & 0.987328 / 0.987332 & 1 base unit \\
+\quad seller tries \texttt{t1}, \texttt{t2} with full effect on eligibility (rule (iv) removes it) & 0.987330 & \texttt{ap}, 1 base unit \\
+Margin boundary: first-assignment factor lowered to 0.987332 & 0.999998 & \texttt{ap}, 1 base unit \\
+Margin boundary: review honest share lowered to 0.66151 & 0.999998 & \texttt{ap}, 1 base unit \\
+Margin boundary: both honest shares lowered to 0.665743 & 0.999998 & \texttt{ap}, 1 base unit \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At every margin boundary the detection of a sampled sale is exactly 0.400000, and the ratio is the bound minus one base unit. The largest ratio with the assumed step bounds, 0.987330, is the margin $0.40/0.405132$ of Table~\ref{atab:error}.
+
+\subsection{Ablations}
+
+Weakening one condition at a time, with the same search:
+
+\begin{table}[!htbp]
+\centering
+\caption{Largest ratio when one condition is weakened.}
+\label{tab:ablate}
+\footnotesize
+\begin{tabular}{@{}p{9.6cm}rl@{}}
+\toprule
+Weakened condition & Ratio & Maximizer \\
+\midrule
+C2: the keeper delivers the sampling value with probability 0.675 & 1.4627 & \texttt{drop ap} \\
+C2: the keeper delivers it with probability 0.5 & 1.9747 & \texttt{drop ap} \\
+C2: the value is never delivered by a non-seller & unbounded & \texttt{drop} \\
+Without rule (ii): a reopened seal redraws the reviewer & 1.4736 & \texttt{ap d1} \\
+Without rule (iii): a non-seller seals each window with probability 0.7 & 1.0850 & \texttt{ap d1 d2} \\
+Without rule (iii): no non-seller sealer & unbounded & \texttt{ap d1 d2} \\
+Without rule (iv): by timing the seal, the seller replaces an honest reviewer candidate once with probability 0.1 / 0.5 / 1 & 1.0210 / 1.1824 / 1.4736 & \texttt{ap t2} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The finite ratios for C2, rule (ii) and rule (iii) span 1.085 to 1.97. The C2 rows decide delivery per sale, an approximation: sales of one epoch share one delivery. An epoch-level simulation (50 sales of 0.004 USDC per epoch, 100 epochs, 20,000 episodes, the seller withholding the value of every sampled epoch) gives mean released fraudulent proceeds of 0.5090 and 0.6190 USDC at delivery probabilities 0.675 and 0.5, below the bounds $V/(k\,p_0)$ of 0.7407 and 1.0000 for delivery probability $k$, and 7.2850 USDC over 100 epochs when the value is never delivered.
+
+\emph{Appeal and lapse choices.} Table~\ref{tab:appeal} gives the detection probability of a sampled fraudulent sale under the four appeal and lapse choices. Under rule (iii), lapsing both windows only confirms the FAIL; without it, a seller that lapses both windows escapes whenever no one else seals.
+
+\begin{table}[!htbp]
+\centering
+\caption{Detection probability of a sampled fraudulent sale by appeal and lapse choice.}
+\label{tab:appeal}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Rule set & no appeal & appeal & appeal, lapse first & appeal, lapse both \\
+\midrule
+With rule (iii) & 0.6365 & 0.4051 & 0.4051 & 0.4265 \\
+Without rule (iii), non-seller seals with probability 0.7 & 0.6365 & 0.4051 & 0.4051 & 0.3687 \\
+Without rule (iii), no non-seller sealer & 0.6365 & 0.4051 & 0.4051 & 0.0000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=====================================================================
+\section{Deterrence Replay: Settings and Results}
+\label{sec:s5}
+
+This section specifies the narrow-freeze replay reported in the paper and the full-freeze comparison. Both use recorded sale times and values and the fixed settings below.
+
+\subsection{Narrow-freeze replay: settings}
+\label{sec:j7reg}
+
+The narrow-freeze replay uses the full-freeze settings below for sellers, admission, sampling, opening and detection, with failure 7,512 blocks after opening and a hold of 31,073 blocks. Its freeze, replicate count and comparison rule are: \emph{Freeze.} At the first confirmed failure $f$ the account freezes only the sales settled at or after the failed sampled sale and still held at $f$; earlier sales release on schedule and count in $X_a$; if several detected cases fail at the same block, the earliest of their settlement blocks applies. \emph{Replicates.} $R=1{,}000$ with the artifact's fixed seeds. \emph{Decision rule.} Address $a$ is confirmed below the bound if $\hat E[X_a]+3\,\mathrm{SE}_a<\bar V/p_0$ and above it if $\hat E[X_a]>\bar V/p_0+3\,\mathrm{SE}_a$; the test is confirmed below if every address is, failed if any is above, and undecided otherwise. The two-standard-error rule of the earlier replay is reported alongside. Variants: the full freeze on the same draws; $p_0=0.35$ judged against $0.2/0.35=0.571429$; failure at settlement plus $L_F$; every value set to the cap; the hold of 34,673 blocks.
+
+\emph{Exact expectation for the narrow freeze.} In the recorded sale order, let $f_l$ be sale $l$'s failure block if sampled and detected, and $s(v_l)$ its sampling probability. The exact column of Table~\ref{tab:j7} uses
+\[
+ E_{\mathrm{narrow}}[X_a]=\sum_j v_j\mathbf1\{s_j+\Thold\le\mathrm{end}\}
+ \prod_{\substack{l\le j\\ f_l<s_j+\Thold}}(1-p_0s(v_l)).
+\]
+Only an earlier-or-same sale can freeze sale $j$ under the narrow rule; a later failed sale leaves it releasable. The release cutoff also accounts for censoring at the end of the window. This is not the full-freeze product in Section~S7.3, which ranges over later sales too. These expectations are exact for the fixed independent-detection replay model, not observations of seller losses or validation of J1.
+
+\subsection{Narrow-freeze replay: results}
+\label{sec:j7res}
+
+The results use 1,000 replicates and $M=283$ addresses with admitted sales.
+
+\begin{table}[!htbp]
+\centering
+\caption{Narrow-freeze deterrence replay, $R=1{,}000$, USDC. Below/above: addresses confirmed below or above the bound at three standard errors; within: $\hat E\le$ bound $+\,2\,\mathrm{SE}$; closed form: largest $E_{\mathrm{exact}}$.}
+\label{tab:j7}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+Model & Bound & Below & Above & Test & Within & Q1 & Median & Max $\hat E$ & Closed form \\
+\midrule
+Narrow freeze (main) & 0.5 & 219 & 0 & undecided & 283 & 0.1643 & 0.3427 & 0.5253 & 0.4990 \\
+Full freeze & 0.5 & 283 & 0 & below & 283 & 0.0812 & 0.1924 & 0.4342 & 0.4364 \\
+$p_0=0.35$ & 0.5714 & 221 & 0 & undecided & 283 & 0.1681 & 0.3782 & 0.6041 & 0.5704 \\
+Failure at $s+L_F$ & 0.5 & 219 & 0 & undecided & 283 & 0.1643 & 0.3427 & 0.5253 & 0.4990 \\
+Values at the cap & 0.5 & 283 & 0 & below & 283 & 0.2818 & 0.2958 & 0.3294 & 0.3000 \\
+Hold 34,673 & 0.5 & 219 & 0 & undecided & 283 & 0.1631 & 0.3427 & 0.5253 & 0.4990 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under the narrow freeze, every exact expectation is below the bound; the Monte Carlo comparison is undecided because many addresses sit close to it. The largest mean is 0.5253 USDC (standard error 0.0165) at an address whose exact expectation is 0.4856; five means exceed 0.5 without the error term, and the exact expectation of every one of them is below 0.5. No address has an exact expectation above 0.5 (largest 0.4990). The test is undecided because 72 addresses have an exact expectation above 0.45: the address with the largest mean would need about 12,000 replicates for a three-standard-error separation from the bound, and the one with exact expectation 0.4990 about two million. The evidence that the bound holds on recorded timing is therefore the exact expectation; standardized differences between replicate means and exact expectations over the 282 addresses with positive standard error have mean 0.009 and standard deviation 0.957.
+
+\emph{Rate.} The busiest sellers sit just under the bound, where a full-freeze variant leaves them near zero. Admitted sales and $\hat E[X_a]$ have Spearman correlation 0.774 over the 283 addresses. The five busiest addresses (3,270,832, 709,707, 71,641, 46,580 and 35,824 admitted sales) have means of 0.4703, 0.4778, 0.4849, 0.4940 and 0.4905 USDC under the narrow freeze, against 0.0000, 0.0000, 0.0003, 0.0000 and 0.0000 under the full freeze at $R=1{,}000$, which takes the sales settled before the failure as well. Sellers with more sales sit closer to the bound, though not monotonically, and their exact expectation does not exceed it. The bound is on the expectation; a single replicate reaches 4.545 USDC at one address.
+
+
+
+
+
+The failure-at-$s+L_F$ row equals the main row. The hold-34,673 row does not: its Q1 is 0.1631 rather than 0.1643. Both failure delays precede release, but the longer hold can change which payments are released before the observation window ends; it therefore need not preserve every summary statistic. Judged against 0.5 instead of 0.5714, the $p_0=0.35$ variant has 30 addresses above at three standard errors and 89 exact expectations above 0.5, as the higher bound $\bar V/p_0$ predicts. Every exact expectation is at most the bound, and the narrow freeze releases at least as much as the full freeze at every address.
+
+
+
+\subsection{Full-freeze replay: settings}
+\label{sec:fullreg}
+
+The full-freeze comparison uses the artifact's settlement list, condition file, address groups and fixed seeds.
+
+\begin{enumerate}
+\item \emph{Sellers and admission.} Each of the 415 replayed Base addresses is a seller whose every received sale is fraudulent, on its recorded sale times and values. As in the cost replay, sales above $V=0.2$ USDC are rejected by the cap and the tier is the smallest with zero rejections, so every in-cap sale is admitted.
+\item \emph{Sampling, opening, detection.} Each admitted sale is sampled with probability $\min(1,\lceil v\cdot10^6/V\rceil/10^6)$ by the replayer's hash draw; a sampled case opens at the replayer's case-opening block for its epoch and is detected independently with probability $p_0=0.40$, by seeded uniforms in order of case opening.
+\item \emph{Failure and freeze.} A detected case fails 7,512 blocks after its opening (judgment and appeal horizons plus one block, data-API reference settings). At the first such block $f$ the account is frozen with every held entry, and later sales are not counted; if $f$ is past the window's end there is no failure. There are no honest sales, wrongful failures, re-entry or claims.
+\item \emph{Measured quantity.} With $\Thold=31{,}073$ blocks, sale $j$ is released if $s_j+\Thold\le T^*$, where $T^*=f$ if a failure occurs in the window and the window's end otherwise; $X_a$ is the released value of address $a$ in one replicate.
+\item \emph{Replicates and variants.} $R=100$ replicates with the artifact's fixed seeds. Variants: (a) $p_0=0.35$ with the same draws, judged against $0.2/0.35=0.571429$ USDC and, for reference, 0.5; (b) every admitted value replaced by 0.2 USDC, so every admitted sale is sampled; (c) confirmed failure at settlement plus $L_F=30{,}573$ blocks.
+\item \emph{Decision rule and reports.} For the $M$ addresses with an admitted sale, $\hat E[X_a]$ is the mean over replicates and $\mathrm{SE}_a$ the sample standard deviation over $\sqrt R$; address $a$ is within the bound if $\hat E[X_a]\le\bar V/p_0+2\,\mathrm{SE}_a$. Also reported: the distribution of $\hat E[X_a]$, the count above 0.5 without the error term, the largest single-replicate value, comparisons with 0.987 (Section~\ref{sec:s4}) and with $(1-p_0)\bar V/p_0=0.3$, and the Spearman correlation of $\hat E[X_a]$ with the number of admitted sales, also over addresses that fail in at least 95\% of replicates.
+\item \emph{Exact expectation.} $E_{\mathrm{exact}}[X_a]=\sum_jv_j\one\{s_j+\Thold\le\text{end}\}\prod_{l}(1-p_0s(v_l))$, the product over sales $l$ with $f_l<s_j+\Thold$, where $f_l$ is the failure block if sale $l$ is sampled and detected.
+
+
+\end{enumerate}
+
+\subsection{Full-freeze replay: results}
+
+All 100 replicates completed. $M=283$ addresses have admitted sales (of the other 132, 125 have no sale in the window and 7 only sales above the cap).
+
+\begin{table}[!htbp]
+\centering
+\caption{Deterrence replay, $R=100$, USDC. $\hat E$: mean over replicates per address; closed form: largest $E_{\mathrm{exact}}$.}
+\label{tab:det}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+Model & Bound & Within / $M$ & Q1 & Median & Q3 & Max $\hat E$ & Max/bound & Single-run max & Closed form \\
+\midrule
+Main ($p_0=0.40$) & 0.5 & 283/283 & 0.0785 & 0.1892 & 0.2788 & 0.4479 & 0.896 & 3.012 & 0.4364 \\
+(a) $p_0=0.35$ & 0.5714 & 283/283 & 0.0840 & 0.2158 & 0.3299 & 0.5168 & 0.904 & 3.674 & 0.4978 \\
+(b) values set to 0.2 & 0.5 & 283/283 & 0 & 0.0280 & 0.1420 & 0.3160 & 0.632 & 4.000 & 0.2999 \\
+(c) failure at $s+L_F$ & 0.5 & 283/283 & 0.1322 & 0.2650 & 0.3663 & 0.5138 & 1.028 & 4.314 & 0.4923 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The closed form is below the bound for every address in every model, and no address exceeds the bound plus two standard errors. In the main model the largest mean is 0.4479 USDC (standard error 0.0436, closed form 0.4364 for that address), against the bound of 0.5, and no mean exceeds 0.5. In variant (a), three means exceed the design value 0.5 without the error term but all lie below the bound $0.571$ for the true floor; in variant (c), two means exceed 0.5 within two standard errors, with closed-form values below 0.5. A single replicate can exceed the bound several times over, since the bound is on the expectation.
+
+\emph{Rate.} The five busiest addresses (3,270,832, 709,707, 71,641, 46,580 and 35,824 admitted sales) have means of 0.000, 0.000, 0.003, 0.000 and 0.000 USDC: their first confirmed failure, about 9,000 blocks into the window, comes before their first release at 31,073 blocks. The largest means come from addresses with 133 to 632 sales. Over all 283 addresses the Spearman correlation of the mean with the number of sales is $+0.204$; restricted to the 121 addresses that fail in at least 95\% of replicates it is $-0.427$. The positive overall value reflects censoring at the window's end: addresses with few sales often see no failure and release little.
+
+In variant (b), the median is 0.028 and high-volume addresses are near 0, because the full freeze precedes their first release.
+
+
+A longer hold releases no sale earlier, so these values remain upper bounds at the hold of 34,673 blocks, as the hold-34,673 row of Table~\ref{tab:j7} shows for the narrow freeze.
+
+
+\section{Status of the Extended Version}
+\label{sec:status}
+
+Section~6 of the main text sorts the work beyond this paper by whether it supplies the inputs of Theorem~1, changes the rule or widens the evidence. Table~\ref{tab:status} records, for each item, what the extended version does about it and its implementation status. ``Drafted'' means rule text and a lemma statement with a proof sketch exist; ``implemented'' means contract code with passing unit tests on a development build; nothing in this table has been replayed or measured on the evaluation windows beyond what Tables~S-1 to S-3 already report, and none of it changes a number in this version; the last column says which numbers a later version would revise.
+
+\begin{table}[!htbp]
+\centering
+\caption{Items of Section~6 and their treatment in the extended version. Implementation status: D = drafted (rule text, lemma and proof sketch; ``lemma proved'' where the extended version writes the full proof), I = implemented with unit tests, P = planned. ``Changes'' says what in the main text the item would alter.}
+\label{tab:status}
+\small
+\begin{tabular}{@{}p{3.4cm}p{6.4cm}p{1.2cm}p{4.0cm}@{}}
+\toprule
+Item (Section 6) & Extended-version item & Status & Changes \\
+\midrule
+Decoy cases defeat J1 in the example layer (C5) & Assignment batches, imported into this version as rule (viii) and Lemma~3 with its proof (Section~\ref{sec:decoy}); the extended version also draws each batch's first assignments from a separate value fixed after the batch closes, which lengthens the hold, ties queue lengths to a slot condition that is not measured, and narrows rule (vii) to sampled cases & D (separate value, slot condition); imported here & None in this version; the separate value would change $L_F$ and $\Thold$ \\
+Randomness source (C1) not met by the prototype & One randomness interface for every random value, backed by a verifiable random function; a committee commit-reveal scheme alone does not give J4 & I (interface); P (VRF adapter) & Prototype description (Section~5.4), $L_F$ and $\Thold$ \\
+Buyer checks (C7) unmeasured & Receipt signatures: the buyer signs a commitment to the response before it can read it, in a fair exchange of a key for a signature, so a substituted response is provable without a buyer check & I & Table~1 row C7 (replaced on signed accounts), per-sale cost \\
+One-transaction anchor limit (serves 414 of 415 addresses) & Split anchoring: per-unit sub-roots under one epoch root, membership proofs over (unit, leaf), per-unit cap check; blob anchoring as a design note & I & Anchorable population (all 415 addresses; traffic totals in Tables~S-1 to S-3; these do not establish the extension's guarantee or cost), anchor gas \\
+Full freeze and balance-derived multiplier in the prototype & Narrow freeze and prepaid multiplier as in the rule & P & Prototype description, Table~S-3 rows \\
+Verifier pay assumed, no incentive argument & Participation and bribery conditions on verifier pay, bond and honest share; the pay share becomes a derived lower bound rather than a setting & D & Table~3 verifier-pay row (basis), Table~1 \\
+\texttt{settle} gas per sale & Batched settlement of one seller's items in one call, which lowers but does not remove the gas per sale; re-measurement on the final build & I & Table~3 cost rows, Section~5.4 \\
+Honest-seller loss from a replay without reviews & Replayer with appeal, review and waiting paths; one loss figure per error model & P & Table~3, abstract loss figures \\
+Return of frozen proceeds on proof of correct sales & Release proofs: on services whose answers a proof can check, such as values from signed source data, a seller returns frozen correct sales to itself by proof, at the price of a proof bond; deductions are not returned & I & New rule, Table~3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The items marked I were built on a development branch of the prototype and pass that branch's unit tests, not the 291 tests and 13 stateful invariants of the prototype. The items marked D are text and proof sketches only. Nothing here is evidence for the main text's claims.
+
+\emph{Detail behind the main text's closing paragraph of Section~6.} The main text sorts the further work without its mechanisms; this paragraph keeps the detail. Buyer-signed receipts, implemented with unit tests, make a substituted receipt provable without a buyer check, which removes C7 on the accounts that use them. Every random value passes through one implemented interface for a verifiable random function; the adapter is not yet built. Split anchoring, implemented, serves every replayed address. Release proofs, implemented, return frozen correct sales on services whose answers a proof can check, while deductions stay locked; this has neither proof nor replay (Section~\ref{sec:alternatives}). Batched settlement, implemented, lowers the gas per sale. A participation condition for verifiers is derived, with inputs not yet measured. Inclusion (C3) and downstream gains (C6) have no mechanism yet. A missed anchor could refund that epoch's sales with no failure, deduction or suspension, cutting its expected cost to the miss probability; a refunded epoch gives a fraudulent seller nothing (Lemma~2), but a seller could then skip an anchor to escape a pending dispute's failure, so this variant needs a rule for disputes. Of the remaining items the main text names, the replays over other windows, facilitators and chains, and of the dominant address, the measured miss rate, the replay of the signature-judged layer on a real signed-source service, the proof and replay of the two bribery changes, the keeper on Base's safe head,  the replay with appeals and reviews, and the enumeration of the longest path by a model checker remain outside this evaluation.
+
+\setcounter{section}{9}
+\section{Settings, Rules and Replay Details}
+\label{app:moved}
+
+\subsection{Reference Settings and Error Model}
+\label{app:settings}
+Table~\ref{atab:profile} gives the windows of the data-API profile on Base and Table~\ref{atab:error} the error model of the example judging layer. Other chains convert the same durations in seconds to their own blocks (Section S1.1).
+\begin{table}[t]
+\centering
+\caption{Reference settings: data APIs on Base (2-second blocks).}
+\label{atab:profile}
+\scriptsize
+\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}llr@{}}
+\toprule
+Symbol & Window & Blocks \\
+\midrule
+$T_{\mathrm{epoch}}$, $T_{\mathrm{anchor}}$ & epoch length; anchoring deadline & 300, 100 \\
+$D_{\mathrm{beacon}}$ & beacon delay before the sampling value & 768 \\
+$T_{\mathrm{seal}}$, $T_{\mathrm{open}}$ & seal window; case opening & 200, 200 \\
+$T_{\mathrm{serve}}$, $T_{\mathrm{judge}}$ & redelivery; verifier's judgment & 300, 600 \\
+$T_{\mathrm{evid}}$, $T_{\mathrm{appeal}}$ & evidence; appeal & 300, 1,800 \\
+$T_{\mathrm{resp}}$, $T_{\mathrm{disp}}$ & non-delivery response; dispute & 60, 1,800 \\
+$m$ & attempts per stage & 3 \\
+$O_s$, $O_d$, $O$ & latest case opening: sampled, disputed, any & 1,868, 1,860, 2,760 \\
+\midrule
+$L_F$ & \multicolumn{2}{l}{30,573 (16.99 h)} \\
+$\Thold$ & \multicolumn{2}{l}{$L_F+500+3{,}600=34{,}673$ (19.26 h)} \\
+Keeper margin & \multicolumn{2}{l}{500; summed keeper delay $\kS \le 499$ assumed} \\
+ & \multicolumn{2}{l}{longest path: 10 calls, per-call delay $\kappa=49$} \\
+Waiting margin & \multicolumn{2}{l}{$\Dw=3{,}600$: 3 redraws of at most 1,168 each} \\
+\midrule
+$b(V)$ & \multicolumn{2}{l}{$V/(0.675\,p_0)$ at $p_0=0.40$, rounded up to a base unit:} \\
+ & \multicolumn{2}{l}{0.370371, 0.740741, 3.703704 USDC at $V=0.1$, 0.2, 1 USDC} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[t]
+\centering
+\caption{Error model of the example layer: the three values of $w$ and the stall range. Measured values: Section~S10.5.}
+\label{atab:error}
+\scriptsize
+\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}>{\raggedright}p{4.75cm}>{\raggedright}p{1.8cm}>{\raggedright\arraybackslash}p{1.88cm}@{}}
+\toprule
+Quantity & Value & Basis \\
+\midrule
+$\alpha$: honest verifier fails a correct response & 0.01 ($\le0.001$) & assumed (measured bound) \\
+$\beta$: honest verifier passes a wrong response & 0.05 (0.111 just outside tolerance) & assumed (measured) \\
+$c$: dishonest verifier fails a correct response & 0.1 & assumed \\
+$h$: honest share of the weight eligible by state (rule (viii)) & 0.67 & assumed \\
+Five-step product $h^2(1-\beta)^2$, verdicts executed in time; $p_0$ used and margin $p_0/(h^2(1-\beta)^2)$ & 0.40513; 0.40, 0.987 & derived \\
+\midrule
+$w$, honest-verifier rate: $1.5\times$ the measured bound on $\alpha$ & 0.0015 & honest verifiers only \\
+$w$, independent errors with dishonest verifiers: $3w_1^2$, $w_1=c(1-h)+h\alpha=0.0397$ & 0.004728 & assumed \\
+$w$, conservative: $1.5\alpha$ & 0.015 & assumed \\
+$w$, dishonest reviewers stall whenever drawn (Table~\ref{atab:example}, stalled reviews) & 0.0192 to 0.0263 & assumed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Tiers}
+\label{app:tier}
+The seller chooses a sales tier: 10, 30, 100, 300 or 1,000 settlements, or 3,605 times a multiplier of its choice. A token-bucket rate limit admits at most the tier's count of settlements in any interval of $2\Thold$, and a settlement over the limit reverts. The interval is $2\Thold$ because the sales one freeze can reach have cases that all end within one hold after settlement, so they were settled at most two holds apart. The tier at multiplier 1 is $3{,}605=\lceil 137+0.05\cdot 69{,}346\rceil$, a burst of 137 settlements plus a refill of 0.05 per block over $2\Thold=69{,}346$ blocks; over twice the replay's hold of 31,073 blocks it is 3,245, the worst-case list of the prototype's anchor measurement. In the rule, unlike the prototype, tier and multiplier ignore the balance, so neither bond nor hold depends on the tier. Because the tier does not size the bond, a seller can declare the highest tier one anchor transaction can list.
+
+\subsection{The Eight Rules in Full}
+\label{app:rules}
+\begin{list}{}{\setlength{\leftmargin}{0pt}\setlength{\itemindent}{2em}\setlength{\labelwidth}{1.7em}\setlength{\labelsep}{0.3em}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}\setlength{\partopsep}{0pt}}
+\item[(i)] An anchored epoch whose sampling value has not arrived stays held. It ends in a refund with no failure for the seller only if its checkpoint, fixed before the value, has fewer eligible verifiers than the fixed minimum, a test the draw cannot affect. \emph{Stops:} a seller withholding the value to escape the draw.
+\item[(ii)] A lapsed seal window reopens with unchanged draw inputs. \emph{Stops:} lapsing a seal window to redraw the reviewer.
+\item[(iii)] A stalled seller-appealed review (two empty seal windows, a missed last deadline or exhausted verifier draws) confirms the first verifier's FAIL. \emph{Stops:} escaping a FAIL by stalling the appealed review.
+\item[(iv)] A verifier's eligibility for any case of an epoch is decided by its state at the epoch's checkpoint, the latest record of verifier state written at or before the epoch's anchoring deadline. \emph{Stops:} timing openings or seals to change verifier eligibility.
+\item[(v)] A sampled sale whose non-delivery dispute ended as delivered still opens a case, whose receipt anyone may post. \emph{Stops:} using a dispute to skip judgment.
+\item[(vi)] If the first verifier draw of a case finds no eligible verifier, the case waits: it does not end, its payment stays held, and it is redrawn at the first checkpoint written after its last draw. The redraw uses a beacon value fixed after that checkpoint, so no checkpoint can follow the value. \emph{Stops:} filling verifiers with own sales so cases end unjudged.
+\item[(vii)] While a case of a seller waits under rule (vi), until its redraw assigns it, or queues under rule (viii), the seller's hold stops counting: a payment is released once $\Thold$ blocks in which no case of the seller waited or queued have passed since its settlement. The largest cap of the preceding hold, the required balance and the prepaid bond paid out are measured over the same blocks. \emph{Stops:} a long wait that lets later sales be released.
+\item[(viii)] A checkpoint records each verifier's state only: active registration, no exit request, and a bond above the minimum after confirmed penalties (the bonds, the minimum and the penalties of verifiers are rules of the example layer that this paper does not specify). Eligibility and weight under rule (iv), and the minimum count of rule (i), read this state and nothing about the cases a verifier holds. The sampled cases of an epoch, with their review and tiebreak stages and the cases of rule (v), form its \emph{batch}; their first assignments draw from the epoch's sampling value with distinct inputs (nonce, stage, attempt, round) over the checkpoint's table, and a review or redraw from its own value (J4). A dispute case keeps the assignment it has and enters a queue with the key of the epoch in which it opened, behind that seller's sampled cases of that batch. Each verifier has a number of \emph{slots}, the cases its bond can secure at once at the largest cap. A drawn verifier without a free slot does not lose the case: the case enters that verifier's queue, held, and starts when fewer cases than slots are being judged, inside the transaction that frees a slot or adds a case; a verifier judging nothing starts the head of its queue even with no free slot or while ineligible through penalties, securing it with part of its bond. The deadlines of a started case run from its start. A queue is ordered by batch, then by the case's rank among its seller's cases of that batch, the table value of its first assignment, then by a seller permutation drawn from the sampling value. A queued case moves to the next candidate of the same draw only when its verifier has asked to exit or has withdrawn its bond to zero slots, and only if the candidate was fixed after that request, at the block at which its draw value is determined, not at the value's delivery; a timed-out attempt moves to the next attempt of the same value. A verifier's exit completes only after the cases it holds, started or queued and fixed before its request, have ended. A search that finds no eligible candidate follows rule (vi) or, for a seller-appealed review, rule (iii). A queue wait ends no case and refunds no epoch. The rule presupposes rule (vii). \emph{Stops:} filling honest verifiers with decoy cases so that they drop out of the draw or are skipped when drawn.
+\end{list}
+
+\subsection{Replay Inputs and Further Baselines}
+\label{app:data}
+Table~\ref{atab:eval} gives the replay totals. The 415 replayed Base addresses are the 400 busiest of a September list of receiving addresses plus 15. One anchor transaction holds at most 11,742 entries of 64 bytes each under a 30,000,000 gas limit, allowing multipliers up to 77 (Table~S-4); the dominant address, at multiplier 536, exceeds it, and 25 of the window's 3,024 Base epochs fail to anchor. Polygon and Solana records come from published facilitator address lists (this report). Reproducibility Section~S1 specifies the address population, hold, caps and input window; Section~S7 specifies the seeded deterrence replay. Reproduction must preserve within-block ordering because rejection amounts and expected case counts can depend on it. Honest-loss results use injected independent errors and the no-appeal confirmation delay, not observed verdicts.
+
+\begin{table}[t]
+\centering
+\caption{Replay of the median window on Base at $\vmax=0.2$ USDC and the replay's hold of 31,073 blocks, smallest zero-rejection tier per address, seed 0. Top-1\% sellers: the top 1\% of the September list. $n\,b$: the multiplier $n$ times the deduction. Layer: R the rule, P the prototype, --~recorded data. Polygon, Solana: Table~S-1.}
+\label{atab:eval}
+\scriptsize
+\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}>{\raggedright}p{5.05cm}>{\raggedleft}p{2.05cm}l@{}}
+\toprule
+& Base & Layer \\
+\midrule
+Settlements in window & 4,539,137 & -- \\
+Replayed addresses (top-1\% sellers); their share of settlements & 415 (44); 98.5\% & -- \\
+Settlements within the cap, all window addresses, by count / by value & 97.8\% / 18.0\% & -- \\
+Prepaid bond sum (USDC): rule; implemented contract ($n\,b$ per seller) & 307.41; 753.33 & R; P \\
+In-cap sales rejected with the tier of the 14 days before the window, share of all attempts & 3.3\% (769.13 USDC) & R \\
+Held proceeds, time average (USDC); scaled to 34,673 blocks & 2,218.8; 2,475.8 & R \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{atab:more} adds three no-hold baselines to rows (a) to (d) of main-text Table~2, on the same anchorable addresses and with the same columns. Row (d$'$) sizes the bond by the tier ladder in value. Rows (e) and (e$'$) give each seller a bucket of in-cap sales or USDC, initially full and refilled at a multiple of its forecast rate. We fit one multiple and capacity for all sellers on the first week and evaluate only the last two weeks (this report). The bond is $b$ plus what the bucket admits within $L_F$. Forecast buckets lock far more than FairBind and still reject sales, row (e$'$) more than the share allowed when it was fitted. These rows share row (a)'s closed-form honest-seller loss at $L_F$.
+\begin{table}[t]
+\centering
+\caption{Further no-hold baselines at $\vmax=0.2$ USDC, anchorable Base addresses, as in main-text Table~2. Prepaid, Locked: USDC; Judged: expected cases. Layer: R, the rule.}
+\label{atab:more}
+\scriptsize
+\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}lrrrll@{}}
+\toprule
+Option & Prepaid & Locked & Judged & Rate & Layer \\
+\midrule
+(d$'$) Ladder, value & 4,803 & 4,803 & 36,358 & tier & R \\
+(e) Bucket, sales & 96,698 & 96,698 & -- & forecast & R \\
+(e$'$) Bucket, USDC & 2,709 & 2,709 & -- & forecast & R \\
+\bottomrule
+\multicolumn{6}{@{}p{8.4cm}@{}}{--: not computed. Rows (e), (e$'$) reject 1.0\%, 1.1\% of evaluated sales (2.9\%, 6.7\% of value) on anchorable addresses.}
+\end{tabular}
+\end{table}
+
+\subsection{Error of a Real Data-API Check}
+\label{app:c1}
+A verifier's data-API check compares a response with the seller's registered source and tolerance. It returned FAIL on none of 3,000 honest responses from two exchanges, taken at five-minute intervals over one week (upper bound in Table~\ref{atab:error}). Among wrong responses generated by rule, it rejected all those off by larger multiples of the tolerance and missed some just outside it (counts in Section~\ref{sec:measured}). These figures describe one collection and our check, not verifier honesty, so the dishonest verifiers' error rate stays assumed.
+
+For errors just outside the tolerance, the measured miss rate gives a five-step product of 0.355, or 0.350 after the reported scaling (Section~S5, ``Measured miss rate''). Conditional on this lower floor satisfying J1 on every history and the remaining theorem premises holding, Theorem~1 gives the reported 0.57 USDC bound and the existing deduction still deters. The measurement does not establish either history-conditional floor; the stated safety margin covers a history-conditional miss-rate upper bound up to about 0.22 only under the remaining theorem and example-layer assumptions.
+
+
+\subsection{The Example Judging Layer and the Prototype}
+\label{app:example}
+We evaluate data APIs, whose response is a data value judged against the seller's registered source and tolerance (the \emph{data-API profile} of Table~\ref{atab:profile}). There, verifier votes with review give the detection floor through five steps: (1)~the first eligible verifier is honest (honest share $h$ of eligible weight); (2)~it fails the wrong response (one minus the miss rate $\beta$); (3)~the review on appeal finds an honest verifier, or exhausts and confirms the FAIL by the stalled-appeal rule (iii) (honest share); (4)~the reviewer fails it (one minus the miss rate); (5)~the verdict executes in time, which C2 and C3 make certain. The first step rests on checkpoint eligibility by state (rules (iv) and (viii), Lemma~3), the honest-share condition (C5) and the waiting rule. The five bounds multiply to $h^2(1-\beta)^2=0.40513$ at the assumed $h=0.67$ and $\beta=0.05$, rounded down to $p_0=0.40$. The product leaves out the tiebreak, which can only add detections, so $p_0$ is conservative. A case can reach three verifiers, and by Markov's inequality at least two of three honest verifiers err with probability at most 1.5 times their error rate, whatever their dependence. We report three values of $w$ (Table~\ref{atab:error}): (1)~0.0015, the honest-verifier rate (all verifiers honest); (2)~0.004728, independent errors with dishonest verifiers, at share $1-h$ as in the detection floor; (3)~0.015, a conservative rate. The evaluation injects only independent errors.
+
+Table~\ref{atab:example} lists the conditions the example layer needs beyond J1 to J4, the effects it does not cover, and the prototype's differences from the rule.
+\begin{table*}[t]
+\centering
+\caption{Conditions of the example layer and differences of the prototype, with the effect of each falling short ($\vmax=0.2$ USDC, bound $\vmax/p_0 = 0.5$, $b=0.74$ USDC).}
+\label{atab:example}
+\scriptsize
+\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.9}
+\begin{tabular}{@{}>{\raggedright}p{1.94cm}>{\raggedright}p{6.07cm}>{\raggedright\arraybackslash}p{7.13cm}@{}}
+\toprule
+Item & Condition or status & If it falls short \\
+\midrule
+C4 Waiting & Rule (vii); J3, every case ends: a waiting case is assigned within the waiting margin if keepers act on time, and a queued case starts within finitely many blocks (Lemma~3), with no bound in blocks & Under rule (vii) a wait only delays releases. Without it, a wait beyond the margin releases later sales worth up to $R$, the seller's in-cap revenue rate, times the excess wait, at a seller cost not growing with $R$. \\
+C5 Honest share & J1, J2: on every history, honest verifiers hold at least share $h$ of the weight eligible by state at every checkpoint (rule (viii)), also with any one honest verifier removed and at every block after any verifier's own exit request or withdrawal, and pass a wrong response with probability at most $\beta$ given the full history, including the cases the verifier already holds; case openings reach the share only through confirmed penalties on the checkpointed state (Lemma~3), which this condition covers; $h=0.67$ is the same assumed value, read on this set; $p_0$ is at most the five-step product (Section~4). Error rates, $p_0$ and $w$ are assumed except for the honest verifiers' bound; the safety factor covers history-conditional miss-rate upper bounds up to 0.22 only under the remaining theorem and example-layer assumptions & Decoy cases: closed by rule (viii), below. If only the first assignment has the honest share, the review share is 0.6446 and the floor 0.3898 (before $p_0$ is rounded down to 0.40, a factor 0.987): bound 0.513 USDC (unscaled), still below $b$. \\
+Verifier pay & 0.036 USDC per case, assumed; verifiers earn nothing on chain; the extended version derives a participation condition whose inputs are unmeasured & \\
+Decoy cases (C5) & \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{13.38cm}@{}}{without rule (viii), decoy cases opened early by a seller that knows an earlier epoch's draws, about 33 per epoch with about 1,300 USDC of refundable deposits, fill all honest verifiers' capacity at the assumed share before the next checkpoint, so detection falls to 0 and J1 fails; under rule (viii) capacity is not part of eligibility and a drawn verifier queues the case, so decoys change only start blocks, which rule (vii) pauses (Lemma~3; proof in Section~S3.12). Not covered: changes of the checkpointed weights (C5); the length of queues, which the extended version ties to a slot condition that is not enforced or measured, an exited verifier draining its queue one case at a time; the delay decoys impose on other sellers' releases; and, under this version's rule (vii), a queued buyer dispute that pauses an honest seller's release clock for the length of the drawn verifier's queue, which the extended version removes by narrowing rule (vii) to sampled cases (Table~S-16)} \\
+Stalled reviews & \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{13.38cm}@{}}{a stalled appealed review confirms a wrongful first FAIL; if dishonest verifiers always stall, $w$ rises to 0.0192 to 0.0263} \\
+Prototype randomness & \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{13.38cm}@{}}{the L2 block hash after the beacon delay, which does not meet C1; the extended version routes every random value through one interface built for a verifiable random function, whose adapter is not yet built} \\
+Prototype keeper & \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{13.38cm}@{}}{waits for finalized blocks, so its delays on one path, at least 500 blocks, exceed the keeper margin} \\
+Prototype, other & \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{13.38cm}@{}}{no checkpoint writing or redraw calls; bonds sized by the multiplier; full freeze; release per sale; calls not rebuilt for one commitment per sale} \\
+Prototype anchor limit & \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{13.38cm}@{}}{sellers beyond it are not served here; split anchoring, implemented in the extended version, can split the recorded traffic across anchors; Tables~S-1 to S-3 are traffic statistics, not a guarantee or cost evaluation of that extension} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\end{document}

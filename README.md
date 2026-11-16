@@ -14,6 +14,7 @@ matplotlib 3.11), Foundry 1.5.1, Go 1.25 and Node 22.
 
 | Directory | What it is |
 | --- | --- |
+| `docs/` | technical report with the full proofs, derivations and additional results of the paper (`technical_report.pdf`, source `technical_report.tex`) |
 | `code/settlement/` | reference settlement contract and verification contracts (`contracts/test/sdk`, `contracts/test/g7`), Chainlink VRF v2.5 consumer and fork test (`contracts/test/sdk/vrf`), release units, anchor completion and pulls, load tests up to 5,000 sales, deployed-USDC fork tests (`contracts/test/sdk/usdcfork`), signing client and watchtower (`adapters/signing-client`, TypeScript, with the 15 end-to-end scenarios in `e2e/`), gas-fit scripts (`scripts/fit_*_gas.py`, `scripts/compare_usdc_gas.py`), the logs of the recorded runs (`logs/`), and the earlier full prototype (Solidity system under `contracts/src`, Go services and protocol library; no reported result depends on it) |
 | `code/anchor-variants/` | anchor variants C1 and C1r of the reference contract, their generated test suites and the K13 gas rows (`contracts/test/sdk/variants`, `contracts/test/sdk/K13AnchorGas.t.sol`) |
 | `code/judgment-formal/` | symbolic checks (halmos) and concrete cases of the tier 1a and tier 0 verification contracts and of the proof call (`contracts/test/g7`) |
